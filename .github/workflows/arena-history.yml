@@ -16,6 +16,7 @@ on:
   push:
     paths:
       - '.github/workflows/arena-history.yml'
+      - 'fsl_timecourse/arena_history.py'
 
 permissions:
   contents: read

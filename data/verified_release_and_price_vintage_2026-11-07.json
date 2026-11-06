@@ -1,0 +1,79 @@
+{
+  "schema": "fsl/vintage-catalog/0.8.3",
+  "catalog_id": "fsl-official-primary-time-anchors-2026-11-07",
+  "calendar_timezone": "Asia/Taipei",
+  "catalog_checked_on": "2026-11-07",
+  "notice": "These are 2024 PUBLISHED facts FIRST CAPTURED by FSL on 2026-11-07 (Asia/Taipei). Not a 2024 FSL issued forecast. Dates are publisher CALENDAR DATES, no invented hour/minute. No historic Agent task completion claim.",
+  "assertions": [
+    {
+      "assertion_id": "openai-gpt4o-announcement-2024-05-13",
+      "kind": "model_release",
+      "subject_id": "openai.gpt-4o.family",
+      "event_effective_on": "2024-05-13",
+      "published_on": "2024-05-13",
+      "first_captured_on": "2026-11-07",
+      "effective_until": null,
+      "source_grade": "provider_primary",
+      "evidence_status": "public_page_read_now",
+      "source_url": "https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free/",
+      "claim_summary": "OpenAI announced GPT-4o on 2024-05-13; rollout to Plus, Team and limited Free began, not unconditional availability of future agent tools."
+    },
+    {
+      "assertion_id": "openai-gpt4o-free-access-2024-05-13",
+      "kind": "service_access",
+      "subject_id": "openai.gpt-4o.chatgpt.free.rollout",
+      "event_effective_on": "2024-05-13",
+      "published_on": "2024-05-13",
+      "first_captured_on": "2026-11-07",
+      "effective_until": null,
+      "source_grade": "provider_primary",
+      "evidence_status": "public_page_read_now",
+      "source_url": "https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free/",
+      "claim_summary": "OpenAI stated Free rollout was subject to usage caps; Plus tier allowed up to fivefold messages versus Free. NOT a 48-hour Agent guarantee."
+    },
+    {
+      "assertion_id": "anthropic-sonnet35-2024-06-21",
+      "kind": "model_release",
+      "subject_id": "anthropic.claude-3.5-sonnet.2024-06-21",
+      "event_effective_on": "2024-06-21",
+      "published_on": "2024-06-21",
+      "first_captured_on": "2026-11-07",
+      "effective_until": null,
+      "source_grade": "provider_primary",
+      "evidence_status": "public_page_read_now",
+      "source_url": "https://www.anthropic.com/news/claude-3-5-sonnet",
+      "claim_summary": "Anthropic announced Claude 3.5 Sonnet on 2024-06-21; Claude.ai free access and higher Pro/Team rate limits were discussed. No multi-day Agent runtime was established."
+    },
+    {
+      "assertion_id": "anthropic-sonnet35-launch-api-3-15-2024-06-21",
+      "kind": "price_quote",
+      "subject_id": "anthropic.claude-3.5-sonnet.api.launch-price",
+      "event_effective_on": "2024-06-21",
+      "published_on": "2024-06-21",
+      "first_captured_on": "2026-11-07",
+      "effective_until": null,
+      "source_grade": "provider_primary",
+      "evidence_status": "public_page_read_now",
+      "source_url": "https://www.anthropic.com/news/claude-3-5-sonnet",
+      "claim_summary": "At launch Anthropic quoted API price of USD 3 per 1M input tokens and USD 15 per 1M output tokens. This is a launch-date price snapshot, not verified as the current price.",
+      "price": {
+        "service": "api",
+        "input_usd_per_million": "3",
+        "output_usd_per_million": "15"
+      }
+    },
+    {
+      "assertion_id": "openai-2026-10-23-gpt4o-original-shutdown",
+      "kind": "model_shutdown",
+      "subject_id": "openai.gpt-4o-2024-05-13.api",
+      "event_effective_on": "2026-10-23",
+      "published_on": "2026-04-22",
+      "first_captured_on": "2026-11-07",
+      "effective_until": null,
+      "source_grade": "provider_primary",
+      "evidence_status": "public_page_read_now",
+      "source_url": "https://developers.openai.com/api/docs/deprecations",
+      "claim_summary": "OpenAI lists the gpt-4o-2024-05-13 API model snapshot among those shut down on 2026-10-23; it cannot be treated as currently callable on that route."
+    }
+  ]
+}

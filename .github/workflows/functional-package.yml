@@ -1,0 +1,55 @@
+name: FSL v0.6 outcome-first research package
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/functional-package.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate research source and tests
+        run: |
+          python -m compileall -q fsl_functional tests
+          python -m unittest discover -s tests -q
+      - name: Export clearly synthetic digital and embodied functional assessments
+        run: |
+          mkdir -p reports
+          python -m fsl_functional.cli --db reports/synthetic_game.sqlite ingest-example --file tests/fixtures/functional_game_synthetic.json
+          python -m fsl_functional.cli --db reports/synthetic_game.sqlite audit --run-id synthetic-game --as-of 2026-02-07T00:00:00Z --output reports/synthetic_digital_G1_G4.json
+          python -m fsl_functional.cli --db reports/synthetic_robot.sqlite ingest-example --file tests/fixtures/functional_embodied_synthetic.json
+          python -m fsl_functional.cli --db reports/synthetic_robot.sqlite audit --run-id synthetic-embodied --as-of 2026-01-10T00:00:00Z --output reports/synthetic_embodied_E1.json
+          python -c "import json; g=json.load(open('reports/synthetic_digital_G1_G4.json')); r=json.load(open('reports/synthetic_embodied_E1.json')); assert not g['externally_certified_result']; assert not r['externally_certified_result']; assert g['duration_stage_claimed']=='month_30d_plus'; assert not g['multi_month_frontier_recorded']"
+      - name: Reproducible UTF-8 source package and hashes
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/FUNCTIONAL_FRONTIER_v0.6.md reports/FUNCTIONAL_FRONTIER_v0.6.md
+          cp LICENSE reports/LICENSE
+          git rev-parse HEAD > reports/source_commit.sha
+          (cd reports && sha256sum Frontier-Scaling-Lab-source.zip FUNCTIONAL_FRONTIER_v0.6.md LICENSE synthetic_digital_G1_G4.json synthetic_embodied_E1.json > SHA256SUMS.txt)
+      - name: Archive in one research bundle, without third-party data
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.6-user-functional-frontier-${{ github.run_id }}
+          path: |
+            reports/Frontier-Scaling-Lab-source.zip
+            reports/FUNCTIONAL_FRONTIER_v0.6.md
+            reports/LICENSE
+            reports/source_commit.sha
+            reports/SHA256SUMS.txt
+            reports/synthetic_digital_G1_G4.json
+            reports/synthetic_embodied_E1.json
+            reports/synthetic_game.sqlite
+            reports/synthetic_robot.sqlite
+          retention-days: 90
+          if-no-files-found: error

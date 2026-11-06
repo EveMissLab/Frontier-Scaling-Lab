@@ -1,0 +1,316 @@
+{
+  "schema": "fsl/narrative-replay-cases/0.11",
+  "analyst_authored_on": "2026-11-07",
+  "analysis_calendar_timezone": "Asia/Taipei",
+  "status": "three_retrospective_hypothesis_studies_not_original_forecasts",
+  "warnings": [
+    "The 2023-2025 baseline sources were not acquired by this research until 2026-11-07.",
+    "All alternative interpretations were authored in 2026 and cannot appear as contemporaneous speaker predictions.",
+    "Reversibility alternatives are observer scenarios, not proven options in historical company decision sets.",
+    "No transcript is copied; only source pointers and short research descriptions."
+  ],
+  "cases": [
+    {
+      "case_id": "dario-2023-2026-scaling-diffusion",
+      "speaker_id": "dario-amodei",
+      "public_context_at_baseline": "2023-08-08 Dwarkesh Amodei 原始訪談的 Scaling 與具體能力預測區分",
+      "baseline_cutoff": "2023-08-08",
+      "question": "2023 年對規模規律與具體能力的認知不確定性，與 2026 年『趨勢大致如預期、程式能力方向出乎意料、經濟擴散不會瞬間完成』之間是連續性、問題拆分還是真正的方向改變？",
+      "baseline_claim_ids": [
+        "dario23-scaling-mechanism",
+        "dario23-specific-abilities"
+      ],
+      "later_claim_ids": [
+        "dario26-scaled-as-expected",
+        "dario26-verified-vs-unverified",
+        "dario26-diffusion-not-instant",
+        "dario26-not-agi-now"
+      ],
+      "external_event_ids": [
+        "2025-anthropic-opus45",
+        "2026-anthropic-opus46"
+      ],
+      "non_claims": [
+        "不能把 2026 年對趨勢符合預期的回顧等同 2023 年對底層機制已理解。",
+        "不能從 Claude Opus 的發布日推出多日自主科研、營收擴散或模型能完成所有專業任務。",
+        "訪談文字無法揭露 Anthropic 內部真正資本決策、被訪者私人信念或某條技術路徑是否已封死。"
+      ],
+      "candidate_interpretations": [
+        {
+          "hypothesis_id": "dario-continuity",
+          "kind": "possible_continuity",
+          "interpretation": "其核心論點可能一直是 Scaling 的整體趨勢可觀測，但具體能力出現時刻與社會擴散具有額外不確定性。",
+          "discriminating_observation": "逐段核對 2023 與 2026 年對 scaling、編碼能力、成果驗收及經濟擴散的論述適用範圍。",
+          "potential_falsifier": "若發現同一語義門檻、同一時間範圍下不容兼容的明確斷言，則單純連續性不足以解釋。",
+          "inference_status": "candidate_not_adjudicated"
+        },
+        {
+          "hypothesis_id": "dario-reframing",
+          "kind": "possible_reframing",
+          "interpretation": "從模型統計規律的表達轉向任務驗證與經濟擴散的分層論述，可能是問題細化，而非信念矛盾。",
+          "discriminating_observation": "比較原始全文語境，獨立核對各代模型真正完成的任務類別與驗收方法是否改變。",
+          "potential_falsifier": "若 2023 年已同樣明確區分所有層次、2026 未增補任何條件，此『重新表述』假說需縮弱。",
+          "inference_status": "candidate_not_adjudicated"
+        },
+        {
+          "hypothesis_id": "dario-observation-limited",
+          "kind": "insufficient_evidence",
+          "interpretation": "即使可比較公開說法，目前仍無法確定是否發生內在認知變化或資源策略轉向。",
+          "discriminating_observation": "取得具有日期的模型驗收、實際企業投資規劃與獨立的功能性 Agent 長程任務證據。",
+          "potential_falsifier": "若有可獨立鑑別、前後同一命題的明確修正及其授權決策證據，則『不可判定』範圍可縮小。",
+          "inference_status": "candidate_not_adjudicated"
+        }
+      ],
+      "reversibility_probe": {
+        "scope": "mixed",
+        "question": "當能力預期與實際可變現速度出現差距時，研究策略、部署節奏及公司算力採購是否仍有可調整的可行空間？",
+        "target": "保留研究深度、適應風險及有效需求的不同可能配置，不預設必須撤回某種 Scaling 路徑。",
+        "horizon_end": "2027-12-31",
+        "decision_authority": "not_independently_verified",
+        "constraint_uncertainty": "資料中心採購、資本契約、模型能力與需求預期之間的可調整量及時滯未知。",
+        "alternative_routes": [
+          {
+            "route_id": "dario-change-deployment",
+            "candidate_path": "調整推論或產品部署配比，並維持核心模型研究。",
+            "required_evidence": "需已公布且可核對的內部授權、投資、財報及歷史計畫修訂。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          },
+          {
+            "route_id": "dario-adjust-research",
+            "candidate_path": "修改或增加新能力驗收與訓練研究路線。",
+            "required_evidence": "需日期釘定的實際研究成果和可辨識資源調整記錄。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          },
+          {
+            "route_id": "dario-retain-status-quo",
+            "candidate_path": "維持先前策略，容忍可能較長的市場擴散時滯。",
+            "required_evidence": "需未變更決策的可核對歷史背景及資本負擔證據。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          }
+        ],
+        "actual_reversal_observed": null
+      },
+      "discriminating_evidence": [
+        {
+          "gate_id": "dario-g1-compare",
+          "kind": "external_functional_test",
+          "observation_needed": "不同時期同品質的可追溯 Agent／科研任務與獨立最終驗收。",
+          "quality_condition": "固定任務定義、品質條件、工具差異及人類介入，不能只比較發表分數。",
+          "status": "not_yet_verified"
+        },
+        {
+          "gate_id": "dario-cost-shift",
+          "kind": "financial_receipt",
+          "observation_needed": "真實當期算力成本、訂閱／API 收入與實際產品擴散時間。",
+          "quality_condition": "記錄生效日期、成本種類與同時期替代解釋；訪談預言不是帳單。",
+          "status": "not_yet_verified"
+        }
+      ]
+    },
+    {
+      "case_id": "demis-2025-2030-high-bar-agi",
+      "speaker_id": "demis-hassabis",
+      "public_context_at_baseline": "2025-07-23 Lex Fridman #475 的高門檻 AGI、科學發現與遊戲創造討論",
+      "baseline_cutoff": "2025-07-23",
+      "question": "當高門檻 AGI 被界定為跨領域穩定智能、原創科學發現與能創造深刻新遊戲時，2025–2026 年模型發布究竟支持哪些局部能力，而哪些驗收仍完全未完成？",
+      "baseline_claim_ids": [
+        "demis25-agi-2030",
+        "demis25-discovery-game",
+        "demis25-two-track"
+      ],
+      "later_claim_ids": [],
+      "external_event_ids": [
+        "2025-google-gemini3",
+        "2026-google-gemini31"
+      ],
+      "non_claims": [
+        "2030 年的機率預測在 2026-11-07 尚未到期，不可能因 2026 模型進步就評為命中或落空。",
+        "Gemini 3 發布不等於已經創造媲美圍棋的新遊戲、提出獲學界認可的原創物理理論或具備完整 AGI。",
+        "雙線研究宣稱不等於已由公開資源帳本證實各路線投入比重，也不等於某個選項不可逆。"
+      ],
+      "candidate_interpretations": [
+        {
+          "hypothesis_id": "demis-progress-without-threshold",
+          "kind": "possible_continuity",
+          "interpretation": "模型新能力與 AGI 高門檻標準可以同時成立，但後者仍須獨立驗證。",
+          "discriminating_observation": "核對 2025 後實際獨立跨領域任務、科研提出與新遊戲創作的最終評審。",
+          "potential_falsifier": "若出現按其事前定義充分覆蓋的獨立完整 AGI 驗收，則『門檻未觸及』說法需要重估。",
+          "inference_status": "candidate_not_adjudicated"
+        },
+        {
+          "hypothesis_id": "demis-criterion-refinement",
+          "kind": "possible_reframing",
+          "interpretation": "後續可能細化能力的驗收門檻，但截至目前尚無同一發言者直接可比的後續逐字稿。",
+          "discriminating_observation": "取得有日期、能連到原始來源的後續訪談，同一任務定義下比較前後門檻。",
+          "potential_falsifier": "若後續訪談表述維持相同的驗收標準，不能宣稱定義漂移。",
+          "inference_status": "candidate_not_adjudicated"
+        },
+        {
+          "hypothesis_id": "demis-unresolved-horizon",
+          "kind": "insufficient_evidence",
+          "interpretation": "2030 年尚未到來，單靠 2025–2026 的產品節點無法檢驗原始期限概率。",
+          "discriminating_observation": "2030 年後依預先確定且可重現的門檻與外部審核完成校準。",
+          "potential_falsifier": "若有合法且明確的提前達標獨立證據，則可更新未完成狀態，但不是只根據發表日期。",
+          "inference_status": "candidate_not_adjudicated"
+        }
+      ],
+      "reversibility_probe": {
+        "scope": "mixed",
+        "question": "研究組織是否可在擴大現行模型與發展新式世界模型／推理方式之間動態調整資源，並隨新能力出現重新界定測試要求？",
+        "target": "保留高品質跨領域能力驗收與多種研究方法，而非將任何一種架構定為必經路線。",
+        "horizon_end": "2030-12-31",
+        "decision_authority": "not_independently_verified",
+        "constraint_uncertainty": "外部不能直接觀察團隊預算、模型訓練管線、研究路線可行性的內部限制。",
+        "alternative_routes": [
+          {
+            "route_id": "demis-scale-existing",
+            "candidate_path": "繼續現有路線擴展並增加嚴格獨立測試。",
+            "required_evidence": "需要可核對的投入、跨模型結果及高門檻驗收標準。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          },
+          {
+            "route_id": "demis-develop-new-paradigms",
+            "candidate_path": "轉移或增加新表示、世界模型與規劃方法。",
+            "required_evidence": "需要具發布時間的原創技術工作和資源選擇證據。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          },
+          {
+            "route_id": "demis-compose-approaches",
+            "candidate_path": "同時結合多種路線，讓新可行解空間出現。",
+            "required_evidence": "需要獨立驗收的系統級增益及路線耦合證據。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          }
+        ],
+        "actual_reversal_observed": null
+      },
+      "discriminating_evidence": [
+        {
+          "gate_id": "demis-high-bar",
+          "kind": "external_functional_test",
+          "observation_needed": "跨領域完整任務、可接受的科研創造與高品質原創遊戲的盲式獨立驗收。",
+          "quality_condition": "須事前確定判準並以多樣任務、外部專家和反例測試，不得只看公司 benchmark。",
+          "status": "not_yet_verified"
+        },
+        {
+          "gate_id": "demis-2030-calibration",
+          "kind": "longitudinal_interview",
+          "observation_needed": "將 2025 年定義、概率與 2030 年期限按發言者原本語境固定，再作後驗檢查。",
+          "quality_condition": "到期後以同一門檻檢驗；不能因社群另定 AGI 就偷換標的。",
+          "status": "not_yet_verified"
+        }
+      ]
+    },
+    {
+      "case_id": "liang-2024-2026-architecture-openness",
+      "speaker_id": "liang-wenfeng",
+      "public_context_at_baseline": "2024-07-22 36氪暗湧 Waves 梁文鋒的原始問答，AGI／原創結構／開源／可負擔性",
+      "baseline_cutoff": "2024-07-22",
+      "question": "2024 年所提出的 AGI 原創架構、開源與價格可負擔性方向，在 2025–2026 年模型／API 演化中，有哪些可以由官方技術與計價證據驗證，哪些只是表面對應？",
+      "baseline_claim_ids": [
+        "liang24-agi-target",
+        "liang24-affordability",
+        "liang24-no-shut-source",
+        "liang24-multiple-paths",
+        "liang24-research-not-apps"
+      ],
+      "later_claim_ids": [],
+      "external_event_ids": [
+        "2025-deepseek-r1",
+        "2026-deepseek-v4-pro"
+      ],
+      "non_claims": [
+        "2025 年 R1 開放權重並不證明 DeepSeek 將永久維持所有模型與服務開源。",
+        "2026 年 API 模型推出不等於 2024 年原始架構研究意圖已完整實現 AGI。",
+        "不能僅以公開降價宣傳推出真實使用者完成同品質工作所需美元已下降。",
+        "沒有公開可稽核決策與資源約束時，不得判定開源、商業化或技術路線可逆或不可逆。"
+      ],
+      "candidate_interpretations": [
+        {
+          "hypothesis_id": "liang-directional-consistency",
+          "kind": "possible_continuity",
+          "interpretation": "DeepSeek 之後持續推出底層模型，可以與其 2024 年公開重視模型研究的方向相容。",
+          "discriminating_observation": "按發表日比對原始架構技術與模型的可獨立重現部分，而非只比對品牌或版本名。",
+          "potential_falsifier": "若有足夠證據顯示模型／核心研發停止、完全轉向與原說法不相容的路徑，此假設需重新限定。",
+          "inference_status": "candidate_not_adjudicated"
+        },
+        {
+          "hypothesis_id": "liang-price-not-capability",
+          "kind": "possible_reframing",
+          "interpretation": "商業低價、實際推論效率與經獨立驗證的任務完成成本可能是三種不同結果。",
+          "discriminating_observation": "收集同時間、同品質、同任務的 API／模型實際推論成本與通過率，含隱性工具費用。",
+          "potential_falsifier": "若在嚴格相同條件下觀察到持續一致的單成果成本降低，則『僅價格策略』的可能性縮小。",
+          "inference_status": "candidate_not_adjudicated"
+        },
+        {
+          "hypothesis_id": "liang-open-route-unknown",
+          "kind": "insufficient_evidence",
+          "interpretation": "原始公開開源宣稱與後來特定產品供應方式是否構成策略逆轉，目前證據不足。",
+          "discriminating_observation": "分開查核權重、訓練程式、資料與 API 服務在每個日期的實際授權與可取得性。",
+          "potential_falsifier": "若同一產品範圍有獨立確認的明確開源→閉源治理決策，則此未知狀態可縮小。",
+          "inference_status": "candidate_not_adjudicated"
+        }
+      ],
+      "reversibility_probe": {
+        "scope": "mixed",
+        "question": "研究架構、模型權重可取得性、授權與 API 商業路徑各自是否可修改；已釋出的知識及下游應用是否可完整回收？",
+        "target": "可重新選擇的研究與商業方向，而非一刀切認為整個組織策略都能或都不能回退。",
+        "horizon_end": "2028-12-31",
+        "decision_authority": "not_independently_verified",
+        "constraint_uncertainty": "公開權重的後續傳播、社群 fork、模型提供服務與資料授權條款各有不同控制權。",
+        "alternative_routes": [
+          {
+            "route_id": "liang-maintain-openness",
+            "candidate_path": "維持現有開源方向並調整服務價格或算力提供方式。",
+            "required_evidence": "需日期版權重、授權、服務價目與完整來源鏈。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          },
+          {
+            "route_id": "liang-different-license-scope",
+            "candidate_path": "針對不同模型／元件改變可用性或商業授權範圍。",
+            "required_evidence": "需逐版本確切授權條款與可驗證治理決策，不可從一個 API 模型推出整體轉向。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          },
+          {
+            "route_id": "liang-new-research-paths",
+            "candidate_path": "新增或轉向模型架構、訓練與推論效率的其他研究路線。",
+            "required_evidence": "需公開技術實作、獨立重現、測試樣本及可核對的資源資料。",
+            "feasibility_status": "unknown",
+            "route_observed": null
+          }
+        ],
+        "actual_reversal_observed": null
+      },
+      "discriminating_evidence": [
+        {
+          "gate_id": "liang-license-history",
+          "kind": "original_public_document",
+          "observation_needed": "逐版本模型權重／程式授權及可下載性、歷史版本留存與組織正式聲明。",
+          "quality_condition": "同一權利客體與同時期比較，避免將 API 視為已開源權重。",
+          "status": "not_yet_verified"
+        },
+        {
+          "gate_id": "liang-real-cost",
+          "kind": "financial_receipt",
+          "observation_needed": "含當時生效的 API 價目、實際消耗與同品質任務驗收的時間序列。",
+          "quality_condition": "成本分攤、額外工具與補貼必須分開記錄；不得把每百萬 token 單價當結果成本。",
+          "status": "not_yet_verified"
+        },
+        {
+          "gate_id": "liang-architecture",
+          "kind": "technical_artifact",
+          "observation_needed": "核心架構說明、原始碼／權重版本、外部可重算的效率與能力測試。",
+          "quality_condition": "獨立驗證與相同條件，禁止將模型發表當作已達 AGI。",
+          "status": "not_yet_verified"
+        }
+      ]
+    }
+  ]
+}

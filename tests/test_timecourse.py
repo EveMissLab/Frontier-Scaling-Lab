@@ -93,6 +93,18 @@ class TimecourseTests(unittest.TestCase):
                             "capability" in seg["level_difference"]["note"]
                             for seg in result["segments"]))
 
+    def test_fixed_count_rating_revision_and_large_count_drop(self):
+        ingest(self.db, [
+            ("2025-08-01", 1400, 500),
+            ("2025-09-01", 1410, 500),
+            ("2025-10-01", 1420, 400),
+            ("2025-11-01", 1418, 400)])
+        segment = series(self.db)["segments"][0]
+        audit = segment["sample_basis_audit"]
+        self.assertEqual(audit["same_reported_count_but_score_changed"], 2)
+        self.assertEqual(audit["material_sample_count_drops"], 1)
+        self.assertEqual(segment["status"], "descriptive_with_sample_basis_warning")
+
     def test_low_samples_excluded_not_silent_zero(self):
         ingest(self.db, [
             ("2025-08-01", 1400, 3),

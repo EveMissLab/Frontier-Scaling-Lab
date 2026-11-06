@@ -1,0 +1,37 @@
+name: Read-only public evidence refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '19 3 * * 1'
+  push:
+    paths:
+      - '.github/workflows/public-evidence-refresh.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch bounded official public API samples
+        run: |
+          python -m scripts.public_evidence_refresh \
+            --db reports/public_evidence.sqlite \
+            --report reports/public_evidence_manifest.json
+      - name: Preserve a dated evidence manifest and SQLite snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-evidence-${{ github.run_id }}
+          path: |
+            reports/public_evidence.sqlite
+            reports/public_evidence_manifest.json
+          if-no-files-found: warn
+          retention-days: 14

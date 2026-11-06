@@ -1,0 +1,77 @@
+name: FSL v0.8 controlled adaptation pilot
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/g2-adaptation-pilot.yml'
+      - 'fsl_interventions/**'
+      - 'docs/BLIND_DYNAMIC_GOAL_ADAPTATION_v0.8.md'
+      - 'tests/test_interventions.py'
+      - 'tests/test_agent_bridge.py'
+      - 'tests/fixtures/g2_intervention_synthetic.json'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate all historic and new v0.8 tests
+        run: |
+          python -m compileall -q fsl_interventions fsl_observatory fsl_functional tests
+          python -m unittest discover -s tests -q
+      - name: Run fictional four-perturbation blind-oracle replay
+        run: |
+          mkdir -p reports
+          python -m fsl_interventions.cli --db reports/g2_synthetic.sqlite \
+            synthetic-demo --file tests/fixtures/g2_intervention_synthetic.json \
+            --as-of 2026-01-18T00:00:00Z \
+            --output reports/g2_synthetic_result.json
+          python -c "import json; p=json.load(open('reports/g2_synthetic_result.json')); assert p['four_case_recorded_outcomes_satisfied']; assert len(p['four_action_contrast_coverage'])==4; assert not p['G2_recorded_conditions_satisfied'] and not p['G2_externally_verified']; assert p['assessment_status']=='synthetic_demonstration_only'"
+      - name: Record real GitHub provenance separately from fictional G2 results
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          COMMIT_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python -m fsl_observatory.cli --db reports/real_source_pilot.sqlite \
+            pilot --session "fsl-v08-workflow-${RUN_ID}" \
+            --repo "${REPO}" --sha "${COMMIT_SHA}" \
+            --run-id "${RUN_ID}" \
+            --root . --file README.md \
+            --output reports/real_source_pilot.json
+          python -c "import json; p=json.load(open('reports/real_source_pilot.json')); assert p['receipt_count']==3 and p['linked_functional_run'] is None and not p['certification']['G1_G4_or_E1_certified']"
+      - name: Preserve canonical source, license and checkable hashes
+        if: success()
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/BLIND_DYNAMIC_GOAL_ADAPTATION_v0.8.md reports/BLIND_DYNAMIC_GOAL_ADAPTATION_v0.8.md
+          cp LICENSE reports/LICENSE
+          git rev-parse HEAD > reports/HEAD.sha
+          (cd reports && sha256sum Frontier-Scaling-Lab-source.zip BLIND_DYNAMIC_GOAL_ADAPTATION_v0.8.md LICENSE g2_synthetic.sqlite g2_synthetic_result.json real_source_pilot.sqlite real_source_pilot.json > SHA256SUMS.txt)
+      - name: Archive source and simulated/real evidence separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.8-blind-adaptation-${{ github.run_id }}
+          path: |
+            reports/Frontier-Scaling-Lab-source.zip
+            reports/BLIND_DYNAMIC_GOAL_ADAPTATION_v0.8.md
+            reports/LICENSE
+            reports/HEAD.sha
+            reports/SHA256SUMS.txt
+            reports/g2_synthetic.sqlite
+            reports/g2_synthetic_result.json
+            reports/real_source_pilot.sqlite
+            reports/real_source_pilot.json
+          retention-days: 90
+          if-no-files-found: warn

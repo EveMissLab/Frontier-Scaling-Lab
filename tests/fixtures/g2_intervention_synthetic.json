@@ -74,22 +74,26 @@
     "case-replan": {
       "expected_action": "replan",
       "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-      "oracle_nonce": "11111111111111111111111111111111"
+      "oracle_nonce": "11111111111111111111111111111111",
+      "case_type": "goal_changed"
     },
     "case-maintain": {
       "expected_action": "maintain",
       "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-      "oracle_nonce": "22222222222222222222222222222222"
+      "oracle_nonce": "22222222222222222222222222222222",
+      "case_type": "irrelevant_noise"
     },
     "case-clarify": {
       "expected_action": "clarify",
       "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-      "oracle_nonce": "33333333333333333333333333333333"
+      "oracle_nonce": "33333333333333333333333333333333",
+      "case_type": "intent_ambiguous"
     },
     "case-escalate": {
       "expected_action": "escalate",
       "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-      "oracle_nonce": "44444444444444444444444444444444"
+      "oracle_nonce": "44444444444444444444444444444444",
+      "case_type": "exception_boundary"
     }
   },
   "mission_events": [

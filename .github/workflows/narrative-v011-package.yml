@@ -1,0 +1,83 @@
+name: FSL v0.11 longitudinal narrative replay research package
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/narrative-v011-package.yml'
+      - 'fsl_discourse/replay.py'
+      - 'fsl_discourse/replay_cli.py'
+      - 'fsl_discourse/replay_export.py'
+      - 'tests/test_narrative_replay.py'
+      - 'data/longitudinal_narrative_cases_v0.11.json'
+      - 'docs/NARRATIVE_DRIFT_INTENTION_REALITY_REPLAY_v0.11.md'
+
+permissions:
+  contents: read
+
+jobs:
+  research-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate canonical source and every FSL regression
+        run: |
+          python -m compileall -q fsl_discourse fsl_history fsl_economics tests
+          python -m unittest discover -s tests -q
+          python -m fsl_discourse.replay_cli validate --output /tmp/v011_validation.json
+
+      - name: Create two historical viewpoints, then each subsequent dated phase
+        run: |
+          mkdir -p reports
+          python -m fsl_discourse.replay_cli validate \
+            --output reports/VALIDATED_CASES.json
+          python -m fsl_discourse.replay_cli case \
+            --case-id dario-2023-2026-scaling-diffusion --as-of 2023-08-08 \
+            --mode strict_known_at_time --output reports/2023-08-08_dario_strict.json
+          python -m fsl_discourse.replay_cli case \
+            --case-id dario-2023-2026-scaling-diffusion --as-of 2023-08-08 \
+            --mode retrospective --output reports/2023-08-08_dario_retrospective.json
+          python -m fsl_discourse.replay_cli case \
+            --case-id liang-2024-2026-architecture-openness --as-of 2024-07-22 \
+            --mode retrospective --output reports/2024-07-22_liang_baseline.json
+          python -m fsl_discourse.replay_cli case \
+            --case-id demis-2025-2030-high-bar-agi --as-of 2025-07-23 \
+            --mode retrospective --output reports/2025-07-23_demis_baseline.json
+          python -m fsl_discourse.replay_cli all \
+            --as-of 2025-12-31 --mode retrospective \
+            --output reports/2025-12-31_three_case_review.json
+          python -m fsl_discourse.replay_cli all \
+            --as-of 2026-11-07 --mode retrospective \
+            --output reports/2026-11-07_full_narrative_replay.json
+          python -m fsl_discourse.replay_export \
+            --as-of 2026-11-07 --output reports/2026-11-07_case_evidence_status.csv
+
+      - name: Confirm no false predictions, no causal or reversibility inference
+        run: |
+          python -c "import json,csv; p='reports/'; read=lambda name:json.load(open(p+name+'.json')); v=read('VALIDATED_CASES'); s=read('2023-08-08_dario_strict'); old=read('2023-08-08_dario_retrospective'); current=read('2026-11-07_full_narrative_replay'); rows=list(csv.DictReader(open(p+'2026-11-07_case_evidence_status.csv',encoding='utf-8'))); demis=next(x for x in current['cases'] if x['speaker_id']=='demis-hassabis'); assert v['case_count']==3 and v['interpretation_winners_declared']==0; assert s['documented_observation_count']==0 and old['documented_observation_count']==2; assert not old['alternative_interpretations']; assert len(current['cases'])==3 and len(rows)==3; assert current['identified_causal_effects']==0 and current['actual_reversibility_certificates']==0 and current['AGI_ASI_verified_claims']==0; assert demis['dated_forecast_statuses'][0]['status']=='not_due'; assert all(not x['private_belief_changed_verified'] or not x['causal_effect_verified'] for x in [])"
+
+      - name: Seal canonical UTF-8 Markdown and all source files with SHA-256
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/NARRATIVE_DRIFT_INTENTION_REALITY_REPLAY_v0.11.md reports/NARRATIVE_DRIFT_INTENTION_REALITY_REPLAY_v0.11.md
+          cp data/longitudinal_narrative_cases_v0.11.json reports/longitudinal_narrative_cases_v0.11.json
+          cp data/agi_asi_public_interviews_seed_2026-11-07.json reports/source_interview_claims_v0.10.json
+          cp data/official_ai_history_2024_2026_v0.9.json reports/source_market_history_v0.9.json
+          cp LICENSE reports/LICENSE
+          git rev-parse HEAD > reports/GIT_HEAD.sha
+          python -c "from datetime import datetime,timezone; from zoneinfo import ZoneInfo; from pathlib import Path; import json; t=datetime.now(timezone.utc); meta={'package_created_utc':t.isoformat(),'package_created_Asia_Taipei':t.astimezone(ZoneInfo('Asia/Taipei')).isoformat(),'analysis_authored_on':'2026-11-07','all_original_interview_claims_first_collected_by_FSL_on':'2026-11-07','clock_source':'GitHub runner OS clock, not notarization','independently_verified_AGI_or_reversal':False}; Path('reports/PACKAGE_TIMESTAMP.json').write_text(json.dumps(meta,indent=2)+'\n',encoding='utf-8')"
+          (cd reports && sha256sum Frontier-Scaling-Lab-source.zip NARRATIVE_DRIFT_INTENTION_REALITY_REPLAY_v0.11.md longitudinal_narrative_cases_v0.11.json source_interview_claims_v0.10.json source_market_history_v0.9.json LICENSE VALIDATED_CASES.json 2023-08-08_dario_strict.json 2023-08-08_dario_retrospective.json 2024-07-22_liang_baseline.json 2025-07-23_demis_baseline.json 2025-12-31_three_case_review.json 2026-11-07_full_narrative_replay.json 2026-11-07_case_evidence_status.csv PACKAGE_TIMESTAMP.json > SHA256SUMS.txt)
+
+      - name: Upload one self-contained research archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.11-longitudinal-narrative-replay-${{ github.run_id }}
+          path: |
+            reports/
+          retention-days: 90
+          if-no-files-found: error

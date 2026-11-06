@@ -213,16 +213,19 @@ def link_receipt(db, *, receipt_id, event_id, role, recorded_at):
         meta=json.loads(receipt["metadata_json"])
         if receipt["kind"]!="github_workflow" or meta.get("conclusion")!="success":
             raise ObservatoryError("CI support requires a concluded successful workflow")
+        payload=json.loads(event["payload_json"])
+        if payload.get("github_head_sha")!=meta.get("head_sha"):
+            raise ObservatoryError("CI head SHA must match the event's declared target revision")
     if role=="supports_deliverable":
         if receipt["kind"]!="local_file":
             raise ObservatoryError("artifact byte support requires local-file digest")
         payload=json.loads(event["payload_json"])
         if payload.get("artifact_sha256")!=receipt["content_sha256"]:
             raise ObservatoryError("deliverable hash differs from actual bytes")
-    if role=="supports_checkpoint" and receipt["kind"]=="local_file":
+    if role in ("supports_progress","supports_checkpoint") and receipt["kind"]=="local_file":
         payload=json.loads(event["payload_json"])
         if payload.get("evidence_sha256")!=receipt["content_sha256"]:
-            raise ObservatoryError("checkpoint bytes fail the claimed SHA256")
+            raise ObservatoryError("claimed progress/checkpoint bytes do not match SHA256")
     key={
         "receipt_id":receipt_id,"event_id":event_id,
         "role":role,"recorded_at":recorded,

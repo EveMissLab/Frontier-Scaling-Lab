@@ -18,6 +18,39 @@ How much of a visible model improvement is delayed realization of prior compute/
 
 A *5–10x total-parameter* scenario and a *2–3x effective-cognition* hypothesis may coexist. Neither is a verified prediction today. v0.2 explicitly models release lag, hardware maturation and candidate parameter plateaus.
 
+## v0.3: Hugging Face + Arena + benchmark + anonymous user-experience evidence
+
+New **source-observation layer**: open-weight metadata, Arena leaderboard history,
+HF official benchmark submissions, and manually curated *aggregate-only* community
+feedback. Evidence is append-only in the **same SQLite database** as v0.2, but
+ratings and subjective experiences can never be mistaken for model parameter
+disclosures or inserted into the parameter-inversion calibration table.
+
+~~~bash
+python -m fsl_sources.cli init
+python -m fsl_sources.cli arena-splits
+python -m fsl_sources.cli hf-model --id Qwen/Qwen3-0.6B
+python -m fsl_sources.cli arena --config text --split latest --offset 0 --limit 100
+python -m fsl_sources.cli arena --config agent --split latest --limit 100
+python -m fsl_sources.cli hf-benchmark --dataset SWE-bench/SWE-bench_Verified
+python -m fsl_sources.cli observations --channel preference --limit 40
+~~~
+
+The above live commands require network access and are **not** automatically run
+by CI. Rate limits, dataset attribution, source terms, units, and methodology
+changes are observed. For use with no network, see the fabricated examples
+in tests/fixtures and the accompanying instructions.
+
+Read [v0.3 public evidence protocol](docs/PUBLIC_EVIDENCE_v0.3.md)
+for dataset licenses, the 100-row paginated Arena API, data schema, feedback
+privacy protections, identity crosswalk, and strict as-of leakage guards.
+
+**Do not multiply a leaderboard score by a parameter count** to invent a
+universal cognition score. Model parameter ratios, user preferences and
+task benchmarks stay independent until a controlled longitudinal study
+supports combining them.
+
+
 ## Two compatible runnable modules
 
 ### v0.1: physical compute/parameter interval engine
@@ -94,7 +127,7 @@ python -m fsl_adaptive.cli weights --as-of 2030-01-31
 
 This project does not infer ability from model parameter ratios, and it does not treat model release cadence as training cadence. Real sourced measurements, benchmark controls and forward validation are necessary before making quantitative claims about industry trajectories.
 
-See [v0.2 research protocol](docs/ADAPTIVE_RESEARCH_v0.2.md), [database design](docs/DATABASE.md), and [v0.1 protocol](docs/RESEARCH.md).
+See [v0.3 public evidence protocol](docs/PUBLIC_EVIDENCE_v0.3.md), [v0.2 research protocol](docs/ADAPTIVE_RESEARCH_v0.2.md), [database design](docs/DATABASE.md), and [v0.1 protocol](docs/RESEARCH.md).
 
 ## License / 授權
 

@@ -18,6 +18,54 @@ How much of a visible model improvement is delayed realization of prior compute/
 
 A *5–10x total-parameter* scenario and a *2–3x effective-cognition* hypothesis may coexist. Neither is a verified prediction today. v0.2 explicitly models release lag, hardware maturation and candidate parameter plateaus.
 
+## v0.4: methodological timecourses + reproducible historical control
+
+[Full v0.4 research note](docs/LONGITUDINAL_MEASUREMENT_v0.4.md) ·
+[Historical Arena source workflow](.github/workflows/arena-parquet-history.yml)
+
+The first audited historical example contains **190 publication dates**
+(2024-08-28 through 2026-10-15) for the exact public model label
+`gpt-4o-2024-05-13`, Arena `text_style_control` / `overall`.
+The source Parquet bytes and SHA-256 are recorded; source license is **CC BY 4.0**.
+
+It is a **measurement negative control**, not a reconstruction of GPT-4o
+weight changes. Fixed model labels can show fluctuating ratings while their
+reported vote counts stay unchanged. We therefore block naive inferences
+across known Arena methodology changes, including the 2025-05-16 style-control
+shift and 2025-07-23 frequency reweighting.
+
+The large `/filter` and `/search` dataset viewer queries returned HTTP 500
+on the original historical run. The working implementation uses the official
+**Parquet** index, bounded downloads and a local DuckDB projection into
+append-only SQLite. This optional dependency is installed only in the
+historical retrieval workflow.
+
+~~~bash
+python -m fsl_timecourse.cli method-breaks
+python -m fsl_timecourse.cli --db reports/arena_parquet.sqlite readiness
+python -m fsl_timecourse.cli --db reports/arena_parquet.sqlite series \
+  --model-id arena:gpt-4o-2024-05-13 \
+  --measure arena_rating --category overall \
+  --methodology arena-dataset:text_style_control:arena_rating \
+  --channel preference --mode retrospective --as-of 2026-11-06
+
+python -m scripts.report_arena_timecourse \
+  --db reports/arena_parquet.sqlite \
+  --model gpt-4o-2024-05-13 \
+  --config text_style_control --as-of 2026-11-06
+~~~
+
+Also new: `fsl_timecourse/controlled.py` preregisters exact task sets,
+scoring, budgets and model/Agent modes in immutable SQLite tables.
+Its **capability vector** returns per-domain task success changes without
+collapsing them to one general intelligence multiplier. It does not yet
+contain independently verified real-world controlled evaluations.
+
+See [v0.4 measurement protocol](docs/LONGITUDINAL_MEASUREMENT_v0.4.md).
+The v0.3 317 cross-sectional observations and v0.4 190 historical dates
+are *different statistical units*; do not add them as independent models.
+
+
 ## v0.3: Hugging Face + Arena + benchmark + anonymous user-experience evidence
 
 New **source-observation layer**: open-weight metadata, Arena leaderboard history,

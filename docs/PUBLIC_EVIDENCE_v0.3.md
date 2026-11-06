@@ -211,6 +211,31 @@ All four files are **fabricated fixtures** and cannot be cited as external facts
 
 The CI pipeline is intentionally fully offline and does not consume external API quotas. Live data import must be run intentionally by the operator, with original source terms, consent and provenance reviewed.
 
+## 6. Read-only weekly source acquisition
+
+The GitHub Actions workflow named **Read-only public evidence refresh** runs
+on schedule (Monday 03:19 UTC), manual dispatch, or a limited workflow/source
+adapter change. It makes only a few official HTTPS API calls with no API key,
+no user-level scrape, no model downloads, no write permission to GitHub source
+control, and records explicit per-source errors.
+
+It creates:
+- `public_evidence.sqlite`: append-only normalized metrics and source hashes.
+- `public_evidence_manifest.json`: retrieval date, request URL, count, source
+  digest, attribution and explicit failed/partial status.
+
+Artifacts are kept for **90 days**, so the workflow is an initial intake
+pipeline, **not a permanent historical archive**. Do not cite these artifacts
+as immutable evidence after expiry unless archived in a versioned research
+repository with the original source licenses and timestamps.
+
+The offline tests are separate and never fetch live user data. Scheduled
+fetches do not insert preference scores into the parameter-inversion feedback
+table; a researcher must first verify model identity, methodology, task budget
+and observational admissibility. For a full legal/provenance audit and durable
+archival, see GitHub Issue #3.
+
+
 ## 6. Next scientific milestone
 
 M3: grounded multi-source **metric vector** and longitudinal capability conversion study:

@@ -250,6 +250,7 @@ def compare_matched(baseline,candidate,*,bootstrap=200,seed=20261107):
         boot=sorted(ratio_samples[q])
         ratio_ci=None if len(boot)<max(30,bootstrap//2) else [
             boot[int(0.025*(len(boot)-1))],boot[int(0.975*(len(boot)-1))]
+        ]
         metrics[q]={
             "baseline_human_minutes":h0,"candidate_human_minutes":h1,
             "task_horizon_ratio":h1/h0 if h0 is not None and h1 is not None else None,

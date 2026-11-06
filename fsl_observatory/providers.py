@@ -211,7 +211,7 @@ def github_artifact(repo,artifact_id,*,now=None,fetch=fetch_json,token=None):
         raise ObservatoryError("invalid artifact byte size")
     return {
         "kind":"github_artifact","subject":repo,
-        "source_ref":f"https://github.com/{repo}/actions/runs/{run_id or 0}",
+        "source_ref":endpoint,
         "observed_at":observed,
         "provider_at":stamp.isoformat(),"time_trust":"provider_recorded",
         "state":"artifact_expired" if data.get("expired") else "artifact_metadata_visible",

@@ -343,6 +343,38 @@ def _goal_alignment(events):
             "goal_sha256":current,"acceptance_event":accepted["event_id"]}
 
 
+def _finished_artifact_source(db,events,cutoff):
+    """Check that finished artifact bytes have a v0.7 verified hash link.
+
+    This is NOT a gameplay, usability, rights, or AI-authorship certification.
+    """
+    from fsl_functional.audit import _delivery
+    pair=_delivery(events)
+    if pair is None:
+        return {"deliverable_event_id":None,"actual_byte_receipts":0,
+                "file_bytes_sha256_confirmed":False}
+    artifact,acceptance=pair
+    expected=artifact["payload"].get("artifact_sha256")
+    rows=db.execute("""SELECT l.link_id,r.receipt_id,r.content_sha256,
+                              r.observed_at,l.recorded_at,r.state
+      FROM observer_links l JOIN observer_receipts r USING(receipt_id)
+      WHERE l.event_id=? AND l.role='supports_deliverable'
+        AND r.kind='local_file'
+        AND l.recorded_at<=? AND r.observed_at<=?
+      ORDER BY r.receipt_id""",
+      (artifact["event_id"],cutoff,cutoff)).fetchall()
+    verified=[r["receipt_id"] for r in rows
+              if r["content_sha256"]==expected and
+                 r["state"]=="local_bytes_hashed"]
+    return {
+        "deliverable_event_id":artifact["event_id"],
+        "actual_byte_receipts":len(verified),
+        "file_bytes_sha256_confirmed":bool(verified),
+        "receipt_ids":verified,
+        "proof_scope":"bytes_match_only_not_product_functionality",
+    }
+
+
 def evaluate(db,protocol_id,as_of):
     """Descriptive trial matrix; never a certified G2 success from self-reports."""
     identifier(protocol_id,"protocol_id")
@@ -365,6 +397,7 @@ def evaluate(db,protocol_id,as_of):
     events=events_asof(db,p["run_id"],cutoff)
     event_by_id={e["event_id"]:e for e in events}
     goal=_goal_alignment(events)
+    artifact_receipts=_finished_artifact_source(db,events,cutoff)
     result=[]
     for item in entries:
         perturbation=event_by_id.get(item["future_perturbation_event_id"])
@@ -420,7 +453,8 @@ def evaluate(db,protocol_id,as_of):
     g1=f["gates"]["G1_extreme_long_duration_completion"]
     g2_gate=bool(
         p["evidence_class"]=="observational" and recorded_outcomes_all
-        and g1["recorded_conditions_satisfied"])
+        and g1["recorded_conditions_satisfied"]
+        and artifact_receipts["file_bytes_sha256_confirmed"])
     return {
         "schema":"fsl/g2-controlled-adaptation/v0.8",
         "protocol_id":protocol_id,
@@ -431,6 +465,7 @@ def evaluate(db,protocol_id,as_of):
         "four_scenario_case_coverage":counts,
         "case_records":result,
         "final_goal_alignment_claim":goal,
+        "finished_artifact_byte_receipts":artifact_receipts,
         "g1_prerequisite":{"recorded_conditions_satisfied":
                             g1["recorded_conditions_satisfied"],
                            "independently_verified":False},
@@ -445,6 +480,7 @@ def evaluate(db,protocol_id,as_of):
             "Sealed adjudication avoids post-hoc relabeling but does not prove the evaluator is independent.",
             "A human goal change is assessed against the final accepted goal; it cannot be inferred from agent plans alone.",
             "A declared satisfactory outcome and an HTTPS URL are not independent proof that the work is complete.",
+            "An observational G2 recorded-condition gate additionally requires an exact-byte linked finished artifact, which still does not prove it is usable.",
             "G2 requires real G1 continuity on the same persistent mission, not a short synthetic simulation.",
             "No feedback enters parameter-scaling posterior weights before external outcome verification.",
         ],

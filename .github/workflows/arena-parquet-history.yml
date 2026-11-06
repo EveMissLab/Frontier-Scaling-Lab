@@ -1,0 +1,61 @@
+name: Targeted Arena Parquet history
+
+on:
+  workflow_dispatch:
+    inputs:
+      model_name:
+        description: 'Exact Arena model_name to examine'
+        required: true
+        default: 'gpt-4o-2024-05-13'
+        type: string
+      arena_config:
+        description: 'Full-history subset'
+        required: true
+        default: 'text_style_control'
+        type: string
+  push:
+    paths:
+      - '.github/workflows/arena-parquet-history.yml'
+      - 'fsl_timecourse/parquet_history.py'
+
+permissions:
+  contents: read
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Parquet query dependency
+        run: python -m pip install --disable-pip-version-check 'duckdb>=1.4,<2.0'
+      - name: Fetch exact model historical aggregate rows
+        env:
+          ARENA_MODEL: ${{ inputs.model_name || 'gpt-4o-2024-05-13' }}
+          ARENA_CONFIG: ${{ inputs.arena_config || 'text_style_control' }}
+        run: |
+          python -m fsl_timecourse.parquet_history \
+            --model "$ARENA_MODEL" \
+            --config "$ARENA_CONFIG" \
+            --max-rows 300 \
+            --db reports/arena_parquet.sqlite \
+            --report reports/arena_parquet_manifest.json
+      - name: Compute retrospective-only trend and readiness
+        if: success()
+        run: |
+          python -m fsl_timecourse.cli --db reports/arena_parquet.sqlite readiness \
+            --output reports/arena_parquet_readiness.json
+      - name: Preserve source-hashed artifacts without committing vendor data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: arena-parquet-${{ github.run_id }}
+          path: |
+            reports/arena_parquet.sqlite
+            reports/arena_parquet_manifest.json
+            reports/arena_parquet_readiness.json
+          retention-days: 90
+          if-no-files-found: warn

@@ -42,28 +42,32 @@
       "protocol_id": "fsl-g2-demo-protocol",
       "future_perturbation_event_id": "pert-goal",
       "committed_at": "2026-01-01T03:00:00Z",
-      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-replan"
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-replan",
+      "outcome_due_at": "2026-01-17T09:00:00Z"
     },
     {
       "case_id": "case-maintain",
       "protocol_id": "fsl-g2-demo-protocol",
       "future_perturbation_event_id": "pert-noise",
       "committed_at": "2026-01-01T03:00:00Z",
-      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-maintain"
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-maintain",
+      "outcome_due_at": "2026-01-17T09:00:00Z"
     },
     {
       "case_id": "case-clarify",
       "protocol_id": "fsl-g2-demo-protocol",
       "future_perturbation_event_id": "pert-ambiguous",
       "committed_at": "2026-01-01T03:00:00Z",
-      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-clarify"
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-clarify",
+      "outcome_due_at": "2026-01-17T09:00:00Z"
     },
     {
       "case_id": "case-escalate",
       "protocol_id": "fsl-g2-demo-protocol",
       "future_perturbation_event_id": "pert-exception",
       "committed_at": "2026-01-01T03:00:00Z",
-      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-escalate"
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-escalate",
+      "outcome_due_at": "2026-01-17T09:00:00Z"
     }
   ],
   "synthetic_oracles": {

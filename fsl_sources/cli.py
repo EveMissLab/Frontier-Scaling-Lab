@@ -18,7 +18,7 @@ from .adapters import (
 )
 from .catalog import (
     CatalogError, add_alias, connect, iso_day,
-    list_observations, save_snapshot, trend,
+    list_observations, model_dossier, save_snapshot, trend,
 )
 
 
@@ -73,6 +73,7 @@ def main(argv=None):
     obs.add_argument("--model-id")
     obs.add_argument("--channel", choices=("metadata", "preference", "benchmark", "community"))
     obs.add_argument("--limit", type=int, default=100)
+    obs.add_argument("--as-of", help="hide data retrieved after this date")
 
     series = commands.add_parser("trend", help="compare *one exact methodological stratum*")
     series.add_argument("--model-id", required=True)
@@ -81,6 +82,10 @@ def main(argv=None):
     series.add_argument("--methodology", required=True)
     series.add_argument("--channel", required=True,
                         choices=("metadata", "preference", "benchmark", "community"))
+    series.add_argument("--as-of", help="hide hindsight knowledge")
+    dossier = commands.add_parser("dossier", help="combine manually matched identities without mixing scores")
+    dossier.add_argument("--canonical-key", required=True)
+    dossier.add_argument("--as-of", required=True)
     args = parser.parse_args(argv)
     try:
         retrieved = iso_day(args.retrieved_on, "retrieved_on")
@@ -109,12 +114,17 @@ def main(argv=None):
                 return 0
             if args.command == "observations":
                 emit(list_observations(db, model_id=args.model_id,
-                                       channel=args.channel, limit=args.limit))
+                                       channel=args.channel, limit=args.limit,
+                                       as_of=args.as_of))
                 return 0
             if args.command == "trend":
                 emit(trend(db, model_id=args.model_id, measure=args.measure,
                            category=args.category, methodology=args.methodology,
-                           channel=args.channel))
+                           channel=args.channel, as_of=args.as_of))
+                return 0
+            if args.command == "dossier":
+                emit(model_dossier(db, canonical_model_key=args.canonical_key,
+                                   as_of=args.as_of))
                 return 0
             if args.command == "alias":
                 emit({"alias_id": add_alias(

@@ -60,7 +60,7 @@ python -m fsl_sources.cli arena --config text --split full --offset 0 --limit 10
 python -m fsl_sources.cli arena --config agent --split latest --offset 0 --limit 100
 ~~~
 
-- Use live splits to enumerate valid \`config\` names; do not assume the same arenas stay available forever.
+- Use live splits to enumerate valid `config` names; do not assume the same arenas stay available forever.
 - Each request reads at most **100 rows**, in accordance with the documented API maximum. Full history must be paginated and preserved with dated source records.
 - Text/vision preference ratings and Agent Arena IPS score have **different units** and must stay separate.
 - Arena scoring methods, category membership, style controls, and sample selection can change. Scores from different periods are not automatically comparable just because their column names are equal.
@@ -81,7 +81,7 @@ Example:
 python -m fsl_sources.cli hf-benchmark --dataset SWE-bench/SWE-bench_Verified
 ~~~
 
-A submission appearing on a benchmark leaderboard is not automatic confirmation of independent replication. The endpoint provides the model ID, numeric value, metadata and a \`verified\` flag; v0.3 preserves that distinction. The numeric score unit remains **benchmark-defined** unless a verified benchmark-specific adapter is added.
+A submission appearing on a benchmark leaderboard is not automatic confirmation of independent replication. The endpoint provides the model ID, numeric value, metadata and a `verified` flag; v0.3 preserves that distinction. The numeric score unit remains **benchmark-defined** unless a verified benchmark-specific adapter is added.
 
 Coding agent performance may include scaffolding, tools, prompts, cost and wall-clock resources. This cannot be attributed solely to base-model weights.
 
@@ -119,7 +119,7 @@ Accepted input fields are exactly:
 }
 ~~~
 
-Example schema only: the URL is **not** evidence of a real study. For an offline demonstration, use \`tests/fixtures/community_synthetic.json\`.
+Example schema only: the URL is **not** evidence of a real study. For an offline demonstration, use `tests/fixtures/community_synthetic.json`.
 
 The importer calculates a positive fraction with Wilson interval, retains sample size and adds an explicit **selection-bias** flag. If the sampling method is self-selected, the interval does not justify claims about the general population. Neutral is included in the denominator.
 
@@ -129,7 +129,7 @@ The community channel is **never** allowed into the v0.2 model-parameter feedbac
 
 ## 3. Database extension (same local SQLite file)
 
-Tables created by \`fsl_sources.catalog.connect\`:
+Tables created by `fsl_sources.catalog.connect`:
 
 - **public_snapshots**: external resource, retrieval/publication dates, attribution, original source license, raw-document SHA256 and notes.
 - **public_observations**: external model ID, source snapshot, numerical measure, exact unit, channel, category, methodology, publication date, sample count, interval bounds and provenance flags.
@@ -137,7 +137,7 @@ Tables created by \`fsl_sources.catalog.connect\`:
 
 All three tables are append-only via SQLite triggers. Snapshots store **hashes and normalized numeric extracts**, not copyrighted raw documents or individual opinions. A same-day identical capture is idempotent; subsequent days remain independently dated.
 
-The old \`evidence_events\`, \`forecasts\` and \`feedback\` remain untouched. The latter is reserved for independently verified later **parameter** disclosures, not popularity or Arena preferences.
+The old `evidence_events`, `forecasts` and `feedback` remain untouched. The latter is reserved for independently verified later **parameter** disclosures, not popularity or Arena preferences.
 
 To create the schema:
 

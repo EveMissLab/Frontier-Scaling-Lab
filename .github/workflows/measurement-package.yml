@@ -1,0 +1,44 @@
+name: FSL v0.5 measurement research package
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/measurement-package.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all regression tests
+        run: python -m unittest discover -s tests -q
+      - name: Create synthetic, explicitly non-empirical horizon examples
+        run: |
+          mkdir -p reports
+          python -m fsl_timecourse.horizon_cli estimate --input tests/fixtures/synthetic_horizon_baseline.json --as-of 2026-11-07 --bootstrap 100 --output reports/synthetic_H50_H80_baseline.json
+          python -m fsl_timecourse.horizon_cli estimate --input tests/fixtures/synthetic_horizon_candidate.json --as-of 2026-11-07 --bootstrap 100 --output reports/synthetic_H50_H80_candidate.json
+          python -m fsl_timecourse.horizon_cli compare --baseline tests/fixtures/synthetic_horizon_baseline.json --candidate tests/fixtures/synthetic_horizon_candidate.json --as-of 2026-11-07 --bootstrap 100 --output reports/synthetic_horizon_comparison.json
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/MEASUREMENT_PROTOCOL_v0.5.md reports/MEASUREMENT_PROTOCOL_v0.5.md
+          cp LICENSE reports/LICENSE
+      - name: Upload full UTF-8 research artifact, source and worked examples
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.5-measurement-kit-${{ github.run_id }}
+          path: |
+            reports/Frontier-Scaling-Lab-source.zip
+            reports/MEASUREMENT_PROTOCOL_v0.5.md
+            reports/LICENSE
+            reports/synthetic_H50_H80_baseline.json
+            reports/synthetic_H50_H80_candidate.json
+            reports/synthetic_horizon_comparison.json
+          retention-days: 90
+          if-no-files-found: error

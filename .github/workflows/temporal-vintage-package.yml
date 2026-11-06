@@ -1,0 +1,65 @@
+name: FSL v0.8.3 date-anchored economics research package
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/temporal-vintage-package.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate full historical and functional suite
+        run: |
+          python -m compileall -q fsl_economics fsl_functional fsl_observatory tests
+          python -m unittest discover -s tests -q
+      - name: Generate four date-precise reports, no real task success claims
+        run: |
+          mkdir -p reports
+          python -m fsl_economics.timeaxis_cli audit-sources \
+            --catalog data/verified_release_and_price_vintage_2026-11-07.json \
+            --as-of 2024-05-13 --mode strict_known_at_time \
+            --output reports/2024-05-13_strict_asof.json
+          python -m fsl_economics.timeaxis_cli audit-sources \
+            --catalog data/verified_release_and_price_vintage_2026-11-07.json \
+            --as-of 2024-05-13 --mode retrospective_reconstruction \
+            --output reports/2024-05-13_retrospective.json
+          python -m fsl_economics.timeaxis_cli audit-sources \
+            --catalog data/verified_release_and_price_vintage_2026-11-07.json \
+            --as-of 2026-11-07 --mode strict_known_at_time \
+            --output reports/2026-11-07_strict_asof.json
+          python -m fsl_economics.timeaxis_cli audit-mission \
+            --file tests/fixtures/mission_clock_synthetic_2026-11-07.json \
+            --output reports/synthetic_utc_taipei_mission.json
+          python -m fsl_economics.timeaxis_cli audit-panel \
+            --file tests/fixtures/time_anchored_task_panel_synthetic.json \
+            --output reports/synthetic_nine_trial_time_panel.json
+      - name: Final independent summary gates and timestamp checks
+        run: |
+          python -c "import json; p='reports/'; s=json.load(open(p+'2024-05-13_strict_asof.json')); r=json.load(open(p+'2024-05-13_retrospective.json')); y=json.load(open(p+'2026-11-07_strict_asof.json')); c=json.load(open(p+'synthetic_utc_taipei_mission.json')); t=json.load(open(p+'synthetic_nine_trial_time_panel.json')); assert not any(x['included_for_requested_mode'] for x in s['rows']); assert sum(x['included_for_requested_mode'] for x in r['rows'])==2; assert any(x['asof_status']=='historical_point_price_not_verified_for_later_date' for x in y['rows']); assert c['elapsed_execution_hours']==47.5 and not c['48h_continuous_autonomy_certified']; assert t['all_attempts_have_valid_timestamps'] and not t['independently_verified_task_success']; assert all(x['report_generated_at_utc'] and x['report_generated_at_Asia_Taipei'] for x in (s,r,y,c,t))"
+      - name: Archive UTF-8 canonical source, local time evidence and integrity
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/TEMPORAL_VINTAGE_AND_ACCESS_v0.8.3.md reports/TEMPORAL_VINTAGE_AND_ACCESS_v0.8.3.md
+          cp data/verified_release_and_price_vintage_2026-11-07.json reports/verified_release_and_price_vintage_2026-11-07.json
+          cp LICENSE reports/LICENSE
+          git rev-parse HEAD > reports/GIT_HEAD.sha
+          python -c "from datetime import datetime,timezone; from zoneinfo import ZoneInfo; from pathlib import Path; t=datetime.now(timezone.utc); Path('reports/PACKAGE_TIMESTAMP.json').write_text(__import__('json').dumps({'packed_at_utc':t.isoformat(),'packed_at_Asia_Taipei':t.astimezone(ZoneInfo('Asia/Taipei')).isoformat(),'clock_source':'GitHub Runner OS clock, not a trusted external timestamp service'},indent=2)+'\n',encoding='utf-8')"
+          (cd reports && sha256sum Frontier-Scaling-Lab-source.zip TEMPORAL_VINTAGE_AND_ACCESS_v0.8.3.md verified_release_and_price_vintage_2026-11-07.json LICENSE PACKAGE_TIMESTAMP.json 2024-05-13_strict_asof.json 2024-05-13_retrospective.json 2026-11-07_strict_asof.json synthetic_utc_taipei_mission.json synthetic_nine_trial_time_panel.json > SHA256SUMS.txt)
+      - name: Publish one research source and evidence archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.8.3-temporal-economics-${{ github.run_id }}
+          path: |
+            reports/
+          retention-days: 90
+          if-no-files-found: error

@@ -257,6 +257,46 @@ class FunctionalTests(unittest.TestCase):
         self.assertFalse(r["gates"]["G3_few_round_world_class_usable_delivery"]
                          ["recorded_conditions_satisfied"])
 
+    def test_finished_ai_native_art_is_independent_of_AAA_product_gate(self):
+        add_spec(self.db,spec("art"))
+        add_run(self.db,run("art"))
+        events=[
+            event("art-intent","intent","2026-01-01",
+                  {"goal_sha256":A},actor="user",hour=10),
+            event("art-build","deliverable","2026-01-02",
+                  {"artifact_sha256":D,"artifact_type":"complete animated art work"},
+                  hour=10),
+        ]
+        for i,c in enumerate(spec("art")["required_criteria"]):
+            events.append(event("art-quality-"+str(i),"quality_review",
+                                "2026-01-02",
+                                {"criterion":c,"passed":True,
+                                 "reviewer":"art-reviewer-"+str(i%2),
+                                 "deliverable_event_id":"art-build"},
+                                actor="evaluator",hour=13))
+        for axis in ("personal_author","ai_native"):
+            for i in range(2):
+                events.append(event("art-style-"+axis+str(i),"style_review",
+                                    "2026-01-02",
+                                    {"axis":axis,"passed":True,
+                                     "reviewer":"style-reviewer-"+str(i),
+                                     "deliverable_event_id":"art-build"},
+                                    actor="evaluator",hour=14))
+        events.append(event("art-accepted","final_acceptance","2026-01-03",
+                            {"deliverable_event_id":"art-build",
+                             "accepted":True,"goal_sha256":A},
+                            actor="evaluator",hour=10))
+        for e in events:
+            e["run_id"]="synthetic-art"
+            add_event(self.db,e)
+        result=evaluate(self.db,"synthetic-art",
+                        as_of="2026-01-04T00:00:00Z")
+        self.assertEqual(result["gates"]["G3_few_round_world_class_usable_delivery"]
+                         ["state"],"not_applicable_separate_track")
+        self.assertTrue(result["gates"]["G4_personal_and_ai_native_creative_styles"]
+                        ["recorded_conditions_satisfied"])
+        self.assertFalse(result["externally_certified_result"])
+
     def test_ai_native_style_cannot_be_substituted_by_personal_style(self):
         events=[e for e in game_events()
                 if not e["event_id"].startswith("style-ai_native")]

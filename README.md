@@ -79,15 +79,15 @@ python -m fsl_adaptive.cli weights --as-of 2030-01-31
 - Only later, published, independently sourced parameter multiplier feedback can update those weights.
 - Updates use robust log error and prevent one outlier from assigning zero weight to every alternative.
 - Consecutive large misses set a **drift alert** rather than silently relabeling a forecast.
-- Immutable SQLite \`evidence_events\`, \`forecasts\`, \`feedback\` preserve history; no UPDATE/DELETE on those records.
-- \`as_of\` excludes facts that were not published or recorded by the cutoff, including future-effective revisions.
+- Immutable SQLite `evidence_events`, `forecasts`, `feedback` preserve history; no UPDATE/DELETE on those records.
+- `as_of` excludes facts that were not published or recorded by the cutoff, including future-effective revisions.
 - Planned and built facilities are **never interchangeable**; independently disconnected campuses do **not** become a single training supercomputer by addition.
 
 **Current limit:** the hypothesis family is not autonomously regenerated yet; drift triggers an explicit research review. There is no built-in live scraping job or automatic verification of cited sites.
 
 ## Evidence & scientific boundaries
 
-\`data/adaptive_scenarios.json\` is intentionally labeled **SYNTHETIC**; its projected site capacities and accelerator upgrades are not claims about any named company.
+`data/adaptive_scenarios.json` is intentionally labeled **SYNTHETIC**; its projected site capacities and accelerator upgrades are not claims about any named company.
 
 This project does not infer ability from model parameter ratios, and it does not treat model release cadence as training cadence. Real sourced measurements, benchmark controls and forward validation are necessary before making quantitative claims about industry trajectories.
 

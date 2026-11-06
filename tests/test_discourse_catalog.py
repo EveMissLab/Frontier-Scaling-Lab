@@ -63,6 +63,28 @@ class DiscourseCorpusTests(unittest.TestCase):
             r["included"] for r in report["rows"]
             if r["source_id"]=="dwarkesh-dario-2026"))
 
+    def test_agi_asi_topics_are_source_explicit_not_invented(self):
+        self.assertTrue(any("AGI" in c["topics"] for c in CAT["claims"]))
+        # This pilot did not select a sourced, explicit ASI statement yet.
+        self.assertFalse(any("ASI" in c["topics"] for c in CAT["claims"]))
+        bad=deepcopy(CAT)
+        bad["claims"][0]["topics"]=["MAGIC_SUPERINTELLIGENCE"]
+        with self.assertRaises(DiscourseError):validate(bad)
+
+    def test_explicit_probability_requires_speaker_and_semantic_definition(self):
+        has=next(c for c in CAT["claims"] if
+                 c["claim_id"]=="demis25-agi-2030")
+        self.assertEqual(has["forecast"]["target_by"],"2030-12-31")
+        self.assertEqual(has["forecast"]["probability"],"0.50")
+        bad=deepcopy(CAT)
+        next(c for c in bad["claims"] if
+             c["claim_id"]=="demis25-agi-2030")["forecast"]["probability"]="1.5"
+        with self.assertRaises(DiscourseError):validate(bad)
+        bad=deepcopy(CAT)
+        next(c for c in bad["claims"] if
+             c["claim_id"]=="demis25-agi-2030")["forecast"]["citation_mode"]="model_assumed"
+        with self.assertRaises(DiscourseError):validate(bad)
+
     def test_missing_original_speaker_role_or_affiliation_rejected(self):
         bad=deepcopy(CAT)
         bad["sources"][0]["speaker_id"]="not-the-original-interviewee"

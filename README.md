@@ -5,6 +5,48 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.8.2 — Effective Task Purchasing Power / 同期跨 AI 與歷史反事實成本
+
+[**Canonical v0.8.2 UTF-8 research document**](docs/EFFECTIVE_TASK_PURCHASING_POWER_v0.8.2.md) ·
+[Historical source directory](data/historical_source_catalog_2026-11-07.json)
+
+We now distinguish:
+- **Same era, matched task**: frontier and nonfrontier models, plus different
+  Free/Plus/Pro/Claude/API/local access paths, compared under a shared task,
+  quality gate, source window and declared budget.
+- **Effective task purchasing power**: reported accepted functional outcomes
+  per explicit allocated USD, including retry failures and keeping full monthly
+  cash obligation distinct from optional subscription allocation.
+- **Actual historical observation**: dated, sourced attempts that really
+  happened in their original era.
+- **Modern replay of a legacy model**: a new experiment with today's runtime,
+  hardware and price, **not** what a user could buy at the original release.
+- **Historical counterfactual**: tool availability, model release, price vintage,
+  and probability assumptions; outputs a conditional cost range only when
+  all required inputs are given. Unknown => not identifiable; unbuilt historical
+  prerequisites => not feasible.
+
+No source has been verified by the comparator itself; synthetic fixtures cannot
+become a real provider ranking or a measured 24/48-hour Agent outcome.
+
+~~~bash
+python -m unittest discover -s tests -v
+python -m fsl_economics.cli compare \
+  --input tests/fixtures/task_purchasing_power_synthetic.json \
+  --output reports/contemporaneous_synthetic.json
+python -m fsl_economics.cli history \
+  --input tests/fixtures/historical_task_cost_synthetic.json \
+  --output reports/historical_counterfactual_synthetic.json
+~~~
+
+**This does not manufacture old-model success rates or retrofit today's API
+rates to historical dates.** Cross-time gains can be evaluated only with true
+historical evidence, faithfully replayed legacy models or openly conditional
+assumptions. Differences in a high-priced tier's quota and the model's
+intrinsic task capability are independent hypotheses.
+
+---
+
 ## v0.8.1 — Long-running Agent access, subscriptions and actual costs
 
 [**Canonical v0.8.1 cost/allowance research source**](docs/AUTONOMY_ACCESS_AND_COST_v0.8.1.md) ·

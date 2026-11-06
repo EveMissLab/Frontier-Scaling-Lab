@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -78,5 +78,12 @@ jobs:
           python -m fsl_economics.timeaxis_cli audit-mission --file tests/fixtures/mission_clock_synthetic_2026-11-07.json --output /tmp/fsl_mission_clock.json
           python -m fsl_economics.timeaxis_cli audit-panel --file tests/fixtures/time_anchored_task_panel_synthetic.json --output /tmp/fsl_panel_clock.json
           python -c "import json; s=json.load(open('/tmp/fsl_2024_strict.json')); r=json.load(open('/tmp/fsl_2024_retrospective.json')); p=json.load(open('/tmp/fsl_panel_clock.json')); m=json.load(open('/tmp/fsl_mission_clock.json')); assert not any(x['included_for_requested_mode'] for x in s['rows']); assert sum(x['included_for_requested_mode'] for x in r['rows'])==2; assert len(p['observed_trial_clocks'])==3 and not p['can_assert_24_48h_autonomy']; assert m['elapsed_execution_hours']==47.5; assert s['report_generated_at_utc'] and s['report_generated_at_Asia_Taipei']"
+      - name: v0.9 five-provider real history and strict source-vintage smoke
+        run: |
+          python -m fsl_history.cli validate --output /tmp/fsl_market_validate.json
+          python -m fsl_history.cli timeline --as-of 2024-12-31 --mode strict_known_at_time --output /tmp/fsl_market_strict2024.json
+          python -m fsl_history.cli timeline --as-of 2024-12-31 --mode retrospective --output /tmp/fsl_market_retro2024.json
+          python -m fsl_history.cli matrix --month-ends '2024-12-31;2025-12-31;2026-11-07' --output /tmp/fsl_market_matrix.json
+          python -c "import json; v=json.load(open('/tmp/fsl_market_validate.json')); s=json.load(open('/tmp/fsl_market_strict2024.json')); r=json.load(open('/tmp/fsl_market_retro2024.json')); m=json.load(open('/tmp/fsl_market_matrix.json')); assert v['event_count']>=40 and len(v['providers'])==5; assert s['included_count']==0; assert r['included_count']>=6; assert len(m['periods'])==3 and m['no_task_completion_scores_inferred']"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

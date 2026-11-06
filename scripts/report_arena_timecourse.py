@@ -44,9 +44,9 @@ def create_report(db, output_dir, *, model, config, as_of, category="overall"):
     lines=[
         "# Arena Historical Control | FSL v0.4",
         "",
-        f"Model label: \`{model}\`",
-        f"Subset: \`{config}\`, category: \`{category}\`",
-        f"Retrospective capture cutoff: \`{as_of}\`",
+        f"Model label: `{model}`",
+        f"Subset: `{config}`, category: `{category}`",
+        f"Retrospective capture cutoff: `{as_of}`",
         "",
         "**Status:** retrospective descriptive series, NOT a historical forecast",
         "",
@@ -62,7 +62,7 @@ def create_report(db, output_dir, *, model, config, as_of, category="overall"):
         audit=era["sample_basis_audit"]
         lines.append(
             f"| {era['first_date']} → {era['last_date']} | "
-            f"\`{era['regime']}\` | {era['n_dates']} | {change} | "
+            f"`{era['regime']}` | {era['n_dates']} | {change} | "
             f"{audit['same_reported_count_but_score_changed']} | "
             f"{audit['material_sample_count_drops']} |")
     lines.extend([
@@ -87,7 +87,7 @@ def create_report(db, output_dir, *, model, config, as_of, category="overall"):
         "- https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
         "- https://huggingface.co/docs/dataset-viewer/parquet",
         "",
-        "See \`arena_historical_analysis.json\` for source links, 95% rating "
+        "See `arena_historical_analysis.json` for source links, 95% rating "
         "interval fields, sample-count anomalies, regime boundaries, and warnings.",
         "",
     ])

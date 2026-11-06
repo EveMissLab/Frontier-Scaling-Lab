@@ -1,0 +1,60 @@
+name: FSL v0.8.2 economic comparison research package
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/economic-comparison-package.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate economics and preexisting scientific boundaries
+        run: |
+          python -m compileall -q fsl_economics tests
+          python -m unittest discover -s tests -q
+      - name: Export two purely synthetic comparison reports
+        run: |
+          mkdir -p reports
+          python -m fsl_economics.cli compare \
+            --input tests/fixtures/task_purchasing_power_synthetic.json \
+            --output reports/synthetic_same_era_comparison.json \
+            --save-db reports/economics_audit.sqlite --study-id synthetic-same-era
+          python -m fsl_economics.cli history \
+            --input tests/fixtures/historical_task_cost_synthetic.json \
+            --output reports/synthetic_historical_counterfactual.json \
+            --save-db reports/economics_audit.sqlite --study-id synthetic-historical
+          python -c "import json; x=json.load(open('reports/synthetic_same_era_comparison.json')); h=json.load(open('reports/synthetic_historical_counterfactual.json')); assert not x['has_independently_certified_result']; assert h['scenarios'][1]['status']=='historical_cost_unidentifiable'"
+      - name: Collect canonical UTF-8 source and integrity manifest
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/EFFECTIVE_TASK_PURCHASING_POWER_v0.8.2.md reports/EFFECTIVE_TASK_PURCHASING_POWER_v0.8.2.md
+          cp data/historical_source_catalog_2026-11-07.json reports/historical_source_catalog_2026-11-07.json
+          cp LICENSE reports/LICENSE
+          git rev-parse HEAD > reports/git_HEAD.sha
+          (cd reports && sha256sum Frontier-Scaling-Lab-source.zip EFFECTIVE_TASK_PURCHASING_POWER_v0.8.2.md historical_source_catalog_2026-11-07.json LICENSE economics_audit.sqlite synthetic_same_era_comparison.json synthetic_historical_counterfactual.json > SHA256SUMS.txt)
+      - name: Upload one bundled research artifact, excluding third-party raw data
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.8.2-task-economics-${{ github.run_id }}
+          path: |
+            reports/Frontier-Scaling-Lab-source.zip
+            reports/EFFECTIVE_TASK_PURCHASING_POWER_v0.8.2.md
+            reports/historical_source_catalog_2026-11-07.json
+            reports/LICENSE
+            reports/git_HEAD.sha
+            reports/SHA256SUMS.txt
+            reports/economics_audit.sqlite
+            reports/synthetic_same_era_comparison.json
+            reports/synthetic_historical_counterfactual.json
+          retention-days: 90
+          if-no-files-found: error

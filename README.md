@@ -18,6 +18,39 @@ How much of a visible model improvement is delayed realization of prior compute/
 
 A *5–10x total-parameter* scenario and a *2–3x effective-cognition* hypothesis may coexist. Neither is a verified prediction today. v0.2 explicitly models release lag, hardware maturation and candidate parameter plateaus.
 
+## v0.5: actual task-horizon measurement protocol
+
+[Measurement research note](docs/MEASUREMENT_PROTOCOL_v0.5.md)
+
+**Separate** (1) the public compute/parameter *scenario* (v0.2),
+(2) descriptive Arena/benchmark measurement and method drift (v0.3–0.4),
+and (3) controlled **task completion** (v0.5).
+
+The v0.5 pure-Python estimator fits a binomial logistic task-success curve
+against the **human-expert task duration**, reporting H50/H80 only inside the
+observed difficulty range. It preregisters task-set hashes, exact model
+revisions, scaffold, prompt/tool hashes, and fixed per-task token/time/cost caps.
+It uses task-level bootstrap resampling and refuses incompatible comparisons.
+
+~~~bash
+python -m unittest discover -s tests -v
+python -m fsl_timecourse.horizon_cli estimate \
+  --input tests/fixtures/synthetic_horizon_baseline.json \
+  --as-of 2026-11-07
+
+python -m fsl_timecourse.horizon_cli compare \
+  --baseline tests/fixtures/synthetic_horizon_baseline.json \
+  --candidate tests/fixtures/synthetic_horizon_candidate.json \
+  --as-of 2026-11-07
+~~~
+
+**The bundled trials are synthetic, not evaluated frontier models.** A 2–3×
+task-horizon ratio in synthetic tests is *not* 2–3× general intelligence.
+The v0.5 module does **not** infer hidden parameter counts, training
+start dates or a causal hardware-payback lag. These remain separately
+auditable investigations, subject to actual task and hardware evidence.
+
+
 ## v0.4: methodological timecourses + reproducible historical control
 
 [Full v0.4 research note](docs/LONGITUDINAL_MEASUREMENT_v0.4.md) ·

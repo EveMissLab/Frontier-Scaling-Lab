@@ -255,6 +255,8 @@ def vector(db, *, comparisons, as_of):
             raise TrialError("duplicate task axis/protocol pair: no artificial replication")
         seen.add(unique)
         entries.append(result)
+    if len({entry["data_class"] for entry in entries}) != 1:
+        raise TrialError("do not combine synthetic and observed task axes in a vector")
     return {
         "schema":"fsl/capability-vector/0.4",
         "as_of":as_of,"dimensions":len(entries),"axes":entries,

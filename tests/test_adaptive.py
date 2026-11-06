@@ -24,13 +24,22 @@ CONFIG = json.loads(
 class AdaptiveTests(unittest.TestCase):
     def setUp(self):
         self.db = connect(":memory:")
+        # Test-only synthetic fixtures exercising the observational code path;
+        # these example.org sources are not admissible scientific evidence.
+        self.test_observed_config = copy.deepcopy(CONFIG)
+        self.test_observed_config["data_classification"] = "observational"
+        self.test_observed_config["baseline"]["source_url"] = "https://example.org/test-baseline"
+        for cohort in self.test_observed_config["cohorts"]:
+            if cohort["stage"] == "operational":
+                cohort["source_url"] = "https://example.org/test-deployment"
 
     def tearDown(self):
         self.db.close()
 
     def prediction(self, *, year=2030, asof="2026-11-06",
                    allow_planned=True, target_class="synthetic", target_key="demo"):
-        return forecast(self.db, CONFIG, as_of=asof, target_year=year,
+        config = self.test_observed_config if target_class == "observational" else CONFIG
+        return forecast(self.db, config, as_of=asof, target_year=year,
                         allow_planned=allow_planned,
                         target_key=target_key, target_class=target_class)
 
@@ -123,6 +132,12 @@ class AdaptiveTests(unittest.TestCase):
             add_evidence(self.db, self.event())
         with self.assertRaises(sqlite3.DatabaseError):
             self.db.execute("UPDATE evidence_events SET note='changed' WHERE event_id='e1'")
+
+    def test_no_observational_forecast_from_synthetic_config(self):
+        with self.assertRaises(DataError):
+            forecast(self.db, CONFIG, as_of="2026-11-06", target_year=2030,
+                     target_key="demo", target_class="observational",
+                     allow_planned=True)
 
     def test_synthetic_forecast_cannot_be_used_for_scoring(self):
         f = self.prediction()

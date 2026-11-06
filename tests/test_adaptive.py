@@ -82,6 +82,26 @@ class AdaptiveTests(unittest.TestCase):
         self.assertNotEqual(revised["input_sha256"], baseline["input_sha256"])
         self.assertTrue(revised["changed_fields"])
 
+    def test_future_effective_stage_does_not_become_operational_early(self):
+        event = {
+            "event_id": "future-stage", "entity_id": "demo-planned-2027",
+            "entity_kind": "site", "field": "site.stage", "value": "operational",
+            "state": "asserted", "source_kind": "assumption",
+            "published_on": "2026-11-06", "recorded_on": "2026-11-06",
+            "effective_on": "2029-01-01",
+        }
+        add_evidence(self.db, event)
+        early, _ = snapshot(self.db, "2026-11-06")
+        later, _ = snapshot(self.db, "2029-01-02")
+        self.assertNotIn(("demo-planned-2027", "site.stage"), early)
+        self.assertEqual(later[("demo-planned-2027", "site.stage")]["value"], "operational")
+
+    def test_explicit_site_units_are_required(self):
+        event = self.event()
+        event["unit"] = "racks"
+        with self.assertRaises(DataError):
+            add_evidence(self.db, event)
+
     def test_retraction_restores_original_config_not_old_fact(self):
         add_evidence(self.db, self.event(value=1))
         add_evidence(self.db, {

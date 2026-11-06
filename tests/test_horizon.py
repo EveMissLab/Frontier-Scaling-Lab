@@ -43,6 +43,17 @@ class HorizonTests(unittest.TestCase):
         self.assertIsNone(result["general_intelligence_multiplier"])
         self.assertGreater(result["reliability_horizon_ratios"]["0.5"]["task_horizon_ratio"],1)
 
+    def test_paired_task_bootstrap_ratio_uncertainty(self):
+        base=make_model(cutoff=35)
+        newer=make_model(cutoff=88,model="fixture-model-v2")
+        result=compare_matched(base,newer,bootstrap=100,seed=20261107)
+        measurement=result["reliability_horizon_ratios"]["0.5"]
+        self.assertIsNotNone(measurement["task_horizon_ratio"])
+        self.assertGreaterEqual(measurement["bootstrap_usable"],50)
+        interval=measurement["paired_cluster_bootstrap_ratio_interval"]
+        self.assertIsNotNone(interval)
+        self.assertLess(interval[0],interval[1])
+
     def test_fixed_model_scaffold_ablation_is_separate(self):
         base=make_model(cutoff=35)
         agent=make_model(cutoff=85,scaffold="agent-v1")

@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS g2_precommitted_cases(
  protocol_id TEXT NOT NULL REFERENCES g2_protocols(protocol_id),
  future_perturbation_event_id TEXT NOT NULL,
  committed_at TEXT NOT NULL,
+ outcome_due_at TEXT NOT NULL,
  sealed_oracle_sha256 TEXT NOT NULL,
  source_url TEXT NOT NULL,
  case_sha256 TEXT NOT NULL,
@@ -203,7 +204,7 @@ def add_protocol(db,entry):
 
 def preregister(db,entry):
     keys=("case_id","protocol_id","future_perturbation_event_id","committed_at",
-          "sealed_oracle_sha256","source_url")
+          "outcome_due_at","sealed_oracle_sha256","source_url")
     _required(entry,keys)
     for x in ("case_id","protocol_id","future_perturbation_event_id"):
         identifier(entry[x],x)
@@ -217,17 +218,20 @@ def preregister(db,entry):
     stamp=moment(entry["committed_at"]).isoformat()
     if moment(stamp)<moment(protocol["created_at"]):
         raise InterventionError("case commitment predates experiment")
+    due=moment(entry["outcome_due_at"]).isoformat()
+    if moment(due)<=moment(stamp):
+        raise InterventionError("fixed outcome deadline must follow preregistration")
     if db.execute("SELECT event_id FROM functional_events WHERE event_id=?",
                   (entry["future_perturbation_event_id"],)).fetchone() is not None:
         raise InterventionError("perturbation already observed before preregistration")
     with db:
         db.execute("""INSERT INTO g2_precommitted_cases
           (case_id,protocol_id,future_perturbation_event_id,committed_at,
-           sealed_oracle_sha256,source_url,case_sha256)
-          VALUES(?,?,?,?,?,?,?)""",
+           outcome_due_at,sealed_oracle_sha256,source_url,case_sha256)
+          VALUES(?,?,?,?,?,?,?,?)""",
           (entry["case_id"],entry["protocol_id"],entry["future_perturbation_event_id"],
-           stamp,entry["sealed_oracle_sha256"],entry["source_url"],
-           content_sha(dict(entry,committed_at=stamp))))
+           stamp,due,entry["sealed_oracle_sha256"],entry["source_url"],
+           content_sha(dict(entry,committed_at=stamp,outcome_due_at=due))))
     return entry["case_id"]
 
 
@@ -282,7 +286,7 @@ def reveal(db,entry):
     committed=oracle_commitment(
         entry["case_id"],entry["expected_action"],entry["expected_goal_sha256"],
         entry["oracle_nonce"])
-    row=db.execute("""SELECT c.sealed_oracle_sha256,c.committed_at,
+    row=db.execute("""SELECT c.sealed_oracle_sha256,c.committed_at,c.outcome_due_at,
                              p.run_id,d.decision_event_id,d.action,d.bound_at
           FROM g2_precommitted_cases c JOIN g2_protocols p USING(protocol_id)
           JOIN g2_bound_decisions d USING(case_id)
@@ -300,6 +304,8 @@ def reveal(db,entry):
         raise InterventionError("judgement does not evaluate this AI decision")
     if not (moment(row["bound_at"])<moment(review["occurred_at"])<=moment(when)):
         raise InterventionError("decision must be bound before examiner judgement and reveal")
+    if moment(review["occurred_at"])<moment(row["outcome_due_at"]):
+        raise InterventionError("outcome must not be judged before the preregistered deadline")
     if review["actor"]!="evaluator":
         raise InterventionError("judgement must be an evaluator event")
     aligned=(row["action"]==entry["expected_action"])
@@ -367,6 +373,9 @@ def evaluate(db,protocol_id,as_of):
         revealed=bound and item["judgement_event_id"] is not None and (
             item["adjudicated_at"]<=cutoff and item["judgement_event_id"] in event_by_id)
         aligned=(item["action"]==item["expected_action"]) if revealed else None
+        decision_before_due=bool(
+            bound and moment(event_by_id[item["decision_event_id"]]["occurred_at"])<
+            moment(item["outcome_due_at"]))
         judged_met=(bool(event_by_id[item["judgement_event_id"]]
                         ["payload"].get("revised_goal_met")) if revealed else None)
         # The final acceptance belongs to the same persistent mission, and
@@ -381,6 +390,8 @@ def evaluate(db,protocol_id,as_of):
             "case_id":item["case_id"],
             "perturbation_observed":bool(perturbation),
             "ai_decision_bound":bool(bound),
+            "decision_before_preregistered_deadline":decision_before_due,
+            "outcome_due_at":item["outcome_due_at"],
             "oracle_revealed":bool(revealed),
             "expected_action_hidden_until_reveal":not bool(revealed),
             "revealed_case_type":item["declared_case_type"] if revealed else None,
@@ -388,7 +399,8 @@ def evaluate(db,protocol_id,as_of):
             "choice_matches_precommitted_oracle":aligned,
             "reviewed_goal_met":judged_met,
             "accepted_final_user_goal_matched":case_final,
-            "recorded_outcome_gate":bool(aligned and judged_met and case_final),
+            "recorded_outcome_gate":bool(
+                aligned and judged_met and case_final and decision_before_due),
             "independently_verified":False,
         })
     counts={kind:{"tested":0,"recorded_pass":0} for kind in sorted(CASE_TYPES)}

@@ -2,16 +2,16 @@
 
 ## Database model
 
-The SQLite schema is in \`fsl_adaptive/registry.py\`. Its data is **append-only**. A stored event is an assertion with provenance, not a true fact merely because a URL was provided.
+The SQLite schema is in `fsl_adaptive/registry.py`. Its data is **append-only**. A stored event is an assertion with provenance, not a true fact merely because a URL was provided.
 
-\`evidence_events\` columns:
-\`event_id, entity_id, entity_kind, field, value_json, unit, state, source_kind, source_url, published_on, recorded_on, effective_on, supersedes_id, note, payload_sha256\`.
+`evidence_events` columns:
+`event_id, entity_id, entity_kind, field, value_json, unit, state, source_kind, source_url, published_on, recorded_on, effective_on, supersedes_id, note, payload_sha256`.
 
-\`forecasts\` columns:
-\`forecast_id, as_of, target_year, target_key, calibration_group, target_class, input_sha256, output_json\`.
+`forecasts` columns:
+`forecast_id, as_of, target_year, target_key, calibration_group, target_class, input_sha256, output_json`.
 
-\`feedback\` columns:
-\`feedback_id, forecast_id, observed_multiplier, published_on, recorded_on, model_source_url, baseline_source_url, note\`.
+`feedback` columns:
+`feedback_id, forecast_id, observed_multiplier, published_on, recorded_on, model_source_url, baseline_source_url, note`.
 
 The project uses ASCII ISO dates (YYYY-MM-DD). More precise timestamps and source-document version references are future migration items.
 
@@ -35,7 +35,7 @@ This record is **synthetic**; do not treat the number as a real data-center depl
 }
 ~~~
 
-An independently sourced assertion needs \`source_kind\` such as manufacturer, filing, model_card, public_record or research_paper **and** an HTTPS \`source_url\`. Published and recorded dates must reflect when the evidence was accessible, not when a future buildout is hoped to complete.
+An independently sourced assertion needs `source_kind` such as manufacturer, filing, model_card, public_record or research_paper **and** an HTTPS `source_url`. Published and recorded dates must reflect when the evidence was accessible, not when a future buildout is hoped to complete.
 
 ## Retraction example
 
@@ -56,7 +56,7 @@ An independently sourced assertion needs \`source_kind\` such as manufacturer, f
 
 ## Later disclosure feedback (SCHEMA ONLY)
 
-Do not paste this demonstration into a live observational study: \`example.org\` is not actual evidence.
+Do not paste this demonstration into a live observational study: `example.org` is not actual evidence.
 
 ~~~json
 {
@@ -71,17 +71,17 @@ Do not paste this demonstration into a live observational study: \`example.org\`
 }
 ~~~
 
-The \`observed_multiplier\` must compare like-for-like publicly disclosed model **total parameters**, not model names, API marketing labels, or benchmark scores. Its denominator and numerator must both be disclosed, sourced, compatible, and publicly available.
+The `observed_multiplier` must compare like-for-like publicly disclosed model **total parameters**, not model names, API marketing labels, or benchmark scores. Its denominator and numerator must both be disclosed, sourced, compatible, and publicly available.
 
-The code refuses feedback for \`target_class=synthetic\`, feedback published before the saved forecast, invalid URLs, and future feedback when replaying as-of an earlier date. It deduplicates a later disclosure about the same target-year cohort during fitting, so issuing multiple forecasts does not multiply the same outcome's evidential weight.
+The code refuses feedback for `target_class=synthetic`, feedback published before the saved forecast, invalid URLs, and future feedback when replaying as-of an earlier date. It deduplicates a later disclosure about the same target-year cohort during fitting, so issuing multiple forecasts does not multiply the same outcome's evidential weight.
 
 ## Facility data roadmap
 
-\`site.gpus\` is currently a scenario quantity, not a normalized GPU inventory. Before building a real facility database, introduce a separate fact schema with project status, quantity units, site hierarchy, contract capacity, energy delivery, GPU deployment and interconnect boundaries.
+`site.gpus` is currently a scenario quantity, not a normalized GPU inventory. Before building a real facility database, introduce a separate fact schema with project status, quantity units, site hierarchy, contract capacity, energy delivery, GPU deployment and interconnect boundaries.
 
 The **source event date**, **announcement date**, **expected completion date**, **grid live date**, **installed GPU date**, and **training availability date** can all differ. Never use only the later expected date as proof that a facility exists.
 
-The \`effective_on\` field is preserved as metadata. In v0.2, the numerical forecasting layer does *not* automatically elevate a future-effective announcement to an actual operational stage. Use explicit planning status and conservative as-of constraints; future physical-event handling requires a dedicated migration and further validation.
+The `effective_on` field is preserved as metadata. v0.2 excludes evidence records whose effective_on lies after the as-of cutoff, so a future-effective claim cannot appear as a current operational fact. A future buildout *plan* may still be represented with stage=planned, a target ready_year, and a known publication date. Full bitemporal facility handling requires later migration and independent verification.
 
 ## No automated data polling in this version
 

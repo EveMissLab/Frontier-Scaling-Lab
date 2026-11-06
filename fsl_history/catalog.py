@@ -244,8 +244,21 @@ def period_matrix(data, *, month_ends):
                 })
             price_points=[e for e in prov if e["kind"]=="api_price_quote"
                           and e["occurred_on"]==cutoff]
+            # Chronologically newest *announcement*, NOT the frontier model,
+            # not proof of continued deployment, and not verified task ability.
+            latest=max(introductions,key=lambda e:(
+                e["occurred_on"],e["event_id"])) if introductions else None
             group.append({
                 "provider":provider,
+                "latest_dated_announcement_candidate":(
+                    {"model_key":latest["model_key"],
+                     "announced_on":latest["occurred_on"],
+                     "source_url":latest["source_url"],
+                     "currently_accessible":None,
+                     "frontier_model_classification":None,
+                     "cost_per_accepted_task_usd":None}
+                    if latest else None
+                ),
                 "releases_announced_by_cutoff":len(introductions),
                 "dated_introductions":items,
                 "price_quotes_published_on_cutoff_day_only":price_points,
@@ -254,9 +267,13 @@ def period_matrix(data, *, month_ends):
                 "actual_48h_agent_completions":None,
                 "historical_price_valid_through_cutoff":None,
             })
-        reports.append({"period_end":cutoff,
-                        "provider_rows":group,
-                        "historical_coverage_is_retrospective":True})
+        reports.append({
+            "period_end":cutoff,
+            "provider_rows":group,
+            "candidate_group_not_a_ranked_frontier_model_list":True,
+            "task_verification_contract_needed":"same task/quality/runtime/date/budget with independently accepted final outputs",
+            "historical_coverage_is_retrospective":True,
+        })
     return {
         "schema":"fsl/period-access-matrix/0.9",
         "periods":reports,"providers":list(PROVIDERS),

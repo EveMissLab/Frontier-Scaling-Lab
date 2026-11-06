@@ -21,6 +21,8 @@ def _num(value, name):
 def validate_config(config):
     if config.get("schema_version") != "fsl-adaptive/0.2":
         raise DataError("expected schema_version=fsl-adaptive/0.2")
+    if config.get("data_classification") not in ("synthetic", "observational"):
+        raise DataError("data_classification must be synthetic or observational")
     as_date(config["baseline"]["as_of"])
     year = _num(config["baseline"]["year"], "baseline.year")
     if not 2000 <= year <= 2100:
@@ -229,6 +231,14 @@ def forecast(db, config, *, as_of, target_year, target_key,
         raise DataError("cannot issue predictions before scenario baseline was authored")
     if target_class not in ("synthetic", "observational"):
         raise DataError("target_class must be synthetic or observational")
+    if target_class == "observational":
+        if config["data_classification"] != "observational":
+            raise DataError("synthetic configuration cannot be scored as real observations")
+        from .registry import https_url
+        https_url(config["baseline"].get("source_url"))
+        for item in config["cohorts"]:
+            if item["stage"] == "operational":
+                https_url(item.get("source_url"))
     if not isinstance(target_key, str) or not target_key:
         raise DataError("target_key cannot be blank")
     if isinstance(target_year, bool) or not isinstance(target_year, (int, float)):

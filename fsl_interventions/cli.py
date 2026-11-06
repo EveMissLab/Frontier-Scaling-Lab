@@ -41,6 +41,12 @@ def main(argv=None):
     for command in ("protocol","preregister","bind","reveal"):
         p=actions.add_parser(command)
         p.add_argument("--file",required=True)
+    ai=actions.add_parser("agent-ingest",
+        help="one-shot intake of AI-authored events only; evaluator/user separated")
+    ai.add_argument("--run-id",required=True)
+    ai.add_argument("--file",required=True,help="bounded JSONL file emitted by an external Agent")
+    ai.add_argument("--protocol-id",help="optional preregistered blind G2 protocol")
+    ai.add_argument("--output")
     au=actions.add_parser("audit")
     au.add_argument("--protocol-id",required=True)
     au.add_argument("--as-of")
@@ -63,6 +69,11 @@ def main(argv=None):
                 result=bind_choice(db,load(args.file))
             elif args.command=="reveal":
                 result=reveal(db,load(args.file))
+            elif args.command=="agent-ingest":
+                from fsl_interventions.agent_bridge import ingest, load_jsonl
+                result=ingest(db,run_id=args.run_id,events=load_jsonl(args.file),
+                              collector_at=datetime.now(timezone.utc).isoformat(),
+                              protocol_id=args.protocol_id)
             elif args.command=="audit":
                 cutoff=args.as_of or datetime.now(timezone.utc).isoformat()
                 result=evaluate(db,args.protocol_id,cutoff)

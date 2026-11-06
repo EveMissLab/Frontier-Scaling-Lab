@@ -159,6 +159,39 @@ def _slope(points):
     return statistics.median(slopes) if slopes else None
 
 
+def _sample_basis_audit(points):
+    """Flag score revisions at unchanged published sample count, and large drops.
+
+    Vote/sample counts need not be a strictly cumulative panel, and unchanged
+    counts do NOT prove identical voters or evaluation tasks.
+    """
+    same_count_score_changed, large_drops = [], []
+    for a, b in zip(points, points[1:]):
+        n0, n1 = a["sample_size"], b["sample_size"]
+        if n0 is None or n1 is None or n0 <= 0:
+            continue
+        if n0 == n1 and abs(b["value"] - a["value"]) > 1e-9:
+            same_count_score_changed.append({
+                "from": a["published_on"], "to": b["published_on"],
+                "published_sample_count": n0,
+                "score_level_change": b["value"] - a["value"],
+            })
+        if n1 < n0 and n0 - n1 >= 100 and (n0 - n1) / n0 >= 0.01:
+            large_drops.append({
+                "from": a["published_on"], "to": b["published_on"],
+                "sample_before": n0, "sample_after": n1,
+                "relative_drop": (n0 - n1) / n0,
+            })
+    return {
+        "same_reported_count_but_score_changed": len(same_count_score_changed),
+        "examples_same_count_score_changed": same_count_score_changed[:8],
+        "material_sample_count_drops": len(large_drops),
+        "examples_sample_count_drops": large_drops[:8],
+        "caveat": ("Unchanged sample count does not prove an unchanged underlying sample. "
+                   "A large count drop warns about panel composition or measurement changes."),
+    }
+
+
 def analyze_series(db, *, model_id, measure, category, methodology, channel,
                    as_of, mode="strict_asof", min_samples=100):
     """Report only within-stratum temporal *levels* and methodological regimes.
@@ -190,8 +223,10 @@ def analyze_series(db, *, model_id, measure, category, methodology, channel,
         points.sort(key=lambda x: x["published_on"])
         first, last = points[0], points[-1]
         interval = _delta(first,last) if len(points)>=2 else None
+        sample_audit = _sample_basis_audit(points)
         segments.append({
             "regime": regime,
+            "sample_basis_audit": sample_audit,
             "n_dates": len(points),
             "first_date": first["published_on"],
             "last_date": last["published_on"],
@@ -199,8 +234,12 @@ def analyze_series(db, *, model_id, measure, category, methodology, channel,
             "last_value": last["value"],
             "level_difference": interval,
             "theil_sen_level_change_per_90d": _slope(points),
-            "status": ("descriptive_temporal_series" if len(points) >= 3
-                       else "insufficient_longitudinal_evidence"),
+            "status": (
+                "insufficient_longitudinal_evidence" if len(points) < 3
+                else "descriptive_with_sample_basis_warning"
+                if sample_audit["material_sample_count_drops"]
+                else "descriptive_temporal_series"
+            ),
             "retrieved_after_publication": any(
                 p["retrieved_on"] > p["published_on"] for p in points),
             "points": [
@@ -235,6 +274,8 @@ def analyze_series(db, *, model_id, measure, category, methodology, channel,
             "Arena and benchmark score levels are not ratios of cognitive ability.",
             "Methodology regime boundaries forbid unqualified across-era growth claims.",
             "A fixed model's changing Arena rating can reflect changing opponents/voters.",
+            "The sample-count audit flags score changes without a reported count increase.",
+            "Significant count drops require panel-composition review before growth claims.",
             "A retrospective history fetched later cannot validate an earlier issued prediction.",
             "Independent training compute and matched inference budgets are required for causal scaling claims.",
         ],

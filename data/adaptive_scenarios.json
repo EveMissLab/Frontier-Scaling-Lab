@@ -81,5 +81,6 @@
     "NOT historical observations.",
     "Parameter ceilings are hypotheses, not physical laws.",
     "The entire benchmark series must be identified before observational scoring."
-  ]
+  ],
+  "data_classification": "synthetic"
 }

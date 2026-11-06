@@ -28,6 +28,7 @@ EVENTS = {
     "exception_escalation", "deliverable", "final_acceptance",
     "quality_review", "style_review", "task_switch", "domain_outcome",
     "safety_incident", "safety_resolution", "correction", "user_round",
+    "recovery",
 }
 ACTORS = {"user", "ai", "evaluator", "environment", "operator", "system"}
 BANDS = {"days": 2.0, "weeks": 7.0, "months": 28.0}
@@ -271,6 +272,14 @@ def validate_event(event):
             raise MissionError("adaptation review must be boolean")
         if event["actor"]!="evaluator" or not event.get("source_url"):
             raise MissionError("adaptation review needs an identified external reference")
+    if k=="recovery":
+        _required(p,("checkpoint_event_id","restored_state_sha256","cause"))
+        identifier(p["checkpoint_event_id"],"checkpoint_event_id")
+        sha256(p["restored_state_sha256"])
+        if p["cause"] not in ("restart","crash","handoff","scheduled_resume"):
+            raise MissionError("recovery cause must identify restart or reactivation")
+        if not event.get("source_url"):
+            raise MissionError("recovery needs auditable external evidence reference")
     if k=="deliverable":
         _required(p,("artifact_sha256","artifact_type"))
         sha256(p["artifact_sha256"])
@@ -287,13 +296,15 @@ def validate_event(event):
         if not event.get("source_url"):
             raise MissionError("acceptance needs independent evidence URL")
     if k=="quality_review":
-        _required(p,("criterion","passed","reviewer"))
+        _required(p,("criterion","passed","reviewer","deliverable_event_id"))
+        identifier(p["deliverable_event_id"],"deliverable_event_id")
         if not isinstance(p["passed"],bool) or event["actor"]!="evaluator":
             raise MissionError("quality review must be evaluator-recorded boolean")
         if not isinstance(p["reviewer"],str) or not p["reviewer"].strip() or not event.get("source_url"):
             raise MissionError("quality review needs reviewer and external source")
     if k=="style_review":
-        _required(p,("axis","passed","reviewer"))
+        _required(p,("axis","passed","reviewer","deliverable_event_id"))
+        identifier(p["deliverable_event_id"],"deliverable_event_id")
         if p["axis"] not in ("personal_author","ai_native") or not isinstance(p["passed"],bool):
             raise MissionError("invalid distinct style axis")
         if event["actor"]!="evaluator" or not p["reviewer"] or not event.get("source_url"):

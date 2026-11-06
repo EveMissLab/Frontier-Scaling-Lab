@@ -241,13 +241,17 @@ def add_alias(db, *, source_type, external_model_id, canonical_model_key,
     return alias_id
 
 
-def list_observations(db, *, model_id=None, channel=None, limit=200):
+def list_observations(db, *, model_id=None, channel=None, limit=200, as_of=None):
     if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= 1000:
         raise CatalogError("limit must be 1..1000")
     query = """SELECT o.*,s.source_type,s.resource_id,s.source_url,s.source_license,
        s.attribution,s.retrieved_on
        FROM public_observations o JOIN public_snapshots s USING(snapshot_id) WHERE 1=1"""
     args = []
+    if as_of is not None:
+        iso_day(as_of, "as_of")
+        query += " AND s.retrieved_on<=? AND (o.published_on IS NULL OR o.published_on<=?)"
+        args.extend([as_of, as_of])
     if model_id is not None:
         query += " AND o.external_model_id=?"
         args.append(model_id)
@@ -259,7 +263,7 @@ def list_observations(db, *, model_id=None, channel=None, limit=200):
     return [dict(row) for row in db.execute(query, args)]
 
 
-def trend(db, *, model_id, measure, category, methodology, channel):
+def trend(db, *, model_id, measure, category, methodology, channel, as_of=None):
     """A series is meaningful only within a declared methodological stratum.
 
     No cross-benchmark normalizations, capability multipliers, regression,
@@ -268,12 +272,17 @@ def trend(db, *, model_id, measure, category, methodology, channel):
     if not all(isinstance(x, str) and x.strip()
                for x in (model_id, measure, category, methodology, channel)):
         raise CatalogError("trend requires exact source model and stratum")
+    if as_of is not None:
+        iso_day(as_of, "as_of")
     rows = db.execute("""SELECT o.*,s.retrieved_on,s.source_type,s.source_url
       FROM public_observations o JOIN public_snapshots s USING(snapshot_id)
       WHERE o.external_model_id=? AND o.measure=? AND o.category=?
         AND o.methodology=? AND o.channel=?
+        AND (? IS NULL OR (s.retrieved_on<=?
+             AND (o.published_on IS NULL OR o.published_on<=?)))
       ORDER BY o.published_on,s.retrieved_on""",
-      (model_id, measure, category, methodology, channel)).fetchall()
+      (model_id, measure, category, methodology, channel,
+       as_of, as_of, as_of)).fetchall()
     # Multiple captures of the same published leaderboard should not overweight
     # a single published score. Latest capture of each publication date wins.
     by_date = {}
@@ -287,4 +296,49 @@ def trend(db, *, model_id, measure, category, methodology, channel):
         "status": "insufficient_for_trend" if len(series) < 3 else "descriptive_only",
         "caveat": ("Within-source published history only; methodology changes, "
                    "model aliasing, inference budgets and selection bias remain confounders.")
+    }
+
+
+def model_dossier(db, *, canonical_model_key, as_of):
+    """Build separated latest-metric views; never average unlike benchmarks.
+
+    Only explicit, reviewable aliases may unify different provider names.
+    Future-observed data is excluded from historical as-of requests.
+    """
+    if not isinstance(canonical_model_key, str) or not canonical_model_key.strip():
+        raise CatalogError("canonical_model_key must be a nonempty string")
+    iso_day(as_of, "as_of")
+    aliases = [dict(row) for row in db.execute("""
+      SELECT source_type,external_model_id,source_url,recorded_on
+      FROM public_aliases WHERE canonical_model_key=? AND recorded_on<=?
+      ORDER BY source_type,external_model_id""", (canonical_model_key, as_of))]
+    rows = db.execute("""SELECT o.*, s.source_type,s.retrieved_on,s.source_url,
+           s.source_license,s.attribution
+      FROM public_observations o
+      JOIN public_snapshots s ON s.snapshot_id=o.snapshot_id
+      JOIN public_aliases a ON
+         a.source_type=s.source_type AND a.external_model_id=o.external_model_id
+      WHERE a.canonical_model_key=?
+        AND a.recorded_on<=? AND s.retrieved_on<=?
+        AND (o.published_on IS NULL OR o.published_on<=?)
+      ORDER BY o.published_on,s.retrieved_on,o.observation_id""",
+      (canonical_model_key, as_of, as_of, as_of)).fetchall()
+    latest = {}
+    for row in rows:
+        item = dict(row)
+        key = (item["channel"],item["source_type"],item["external_model_id"],
+               item["measure"],item["category"],item["methodology"])
+        latest[key] = item
+    channels = {"metadata": [], "preference": [], "benchmark": [], "community": []}
+    for key in sorted(latest):
+        item = latest[key]
+        channels[item["channel"]].append(item)
+    return {
+        "canonical_model_key": canonical_model_key,
+        "as_of": as_of, "manually_reviewed_aliases": aliases,
+        "channels": channels,
+        "total_latest_metrics": sum(len(rows) for rows in channels.values()),
+        "warning": ("A dossier is not a composite intelligence index. "
+                    "Cross-provider aliases require explicit grounded matches; "
+                    "HF popularity and user sentiment are not parameter measurements."),
     }

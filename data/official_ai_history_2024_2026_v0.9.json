@@ -1,0 +1,1180 @@
+{
+  "schema": "fsl/historical-release-catalog/v0.9",
+  "catalog_reviewed_on": "2026-11-07",
+  "catalog_review_timezone": "Asia/Taipei",
+  "scope": "provider announcements with retrospective capture. Not continuous plan availability and not matched functional task outcomes.",
+  "semantic_notice": "Each historical 2024-2026 event was looked up on 2026-11-07; dated changelog subsections are not independently immutable timestamp archives. Release descriptions are vendor statements.",
+  "sources": [
+    {
+      "source_id": "g-gemini15",
+      "publisher": "google",
+      "url": "https://blog.google/innovation-and-ai/products/google-gemini-next-generation-model-february-2024/",
+      "published_on": "2024-02-15",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "o-gpt4o",
+      "publisher": "openai",
+      "url": "https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free/",
+      "published_on": "2024-05-13",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "a-sonnet35",
+      "publisher": "anthropic",
+      "url": "https://www.anthropic.com/news/claude-3-5-sonnet",
+      "published_on": "2024-06-21",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "x-grok2",
+      "publisher": "xai",
+      "url": "https://x.ai/news/grok-2",
+      "published_on": "2024-08-13",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "o-o1",
+      "publisher": "openai",
+      "url": "https://openai.com/index/introducing-openai-o1-preview/",
+      "published_on": "2024-09-12",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "g-gemini20",
+      "publisher": "google",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/google-gemini-ai-update-december-2024/",
+      "published_on": "2024-12-11",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "g-deepresearch",
+      "publisher": "google",
+      "url": "https://blog.google/products-and-platforms/products/gemini/google-gemini-deep-research/",
+      "published_on": "2024-12-11",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "d-v3",
+      "publisher": "deepseek",
+      "url": "https://api-docs.deepseek.com/updates/",
+      "published_on": "2024-12-26",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_change_log",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "d-r1",
+      "publisher": "deepseek",
+      "url": "https://api-docs.deepseek.com/news/news250120/",
+      "published_on": "2025-01-20",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "x-grok3",
+      "publisher": "xai",
+      "url": "https://x.ai/news/grok-3",
+      "published_on": "2025-02-19",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "a-sonnet37",
+      "publisher": "anthropic",
+      "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+      "published_on": "2025-02-24",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "o-gpt45",
+      "publisher": "openai",
+      "url": "https://openai.com/index/introducing-gpt-4-5/",
+      "published_on": "2025-02-27",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "d-v30324",
+      "publisher": "deepseek",
+      "url": "https://api-docs.deepseek.com/updates/",
+      "published_on": "2025-03-24",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_change_log",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "g-gemini25",
+      "publisher": "google",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/",
+      "published_on": "2025-03-25",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "a-claude4",
+      "publisher": "anthropic",
+      "url": "https://www.anthropic.com/news/claude-4",
+      "published_on": "2025-05-22",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "d-r10528",
+      "publisher": "deepseek",
+      "url": "https://api-docs.deepseek.com/updates/",
+      "published_on": "2025-05-28",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_change_log",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "x-grok4",
+      "publisher": "xai",
+      "url": "https://x.ai/news/grok-4",
+      "published_on": "2025-07-09",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "o-gpt5",
+      "publisher": "openai",
+      "url": "https://openai.com/index/introducing-gpt-5/",
+      "published_on": "2025-08-07",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "a-sonnet45",
+      "publisher": "anthropic",
+      "url": "https://www.anthropic.com/news/claude-sonnet-4-5",
+      "published_on": "2025-09-29",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "x-grok41",
+      "publisher": "xai",
+      "url": "https://x.ai/news/grok-4-1",
+      "published_on": "2025-11-17",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "g-gemini3",
+      "publisher": "google",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-3/",
+      "published_on": "2025-11-18",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "g-gemini3-price",
+      "publisher": "google",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-3-developers/",
+      "published_on": "2025-11-18",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "a-opus45",
+      "publisher": "anthropic",
+      "url": "https://www.anthropic.com/news/claude-opus-4-5",
+      "published_on": "2025-11-24",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "a-opus46",
+      "publisher": "anthropic",
+      "url": "https://www.anthropic.com/news/claude-opus-4-6",
+      "published_on": "2026-02-05",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "a-sonnet46",
+      "publisher": "anthropic",
+      "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+      "published_on": "2026-02-17",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "g-gemini31",
+      "publisher": "google",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/",
+      "published_on": "2026-02-19",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "o-gpt54",
+      "publisher": "openai",
+      "url": "https://openai.com/index/introducing-gpt-5-4/",
+      "published_on": "2026-03-05",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "d-v4",
+      "publisher": "deepseek",
+      "url": "https://api-docs.deepseek.com/updates/",
+      "published_on": "2026-04-24",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_change_log",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "o-gpt56",
+      "publisher": "openai",
+      "url": "https://openai.com/index/gpt-5-6/",
+      "published_on": "2026-07-09",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "d-v41",
+      "publisher": "deepseek",
+      "url": "https://api-docs.deepseek.com/updates/",
+      "published_on": "2026-09-10",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_change_log",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "o-astra",
+      "publisher": "openai",
+      "url": "https://openai.com/index/safety-overview-gpt-6-astra/",
+      "published_on": "2026-09-03",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "o-sol-luna",
+      "publisher": "openai",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "published_on": "2026-09-22",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "o-sol61",
+      "publisher": "openai",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "published_on": "2026-09-29",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_announcement",
+      "date_basis": "article_date"
+    },
+    {
+      "source_id": "o-pro500",
+      "publisher": "openai",
+      "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+      "published_on": "2026-09-29",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_release_notes",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "o-gpt6-chat",
+      "publisher": "openai",
+      "url": "https://openai.com/research/index/release/",
+      "published_on": "2026-10-07",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_release_notes",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "d-search",
+      "publisher": "deepseek",
+      "url": "https://api-docs.deepseek.com/updates/",
+      "published_on": "2026-10-17",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_change_log",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "o-gpt4o-retire",
+      "publisher": "openai",
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "published_on": "2026-04-22",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_release_notes",
+      "date_basis": "dated_subsection"
+    },
+    {
+      "source_id": "o-terra61",
+      "publisher": "openai",
+      "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+      "published_on": "2026-10-26",
+      "first_captured_on": "2026-11-07",
+      "document_kind": "dated_release_notes",
+      "date_basis": "dated_subsection"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "2024-google-gemini15-preview",
+      "source_id": "g-gemini15",
+      "provider": "google",
+      "model_key": "gemini-1.5-pro",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2024-02-15",
+      "availability_at_event": "limited_preview",
+      "channels": [
+        "private_preview"
+      ],
+      "claim": "Gemini 1.5 Pro introduced with long context; limited preview for developers and enterprise.",
+      "proof_limit": "1M context limited preview, not general-release 48-hour Agent capability."
+    },
+    {
+      "event_id": "2024-openai-gpt4o",
+      "source_id": "o-gpt4o",
+      "provider": "openai",
+      "model_key": "gpt-4o",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2024-05-13",
+      "availability_at_event": "rollout",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "GPT-4o announced; ChatGPT rollout including limited Free usage and paid plans.",
+      "proof_limit": "Release and ChatGPT limits at launch do not imply historical autonomous computer-use tools."
+    },
+    {
+      "event_id": "2024-anthropic-sonnet35",
+      "source_id": "a-sonnet35",
+      "provider": "anthropic",
+      "model_key": "claude-3.5-sonnet",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2024-06-21",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "Claude 3.5 Sonnet released to Claude.ai/iOS and API, higher Pro/Team limits.",
+      "proof_limit": "Provider performance descriptions are not independent G1 results."
+    },
+    {
+      "event_id": "2024-anthropic-sonnet35-api-rate",
+      "source_id": "a-sonnet35",
+      "provider": "anthropic",
+      "model_key": "claude-3.5-sonnet",
+      "identifier_kind": "named_family",
+      "kind": "api_price_quote",
+      "occurred_on": "2024-06-21",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "Announcement quotes $3 input and $15 output per million text tokens.",
+      "proof_limit": "Launch quote only; no cached-token quote in this source; subsequent periods need fresh pricing evidence.",
+      "price": {
+        "currency": "USD",
+        "unit": "per_million_tokens",
+        "uncached_input": "3",
+        "cached_input": null,
+        "output": "15",
+        "billing_product": "api",
+        "validity": "point_quote"
+      }
+    },
+    {
+      "event_id": "2024-xai-grok2",
+      "source_id": "x-grok2",
+      "provider": "xai",
+      "model_key": "grok-2",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2024-08-13",
+      "availability_at_event": "preview",
+      "channels": [
+        "chat"
+      ],
+      "claim": "Grok-2 and Grok-2 mini beta on X; enterprise API described as forthcoming.",
+      "proof_limit": "API was announced as future, so cannot infer it was accessible on launch date."
+    },
+    {
+      "event_id": "2024-openai-o1-preview",
+      "source_id": "o-o1",
+      "provider": "openai",
+      "model_key": "o1-preview",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2024-09-12",
+      "availability_at_event": "limited_preview",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "First o1-preview reasoning family made available to qualifying ChatGPT/API users.",
+      "proof_limit": "Original o1-preview API snapshots subsequently retired; launch limits and rollout are specific to 2024."
+    },
+    {
+      "event_id": "2024-google-gemini20-flash",
+      "source_id": "g-gemini20",
+      "provider": "google",
+      "model_key": "gemini-2.0-flash-experimental",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2024-12-11",
+      "availability_at_event": "preview",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "Gemini 2.0 Flash experimental introduced for users and developers, tool use native to model.",
+      "proof_limit": "Do not equate experimental access to all later Gemini 2 API features."
+    },
+    {
+      "event_id": "2024-google-gemini-deepresearch",
+      "source_id": "g-deepresearch",
+      "provider": "google",
+      "model_key": "gemini-deep-research",
+      "identifier_kind": "tool",
+      "kind": "agent_tool_release",
+      "occurred_on": "2024-12-11",
+      "availability_at_event": "launched",
+      "channels": [
+        "research_tool",
+        "chat"
+      ],
+      "claim": "Gemini Deep Research introduced to Gemini Advanced subscribers.",
+      "proof_limit": "Research report generation does not demonstrate continuous 48-hour autonomous research."
+    },
+    {
+      "event_id": "2024-deepseek-v3",
+      "source_id": "d-v3",
+      "provider": "deepseek",
+      "model_key": "deepseek-v3:deepseek-chat",
+      "identifier_kind": "api_alias",
+      "kind": "model_update",
+      "occurred_on": "2024-12-26",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "DeepSeek official changelog states deepseek-chat alias was upgraded to V3 on 2024-12-26.",
+      "proof_limit": "Alias has drifted over later releases; it is not a fixed archival model snapshot."
+    },
+    {
+      "event_id": "2025-deepseek-r1",
+      "source_id": "d-r1",
+      "provider": "deepseek",
+      "model_key": "deepseek-r1:deepseek-reasoner",
+      "identifier_kind": "api_alias",
+      "kind": "model_announcement",
+      "occurred_on": "2025-01-20",
+      "availability_at_event": "launched",
+      "channels": [
+        "api",
+        "open_weights"
+      ],
+      "claim": "DeepSeek R1 available through deepseek-reasoner and released weights/distilled models.",
+      "proof_limit": "Public weights do not establish equal hardware costs or a 48-hour Agent scaffold."
+    },
+    {
+      "event_id": "2025-deepseek-r1-api-price",
+      "source_id": "d-r1",
+      "provider": "deepseek",
+      "model_key": "deepseek-r1:deepseek-reasoner",
+      "identifier_kind": "api_alias",
+      "kind": "api_price_quote",
+      "occurred_on": "2025-01-20",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "Original R1 announcement lists cache hit $0.14, cache miss $0.55, output $2.19 per 1M.",
+      "proof_limit": "Point price from launch release; API alias and discounts may change.",
+      "price": {
+        "currency": "USD",
+        "unit": "per_million_tokens",
+        "uncached_input": "0.55",
+        "cached_input": "0.14",
+        "output": "2.19",
+        "billing_product": "api",
+        "validity": "point_quote"
+      }
+    },
+    {
+      "event_id": "2025-xai-grok3",
+      "source_id": "x-grok3",
+      "provider": "xai",
+      "model_key": "grok-3-beta",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-02-19",
+      "availability_at_event": "rollout",
+      "channels": [
+        "chat"
+      ],
+      "claim": "Grok 3 Beta and Grok 3 mini reasoning introduced; API described as coming soon.",
+      "proof_limit": "Do not mark API launch as available on this date."
+    },
+    {
+      "event_id": "2025-xai-deepsearch",
+      "source_id": "x-grok3",
+      "provider": "xai",
+      "model_key": "grok-deepsearch",
+      "identifier_kind": "tool",
+      "kind": "agent_tool_release",
+      "occurred_on": "2025-02-19",
+      "availability_at_event": "rollout",
+      "channels": [
+        "chat",
+        "research_tool"
+      ],
+      "claim": "xAI describes DeepSearch as first Grok research agent, Premium+ subscribers prioritized.",
+      "proof_limit": "Tool launch does not show G1 completed multi-day tasks."
+    },
+    {
+      "event_id": "2025-anthropic-sonnet37",
+      "source_id": "a-sonnet37",
+      "provider": "anthropic",
+      "model_key": "claude-3.7-sonnet",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-02-24",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "Anthropic introduced Claude 3.7 Sonnet hybrid reasoning and API controls.",
+      "proof_limit": "Not a verified end-to-end multi-day autonomous experiment."
+    },
+    {
+      "event_id": "2025-anthropic-claude-code-preview",
+      "source_id": "a-sonnet37",
+      "provider": "anthropic",
+      "model_key": "claude-code-preview",
+      "identifier_kind": "tool",
+      "kind": "agent_tool_release",
+      "occurred_on": "2025-02-24",
+      "availability_at_event": "limited_preview",
+      "channels": [
+        "coding_agent"
+      ],
+      "claim": "Claude Code announced as a terminal-based coding-agent research preview.",
+      "proof_limit": "Early preview access may be restricted; not a proof of autonomous task quality."
+    },
+    {
+      "event_id": "2025-openai-gpt45",
+      "source_id": "o-gpt45",
+      "provider": "openai",
+      "model_key": "gpt-4.5",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-02-27",
+      "availability_at_event": "limited_preview",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "GPT-4.5 research preview initially available to Pro users and developers.",
+      "proof_limit": "Initial access may differ from later availability and retirement."
+    },
+    {
+      "event_id": "2025-deepseek-v3-0324",
+      "source_id": "d-v30324",
+      "provider": "deepseek",
+      "model_key": "deepseek-v3-0324:deepseek-chat",
+      "identifier_kind": "api_alias",
+      "kind": "model_update",
+      "occurred_on": "2025-03-24",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "DeepSeek official changelog records V3-0324 served via deepseek-chat.",
+      "proof_limit": "The API alias changes over time; cannot infer frozen-weight identity."
+    },
+    {
+      "event_id": "2025-google-gemini25",
+      "source_id": "g-gemini25",
+      "provider": "google",
+      "model_key": "gemini-2.5-pro-experimental",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-03-25",
+      "availability_at_event": "preview",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "Gemini 2.5 Pro Experimental introduced to AI Studio and Gemini Advanced.",
+      "proof_limit": "Pricing was to follow; do not invent a launch API price."
+    },
+    {
+      "event_id": "2025-anthropic-opus4",
+      "source_id": "a-claude4",
+      "provider": "anthropic",
+      "model_key": "claude-opus-4",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-05-22",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api",
+        "coding_agent"
+      ],
+      "claim": "Claude Opus 4 and Sonnet 4 launched with tools and extended-thinking enhancements.",
+      "proof_limit": "Provider self-evaluation claims do not establish multi-day task success."
+    },
+    {
+      "event_id": "2025-anthropic-sonnet4",
+      "source_id": "a-claude4",
+      "provider": "anthropic",
+      "model_key": "claude-sonnet-4",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-05-22",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api",
+        "coding_agent"
+      ],
+      "claim": "Claude Sonnet 4 announced alongside Opus 4.",
+      "proof_limit": "Tool availability and plan use limits remain deployment-specific."
+    },
+    {
+      "event_id": "2025-deepseek-r1-0528",
+      "source_id": "d-r10528",
+      "provider": "deepseek",
+      "model_key": "deepseek-r1-0528:deepseek-reasoner",
+      "identifier_kind": "api_alias",
+      "kind": "model_update",
+      "occurred_on": "2025-05-28",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "DeepSeek official API changelog records R1-0528 reasoning upgrade.",
+      "proof_limit": "Benchmark entries are provider self-reports; not independent G1/G2 results."
+    },
+    {
+      "event_id": "2025-xai-grok4",
+      "source_id": "x-grok4",
+      "provider": "xai",
+      "model_key": "grok-4",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-07-09",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "Grok 4 announced with native tool use and SuperGrok/Premium+ subscription/API access.",
+      "proof_limit": "Subscription/agent-specific quotas not inferred."
+    },
+    {
+      "event_id": "2025-openai-gpt5",
+      "source_id": "o-gpt5",
+      "provider": "openai",
+      "model_key": "gpt-5",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-08-07",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "GPT-5 introduced as unified router/reasoning product; Free, Plus and Pro paths differ.",
+      "proof_limit": "Product name encompasses routing modes; not a single frozen model weight identity."
+    },
+    {
+      "event_id": "2025-anthropic-sonnet45",
+      "source_id": "a-sonnet45",
+      "provider": "anthropic",
+      "model_key": "claude-sonnet-4.5",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-09-29",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api",
+        "coding_agent"
+      ],
+      "claim": "Claude Sonnet 4.5 launched with coding and agent-oriented claims.",
+      "proof_limit": "This provider announcement is not a direct real-world G3 deliverable test."
+    },
+    {
+      "event_id": "2025-xai-grok41",
+      "source_id": "x-grok41",
+      "provider": "xai",
+      "model_key": "grok-4.1",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-11-17",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat"
+      ],
+      "claim": "Grok 4.1 introduced with stated general chat style and usefulness updates.",
+      "proof_limit": "Provider preference study is not equal to a fixed long-duration mission."
+    },
+    {
+      "event_id": "2025-google-gemini3",
+      "source_id": "g-gemini3",
+      "provider": "google",
+      "model_key": "gemini-3",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-11-18",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "Gemini 3 announced in Gemini app and developer products.",
+      "proof_limit": "Staged access, task completeness and quota require separate evidence."
+    },
+    {
+      "event_id": "2025-google-gemini3-pro-preview-price",
+      "source_id": "g-gemini3-price",
+      "provider": "google",
+      "model_key": "gemini-3-pro-preview",
+      "identifier_kind": "named_family",
+      "kind": "api_price_quote",
+      "occurred_on": "2025-11-18",
+      "availability_at_event": "preview",
+      "channels": [
+        "api"
+      ],
+      "claim": "Gemini 3 Pro preview price $2 input and $12 output per 1M for <=200K prompts.",
+      "proof_limit": "Specific prompt-size tier only; do not use price for larger context or later periods.",
+      "price": {
+        "currency": "USD",
+        "unit": "per_million_tokens",
+        "uncached_input": "2",
+        "cached_input": null,
+        "output": "12",
+        "billing_product": "api",
+        "validity": "point_quote"
+      }
+    },
+    {
+      "event_id": "2025-anthropic-opus45",
+      "source_id": "a-opus45",
+      "provider": "anthropic",
+      "model_key": "claude-opus-4.5",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2025-11-24",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api",
+        "coding_agent"
+      ],
+      "claim": "Claude Opus 4.5 announced for apps, API and cloud platforms.",
+      "proof_limit": "Release does not prove independent G1/G2 outcomes."
+    },
+    {
+      "event_id": "2025-anthropic-opus45-price",
+      "source_id": "a-opus45",
+      "provider": "anthropic",
+      "model_key": "claude-opus-4.5",
+      "identifier_kind": "named_family",
+      "kind": "api_price_quote",
+      "occurred_on": "2025-11-24",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "Opus 4.5 launch standard quoted API pricing $5 input, $25 output per million tokens.",
+      "proof_limit": "Date-specific headline; caching, context and enterprise pricing may differ.",
+      "price": {
+        "currency": "USD",
+        "unit": "per_million_tokens",
+        "uncached_input": "5",
+        "cached_input": null,
+        "output": "25",
+        "billing_product": "api",
+        "validity": "point_quote"
+      }
+    },
+    {
+      "event_id": "2026-anthropic-opus46",
+      "source_id": "a-opus46",
+      "provider": "anthropic",
+      "model_key": "claude-opus-4.6",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-02-05",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api",
+        "coding_agent"
+      ],
+      "claim": "Claude Opus 4.6 announced, with improved coding/agent tasks and beta 1M context.",
+      "proof_limit": "Better long-agent claims are provider descriptions, not completed 48h trials."
+    },
+    {
+      "event_id": "2026-anthropic-sonnet46",
+      "source_id": "a-sonnet46",
+      "provider": "anthropic",
+      "model_key": "claude-sonnet-4.6",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-02-17",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "Claude Sonnet 4.6 rolled out to default Free/Pro model on claude.ai and Cowork.",
+      "proof_limit": "Model/plan availability differs across app and API."
+    },
+    {
+      "event_id": "2026-anthropic-sonnet46-price",
+      "source_id": "a-sonnet46",
+      "provider": "anthropic",
+      "model_key": "claude-sonnet-4.6",
+      "identifier_kind": "named_family",
+      "kind": "api_price_quote",
+      "occurred_on": "2026-02-17",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "Sonnet 4.6 API starting standard price quoted $3 input/$15 output per million.",
+      "proof_limit": "Headline starting rate; other contexts or cache tiers may differ.",
+      "price": {
+        "currency": "USD",
+        "unit": "per_million_tokens",
+        "uncached_input": "3",
+        "cached_input": null,
+        "output": "15",
+        "billing_product": "api",
+        "validity": "point_quote"
+      }
+    },
+    {
+      "event_id": "2026-google-gemini31",
+      "source_id": "g-gemini31",
+      "provider": "google",
+      "model_key": "gemini-3.1-pro",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-02-19",
+      "availability_at_event": "preview",
+      "channels": [
+        "chat",
+        "api",
+        "coding_agent"
+      ],
+      "claim": "Gemini 3.1 Pro preview introduced for Google AI Studio, Gemini CLI and other products.",
+      "proof_limit": "Preview introduction not guaranteed general API quota."
+    },
+    {
+      "event_id": "2026-openai-gpt54",
+      "source_id": "o-gpt54",
+      "provider": "openai",
+      "model_key": "gpt-5.4",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-03-05",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api",
+        "coding_agent"
+      ],
+      "claim": "GPT-5.4 introduced in ChatGPT, API and Codex, with Pro variant.",
+      "proof_limit": "Published provider productivity claims not an FSL G1–G4 completion study."
+    },
+    {
+      "event_id": "2026-deepseek-v4-pro",
+      "source_id": "d-v4",
+      "provider": "deepseek",
+      "model_key": "deepseek-v4-pro",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-04-24",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "DeepSeek V4 Pro and V4 Flash made available by API interfaces.",
+      "proof_limit": "Post-launch aliases and eventual GA versions must be tracked separately."
+    },
+    {
+      "event_id": "2026-deepseek-v4-flash",
+      "source_id": "d-v4",
+      "provider": "deepseek",
+      "model_key": "deepseek-v4-flash",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-04-24",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "DeepSeek V4 Flash announced alongside V4 Pro.",
+      "proof_limit": "Changelog did not guarantee future alias identity."
+    },
+    {
+      "event_id": "2026-openai-gpt56",
+      "source_id": "o-gpt56",
+      "provider": "openai",
+      "model_key": "gpt-5.6",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-07-09",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "GPT-5.6 introduced with efficiency and professional agent-work positioning.",
+      "proof_limit": "No validated 24–48 hour end-to-end completion rate from announcement."
+    },
+    {
+      "event_id": "2026-deepseek-v41-flash",
+      "source_id": "d-v41",
+      "provider": "deepseek",
+      "model_key": "deepseek-v4.1-flash",
+      "identifier_kind": "api_alias",
+      "kind": "model_announcement",
+      "occurred_on": "2026-09-10",
+      "availability_at_event": "launched",
+      "channels": [
+        "api",
+        "chat"
+      ],
+      "claim": "DeepSeek V4.1 Flash introduced, with model alias deepseek-flash.",
+      "proof_limit": "Vendor benchmark results require matched runtime/effort before comparing."
+    },
+    {
+      "event_id": "2026-openai-gpt6-astra",
+      "source_id": "o-astra",
+      "provider": "openai",
+      "model_key": "gpt-6-astra",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-09-03",
+      "availability_at_event": "rollout",
+      "channels": [
+        "chat",
+        "api"
+      ],
+      "claim": "OpenAI announced deployment of GPT-6 Astra and safety controls.",
+      "proof_limit": "Public rollout restrictions and critical-safety access cannot be inferred from this release alone."
+    },
+    {
+      "event_id": "2026-openai-gpt6-sol",
+      "source_id": "o-sol-luna",
+      "provider": "openai",
+      "model_key": "gpt-6-sol",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-09-22",
+      "availability_at_event": "rollout",
+      "channels": [
+        "coding_agent",
+        "api"
+      ],
+      "claim": "GPT-6 Sol introduced as a lower-cost member of GPT-6 family for Work/Codex/API.",
+      "proof_limit": "Chat product rollout separate from initial Work/Codex launch."
+    },
+    {
+      "event_id": "2026-openai-gpt6-luna",
+      "source_id": "o-sol-luna",
+      "provider": "openai",
+      "model_key": "gpt-6-luna",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-09-22",
+      "availability_at_event": "rollout",
+      "channels": [
+        "coding_agent",
+        "api"
+      ],
+      "claim": "GPT-6 Luna introduced with distinct cost/capability trade-off and channel availability.",
+      "proof_limit": "No guarantee that all ChatGPT plans have all Sol/Luna tools."
+    },
+    {
+      "event_id": "2026-openai-gpt61-sol",
+      "source_id": "o-sol61",
+      "provider": "openai",
+      "model_key": "gpt-6.1-sol",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-09-29",
+      "availability_at_event": "rollout",
+      "channels": [
+        "coding_agent",
+        "api"
+      ],
+      "claim": "GPT-6.1 Sol deployment safety addendum published with model announcement.",
+      "proof_limit": "Safety measurements and provider capability claims are not equivalent to independent G1–G4 output verification."
+    },
+    {
+      "event_id": "2026-openai-pro500",
+      "source_id": "o-pro500",
+      "provider": "openai",
+      "model_key": "chatgpt-pro-500",
+      "identifier_kind": "product_route",
+      "kind": "plan_policy",
+      "occurred_on": "2026-09-29",
+      "availability_at_event": "launched",
+      "channels": [
+        "chat",
+        "coding_agent"
+      ],
+      "claim": "ChatGPT Pro 500 $500/month plan announced, Astra Ultrafast in Work/Codex with credits after included allowance.",
+      "proof_limit": "Monthly price is not a fixed token allowance or guaranteed 48h task."
+    },
+    {
+      "event_id": "2026-openai-gpt6-chat",
+      "source_id": "o-gpt6-chat",
+      "provider": "openai",
+      "model_key": "gpt-6-chat",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-10-07",
+      "availability_at_event": "rollout",
+      "channels": [
+        "chat"
+      ],
+      "claim": "GPT-6 and Intelligent UI announced in ChatGPT.",
+      "proof_limit": "Different ChatGPT plan routing; not the same as Work/Codex API usage."
+    },
+    {
+      "event_id": "2026-deepseek-search-api",
+      "source_id": "d-search",
+      "provider": "deepseek",
+      "model_key": "deepseek-search-fetch",
+      "identifier_kind": "tool",
+      "kind": "agent_tool_release",
+      "occurred_on": "2026-10-17",
+      "availability_at_event": "launched",
+      "channels": [
+        "api",
+        "research_tool"
+      ],
+      "claim": "DeepSeek official changelog introduced Search & Fetch API.",
+      "proof_limit": "Search availability does not imply autonomous multi-day research completion."
+    },
+    {
+      "event_id": "2026-deepseek-v41-1017",
+      "source_id": "d-search",
+      "provider": "deepseek",
+      "model_key": "deepseek-v4.1-flash-1017",
+      "identifier_kind": "api_alias",
+      "kind": "model_update",
+      "occurred_on": "2026-10-17",
+      "availability_at_event": "launched",
+      "channels": [
+        "api",
+        "chat"
+      ],
+      "claim": "DeepSeek changelog dates V4.1 Flash-1017 update while retaining same API alias/pricing.",
+      "proof_limit": "Claims of performance/cost efficiency are provider-run and not FSL acceptance tests."
+    },
+    {
+      "event_id": "2026-openai-gpt4o-2024-snapshot-shutdown",
+      "source_id": "o-gpt4o-retire",
+      "provider": "openai",
+      "model_key": "gpt-4o-2024-05-13",
+      "identifier_kind": "dated_snapshot",
+      "kind": "model_retirement",
+      "occurred_on": "2026-10-23",
+      "availability_at_event": "retired",
+      "channels": [
+        "api"
+      ],
+      "claim": "Deprecation schedule lists specific gpt-4o-2024-05-13 snapshot as shut down 2026-10-23.",
+      "proof_limit": "Snapshot retirement is not retirement of all GPT-4o aliases."
+    },
+    {
+      "event_id": "2026-openai-terra61",
+      "source_id": "o-terra61",
+      "provider": "openai",
+      "model_key": "gpt-6.1-terra",
+      "identifier_kind": "named_family",
+      "kind": "model_announcement",
+      "occurred_on": "2026-10-26",
+      "availability_at_event": "rollout",
+      "channels": [
+        "api",
+        "coding_agent"
+      ],
+      "claim": "GPT-6.1 Terra released to API, Work, Codex, with model-specific access conditions.",
+      "proof_limit": "Not stated to be available in the Chat tab."
+    },
+    {
+      "event_id": "2026-openai-terra61-price",
+      "source_id": "o-terra61",
+      "provider": "openai",
+      "model_key": "gpt-6.1-terra",
+      "identifier_kind": "named_family",
+      "kind": "api_price_quote",
+      "occurred_on": "2026-10-26",
+      "availability_at_event": "launched",
+      "channels": [
+        "api"
+      ],
+      "claim": "Dated OpenAI release note gives $1 input/$0.05 cached input/$5 output per 1M tokens.",
+      "proof_limit": "Launch price only, region/latency premiums may vary; subscription credits separate.",
+      "price": {
+        "currency": "USD",
+        "unit": "per_million_tokens",
+        "uncached_input": "1",
+        "cached_input": "0.05",
+        "output": "5",
+        "billing_product": "api",
+        "validity": "point_quote"
+      }
+    }
+  ]
+}

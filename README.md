@@ -5,6 +5,59 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.11 — Historical Narrative Replay / 公開意圖與真實演化回放
+
+[**Canonical UTF-8 v0.11 paper**](docs/NARRATIVE_DRIFT_INTENTION_REALITY_REPLAY_v0.11.md) ·
+[Three longitudinal cases & rival hypotheses](data/longitudinal_narrative_cases_v0.11.json)
+
+The v0.11 replay engine adds three **longitudinal, source-linked but
+NON-CAUSAL** public-AI-narrative studies:
+
+- **Dario Amodei** (2023-08-08 to 2026-02-13): scaling continuity vs
+  more granular task verification and economic diffusion. No automatic
+  'contradiction' or change-of-private-belief verdict.
+- **Demis Hassabis** (2025-07-23 through the 2026-11-07 evidence cutoff):
+  high-bar AGI, scientific invention and original games; his ~50% AGI
+  by 2030 forecast is **not yet due**, not a proven hit or miss.
+- **梁文鋒 / Liang Wenfeng** (2024-07-22 through the 2026-11-07 cutoff):
+  original model architectures, affordability and open-source intent
+  contrasted with DeepSeek R1/V4 product announcements. Announcements
+  do not independently verify AGI, true accepted-output cost or
+  institutional openness.
+
+Each case carries an exact historical baseline, bounded later speech and
+externally dated product events, multiple competing/falsifiable analytic
+hypotheses, source and independent adjudication requirements, and **at least
+two undetermined alternative strategies**. Reversibility may involve
+changing an existing route or expanding future feasible choices; the
+present repo has no evidence that any named route was actually feasible,
+authorized, adopted or irreversible.
+
+Strict first-capture as-of excludes 2026-acquired sources from an
+imaginary 2023 forecast; retrospective mode permits historical reading
+but labels the late retrieval. Candidate interpretations were written
+only on 2026-11-07, **not by the interviewees in their original years**.
+No transcript is mirrored; links to original speakers and publications
+remain in the original v0.10 source catalog.
+
+~~~bash
+python -m unittest discover -s tests -q
+python -m fsl_discourse.replay_cli validate
+python -m fsl_discourse.replay_cli case \
+  --case-id dario-2023-2026-scaling-diffusion \
+  --as-of 2023-08-08 --mode retrospective
+python -m fsl_discourse.replay_cli all --as-of 2026-11-07
+python -m fsl_discourse.replay_export \
+  --as-of 2026-11-07 --output reports/narrative_cases.csv
+~~~
+
+All G1–G4/ASI capability outcomes, company intent, predictive correctness,
+influence and irreversibility remain **unverified** until separate actual
+functional/decision evidence is obtained. This intentionally is not an
+AGI/ASI prophecy leaderboard.
+
+---
+
 ## v0.10 — Public AI AGI/ASI narratives, intention & reversibility histories
 
 [**Canonical UTF-8 v0.10 research paper**](docs/AI_PUBLIC_NARRATIVES_INTENT_REVERSIBILITY_v0.10.md) ·

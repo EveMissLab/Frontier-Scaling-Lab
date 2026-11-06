@@ -64,11 +64,14 @@ python -m fsl_adaptive.cli forecast --year 2030 --include-planned --as-of 2026-1
 A persisted observational forecast is immutable and can be scored against *later, independently sourced, comparable* model parameter disclosures:
 
 ~~~bash
-python -m fsl_adaptive.cli forecast --year 2030 --include-planned --persist \
+python -m fsl_adaptive.cli forecast --config my_verified_observational_config.json \
+  --year 2030 --include-planned --persist \
   --target my-public-comparable-model-series --target-class observational
 python -m fsl_adaptive.cli feedback --event real_later_disclosure.json
 python -m fsl_adaptive.cli weights --as-of 2030-01-31
 ~~~
+
+**For observational forecasts:** the separate configuration must declare `data_classification=observational`, contain a sourced baseline, and cite each currently operational cohort. The included synthetic file is blocked from that path.
 
 **Do not calibrate from the repository's synthetic example**, and do not invent a disclosure for a closed model. Feedback needs a matched public baseline and new-model source. A hypothesis's probability-like weight is only an online relative loss weight, not a calibrated probability.
 

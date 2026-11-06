@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -28,5 +28,13 @@ jobs:
           python -m fsl_adaptive.cli forecast --db /tmp/fsl_ci.sqlite --as-of 2026-11-06 --year 2029 --include-planned --output /tmp/fsl_forecast.json
           python -m fsl_adaptive.cli weights --db /tmp/fsl_ci.sqlite --as-of 2026-11-06
           python -c "import json; p=json.load(open('/tmp/fsl_forecast.json')); assert p['cognition']['measured'] is False; assert p['ensemble']['online_update']['state']=='uncalibrated'"
+      - name: New v0.3 multichannel source integration (offline fixtures only)
+        run: |
+          python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite init
+          python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite --retrieved-on 2026-11-06 hf-model --id synthetic/research-model --offline-json tests/fixtures/hf_model_synthetic.json
+          python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite --retrieved-on 2026-11-06 arena --config text --offline-json tests/fixtures/arena_synthetic.json
+          python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite --retrieved-on 2026-11-06 hf-benchmark --dataset SWE-bench/SWE-bench_Verified --offline-json tests/fixtures/hf_benchmark_synthetic.json
+          python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite --retrieved-on 2026-11-06 community --file tests/fixtures/community_synthetic.json
+          python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite observations --channel community --as-of 2026-11-06
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

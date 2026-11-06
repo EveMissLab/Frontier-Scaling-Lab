@@ -1,0 +1,699 @@
+{
+  "schema": "fsl/discourse-sources-and-claims/0.10",
+  "catalog_reviewed_on": "2026-11-07",
+  "capture_calendar_timezone": "Asia/Taipei",
+  "title": "AI AGI ASI 公開敘述：認知、意圖方向及可逆性的第一批訪談來源",
+  "coverage_status": "curated_seed_not_all_companies_not_exhaustive",
+  "rights": "Titles, URLs, timecodes and concise original research paraphrases only; full transcripts remain at publishers.",
+  "axioms": [
+    "Public assertion is not private belief",
+    "Executive interview is not necessarily company policy",
+    "Prediction is not achieved capability",
+    "Retrospective source capture cannot become contemporaneous forecast knowledge",
+    "Textual direction may influence future world but influence and reversibility require separate evidence"
+  ],
+  "speakers": [
+    {
+      "speaker_id": "sam-altman",
+      "display_name": "Sam Altman"
+    },
+    {
+      "speaker_id": "dario-amodei",
+      "display_name": "Dario Amodei"
+    },
+    {
+      "speaker_id": "demis-hassabis",
+      "display_name": "Demis Hassabis"
+    },
+    {
+      "speaker_id": "yann-lecun",
+      "display_name": "Yann LeCun"
+    },
+    {
+      "speaker_id": "elon-musk",
+      "display_name": "Elon Musk"
+    },
+    {
+      "speaker_id": "liang-wenfeng",
+      "display_name": "梁文鋒"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "lex-altman-419-2024",
+      "title": "Sam Altman: OpenAI, GPT-5, Sora, Board Saga, Elon Musk, Ilya, Power & AGI",
+      "publisher": "Lex Fridman Podcast",
+      "published_on": "2024-03-18",
+      "first_captured_on": "2026-11-07",
+      "interview_recorded_on": null,
+      "speaker_id": "sam-altman",
+      "organization_at_time": "OpenAI",
+      "role_at_time": "CEO",
+      "affiliation_relation": "guest_organization_at_time",
+      "format": "podcast_interview",
+      "url": "https://lexfridman.com/sam-altman-2/",
+      "transcript_url": "https://lexfridman.com/sam-altman-2-transcript",
+      "transcript_origin": "publisher_transcript",
+      "source_confidence": "original_publisher",
+      "publication_date_basis": "publisher_page"
+    },
+    {
+      "source_id": "dwarkesh-dario-2023",
+      "title": "Dario Amodei (Anthropic CEO): The hidden pattern behind every AI breakthrough",
+      "publisher": "Dwarkesh Podcast",
+      "published_on": "2023-08-08",
+      "first_captured_on": "2026-11-07",
+      "interview_recorded_on": null,
+      "speaker_id": "dario-amodei",
+      "organization_at_time": "Anthropic",
+      "role_at_time": "CEO",
+      "affiliation_relation": "guest_organization_at_time",
+      "format": "podcast_interview",
+      "url": "https://www.dwarkesh.com/p/dario-amodei",
+      "transcript_url": "https://www.dwarkesh.com/p/dario-amodei",
+      "transcript_origin": "publisher_transcript",
+      "source_confidence": "original_publisher",
+      "publication_date_basis": "publisher_page"
+    },
+    {
+      "source_id": "dwarkesh-dario-2026",
+      "title": "Dario Amodei — We are near the end of the exponential",
+      "publisher": "Dwarkesh Podcast",
+      "published_on": "2026-02-13",
+      "first_captured_on": "2026-11-07",
+      "interview_recorded_on": null,
+      "speaker_id": "dario-amodei",
+      "organization_at_time": "Anthropic",
+      "role_at_time": "CEO",
+      "affiliation_relation": "guest_organization_at_time",
+      "format": "podcast_interview",
+      "url": "https://www.dwarkesh.com/p/dario-amodei-2",
+      "transcript_url": "https://www.dwarkesh.com/p/dario-amodei-2",
+      "transcript_origin": "publisher_transcript",
+      "source_confidence": "original_publisher",
+      "publication_date_basis": "publisher_page"
+    },
+    {
+      "source_id": "lex-demis-475-2025",
+      "title": "Demis Hassabis: Future of AI, Simulating Reality, Physics and Video Games",
+      "publisher": "Lex Fridman Podcast",
+      "published_on": "2025-07-23",
+      "first_captured_on": "2026-11-07",
+      "interview_recorded_on": null,
+      "speaker_id": "demis-hassabis",
+      "organization_at_time": "Google DeepMind",
+      "role_at_time": "CEO",
+      "affiliation_relation": "guest_organization_at_time",
+      "format": "podcast_interview",
+      "url": "https://lexfridman.com/demis-hassabis-2/",
+      "transcript_url": "https://lexfridman.com/demis-hassabis-2-transcript",
+      "transcript_origin": "publisher_transcript",
+      "source_confidence": "original_publisher",
+      "publication_date_basis": "publisher_page"
+    },
+    {
+      "source_id": "lex-lecun-416-2024",
+      "title": "Yann LeCun: Meta AI, Open Source, Limits of LLMs, AGI & the Future of AI",
+      "publisher": "Lex Fridman Podcast",
+      "published_on": "2024-03-07",
+      "first_captured_on": "2026-11-07",
+      "interview_recorded_on": null,
+      "speaker_id": "yann-lecun",
+      "organization_at_time": "Meta",
+      "role_at_time": "Chief AI Scientist at interview publication",
+      "affiliation_relation": "guest_organization_at_time",
+      "format": "podcast_interview",
+      "url": "https://lexfridman.com/yann-lecun-3",
+      "transcript_url": "https://lexfridman.com/yann-lecun-3-transcript",
+      "transcript_origin": "publisher_transcript",
+      "source_confidence": "original_publisher",
+      "publication_date_basis": "publisher_page"
+    },
+    {
+      "source_id": "lex-musk-400-2023",
+      "title": "Elon Musk: War, AI, Aliens, Politics, Physics, Video Games, and Humanity",
+      "publisher": "Lex Fridman Podcast",
+      "published_on": "2023-11-09",
+      "first_captured_on": "2026-11-07",
+      "interview_recorded_on": null,
+      "speaker_id": "elon-musk",
+      "organization_at_time": "xAI",
+      "role_at_time": "Founder / leadership voice, also CEO of other companies",
+      "affiliation_relation": "guest_organization_at_time",
+      "format": "podcast_interview",
+      "url": "https://lexfridman.com/elon-musk-4/",
+      "transcript_url": "https://lexfridman.com/elon-musk-4-transcript",
+      "transcript_origin": "publisher_transcript",
+      "source_confidence": "original_publisher",
+      "publication_date_basis": "publisher_page"
+    },
+    {
+      "source_id": "36kr-liang-2024",
+      "title": "揭秘 DeepSeek：一個更極致的中國技術理想主義故事（暗湧 Waves 訪談）",
+      "publisher": "36氪／暗湧 Waves",
+      "published_on": "2024-07-22",
+      "first_captured_on": "2026-11-07",
+      "interview_recorded_on": null,
+      "speaker_id": "liang-wenfeng",
+      "organization_at_time": "DeepSeek",
+      "role_at_time": "Founder / principal interviewee",
+      "affiliation_relation": "guest_organization_at_time",
+      "format": "interview_QA",
+      "url": "https://www.36kr.com/p/2872793466982535",
+      "transcript_url": "https://www.36kr.com/p/2872793466982535",
+      "transcript_origin": "original_interviewer_qa",
+      "source_confidence": "original_interviewer_qa",
+      "publication_date_basis": "publisher_page"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "sam24-agi-definition",
+      "source_id": "lex-altman-419-2024",
+      "speaker_id": "sam-altman",
+      "source_locator": {
+        "timecode": "01:32:31",
+        "section": "AGI"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他認為「何時跨越 AGI」的問題定義含混；相較爭論標籤，更適合討論系統能否完成具體能力任務。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "definition",
+        "verification_criterion",
+        "self_description"
+      ],
+      "reversibility_assessment": "question_raised",
+      "stance_link_hypothesis": "定義從單一標籤走向具體功能門檻的公開表述。",
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "sam24-science-marker",
+      "source_id": "lex-altman-419-2024",
+      "speaker_id": "sam-altman",
+      "source_locator": {
+        "timecode": "01:35:16",
+        "section": "AGI"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他個人重視 AI 能否顯著加快全球科學發現的速度，將此視為具重要性的能力現象。",
+      "claim_scope": "individual_public_statement",
+      "modality": "personal_preference",
+      "dimensions": [
+        "definition",
+        "verification_criterion",
+        "intent_direction"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "sam24-governance",
+      "source_id": "lex-altman-419-2024",
+      "speaker_id": "sam-altman",
+      "source_locator": {
+        "timecode": "01:38:14",
+        "section": "AGI governance"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他公開主張不應由單一個人完全控制 AGI，強調健全治理與政府規則。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "governance",
+        "intent_direction",
+        "reversibility"
+      ],
+      "reversibility_assessment": "question_raised",
+      "stance_link_hypothesis": "治理程序能否改變部署方向仍需獨立制度證據。",
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "sam24-robotics",
+      "source_id": "lex-altman-419-2024",
+      "speaker_id": "sam-altman",
+      "source_locator": {
+        "timecode": "01:31:32",
+        "section": "Embodied AI"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他希望 AI 發展能涵蓋實體世界的機器人；指出 OpenAI 曾聚焦別處，未來可能重返機器人研發。",
+      "claim_scope": "individual_public_statement",
+      "modality": "personal_preference",
+      "dimensions": [
+        "intent_direction",
+        "research_strategy",
+        "reversibility"
+      ],
+      "reversibility_assessment": "question_raised",
+      "stance_link_hypothesis": "實際資源投入或恢復機器人路線，需要後續獨立記錄。",
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "dario23-scaling-mechanism",
+      "source_id": "dwarkesh-dario-2023",
+      "speaker_id": "dario-amodei",
+      "source_locator": {
+        "timecode": "00:01:21",
+        "section": "Scaling"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他在 2023 年承認，模型隨規模提升的平滑規律主要是觀察到的經驗事實，機制尚無令人滿意的完整解釋。",
+      "claim_scope": "individual_public_statement",
+      "modality": "explicitly_uncertain",
+      "dimensions": [
+        "self_description",
+        "uncertainty",
+        "definition"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "dario23-specific-abilities",
+      "source_id": "dwarkesh-dario-2023",
+      "speaker_id": "dario-amodei",
+      "source_locator": {
+        "timecode": "00:03:29",
+        "section": "Scaling"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他區分能較穩定預測的統計損失與難以預測的具體能力出現時點；不應把二者混同。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "uncertainty",
+        "verification_criterion",
+        "research_strategy"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "dario26-scaled-as-expected",
+      "source_id": "dwarkesh-dario-2026",
+      "speaker_id": "dario-amodei",
+      "source_locator": {
+        "timecode": "00:00:00",
+        "section": "What exactly are we scaling?"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他回顧認為底層技術指數式進展大致符合先前預期，但具體在程式能力上的路線讓他未必事先料到。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "self_description",
+        "forecast",
+        "uncertainty"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "dario26-verified-vs-unverified",
+      "source_id": "dwarkesh-dario-2026",
+      "speaker_id": "dario-amodei",
+      "source_locator": {
+        "timecode": null,
+        "section": "Is diffusion cope?"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他區分可外部驗證的程式工作與較難驗證的科學發現、小說等任務，認為兩類能力達成時間存在不同不確定性。",
+      "claim_scope": "individual_public_statement",
+      "modality": "hypothesized",
+      "dimensions": [
+        "verification_criterion",
+        "forecast",
+        "uncertainty"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "dario26-diffusion-not-instant",
+      "source_id": "dwarkesh-dario-2026",
+      "speaker_id": "dario-amodei",
+      "source_locator": {
+        "timecode": null,
+        "section": "Is diffusion cope?"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他將模型能力進步與能力在經濟中的實際擴散區分；即使能力快速成長，實體應用與營收不會瞬間等速發生。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "economic_diffusion",
+        "intent_direction",
+        "uncertainty"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "dario26-not-agi-now",
+      "source_id": "dwarkesh-dario-2026",
+      "speaker_id": "dario-amodei",
+      "source_locator": {
+        "timecode": null,
+        "section": "Is diffusion cope?"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他明確否認 2026 年 2 月當下已基本達到其所稱的 AGI／資料中心天才國家狀態。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "definition",
+        "self_description",
+        "verification_criterion"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "demis25-agi-2030",
+      "source_id": "lex-demis-475-2025",
+      "speaker_id": "demis-hassabis",
+      "source_locator": {
+        "timecode": "00:52:33",
+        "section": "Path to AGI"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他估計到 2030 年左右實現其高門檻 AGI 定義的機率約為五成，並將腦的廣泛認知功能列入參照。",
+      "claim_scope": "individual_public_statement",
+      "modality": "hypothesized",
+      "dimensions": [
+        "forecast",
+        "definition",
+        "uncertainty"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "demis25-discovery-game",
+      "source_id": "lex-demis-475-2025",
+      "speaker_id": "demis-hassabis",
+      "source_locator": {
+        "timecode": "00:55:14",
+        "section": "Path to AGI"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "除全面性的任務測試外，他希望看到系統能提出具原創性的科學假說，甚至發明如圍棋般深刻的新遊戲。",
+      "claim_scope": "individual_public_statement",
+      "modality": "personal_preference",
+      "dimensions": [
+        "verification_criterion",
+        "intent_direction",
+        "definition"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "demis25-two-track",
+      "source_id": "lex-demis-475-2025",
+      "speaker_id": "demis-hassabis",
+      "source_locator": {
+        "timecode": "01:04:17",
+        "section": "Scaling laws"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他認為純擴大規模是否足以抵達 AGI 尚不確定，因此研究組織同時投入現有路線擴張及探索新方法。",
+      "claim_scope": "individual_public_statement",
+      "modality": "explicitly_uncertain",
+      "dimensions": [
+        "research_strategy",
+        "intent_direction",
+        "reversibility"
+      ],
+      "reversibility_assessment": "question_raised",
+      "stance_link_hypothesis": "是否能在組織資源配置上實際反轉路線，尚未以帳本驗證。",
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "lecun24-agi-gradual",
+      "source_id": "lex-lecun-416-2024",
+      "speaker_id": "yann-lecun",
+      "source_locator": {
+        "timecode": "02:04:35",
+        "section": "AGI"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他認為人類層級／通用智能不會是某天突然開機的單點事件，而更可能逐步達成。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "definition",
+        "forecast",
+        "research_strategy"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "lecun24-world-model",
+      "source_id": "lex-lecun-416-2024",
+      "speaker_id": "yann-lecun",
+      "source_locator": {
+        "timecode": null,
+        "section": "JEPA / hierarchical planning"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他討論從影片學習世界表徵、記憶與分層規劃，將其作為建構更廣泛智能的重要研究方向。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "research_strategy",
+        "intent_direction",
+        "definition"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "musk23-physics-grounding",
+      "source_id": "lex-musk-400-2023",
+      "speaker_id": "elon-musk",
+      "source_locator": {
+        "timecode": "00:35:59",
+        "section": "xAI Grok"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他描述 xAI 希望讓 AI 的工程、數學與物理回答有可靠根據，並將忠於現實世界的真值作為研發方向。",
+      "claim_scope": "individual_public_statement",
+      "modality": "organizational_intention_claim",
+      "dimensions": [
+        "intent_direction",
+        "research_strategy",
+        "verification_criterion"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "musk23-reality-test",
+      "source_id": "lex-musk-400-2023",
+      "speaker_id": "elon-musk",
+      "source_locator": {
+        "timecode": "00:40:01",
+        "section": "xAI Grok"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他認為最終應以現實世界事實核驗 AI 的推論，而非僅依輸出語氣或表面一致性判斷。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "verification_criterion",
+        "definition"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "musk23-compute-open",
+      "source_id": "lex-musk-400-2023",
+      "speaker_id": "elon-musk",
+      "source_locator": {
+        "timecode": "01:23:28",
+        "section": "Should AI be open-sourced?"
+      },
+      "record_status": "paraphrased_publisher_transcript",
+      "original_language": "en",
+      "paraphrase_zh_tw": "他認為當時運行極高程度智能需要大量算力，並以 Grok 的訓練規模說明硬體門檻。",
+      "claim_scope": "individual_public_statement",
+      "modality": "asserted",
+      "dimensions": [
+        "research_strategy",
+        "economic_diffusion",
+        "uncertainty"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "liang24-agi-target",
+      "source_id": "36kr-liang-2024",
+      "speaker_id": "liang-wenfeng",
+      "source_locator": {
+        "timecode": null,
+        "section": "價格戰第一槍是怎麼打響的？"
+      },
+      "record_status": "paraphrased_original_QA",
+      "original_language": "zh-CN",
+      "paraphrase_zh_tw": "他公開將 AGI 視為目的地，認為在有限資源下提高模型能力，需要研究新模型架構，而不只是快速沿用既有架構做應用。",
+      "claim_scope": "individual_public_statement",
+      "modality": "organizational_intention_claim",
+      "dimensions": [
+        "intent_direction",
+        "research_strategy"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "liang24-affordability",
+      "source_id": "36kr-liang-2024",
+      "speaker_id": "liang-wenfeng",
+      "source_locator": {
+        "timecode": null,
+        "section": "價格戰第一槍是怎麼打響的？"
+      },
+      "record_status": "paraphrased_original_QA",
+      "original_language": "zh-CN",
+      "paraphrase_zh_tw": "他將 API 降價與下一代架構帶來的成本改善、以及希望 AI 普惠可負擔的方向聯繫起來。",
+      "claim_scope": "individual_public_statement",
+      "modality": "organizational_intention_claim",
+      "dimensions": [
+        "intent_direction",
+        "economic_diffusion"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "liang24-no-shut-source",
+      "source_id": "36kr-liang-2024",
+      "speaker_id": "liang-wenfeng",
+      "source_locator": {
+        "timecode": null,
+        "section": "更多的投入並不一定產生更多的創新"
+      },
+      "record_status": "paraphrased_original_QA",
+      "original_language": "zh-CN",
+      "paraphrase_zh_tw": "受訪時他表達不打算轉向閉源，並將研究社群與技術生態放在短期閉源護城河之前。",
+      "claim_scope": "individual_public_statement",
+      "modality": "organizational_intention_claim",
+      "dimensions": [
+        "reversibility",
+        "governance",
+        "intent_direction",
+        "research_strategy"
+      ],
+      "reversibility_assessment": "question_raised",
+      "stance_link_hypothesis": "若後續商業條件改變，實際是否可逆須另以後續公開行動比對。",
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "liang24-multiple-paths",
+      "source_id": "36kr-liang-2024",
+      "speaker_id": "liang-wenfeng",
+      "source_locator": {
+        "timecode": null,
+        "section": "你覺得 AGI 還要多久實現？"
+      },
+      "record_status": "paraphrased_original_QA",
+      "original_language": "zh-CN",
+      "paraphrase_zh_tw": "他認為 AGI 時點難確定、內部尚無統一技術路線，當時同時研究數學程式、多模態及自然語言。",
+      "claim_scope": "individual_public_statement",
+      "modality": "explicitly_uncertain",
+      "dimensions": [
+        "forecast",
+        "research_strategy",
+        "intent_direction",
+        "uncertainty"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    },
+    {
+      "claim_id": "liang24-research-not-apps",
+      "source_id": "36kr-liang-2024",
+      "speaker_id": "liang-wenfeng",
+      "source_locator": {
+        "timecode": null,
+        "section": "為什麼 DeepSeek 目前選擇只做研究探索？"
+      },
+      "record_status": "paraphrased_original_QA",
+      "original_language": "zh-CN",
+      "paraphrase_zh_tw": "他描述公司當時優先參與原創技術探索，而非以快速應用商業化作為主要目的。",
+      "claim_scope": "individual_public_statement",
+      "modality": "organizational_intention_claim",
+      "dimensions": [
+        "intent_direction",
+        "research_strategy",
+        "economic_diffusion"
+      ],
+      "reversibility_assessment": "not_assessed",
+      "stance_link_hypothesis": null,
+      "annotation_status": "analyst_provisional_not_fact",
+      "analytic_limits": "公開訪談可證明其曾如此表述；不能直接推定內心信念、整家公司正式政策或未來因果。"
+    }
+  ]
+}

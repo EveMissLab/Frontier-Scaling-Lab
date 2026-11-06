@@ -25,15 +25,8 @@ DOMAINS = frozenset({"digital", "embodied"})
 CASE_TYPES = frozenset({
     "goal_changed", "irrelevant_noise", "intent_ambiguous", "exception_boundary",
 })
-# Canonical control classes are disclosed to the evaluator only on reveal.
-# A registered case's class and oracle choice are not stored together before
-# the Agent decides.
-EXPECTED_ACTION_BY_CASE_TYPE = {
-    "goal_changed":"replan",
-    "irrelevant_noise":"maintain",
-    "intent_ambiguous":"clarify",
-    "exception_boundary":"escalate",
-}
+# Categories describe scenario provenance; no category fixes a universally
+# correct AI action. The case context and outcome-specific oracle are sealed.
 DDL = """
 PRAGMA foreign_keys = ON;
 CREATE TABLE IF NOT EXISTS g2_protocols(
@@ -151,7 +144,7 @@ def _event(db,event_id,run_id,expected_kind=None,as_of=None):
     return item
 
 
-def oracle_commitment(case_id,expected_action,expected_goal_sha256,nonce):
+def oracle_commitment(case_id,expected_action,expected_goal_sha256,nonce,case_type):
     """Store only the commitment hash before the experiment.
 
     The nonce must be 128-bit or larger random hex from an external evaluator;
@@ -160,6 +153,8 @@ def oracle_commitment(case_id,expected_action,expected_goal_sha256,nonce):
     identifier(case_id,"case_id")
     if expected_action not in ACTIONS:
         raise InterventionError("invalid expected action")
+    if case_type not in CASE_TYPES:
+        raise InterventionError("invalid case class")
     _digest(expected_goal_sha256)
     if not isinstance(nonce,str) or re.fullmatch(r"[0-9a-f]{32,128}",nonce) is None:
         raise InterventionError("oracle nonce must be 128+ bit lowercase random hex")
@@ -167,6 +162,7 @@ def oracle_commitment(case_id,expected_action,expected_goal_sha256,nonce):
         "schema":"fsl/g2-oracle/v0.8",
         "case_id":case_id,
         "expected_action":expected_action,
+        "declared_case_type":case_type,
         "expected_goal_sha256":expected_goal_sha256,
         "nonce":nonce,
     })
@@ -280,12 +276,12 @@ def reveal(db,entry):
     identifier(entry["judgement_event_id"],"judgement_event_id")
     if entry["declared_case_type"] not in CASE_TYPES:
         raise InterventionError("invalid hidden challenge type")
-    if EXPECTED_ACTION_BY_CASE_TYPE[entry["declared_case_type"]] != entry["expected_action"]:
-        raise InterventionError("revealed expected action contradicts preregistered case class")
+    # A goal change may correctly require maintaining a strategy; context,
+    # not a hard-coded category-to-action mapping, determines the oracle.
     _url(entry["evaluator_url"])
     committed=oracle_commitment(
         entry["case_id"],entry["expected_action"],entry["expected_goal_sha256"],
-        entry["oracle_nonce"])
+        entry["oracle_nonce"],entry["declared_case_type"])
     row=db.execute("""SELECT c.sealed_oracle_sha256,c.committed_at,c.outcome_due_at,
                              p.run_id,d.decision_event_id,d.action,d.bound_at
           FROM g2_precommitted_cases c JOIN g2_protocols p USING(protocol_id)
@@ -437,17 +433,26 @@ def evaluate(db,protocol_id,as_of):
             "independently_verified":False,
         })
     counts={kind:{"tested":0,"recorded_pass":0} for kind in sorted(CASE_TYPES)}
+    action_counts={action:{"tested":0,"recorded_pass":0} for action in sorted(ACTIONS)}
     for entry in result:
         if entry["revealed_case_type"] is not None:
             segment=counts[entry["revealed_case_type"]]
             segment["tested"]+=1
             segment["recorded_pass"]+=int(entry["recorded_outcome_gate"])
+            # Count oracle actions separately: category labels do not prescribe
+            # decision policy, and a complete contrast needs diverse actions.
+            expected=next((row["expected_action"] for row in entries
+                           if row["case_id"]==entry["case_id"]),None)
+            if expected in action_counts:
+                action_counts[expected]["tested"]+=1
+                action_counts[expected]["recorded_pass"]+=int(entry["recorded_outcome_gate"])
     from fsl_functional.audit import evaluate as functional_eval
     f=functional_eval(db,p["run_id"],as_of=cutoff)
     prereg_complete=all(
         counts[kind]["tested"]>0 for kind in CASE_TYPES)
+    action_diversity=all(action_counts[action]["tested"]>0 for action in ACTIONS)
     recorded_outcomes_all=(
-        prereg_complete and
+        prereg_complete and action_diversity and
         all(x["recorded_outcome_gate"] for x in result)
         and all(x["perturbation_observed"] for x in result))
     g1=f["gates"]["G1_extreme_long_duration_completion"]
@@ -463,6 +468,7 @@ def evaluate(db,protocol_id,as_of):
         "evidence_class":p["evidence_class"],
         "total_cases_preregistered":len(result),
         "four_scenario_case_coverage":counts,
+        "four_action_contrast_coverage":action_counts,
         "case_records":result,
         "final_goal_alignment_claim":goal,
         "finished_artifact_byte_receipts":artifact_receipts,

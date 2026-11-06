@@ -5,6 +5,10 @@ on:
   push:
     paths:
       - '.github/workflows/functional-package.yml'
+      - 'fsl_functional/**'
+      - 'docs/FUNCTIONAL_FRONTIER_v0.6.md'
+      - 'tests/test_functional.py'
+      - 'tests/fixtures/functional_*.json'
 
 permissions:
   contents: read

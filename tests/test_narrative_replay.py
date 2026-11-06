@@ -11,6 +11,7 @@ from pathlib import Path
 import unittest
 
 from fsl_discourse.replay import ReplayError,validate_cases,replay_case,replay_all
+from fsl_discourse.replay_export import rows_from_report,COLUMNS
 
 ROOT=Path(__file__).resolve().parent.parent
 def load(name):
@@ -27,6 +28,32 @@ def run(case_id,date="2026-11-07",mode="retrospective"):
 
 
 class NarrativeReplayTests(unittest.TestCase):
+    def test_export_rows_keep_dates_and_do_not_score_agi_or_causality(self):
+        report=replay_all(DISCOURSE,MARKET,CASES,as_of="2026-11-07")
+        rows=rows_from_report(report)
+        self.assertEqual(len(rows),3)
+        self.assertEqual(set(rows[0]),set(COLUMNS))
+        self.assertEqual({x["historical_baseline_day"] for x in rows},
+                         {"2023-08-08","2024-07-22","2025-07-23"})
+        self.assertTrue(all(x["independent_quality_tests_completed"]==0
+                            for x in rows))
+        self.assertTrue(all(not x["causal_effect_verified"] for x in rows))
+        self.assertEqual(next(x for x in rows if x["speaker_id"]=="demis-hassabis")
+                         ["forecast_status"],"not_due")
+
+    def test_utf8_canonical_math_and_date_research_source(self):
+        paper=(ROOT/"docs"/
+             "NARRATIVE_DRIFT_INTENTION_REALITY_REPLAY_v0.11.md").read_bytes()
+        doc=paper.decode("utf-8",errors="strict")
+        self.assertIn("2026-11-07",doc)
+        self.assertIn("UTF-8",doc)
+        self.assertIn("Dario Amodei",doc)
+        self.assertIn("Demis Hassabis",doc)
+        self.assertIn("梁文鋒",doc)
+        self.assertEqual(doc.count("$")%2,0)
+        for invalid in (r"\[",r"\]",r"\(",r"\)"):
+            self.assertNotIn(invalid,doc)
+
     def test_three_sourced_cases_open_to_multiple_hypotheses(self):
         r=validate_cases(CASES,discourse=DISCOURSE,market=MARKET)
         self.assertEqual(r["case_count"],3)

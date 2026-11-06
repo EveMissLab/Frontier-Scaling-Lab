@@ -170,6 +170,26 @@ class InterventionTests(unittest.TestCase):
         self.assertFalse(outcome["G2_recorded_conditions_satisfied"])
         self.assertEqual(outcome["assessment_status"],"synthetic_demonstration_only")
 
+    def test_goal_change_can_correctly_leave_existing_strategy_unchanged(self):
+        # A goal change is context, not an executable rule saying "always
+        # replan". Here the human's updated objective is compatible with the
+        # existing plan; the evaluator preregisters maintain as the answer.
+        fixture=copy.deepcopy(FIXTURE)
+        secret=fixture["synthetic_oracles"]["case-replan"]
+        secret["expected_action"]="maintain"
+        decision=next(e for e in fixture["mission_events"]
+                      if e["event_id"]=="decision-case-replan")
+        decision["payload"]["choice"]="maintain"
+        replay(self.db,fixture)
+        result=evaluate(self.db,fixture["protocol"]["protocol_id"],CUTOFF)
+        item=next(x for x in result["case_records"] if x["case_id"]=="case-replan")
+        self.assertEqual(item["revealed_case_type"],"goal_changed")
+        self.assertEqual(item["choice"],"maintain")
+        self.assertTrue(item["choice_matches_precommitted_oracle"])
+        self.assertTrue(item["recorded_outcome_gate"])
+        # A fully balanced four-action study still needs a replan control.
+        self.assertFalse(result["four_case_recorded_outcomes_satisfied"])
+
     def test_wrong_action_remains_failure_even_if_goal_accepted(self):
         fixture=copy.deepcopy(FIXTURE)
         wrong=next(e for e in fixture["mission_events"]

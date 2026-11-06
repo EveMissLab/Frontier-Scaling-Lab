@@ -1,0 +1,65 @@
+name: FSL v0.10 AI public-intent interview archive
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/discourse-v010-package.yml'
+      - 'fsl_discourse/**'
+      - 'data/agi_asi_public_interviews_seed_2026-11-07.json'
+      - 'data/discourse_to_model_history_links_v0.10.json'
+      - 'docs/AI_PUBLIC_NARRATIVES_INTENT_REVERSIBILITY_v0.10.md'
+      - 'tests/test_discourse_catalog.py'
+
+permissions:
+  contents: read
+
+jobs:
+  release-research-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate current canonical source and historical regression tests
+        run: |
+          python -m compileall -q fsl_discourse fsl_history fsl_economics tests
+          python -m unittest discover -s tests -q
+
+      - name: Generate sourced interview/intent/reversibility evidence reports
+        run: |
+          mkdir -p reports
+          python -m fsl_discourse.cli validate --output reports/VALIDATION.json
+          python -m fsl_discourse.cli asof --as-of 2024-12-31 --mode strict_known_at_time --output reports/2024_strict_knowledge.json
+          python -m fsl_discourse.cli asof --as-of 2024-12-31 --mode retrospective --output reports/2024_retrospective_statements.json
+          python -m fsl_discourse.cli asof --as-of 2026-11-07 --mode retrospective --output reports/2026_full_pilot_catalog.json
+          python -m fsl_discourse.cli speaker --speaker-id dario-amodei --as-of 2026-11-07 --output reports/2023_2026_dario_public_trajectory.json
+          python -m fsl_discourse.cli links --as-of 2026-11-07 --output reports/seven_temporal_links_not_causation.json
+          python -m fsl_discourse.export --output reports/source_located_public_claims.csv
+
+      - name: Verify historical accuracy, zero causal certifications, no ASI invention
+        run: |
+          python -c "import json,csv; root='reports/'; read=lambda n:json.load(open(root+n+'.json')); v=read('VALIDATION'); a=read('2024_strict_knowledge'); b=read('2024_retrospective_statements'); d=read('2023_2026_dario_public_trajectory'); l=read('seven_temporal_links_not_causation'); rows=list(csv.DictReader(open(root+'source_located_public_claims.csv',encoding='utf-8'))); assert v['interview_count']==7 and v['organization_count']==6 and v['claim_count']==23; assert a['included_claims']==0 and b['included_claims']>=15; assert d['source_publication_years']==['2023','2026']; assert l['causal_links_verified']==0 and l['actual_strategy_reversals_verified']==0; assert len(rows)==23 and not any('ASI' in r['topics'].split(';') for r in rows); assert all(r['source_url'].startswith('https://') for r in rows)"
+
+      - name: Package canonical UTF-8 paper, data, full source and time-provenance
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/AI_PUBLIC_NARRATIVES_INTENT_REVERSIBILITY_v0.10.md reports/AI_PUBLIC_NARRATIVES_INTENT_REVERSIBILITY_v0.10.md
+          cp data/agi_asi_public_interviews_seed_2026-11-07.json reports/agi_asi_public_interviews_seed_2026-11-07.json
+          cp data/discourse_to_model_history_links_v0.10.json reports/discourse_to_model_history_links_v0.10.json
+          cp LICENSE reports/LICENSE
+          git rev-parse HEAD > reports/GIT_HEAD.sha
+          python -c "from datetime import datetime,timezone;from zoneinfo import ZoneInfo;from pathlib import Path;import json;t=datetime.now(timezone.utc);m={'packed_at_utc':t.isoformat(),'packed_at_Asia_Taipei':t.astimezone(ZoneInfo('Asia/Taipei')).isoformat(),'first_FSL_capture_day_Asia_Taipei':'2026-11-07','recorded_interview_days':'unknown_not_fabricated','copyrighted_full_transcripts_included':False,'causal_claims_verified':0,'clock_source':'GitHub OS clock, not independent timestamp attestation'};Path('reports/PACKAGE_TIMESTAMP.json').write_text(json.dumps(m,indent=2)+'\n',encoding='utf-8')"
+          (cd reports && sha256sum Frontier-Scaling-Lab-source.zip AI_PUBLIC_NARRATIVES_INTENT_REVERSIBILITY_v0.10.md agi_asi_public_interviews_seed_2026-11-07.json discourse_to_model_history_links_v0.10.json LICENSE VALIDATION.json 2024_strict_knowledge.json 2024_retrospective_statements.json 2026_full_pilot_catalog.json 2023_2026_dario_public_trajectory.json seven_temporal_links_not_causation.json source_located_public_claims.csv PACKAGE_TIMESTAMP.json > SHA256SUMS.txt)
+
+      - name: Upload one complete research archive (no copyrighted transcript copies)
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.10-AI-public-intent-and-reversibility-${{ github.run_id }}
+          path: |
+            reports/
+          retention-days: 90
+          if-no-files-found: error

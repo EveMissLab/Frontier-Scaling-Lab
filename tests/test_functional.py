@@ -172,6 +172,8 @@ class FunctionalTests(unittest.TestCase):
         self.assertFalse(result["empirical_capability_ceiling_established"])
         self.assertEqual(result["user_instruction_rounds"],2)
         self.assertGreater(result["calendar_days_claimed"],28)
+        self.assertEqual(result["duration_stage_claimed"],"month_30d_plus")
+        self.assertFalse(result["multi_month_frontier_recorded"])
 
     def test_short_idle_interval_not_passed_as_long_duration_work(self):
         self.fill()

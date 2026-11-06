@@ -1,0 +1,58 @@
+name: FSL v0.7 observatory first-party pilot
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/observatory-pilot.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run offline source and event integrity tests
+        run: python -m unittest discover -s tests -q
+      - name: Observe this real GitHub commit, workflow run and local source bytes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          COMMIT_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          mkdir -p reports
+          python -m fsl_observatory.cli --db reports/pilot.sqlite pilot \
+            --session "fsl-gh-run-${RUN_ID}" \
+            --repo "${REPO}" \
+            --sha "${COMMIT_SHA}" \
+            --run-id "${RUN_ID}" \
+            --root . --file README.md \
+            --output reports/pilot_report.json
+          python -c "import json; r=json.load(open('reports/pilot_report.json')); assert r['receipt_count']==3 and not r['certification']['G1_G4_or_E1_certified'] and r['linked_functional_run'] is None"
+      - name: Archive source version and repeatable SHA256 manifest
+        if: success()
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          git rev-parse HEAD > reports/git_commit.sha
+          (cd reports && sha256sum pilot.sqlite pilot_report.json Frontier-Scaling-Lab-source.zip > SHA256SUMS.txt)
+      - name: Retain local evidence and one-source archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fsl-v0.7-observer-pilot-${{ github.run_id }}
+          path: |
+            reports/pilot.sqlite
+            reports/pilot_report.json
+            reports/Frontier-Scaling-Lab-source.zip
+            reports/git_commit.sha
+            reports/SHA256SUMS.txt
+          if-no-files-found: warn
+          retention-days: 90

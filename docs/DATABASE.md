@@ -73,6 +73,8 @@ Do not paste this demonstration into a live observational study: `example.org` i
 
 The `observed_multiplier` must compare like-for-like publicly disclosed model **total parameters**, not model names, API marketing labels, or benchmark scores. Its denominator and numerator must both be disclosed, sourced, compatible, and publicly available.
 
+The bundled synthetic configuration refuses to issue `target_class=observational` forecasts. A separate observational configuration requires `data_classification=observational`, a sourced baseline and URLs for currently operational cohorts. These are minimum structural guards, not independent fact verification.
+
 The code refuses feedback for `target_class=synthetic`, feedback published before the saved forecast, invalid URLs, and future feedback when replaying as-of an earlier date. It deduplicates a later disclosure about the same target-year cohort during fitting, so issuing multiple forecasts does not multiply the same outcome's evidential weight.
 
 ## Facility data roadmap

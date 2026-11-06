@@ -1,0 +1,22 @@
+{
+  "_WARNING": "ALL TIMESTAMPS AND WORK ARE FICTIONAL; EXACT UTC/Taipei FORMAT TEST ONLY",
+  "schema": "fsl/mission-clock/0.8.3",
+  "run_id": "synthetic-legacy-task-004",
+  "evidence_class": "synthetic",
+  "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "runtime_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "provider": "synthetic.provider",
+  "model_id": "synthetic.model",
+  "model_revision": "synthetic.revision",
+  "access_route": "synthetic.subscription",
+  "goal_frozen_at": "2026-11-03T22:00:00+08:00",
+  "execution_started_at": "2026-11-04T00:00:00+08:00",
+  "last_progress_at": "2026-11-05T12:30:00+08:00",
+  "execution_finished_at": "2026-11-05T23:30:00+08:00",
+  "accepted_at": "2026-11-06T00:10:00+08:00",
+  "captured_at": "2026-11-07T03:00:00+08:00",
+  "model_first_available_on": "2026-10-01",
+  "pricing_effective_on": "2026-11-01",
+  "price_first_captured_on": "2026-11-07",
+  "price_source_url": "https://example.org/synthetic-price-source"
+}

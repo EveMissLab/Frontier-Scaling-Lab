@@ -207,6 +207,10 @@ def snapshot(db, cutoff):
       ORDER BY recorded_on,published_on,event_id""", (cutoff, cutoff)).fetchall()
     state, used = {}, []
     for row in rows:
+        # A known *future-effective* event is not an already-effective fact.
+        # Keep it in the immutable log; revisit on a later as-of replay.
+        if row["effective_on"] is not None and row["effective_on"] > cutoff:
+            continue
         key = (row["entity_id"], row["field"])
         used.append(row["event_id"])
         if row["state"] == "retracted":

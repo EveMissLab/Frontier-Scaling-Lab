@@ -5,6 +5,39 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.8.1 — Long-running Agent access, subscriptions and actual costs
+
+[**Canonical v0.8.1 cost/allowance research source**](docs/AUTONOMY_ACCESS_AND_COST_v0.8.1.md) ·
+[Official plan cohort snapshot](data/access_plan_reference_2026-11-07.json)
+
+**A working 24–48-hour Agent requires a real access path, adequate usage
+allowance, sufficient cash, effective checkpoint recovery and an independently
+accepted result.** A higher-tier subscription can enable earlier demonstrations
+because it offers more capacity, but it never proves the underlying model is
+inherently more intelligent or guarantees 48 hours.
+
+The new immutable cost ledger separates:
+- actual USD monthly subscription cash outlay from amortized experiment allocation;
+- included plan credit consumption (NOT new cash) from purchased usage credits;
+- separately billed API tokens, cache rates, tools and local GPU/cloud compute;
+- real elapsed calendar time from overlapping active work windows and quota downtime;
+- recorded account entitlement from **unknown, never inferred** plan token limits;
+- experimental spend from cost per *independently accepted* final result.
+
+~~~bash
+python -m unittest discover -s tests -v
+python -m fsl_affordability.cli analyze \
+  --file tests/fixtures/affordability_synthetic_48h.json
+~~~
+
+The illustrated 48-hour Pro-200 example is **synthetic**, not an observed
+subscription invoice, completed long-running Agent mission, or proof that
+any named tier can sustain 24–48 hours uninterrupted. Plan pricing and
+feature availability can change; 2026-12 announced shared ChatGPT/Codex
+allowances must be captured with an exact experimental date.
+
+---
+
 ## v0.8 — Blind dynamic goal adaptation (G2) / 盲式適應干預
 
 This phase extends the **functional completion** goals rather than replacing

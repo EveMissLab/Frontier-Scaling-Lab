@@ -226,13 +226,35 @@ def compare_matched(baseline,candidate,*,bootstrap=200,seed=20261107):
             p1["model_key"],p1["model_revision"]) else "retest_only"
     a0=horizon_estimate(baseline,bootstrap=bootstrap,seed=seed)
     a1=horizon_estimate(candidate,bootstrap=bootstrap,seed=seed)
+    # Paired task-cluster resampling preserves identical task IDs across versions;
+    # independent bootstrap samples would underestimate dependence of ratios.
+    ratio_samples={"0.5":[],"0.8":[]}
+    if bootstrap:
+        rng=random.Random(seed)
+        ordered=sorted(a)
+        human_range=(min(t["human_expert_minutes"] for t in a.values()),
+                     max(t["human_expert_minutes"] for t in a.values()))
+        for _ in range(bootstrap):
+            sample_ids=[ordered[rng.randrange(len(ordered))] for __ in ordered]
+            fit0=_fit([a[k] for k in sample_ids])
+            fit1=_fit([b[k] for k in sample_ids])
+            for q in (0.5,0.8):
+                h0=_horizon(fit0,q,duration_range=human_range)
+                h1=_horizon(fit1,q,duration_range=human_range)
+                if h0 is not None and h1 is not None:
+                    ratio_samples[str(q)].append(h1/h0)
     metrics={}
     for q in ("0.5","0.8"):
         h0=a0["horizon"][q]["human_expert_minutes"]
         h1=a1["horizon"][q]["human_expert_minutes"]
+        boot=sorted(ratio_samples[q])
+        ratio_ci=None if len(boot)<max(30,bootstrap//2) else [
+            boot[int(0.025*(len(boot)-1))],boot[int(0.975*(len(boot)-1))]
         metrics[q]={
             "baseline_human_minutes":h0,"candidate_human_minutes":h1,
             "task_horizon_ratio":h1/h0 if h0 is not None and h1 is not None else None,
+            "paired_cluster_bootstrap_ratio_interval":ratio_ci,
+            "bootstrap_usable":len(boot),
             "status":"paired_protocol_descriptive" if h0 is not None and h1 is not None
                      else "not_identified",
         }

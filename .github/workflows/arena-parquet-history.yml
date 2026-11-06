@@ -17,6 +17,7 @@ on:
     paths:
       - '.github/workflows/arena-parquet-history.yml'
       - 'fsl_timecourse/parquet_history.py'
+      - 'scripts/report_arena_timecourse.py'
 
 permissions:
   contents: read
@@ -43,11 +44,19 @@ jobs:
             --max-rows 300 \
             --db reports/arena_parquet.sqlite \
             --report reports/arena_parquet_manifest.json
-      - name: Compute retrospective-only trend and readiness
+      - name: Compute retrospective-only trend, audit and readiness
         if: success()
+        env:
+          ARENA_MODEL: ${{ inputs.model_name || 'gpt-4o-2024-05-13' }}
+          ARENA_CONFIG: ${{ inputs.arena_config || 'text_style_control' }}
         run: |
           python -m fsl_timecourse.cli --db reports/arena_parquet.sqlite readiness \
             --output reports/arena_parquet_readiness.json
+          python -m scripts.report_arena_timecourse \
+            --db reports/arena_parquet.sqlite \
+            --model "$ARENA_MODEL" \
+            --config "$ARENA_CONFIG" \
+            --out-dir reports
       - name: Preserve source-hashed artifacts without committing vendor data
         if: always()
         uses: actions/upload-artifact@v4
@@ -57,5 +66,8 @@ jobs:
             reports/arena_parquet.sqlite
             reports/arena_parquet_manifest.json
             reports/arena_parquet_readiness.json
+            reports/arena_historical_analysis.json
+            reports/arena_historical_report.md
+            reports/arena_historical_points.csv
           retention-days: 90
           if-no-files-found: warn

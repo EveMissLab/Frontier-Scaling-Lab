@@ -1,0 +1,376 @@
+{
+  "_WARNING": "FAKE DATED EVENTS. DOES NOT DEMONSTRATE AI GAME CREATION OR MULTIWEEK AUTONOMY.",
+  "spec": {
+    "spec_id": "spec-game",
+    "track": "digital",
+    "kind": "game",
+    "title": "SYNTHETIC multiweek AAA-game audit demonstration; no real game built",
+    "reference_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/fictional-world-class-reference",
+    "reference_date": "2025-12-01",
+    "created_at": "2025-12-31T00:00:00Z",
+    "min_duration_days": 28,
+    "max_user_rounds": 3,
+    "required_criteria": [
+      "independent_user_acceptance",
+      "integrated_world_systems",
+      "playable_end_to_end",
+      "rights_provenance",
+      "stability_performance",
+      "visual_or_distinctive_style"
+    ],
+    "evidence_class": "synthetic"
+  },
+  "run": {
+    "run_id": "synthetic-game",
+    "spec_id": "spec-game",
+    "system_key": "FICTIONAL-AI",
+    "system_revision": "synthetic-v0",
+    "initiated_at": "2026-01-01T00:00:00Z",
+    "evidence_class": "synthetic"
+  },
+  "events": [
+    {
+      "event_id": "intent",
+      "run_id": "synthetic-game",
+      "kind": "intent",
+      "actor": "user",
+      "occurred_at": "2026-01-01T12:00:00Z",
+      "recorded_at": "2026-01-01T13:00:00Z",
+      "payload": {
+        "goal_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/intent"
+    },
+    {
+      "event_id": "checkpoint0",
+      "run_id": "synthetic-game",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-02T09:00:00Z",
+      "recorded_at": "2026-01-02T10:00:00Z",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/checkpoint0"
+    },
+    {
+      "event_id": "checkpoint1",
+      "run_id": "synthetic-game",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-08T09:00:00Z",
+      "recorded_at": "2026-01-08T10:00:00Z",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/checkpoint1"
+    },
+    {
+      "event_id": "checkpoint2",
+      "run_id": "synthetic-game",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-15T09:00:00Z",
+      "recorded_at": "2026-01-15T10:00:00Z",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/checkpoint2"
+    },
+    {
+      "event_id": "checkpoint3",
+      "run_id": "synthetic-game",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-22T09:00:00Z",
+      "recorded_at": "2026-01-22T10:00:00Z",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/checkpoint3"
+    },
+    {
+      "event_id": "checkpoint4",
+      "run_id": "synthetic-game",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-30T09:00:00Z",
+      "recorded_at": "2026-01-30T10:00:00Z",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/checkpoint4"
+    },
+    {
+      "event_id": "recover",
+      "run_id": "synthetic-game",
+      "kind": "recovery",
+      "actor": "system",
+      "occurred_at": "2026-01-03T12:00:00Z",
+      "recorded_at": "2026-01-03T13:00:00Z",
+      "payload": {
+        "checkpoint_event_id": "checkpoint0",
+        "restored_state_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "cause": "restart"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/recover"
+    },
+    {
+      "event_id": "goal-change",
+      "run_id": "synthetic-game",
+      "kind": "goal_revision",
+      "actor": "user",
+      "occurred_at": "2026-01-10T10:00:00Z",
+      "recorded_at": "2026-01-10T11:00:00Z",
+      "payload": {
+        "goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/goal-change"
+    },
+    {
+      "event_id": "replan",
+      "run_id": "synthetic-game",
+      "kind": "strategy_decision",
+      "actor": "ai",
+      "occurred_at": "2026-01-10T11:00:00Z",
+      "recorded_at": "2026-01-10T12:00:00Z",
+      "payload": {
+        "change_event_id": "goal-change",
+        "choice": "replan",
+        "reason_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/replan"
+    },
+    {
+      "event_id": "review-replan",
+      "run_id": "synthetic-game",
+      "kind": "adaptation_judgement",
+      "actor": "evaluator",
+      "occurred_at": "2026-01-10T13:00:00Z",
+      "recorded_at": "2026-01-10T14:00:00Z",
+      "payload": {
+        "decision_event_id": "replan",
+        "correct": true,
+        "revised_goal_met": true
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/review-replan"
+    },
+    {
+      "event_id": "env-shift",
+      "run_id": "synthetic-game",
+      "kind": "environment_change",
+      "actor": "environment",
+      "occurred_at": "2026-01-12T10:00:00Z",
+      "recorded_at": "2026-01-12T11:00:00Z",
+      "payload": {
+        "disturbance_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/env-shift"
+    },
+    {
+      "event_id": "maintain",
+      "run_id": "synthetic-game",
+      "kind": "strategy_decision",
+      "actor": "ai",
+      "occurred_at": "2026-01-12T11:00:00Z",
+      "recorded_at": "2026-01-12T12:00:00Z",
+      "payload": {
+        "change_event_id": "env-shift",
+        "choice": "maintain",
+        "reason_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/maintain"
+    },
+    {
+      "event_id": "review-maintain",
+      "run_id": "synthetic-game",
+      "kind": "adaptation_judgement",
+      "actor": "evaluator",
+      "occurred_at": "2026-01-12T13:00:00Z",
+      "recorded_at": "2026-01-12T14:00:00Z",
+      "payload": {
+        "decision_event_id": "maintain",
+        "correct": true,
+        "revised_goal_met": true
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/review-maintain"
+    },
+    {
+      "event_id": "build",
+      "run_id": "synthetic-game",
+      "kind": "deliverable",
+      "actor": "ai",
+      "occurred_at": "2026-02-04T10:00:00Z",
+      "recorded_at": "2026-02-04T11:00:00Z",
+      "payload": {
+        "artifact_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "artifact_type": "fictional_integrated_playable_game"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/build"
+    },
+    {
+      "event_id": "qa-0",
+      "run_id": "synthetic-game",
+      "kind": "quality_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T12:00:00Z",
+      "recorded_at": "2026-02-04T13:00:00Z",
+      "payload": {
+        "criterion": "independent_user_acceptance",
+        "passed": true,
+        "reviewer": "fictional-reviewer-0",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/qa-0"
+    },
+    {
+      "event_id": "qa-1",
+      "run_id": "synthetic-game",
+      "kind": "quality_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T12:00:00Z",
+      "recorded_at": "2026-02-04T13:00:00Z",
+      "payload": {
+        "criterion": "integrated_world_systems",
+        "passed": true,
+        "reviewer": "fictional-reviewer-1",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/qa-1"
+    },
+    {
+      "event_id": "qa-2",
+      "run_id": "synthetic-game",
+      "kind": "quality_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T12:00:00Z",
+      "recorded_at": "2026-02-04T13:00:00Z",
+      "payload": {
+        "criterion": "playable_end_to_end",
+        "passed": true,
+        "reviewer": "fictional-reviewer-0",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/qa-2"
+    },
+    {
+      "event_id": "qa-3",
+      "run_id": "synthetic-game",
+      "kind": "quality_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T12:00:00Z",
+      "recorded_at": "2026-02-04T13:00:00Z",
+      "payload": {
+        "criterion": "rights_provenance",
+        "passed": true,
+        "reviewer": "fictional-reviewer-1",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/qa-3"
+    },
+    {
+      "event_id": "qa-4",
+      "run_id": "synthetic-game",
+      "kind": "quality_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T12:00:00Z",
+      "recorded_at": "2026-02-04T13:00:00Z",
+      "payload": {
+        "criterion": "stability_performance",
+        "passed": true,
+        "reviewer": "fictional-reviewer-0",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/qa-4"
+    },
+    {
+      "event_id": "qa-5",
+      "run_id": "synthetic-game",
+      "kind": "quality_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T12:00:00Z",
+      "recorded_at": "2026-02-04T13:00:00Z",
+      "payload": {
+        "criterion": "visual_or_distinctive_style",
+        "passed": true,
+        "reviewer": "fictional-reviewer-1",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/qa-5"
+    },
+    {
+      "event_id": "style-personal_author-0",
+      "run_id": "synthetic-game",
+      "kind": "style_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T15:00:00Z",
+      "recorded_at": "2026-02-04T16:00:00Z",
+      "payload": {
+        "axis": "personal_author",
+        "passed": true,
+        "reviewer": "fictional-style-reviewer-0",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/style-personal_author-0"
+    },
+    {
+      "event_id": "style-personal_author-1",
+      "run_id": "synthetic-game",
+      "kind": "style_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T15:00:00Z",
+      "recorded_at": "2026-02-04T16:00:00Z",
+      "payload": {
+        "axis": "personal_author",
+        "passed": true,
+        "reviewer": "fictional-style-reviewer-1",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/style-personal_author-1"
+    },
+    {
+      "event_id": "style-ai_native-0",
+      "run_id": "synthetic-game",
+      "kind": "style_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T15:00:00Z",
+      "recorded_at": "2026-02-04T16:00:00Z",
+      "payload": {
+        "axis": "ai_native",
+        "passed": true,
+        "reviewer": "fictional-style-reviewer-0",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/style-ai_native-0"
+    },
+    {
+      "event_id": "style-ai_native-1",
+      "run_id": "synthetic-game",
+      "kind": "style_review",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-04T15:00:00Z",
+      "recorded_at": "2026-02-04T16:00:00Z",
+      "payload": {
+        "axis": "ai_native",
+        "passed": true,
+        "reviewer": "fictional-style-reviewer-1",
+        "deliverable_event_id": "build"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/style-ai_native-1"
+    },
+    {
+      "event_id": "accepted",
+      "run_id": "synthetic-game",
+      "kind": "final_acceptance",
+      "actor": "evaluator",
+      "occurred_at": "2026-02-05T10:00:00Z",
+      "recorded_at": "2026-02-05T11:00:00Z",
+      "payload": {
+        "deliverable_event_id": "build",
+        "accepted": true,
+        "goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "source_url": "https://example.org/THIS-IS-A-SYNTHETIC-FIXTURE/accepted"
+    }
+  ]
+}

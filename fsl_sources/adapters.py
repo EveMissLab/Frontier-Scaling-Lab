@@ -9,6 +9,7 @@ SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
 from datetime import date
+import hashlib
 import json
 import math
 import re
@@ -250,7 +251,7 @@ def parse_hf_benchmark(data, *, dataset_id, retrieved_on, max_rows=100):
     if len(data) > max_rows:
         raise CatalogError("benchmark exceeds requested row cap")
     records = []
-    for entry in data:
+    for row_index, entry in enumerate(data):
         if not isinstance(entry, dict):
             continue
         model_id = entry.get("modelId")
@@ -261,17 +262,29 @@ def parse_hf_benchmark(data, *, dataset_id, retrieved_on, max_rows=100):
                  "evaluation_agent_and_scaffold_may_differ"]
         flags.append("entry_marked_verified" if entry.get("verified") is True
                      else "entry_not_marked_verified")
+        # A model may have several leaderboard submissions with different
+        # agents/scaffolds. Never overwrite or dedupe them as one model score.
+        # Row index is included to disambiguate repeated filenames even when
+        # the upstream leaderboard contains several identical submission IDs.
+        label = json.dumps({
+            "file": entry.get("filename"), "pull_request": entry.get("pullRequest"),
+            "row_index": row_index, "model_id": model_id,
+        }, sort_keys=True, ensure_ascii=False)
+        submission_id = hashlib.sha256(label.encode("utf-8")).hexdigest()[:20]
+        methodology = ("hf-official-benchmark:" + dataset_id +
+                       ":submission:" + submission_id)
+        flags.append("submission_specific_not_a_universal_model_score")
         records.append(_metric(
             "hf:" + model_id, "submitted_benchmark_value", value,
             "benchmark_defined_units", "benchmark",
-            "hf-official-benchmark:" + dataset_id,
+            methodology,
             dataset_id, published=retrieved_on, flags=flags))
         nparam = entry.get("num_parameters")
         if isinstance(nparam, (int, float)) and not isinstance(nparam, bool) and nparam > 0:
             records.append(_metric(
                 "hf:" + model_id, "leaderboard_reported_parameters", nparam,
                 "parameters_reported", "metadata",
-                "hf-official-benchmark:" + dataset_id + ":parameter-report",
+                methodology + ":parameter-report",
                 dataset_id, published=retrieved_on,
                 flags=["not_architecturally_verified", "not_active_parameters"]))
     return {

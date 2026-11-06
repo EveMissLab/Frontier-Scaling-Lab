@@ -28,7 +28,7 @@ EVENTS = {
     "exception_escalation", "deliverable", "final_acceptance",
     "quality_review", "style_review", "task_switch", "domain_outcome",
     "safety_incident", "safety_resolution", "correction", "user_round",
-    "recovery",
+    "recovery", "stack_change",
 }
 ACTORS = {"user", "ai", "evaluator", "environment", "operator", "system"}
 BANDS = {"days": 2.0, "weeks": 7.0, "months": 28.0}
@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS functional_runs(
  spec_id TEXT NOT NULL REFERENCES functional_specs(spec_id),
  system_key TEXT NOT NULL,
  system_revision TEXT NOT NULL,
+ system_manifest_sha256 TEXT,
  initiated_at TEXT NOT NULL,
  evidence_class TEXT NOT NULL CHECK(evidence_class IN ('synthetic','observational'))
 );
@@ -214,11 +215,15 @@ def add_run(db, run):
         raise MissionError("run must match a registered spec and evidence class")
     if moment(run["initiated_at"]) < moment(spec["created_at"]):
         raise MissionError("run cannot start before specification")
+    if run["evidence_class"]=="observational":
+        sha256(run.get("system_manifest_sha256"))
     with db:
         db.execute("""INSERT INTO functional_runs
-          (run_id,spec_id,system_key,system_revision,initiated_at,evidence_class)
-          VALUES (?,?,?,?,?,?)""",
-          tuple(run[k] for k in required))
+          (run_id,spec_id,system_key,system_revision,system_manifest_sha256,initiated_at,evidence_class)
+          VALUES (?,?,?,?,?,?,?)""",
+          (run["run_id"],run["spec_id"],run["system_key"],
+           run["system_revision"],run.get("system_manifest_sha256"),
+           run["initiated_at"],run["evidence_class"]))
     return run["run_id"]
 
 
@@ -280,6 +285,14 @@ def validate_event(event):
             raise MissionError("recovery cause must identify restart or reactivation")
         if not event.get("source_url"):
             raise MissionError("recovery needs auditable external evidence reference")
+    if k=="stack_change":
+        _required(p,("previous_manifest_sha256","next_manifest_sha256","change_reason"))
+        sha256(p["previous_manifest_sha256"])
+        sha256(p["next_manifest_sha256"])
+        if not isinstance(p["change_reason"],str) or not p["change_reason"].strip():
+            raise MissionError("stack change needs reason")
+        if not event.get("source_url"):
+            raise MissionError("runtime/model/tool upgrade needs evidence reference")
     if k=="deliverable":
         _required(p,("artifact_sha256","artifact_type"))
         sha256(p["artifact_sha256"])

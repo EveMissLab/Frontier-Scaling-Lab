@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -45,5 +45,12 @@ jobs:
           python -m fsl_timecourse.horizon_cli estimate --input tests/fixtures/synthetic_horizon_baseline.json --as-of 2026-11-07 --bootstrap 60 --output /tmp/fsl_horizon_v05.json
           python -m fsl_timecourse.horizon_cli compare --baseline tests/fixtures/synthetic_horizon_baseline.json --candidate tests/fixtures/synthetic_horizon_candidate.json --as-of 2026-11-07 --bootstrap 0 --output /tmp/fsl_horizon_comparison_v05.json
           python -c "import json; p=json.load(open('/tmp/fsl_horizon_comparison_v05.json')); assert p['general_intelligence_multiplier'] is None; assert p['is_synthetic']"
+      - name: v0.6 actual user-defined functional objectives (synthetic protocol check only)
+        run: |
+          python -m fsl_functional.cli --db /tmp/fsl_functional_game.sqlite ingest-example --file tests/fixtures/functional_game_synthetic.json
+          python -m fsl_functional.cli --db /tmp/fsl_functional_game.sqlite audit --run-id synthetic-game --as-of 2026-02-07T00:00:00Z --output /tmp/fsl_functional_game.json
+          python -m fsl_functional.cli --db /tmp/fsl_functional_robot.sqlite ingest-example --file tests/fixtures/functional_embodied_synthetic.json
+          python -m fsl_functional.cli --db /tmp/fsl_functional_robot.sqlite audit --run-id synthetic-embodied --as-of 2026-01-10T00:00:00Z --output /tmp/fsl_functional_embodied.json
+          python -c "import json; g=json.load(open('/tmp/fsl_functional_game.json')); p=json.load(open('/tmp/fsl_functional_embodied.json')); assert g['gates']['G3_few_round_world_class_usable_delivery']['state']=='simulated_candidate_not_empirical'; assert p['gates']['E1_embodied_multi_domain_adaptation']['state']=='simulated_candidate_not_empirical'; assert not g['externally_certified_result'] and not p['externally_certified_result']"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

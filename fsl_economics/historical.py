@@ -21,7 +21,7 @@ MODES = (
 
 
 def _tri_bool(x, key):
-    if x not in (True,False,None) or isinstance(x,(int,str)):
+    if x is not True and x is not False and x is not None:
         raise EconomicsError(key+" must be true/false/null")
     return x
 

@@ -287,9 +287,14 @@ def evaluate(db, run_id, *, as_of):
              measurements=ad)
 
     if track=="digital":
+        # Only G2 is conditioned on G1 by the user. G3 is an independent
+        # finished-product target; a valid one-round deliverable need not
+        # consume several days or months.
         g3_missing=[]
-        if not g1["recorded_conditions_satisfied"]:
-            g3_missing.append("G1 complete product and sustained continuity")
+        if not acceptance_goal_matches:
+            g3_missing.append("user goal must match accepted finished product")
+        if direct_execution:
+            g3_missing.append("core implementation was directly executed by a human")
         if not 1<=user_rounds<=min(3,run["max_user_rounds"]):
             g3_missing.append("final result requires one to three substantive user instruction rounds")
         if q["missing"]:
@@ -303,9 +308,13 @@ def evaluate(db, run_id, *, as_of):
                                "reference_standard":run["reference_url"],
                                "reference_date":run["reference_date"],
                                "critical_quality_evidence":q})
+        # G4 is also independent of G3: a complete original animation
+        # or other art need not be a AAA game or commercial application.
         g4_missing=[]
-        if not g3["recorded_conditions_satisfied"]:
-            g4_missing.append("finished high-quality integrated work (G3)")
+        if not delivered or not acceptance_goal_matches:
+            g4_missing.append("completed, accepted, goal-aligned creative work")
+        if direct_execution:
+            g4_missing.append("creative core was directly executed by a human")
         for axis,count in styles.items():
             if count<2:
                 g4_missing.append(f"2 independent positive reviews for {axis} original style axis")

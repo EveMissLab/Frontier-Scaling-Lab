@@ -25,6 +25,15 @@ DOMAINS = frozenset({"digital", "embodied"})
 CASE_TYPES = frozenset({
     "goal_changed", "irrelevant_noise", "intent_ambiguous", "exception_boundary",
 })
+# Canonical control classes are disclosed to the evaluator only on reveal.
+# A registered case's class and oracle choice are not stored together before
+# the Agent decides.
+EXPECTED_ACTION_BY_CASE_TYPE = {
+    "goal_changed":"replan",
+    "irrelevant_noise":"maintain",
+    "intent_ambiguous":"clarify",
+    "exception_boundary":"escalate",
+}
 DDL = """
 PRAGMA foreign_keys = ON;
 CREATE TABLE IF NOT EXISTS g2_protocols(
@@ -267,6 +276,8 @@ def reveal(db,entry):
     identifier(entry["judgement_event_id"],"judgement_event_id")
     if entry["declared_case_type"] not in CASE_TYPES:
         raise InterventionError("invalid hidden challenge type")
+    if EXPECTED_ACTION_BY_CASE_TYPE[entry["declared_case_type"]] != entry["expected_action"]:
+        raise InterventionError("revealed expected action contradicts preregistered case class")
     _url(entry["evaluator_url"])
     committed=oracle_commitment(
         entry["case_id"],entry["expected_action"],entry["expected_goal_sha256"],
@@ -411,6 +422,7 @@ def evaluate(db,protocol_id,as_of):
         "g1_prerequisite":{"recorded_conditions_satisfied":
                             g1["recorded_conditions_satisfied"],
                            "independently_verified":False},
+        "four_case_recorded_outcomes_satisfied":bool(recorded_outcomes_all),
         "G2_recorded_conditions_satisfied":g2_gate,
         "G2_externally_verified":False,
         "adaptive_model_weights_updated":False,

@@ -194,6 +194,27 @@ class FunctionalTests(unittest.TestCase):
         self.assertFalse(result["gates"]["G1_extreme_long_duration_completion"]
                          ["recorded_conditions_satisfied"])
 
+    def test_G3_and_G4_do_not_require_G1_duration(self):
+        # The user stated G2 is conditional on G1. G3 (finished AAA/app in
+        # few rounds) and G4 (completed creative styles) are separate targets.
+        events=[e for e in game_events()
+                if e["kind"] not in ("checkpoint","progress","recovery")]
+        self.fill(events)
+        report=self.audit()
+        self.assertFalse(
+            report["gates"]["G1_extreme_long_duration_completion"]
+                  ["recorded_conditions_satisfied"])
+        self.assertFalse(
+            report["gates"]["G2_dynamic_autonomous_adaptation"]
+                  ["recorded_conditions_satisfied"])
+        self.assertTrue(
+            report["gates"]["G3_few_round_world_class_usable_delivery"]
+                  ["recorded_conditions_satisfied"])
+        self.assertTrue(
+            report["gates"]["G4_personal_and_ai_native_creative_styles"]
+                  ["recorded_conditions_satisfied"])
+        self.assertFalse(report["externally_certified_result"])
+
     def test_true_final_goal_link_required(self):
         events=game_events()
         receipt=next(e for e in events if e["event_id"]=="accepted")

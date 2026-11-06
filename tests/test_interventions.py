@@ -132,6 +132,44 @@ class InterventionTests(unittest.TestCase):
         self.assertFalse(case["decision_before_preregistered_deadline"])
         self.assertFalse(case["recorded_outcome_gate"])
 
+    def test_finished_artifact_has_no_byte_receipt_by_default(self):
+        replay(self.db)
+        outcome=evaluate(self.db,FIXTURE["protocol"]["protocol_id"],CUTOFF)
+        self.assertEqual(outcome["finished_artifact_byte_receipts"]["actual_byte_receipts"],0)
+        self.assertFalse(outcome["finished_artifact_byte_receipts"]["file_bytes_sha256_confirmed"])
+        self.assertTrue(outcome["four_case_recorded_outcomes_satisfied"])
+        self.assertFalse(outcome["G2_externally_verified"])
+
+    def test_v07_exact_bytes_support_but_never_certify_gameplay(self):
+        import hashlib
+        import tempfile
+        from pathlib import Path
+        from fsl_observatory.registry import add_session,add_receipt,link_receipt
+        from fsl_observatory.providers import local_file
+        fixture=copy.deepcopy(FIXTURE)
+        real_bytes=b"FICTIONAL OUTPUT CONTENT, NOT A REAL PRODUCT"
+        expected=hashlib.sha256(real_bytes).hexdigest()
+        artifact=next(e for e in fixture["mission_events"]
+                      if e["event_id"]=="final-artifact")
+        artifact["payload"]["artifact_sha256"]=expected
+        replay(self.db,fixture)
+        with tempfile.TemporaryDirectory() as root:
+            (Path(root)/"fake.bin").write_bytes(real_bytes)
+            add_session(self.db,session_id="source-s",mission_run_id=fixture["run"]["run_id"],
+                        created_at="2026-01-17T11:30:00Z",
+                        project_ref="synthetic-only-source-receipt")
+            receipt=local_file(root,"fake.bin",now="2026-01-17T12:00:00Z")
+            receipt_id=add_receipt(self.db,session_id="source-s",receipt=receipt)
+            link_receipt(self.db,receipt_id=receipt_id,event_id="final-artifact",
+                         role="supports_deliverable",
+                         recorded_at="2026-01-17T13:00:00Z")
+        outcome=evaluate(self.db,fixture["protocol"]["protocol_id"],CUTOFF)
+        self.assertTrue(outcome["finished_artifact_byte_receipts"]
+                        ["file_bytes_sha256_confirmed"])
+        self.assertFalse(outcome["G2_externally_verified"])
+        self.assertFalse(outcome["G2_recorded_conditions_satisfied"])
+        self.assertEqual(outcome["assessment_status"],"synthetic_demonstration_only")
+
     def test_wrong_action_remains_failure_even_if_goal_accepted(self):
         fixture=copy.deepcopy(FIXTURE)
         wrong=next(e for e in fixture["mission_events"]

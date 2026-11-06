@@ -7,6 +7,8 @@ on:
   push:
     paths:
       - '.github/workflows/public-evidence-refresh.yml'
+      - 'scripts/public_evidence_refresh.py'
+      - 'fsl_sources/adapters.py'
 
 permissions:
   contents: read

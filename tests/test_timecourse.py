@@ -169,6 +169,39 @@ class TimecourseTests(unittest.TestCase):
         with self.assertRaises(CatalogError):
             import_history(self.db, config="text", model=MODEL, fetch=partial)
 
+    def test_filter_http500_falls_back_to_exact_name_search(self):
+        calls = []
+        def fetch(url):
+            calls.append(url)
+            if "/filter?" in url:
+                raise CatalogError("API HTTP 500. Respect provider limits and retry manually later.")
+            return {
+                "rows": [
+                    synthetic_row("2025-08-01", 1410, model=MODEL),
+                    synthetic_row("2025-09-01", 1700, model="OTHER"),
+                ],
+                "num_rows_total": 2, "partial": False,
+            }
+        result = import_history(
+            self.db, config="text_style_control", model=MODEL,
+            retrieved_on="2026-11-06", fetch=fetch)
+        self.assertEqual(result["request_method"], "search_exact_postfilter_nonexhaustive")
+        self.assertEqual(result["rows_seen"], 1)
+        self.assertFalse(result["is_exhaustive"])
+        self.assertEqual(len(calls), 2)
+        obs = series(self.db)
+        self.assertEqual(obs["unique_published_dates"], 1)
+
+    def test_filter_fallback_does_not_ignore_http429(self):
+        calls = []
+        def fetch(url):
+            calls.append(url)
+            raise CatalogError("API HTTP 429. Respect provider limits.")
+        with self.assertRaises(CatalogError):
+            import_history(self.db, config="text", model=MODEL,
+                           retrieved_on="2026-11-06", fetch=fetch)
+        self.assertEqual(len(calls), 1)
+
     def test_sql_literals_escaped_and_limit_validated(self):
         u = filter_url(config="text", model="O'Hara (High)")
         self.assertIn("O%27%27Hara", u)

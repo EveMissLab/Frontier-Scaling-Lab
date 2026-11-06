@@ -1,0 +1,15 @@
+{
+  "external_model_id": "synthetic/research-model",
+  "category": "long_form_reasoning_reliability",
+  "counts": {
+    "positive": 6,
+    "neutral": 3,
+    "negative": 1
+  },
+  "sampling_method": "curated_public_sample",
+  "collected_on": "2026-11-04",
+  "source_url": "https://example.org/fictional-study-not-evidence",
+  "source_license": "synthetic-no-real-users",
+  "attribution": "SYNTHETIC FIXTURE: NO REAL USER REVIEWS",
+  "sample_window_id": "fixture-only-2026-11-04"
+}

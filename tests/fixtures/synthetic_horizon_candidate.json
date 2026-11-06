@@ -1,0 +1,168 @@
+{
+  "schema": "fsl/horizon-input/0.5",
+  "protocol": {
+    "task_set_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "benchmark_version": "synthetic-fixture-1.0",
+    "domain": "coding-reliability",
+    "model_key": "synthetic_horizon_candidate",
+    "model_revision": "synthetic-never-real",
+    "scaffold_key": "fixed-scaffold",
+    "tool_policy_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "prompt_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "budget": {
+      "max_total_tokens_per_task": 10000,
+      "max_wall_seconds_per_task": 600,
+      "max_usd_per_task": 3
+    },
+    "source_url": "https://example.org/synthetic-fixture-no-real-model",
+    "published_on": "2026-11-07",
+    "recorded_on": "2026-11-07",
+    "evaluation_mode": "synthetic"
+  },
+  "tasks": [
+    {
+      "task_id": "t00",
+      "human_expert_minutes": 8,
+      "attempts": 12,
+      "successes": 12
+    },
+    {
+      "task_id": "t01",
+      "human_expert_minutes": 10.48,
+      "attempts": 12,
+      "successes": 11
+    },
+    {
+      "task_id": "t02",
+      "human_expert_minutes": 13.7288,
+      "attempts": 12,
+      "successes": 11
+    },
+    {
+      "task_id": "t03",
+      "human_expert_minutes": 17.984728,
+      "attempts": 12,
+      "successes": 11
+    },
+    {
+      "task_id": "t04",
+      "human_expert_minutes": 23.55999368,
+      "attempts": 12,
+      "successes": 10
+    },
+    {
+      "task_id": "t05",
+      "human_expert_minutes": 30.86359172,
+      "attempts": 12,
+      "successes": 10
+    },
+    {
+      "task_id": "t06",
+      "human_expert_minutes": 40.43130515,
+      "attempts": 12,
+      "successes": 9
+    },
+    {
+      "task_id": "t07",
+      "human_expert_minutes": 52.96500975,
+      "attempts": 12,
+      "successes": 8
+    },
+    {
+      "task_id": "t08",
+      "human_expert_minutes": 69.38416278,
+      "attempts": 12,
+      "successes": 7
+    },
+    {
+      "task_id": "t09",
+      "human_expert_minutes": 90.89325324,
+      "attempts": 12,
+      "successes": 6
+    },
+    {
+      "task_id": "t10",
+      "human_expert_minutes": 119.07016174,
+      "attempts": 12,
+      "successes": 5
+    },
+    {
+      "task_id": "t11",
+      "human_expert_minutes": 155.98191188,
+      "attempts": 12,
+      "successes": 4
+    },
+    {
+      "task_id": "t12",
+      "human_expert_minutes": 204.33630456,
+      "attempts": 12,
+      "successes": 3
+    },
+    {
+      "task_id": "t13",
+      "human_expert_minutes": 267.68055897,
+      "attempts": 12,
+      "successes": 2
+    },
+    {
+      "task_id": "t14",
+      "human_expert_minutes": 350.66153225,
+      "attempts": 12,
+      "successes": 2
+    },
+    {
+      "task_id": "t15",
+      "human_expert_minutes": 459.36660725,
+      "attempts": 12,
+      "successes": 1
+    },
+    {
+      "task_id": "t16",
+      "human_expert_minutes": 601.7702555,
+      "attempts": 12,
+      "successes": 1
+    },
+    {
+      "task_id": "t17",
+      "human_expert_minutes": 788.31903471,
+      "attempts": 12,
+      "successes": 1
+    },
+    {
+      "task_id": "t18",
+      "human_expert_minutes": 1032.69793547,
+      "attempts": 12,
+      "successes": 0
+    },
+    {
+      "task_id": "t19",
+      "human_expert_minutes": 1352.83429546,
+      "attempts": 12,
+      "successes": 0
+    },
+    {
+      "task_id": "t20",
+      "human_expert_minutes": 1772.21292705,
+      "attempts": 12,
+      "successes": 0
+    },
+    {
+      "task_id": "t21",
+      "human_expert_minutes": 2321.59893444,
+      "attempts": 12,
+      "successes": 0
+    },
+    {
+      "task_id": "t22",
+      "human_expert_minutes": 3041.29460412,
+      "attempts": 12,
+      "successes": 0
+    },
+    {
+      "task_id": "t23",
+      "human_expert_minutes": 3984.0959314,
+      "attempts": 12,
+      "successes": 0
+    }
+  ]
+}

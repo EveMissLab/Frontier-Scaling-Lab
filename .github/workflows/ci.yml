@@ -16,9 +16,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Unit tests
+      - name: Validate Python source syntax
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive tests
+      - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
-      - name: Reproducible example
+      - name: Legacy v0.1 reference estimate
         run: python frontier_scaling.py forecast --scenario rubin_100mw_reference --as-of 2026-11-06
-      - name: Evidence date snapshot
+      - name: Adaptive v0.2 reproducibility smoke test
+        run: |
+          python -m fsl_adaptive.cli init --db /tmp/fsl_ci.sqlite
+          python -m fsl_adaptive.cli forecast --db /tmp/fsl_ci.sqlite --as-of 2026-11-06 --year 2029 --include-planned --output /tmp/fsl_forecast.json
+          python -m fsl_adaptive.cli weights --db /tmp/fsl_ci.sqlite --as-of 2026-11-06
+          python -c "import json; p=json.load(open('/tmp/fsl_forecast.json')); assert p['cognition']['measured'] is False; assert p['ensemble']['online_update']['state']=='uncalibrated'"
+      - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

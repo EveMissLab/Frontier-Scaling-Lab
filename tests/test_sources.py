@@ -187,7 +187,7 @@ class SourcesTests(unittest.TestCase):
                           source="https://example.org/model-card",
                           recorded_on="2026-11-06")
         self.assertTrue(first)
-        with self.assertRaises(sqlite3.IntegrityError):
+        with self.assertRaises(CatalogError):
             add_alias(self.db, source_type="arena",
                       external_model_id="SYNTHETIC-CHAT-001",
                       canonical_model_key="different:maybe",

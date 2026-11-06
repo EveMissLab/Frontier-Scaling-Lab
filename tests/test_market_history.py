@@ -74,6 +74,11 @@ class HistoricalCatalogTests(unittest.TestCase):
                 self.assertIsNone(r["actual_48h_agent_completions"])
                 self.assertIsNone(r["actual_subscription_quota_at_cutoff"])
                 self.assertIsNone(r["historical_price_valid_through_cutoff"])
+                candidate=r["latest_dated_announcement_candidate"]
+                if candidate is not None:
+                    self.assertIsNone(candidate["frontier_model_classification"])
+                    self.assertIsNone(candidate["currently_accessible"])
+                    self.assertIsNone(candidate["cost_per_accepted_task_usd"])
                 self.assertTrue(all(
                     item["now_or_at_period_end_available"] is None
                     for item in r["dated_introductions"]))

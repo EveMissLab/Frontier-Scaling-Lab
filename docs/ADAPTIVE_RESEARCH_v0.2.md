@@ -76,6 +76,8 @@ The current code uses a multiplicative update with learning rate 0.6 and a 1% un
 
 A drift alert is raised if two consecutive disclosed outcomes miss *all* hypotheses by more than a 2.5x multiplicative factor. The mechanism flags structural inadequacy; it does not assert a new architecture or silently invent a physical deployment.
 
+The bundled configuration is explicitly `data_classification=synthetic` and cannot be used to save an observational forecast. A research-grade observational configuration must provide baseline and operational-cohort source URLs, and every later comparable outcome requires its own source and publication date.
+
 Actual model disclosures are currently missing from the sample registry. Therefore initial weights remain uncalibrated and no "5–10x is likely" claim is made.
 
 ## V. Temporal rules and leakage prevention

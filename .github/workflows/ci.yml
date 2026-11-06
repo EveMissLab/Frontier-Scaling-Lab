@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -36,5 +36,9 @@ jobs:
           python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite --retrieved-on 2026-11-06 hf-benchmark --dataset SWE-bench/SWE-bench_Verified --offline-json tests/fixtures/hf_benchmark_synthetic.json
           python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite --retrieved-on 2026-11-06 community --file tests/fixtures/community_synthetic.json
           python -m fsl_sources.cli --db /tmp/fsl_sources_ci.sqlite observations --channel community --as-of 2026-11-06
+      - name: v0.4 methodology-break and evidence-readiness smoke tests
+        run: |
+          python -m fsl_timecourse.cli method-breaks
+          python -m fsl_timecourse.cli --db /tmp/fsl_sources_ci.sqlite readiness --as-of 2026-11-06
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

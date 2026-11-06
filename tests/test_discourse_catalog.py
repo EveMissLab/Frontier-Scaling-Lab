@@ -13,6 +13,7 @@ import unittest
 from fsl_discourse.catalog import DiscourseError,validate,asof_view
 from fsl_discourse.relations import reconcile
 from fsl_discourse.cli import _trajectory
+from fsl_discourse.export import export_rows, HEADERS
 
 ROOT=Path(__file__).resolve().parent.parent
 CAT=json.loads((ROOT/"data"/"agi_asi_public_interviews_seed_2026-11-07.json")
@@ -24,6 +25,20 @@ MARKET=json.loads((ROOT/"data"/"official_ai_history_2024_2026_v0.9.json")
 
 
 class DiscourseCorpusTests(unittest.TestCase):
+    def test_csv_row_export_retains_source_locator_not_full_transcript(self):
+        rows=export_rows(CAT)
+        self.assertEqual(len(rows),23)
+        self.assertEqual(len(HEADERS),len(rows[0]))
+        self.assertEqual(rows[0]["first_captured_on"],"2026-11-07")
+        self.assertTrue(all(x["transcript_url"].startswith("https://")
+                            for x in rows))
+        self.assertFalse(any("ASI" in x["topics"].split(";")
+                             for x in rows))
+        self.assertTrue(all(x["claim_scope"]=="individual_public_statement"
+                            for x in rows))
+        self.assertTrue(all(x["annotation_status"]==
+                            "analyst_provisional_not_fact" for x in rows))
+
     def test_six_organizations_first_seven_interviews_not_exhaustive(self):
         out=validate(CAT)
         self.assertEqual(out["speaker_count"],6)

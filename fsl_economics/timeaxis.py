@@ -97,7 +97,7 @@ def validate_catalog(data):
     if data.get("calendar_timezone") != "Asia/Taipei":
         raise TemporalError("source review calendar must declare Asia/Taipei explicitly")
     checked = _date(data.get("catalog_checked_on"), "catalog_checked_on")
-    assert _identity(data.get("catalog_id"), "catalog_id")
+    _identity(data.get("catalog_id"), "catalog_id")
     rows = data.get("assertions")
     if not isinstance(rows, list) or not rows:
         raise TemporalError("at least one dated evidence assertion required")

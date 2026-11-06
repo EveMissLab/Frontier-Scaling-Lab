@@ -1,0 +1,115 @@
+{
+  "_WARNING": "FICTITIOUS HISTORICAL COUNTERFACTUALS; NOT ACTUAL PRICES, API ACCESS OR SUCCESS PROBABILITIES.",
+  "schema": "fsl/historical-task-cost/0.8.2",
+  "task": {
+    "task_id": "SYNTHETIC-long-agent-math-delivery",
+    "task_revision_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "quality_gate_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "environment_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "budget_policy_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "reference_source_url": "https://example.org/SYNTHETIC-task-definition-not-real"
+  },
+  "study_as_of": "2026-11-07",
+  "scenarios": [
+    {
+      "scenario_id": "2023-impossible",
+      "model_id": "FICTIONAL-OLD-2023-impossible",
+      "model_revision": "synthetic",
+      "model_class_at_date": "unknown",
+      "historical_date": "2023-11-07",
+      "model_release_on": "2023-03-14",
+      "study_mode": "historical_counterfactual",
+      "price_reference_on": "2023-11-01",
+      "price_source_url": "https://example.org/SYNTHETIC-price-2023-impossible",
+      "price_basis": "historical_at_time",
+      "model_accessible_then": true,
+      "required_tools_accessible_then": false,
+      "task_spec_feasible_then": false,
+      "trial_success_probability": {
+        "low": null,
+        "high": null
+      },
+      "attempt_cash_usd_interval": {
+        "low": null,
+        "high": null
+      },
+      "evidence_class": "synthetic",
+      "assumptions_source_url": "https://example.org/SYNTHETIC-counterfactual-2023-impossible"
+    },
+    {
+      "scenario_id": "2024-unknown",
+      "model_id": "FICTIONAL-OLD-2024-unknown",
+      "model_revision": "synthetic",
+      "model_class_at_date": "unknown",
+      "historical_date": "2024-05-13",
+      "model_release_on": "2024-05-13",
+      "study_mode": "historical_counterfactual",
+      "price_reference_on": "2024-05-13",
+      "price_source_url": "https://example.org/SYNTHETIC-price-2024-unknown",
+      "price_basis": "historical_at_time",
+      "model_accessible_then": true,
+      "required_tools_accessible_then": null,
+      "task_spec_feasible_then": null,
+      "trial_success_probability": {
+        "low": null,
+        "high": null
+      },
+      "attempt_cash_usd_interval": {
+        "low": null,
+        "high": null
+      },
+      "evidence_class": "synthetic",
+      "assumptions_source_url": "https://example.org/SYNTHETIC-counterfactual-2024-unknown"
+    },
+    {
+      "scenario_id": "2025-conditional",
+      "model_id": "FICTIONAL-OLD-2025-conditional",
+      "model_revision": "synthetic",
+      "model_class_at_date": "unknown",
+      "historical_date": "2025-10-01",
+      "model_release_on": "2025-07-01",
+      "study_mode": "historical_counterfactual",
+      "price_reference_on": "2025-09-01",
+      "price_source_url": "https://example.org/SYNTHETIC-price-2025-conditional",
+      "price_basis": "historical_at_time",
+      "model_accessible_then": true,
+      "required_tools_accessible_then": true,
+      "task_spec_feasible_then": true,
+      "trial_success_probability": {
+        "low": "0.10",
+        "high": "0.35"
+      },
+      "attempt_cash_usd_interval": {
+        "low": "4",
+        "high": "12"
+      },
+      "evidence_class": "synthetic",
+      "assumptions_source_url": "https://example.org/SYNTHETIC-counterfactual-2025-conditional"
+    },
+    {
+      "scenario_id": "2024-model-present-replay",
+      "model_id": "FICTIONAL-OLD-2024-model-present-replay",
+      "model_revision": "synthetic",
+      "model_class_at_date": "unknown",
+      "historical_date": "2024-05-13",
+      "model_release_on": "2024-05-13",
+      "study_mode": "present_day_legacy_replay",
+      "price_reference_on": "2026-11-07",
+      "price_source_url": "https://example.org/SYNTHETIC-price-2024-model-present-replay",
+      "price_basis": "present_day_replay",
+      "model_accessible_then": true,
+      "required_tools_accessible_then": true,
+      "task_spec_feasible_then": true,
+      "trial_success_probability": {
+        "low": "0.15",
+        "high": "0.4"
+      },
+      "attempt_cash_usd_interval": {
+        "low": "6",
+        "high": "15"
+      },
+      "evidence_class": "synthetic",
+      "assumptions_source_url": "https://example.org/SYNTHETIC-counterfactual-2024-model-present-replay"
+    }
+  ]
+}

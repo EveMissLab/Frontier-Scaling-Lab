@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -85,5 +85,13 @@ jobs:
           python -m fsl_history.cli timeline --as-of 2024-12-31 --mode retrospective --output /tmp/fsl_market_retro2024.json
           python -m fsl_history.cli matrix --month-ends '2024-12-31;2025-12-31;2026-11-07' --output /tmp/fsl_market_matrix.json
           python -c "import json; v=json.load(open('/tmp/fsl_market_validate.json')); s=json.load(open('/tmp/fsl_market_strict2024.json')); r=json.load(open('/tmp/fsl_market_retro2024.json')); m=json.load(open('/tmp/fsl_market_matrix.json')); assert v['event_count']>=40 and len(v['providers'])==5; assert s['included_count']==0; assert r['included_count']>=6; assert len(m['periods'])==3 and m['no_task_completion_scores_inferred']"
+      - name: v0.10 dated public AGI/ASI speech corpus and anti-causality gates
+        run: |
+          python -m fsl_discourse.cli validate --output /tmp/fsl_speech_validate.json
+          python -m fsl_discourse.cli asof --as-of 2024-12-31 --mode strict_known_at_time --output /tmp/fsl_speech_strict2024.json
+          python -m fsl_discourse.cli asof --as-of 2024-12-31 --mode retrospective --output /tmp/fsl_speech_retro2024.json
+          python -m fsl_discourse.cli speaker --speaker-id dario-amodei --as-of 2026-11-07 --output /tmp/fsl_speech_dario_timeline.json
+          python -m fsl_discourse.cli links --as-of 2026-11-07 --output /tmp/fsl_speech_agnostic_links.json
+          python -c "import json; f=lambda x:json.load(open('/tmp/'+x+'.json')); v=f('fsl_speech_validate'); s=f('fsl_speech_strict2024'); r=f('fsl_speech_retro2024'); d=f('fsl_speech_dario_timeline'); l=f('fsl_speech_agnostic_links'); assert v['interview_count']==7 and v['claim_count']==23 and v['organization_count']==6; assert s['included_claims']==0 and r['included_claims']>=15; assert d['source_publication_years']==['2023','2026']; assert l['causal_links_verified']==0 and l['actual_strategy_reversals_verified']==0"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

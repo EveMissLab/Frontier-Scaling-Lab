@@ -5,6 +5,47 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## Primary research target — FSL v0.6 functional frontier / 功能性智能完成度
+
+**The primary measurement is no longer a short-task or METR-style H50/H80 time
+horizon.** The user-defined upper-target framework evaluates genuine multi-day,
+multiweek and multi-month **start-to-finished-outcome** autonomy (G1); knowing
+**when to revise, maintain, clarify or escalate** strategies to satisfy a changing
+user goal (G2); creation in **one/few user instruction rounds** of fully functional,
+world-class games or high-value apps (G3); and both personal-author and distinctive
+AI-native creative style in finished artistic works (G4).
+
+**Embodied adaptive intelligence (E1) is a separate track**, requiring a single
+physical AI system to recognize and switch between multiple real task categories,
+with safety gating. It does not inherit the digital AAA-game standard. The
+specific original reason for the user's lower embodied completion threshold is
+not assumed by this implementation.
+
+Original theory and operative requirements:
+[**FSL v0.6 — Functional Frontier, canonical UTF-8 Markdown**](docs/FUNCTIONAL_FRONTIER_v0.6.md).
+
+This repository includes a first **append-only event and assessment schema**:
+system identity and runtime changes, persistent checkpoints/recovery, user goals,
+strategy decisions with change/no-change controls, human assistance, real output
+artifacts and independent product/style evaluations. It can *audit recorded
+claims*, not independently prove that a months-long system ran or produced an
+actual AAA game.
+
+~~~bash
+python -m unittest discover -s tests -v
+python -m fsl_functional.cli --db reports/functional_demo.sqlite init
+python -m fsl_functional.cli --db reports/functional_demo.sqlite ingest-example --file tests/fixtures/functional_game_synthetic.json
+python -m fsl_functional.cli --db reports/functional_demo.sqlite audit --run-id synthetic-game --as-of 2026-02-07T00:00:00Z
+~~~
+
+The bundled game/robot mission logs are **fictitious synthetic test data**:
+no real weeks/months of AI activity, gameplay build, artwork or robot has been
+verified. The output explicitly refuses empirical certification. The older
+v0.5 H50/H80 module remains available as an *optional secondary diagnostic*,
+not as the ceiling definition.
+
+---
+
 ## Research question / 研究問題
 
 How much of a visible model improvement is delayed realization of prior compute/data investment? How might planned accelerator deployments affect future feasible parameter scale, and what evidence would signal a stable plateau or an architectural break?

@@ -151,6 +151,40 @@ class ObserverTests(unittest.TestCase):
             link_receipt(self.db,receipt_id=rid,event_id="progress",
                          role="supports_ci",recorded_at="2026-11-07T16:00:00Z")
 
+    def test_successful_ci_must_match_exact_claimed_revision(self):
+        rec=github_workflow(REPO,12345,now=NOW,fetch=gh_run)
+        rid=add_receipt(self.db,session_id="s",receipt=rec)
+        add_event(self.db,mission_event(
+            "progress","progress",
+            {"evidence_sha256":"b"*64,"github_head_sha":"0"*40}))
+        with self.assertRaises(ObservatoryError):
+            link_receipt(self.db,receipt_id=rid,event_id="progress",
+                         role="supports_ci",recorded_at="2026-11-07T16:00:00Z")
+        add_event(self.db,mission_event(
+            "matching","progress",
+            {"evidence_sha256":"b"*64,"github_head_sha":COMMIT}))
+        link_receipt(self.db,receipt_id=rid,event_id="matching",
+                     role="supports_ci",recorded_at="2026-11-07T16:00:00Z")
+        result=audit(self.db,"s",as_of="2026-11-07T17:00:00Z")
+        self.assertEqual(result["mission_links"]["covered_unique_events"],1)
+
+    def test_progress_file_hash_must_match_actual_bytes(self):
+        with tempfile.TemporaryDirectory() as td:
+            (Path(td)/"checkpoint.bin").write_bytes(b"correct checkpoint")
+            rec=local_file(td,"checkpoint.bin",now=NOW)
+            rid=add_receipt(self.db,session_id="s",receipt=rec)
+            add_event(self.db,mission_event(
+                "progress","progress",{"evidence_sha256":"a"*64}))
+            with self.assertRaises(ObservatoryError):
+                link_receipt(self.db,receipt_id=rid,event_id="progress",
+                             role="supports_progress",
+                             recorded_at="2026-11-07T16:00:00Z")
+            add_event(self.db,mission_event(
+                "correct-progress","progress",
+                {"evidence_sha256":rec["content_sha256"]}))
+            link_receipt(self.db,receipt_id=rid,event_id="correct-progress",
+                         role="supports_progress",recorded_at="2026-11-07T16:00:00Z")
+
     def test_no_path_escape_or_symlink(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td)

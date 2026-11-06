@@ -177,6 +177,9 @@ class InterventionTests(unittest.TestCase):
         fixture=copy.deepcopy(FIXTURE)
         secret=fixture["synthetic_oracles"]["case-replan"]
         secret["expected_action"]="maintain"
+        heldout_reveal=next(x for x in fixture["reveals"]
+                            if x["case_id"]=="case-replan")
+        heldout_reveal["expected_action"]="maintain"
         decision=next(e for e in fixture["mission_events"]
                       if e["event_id"]=="decision-case-replan")
         decision["payload"]["choice"]="maintain"

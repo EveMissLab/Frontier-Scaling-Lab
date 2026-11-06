@@ -1,0 +1,14 @@
+{
+  "id": "synthetic/research-model",
+  "sha": "fixture-only-not-a-real-hf-revision",
+  "lastModified": "2026-11-04T00:00:00Z",
+  "safetensors": {
+    "total": 1234567890
+  },
+  "downloads": 20,
+  "likes": 5,
+  "cardData": {
+    "license": "apache-2.0"
+  },
+  "fixture_warning": "SYNTHETIC OFFLINE FIXTURE, NOT HUGGING FACE OBSERVATION"
+}

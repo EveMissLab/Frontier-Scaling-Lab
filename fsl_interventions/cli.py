@@ -68,7 +68,7 @@ def main(argv=None):
                 result={"case_id":private["case_id"],
                         "sealed_oracle_sha256":oracle_commitment(
                            private["case_id"],private["expected_action"],
-                           private["expected_goal_sha256"],private["oracle_nonce"]),
+                           private["expected_goal_sha256"],private["oracle_nonce"],private["case_type"]),
                         "warning":"Keep the input file, nonce and expected action unavailable to the tested Agent"}
             elif args.command=="protocol":
                 result={"protocol_id":add_protocol(db,load(args.file))}
@@ -102,7 +102,7 @@ def main(argv=None):
                     claim=fixture["synthetic_oracles"][case["case_id"]]
                     prepared=dict(case,sealed_oracle_sha256=oracle_commitment(
                         case["case_id"],claim["expected_action"],
-                        claim["expected_goal_sha256"],claim["oracle_nonce"]))
+                        claim["expected_goal_sha256"],claim["oracle_nonce"],claim["case_type"]))
                     preregister(db,prepared)
                 for event in fixture["mission_events"]:
                     add_event(db,event)

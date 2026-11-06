@@ -40,5 +40,10 @@ jobs:
         run: |
           python -m fsl_timecourse.cli method-breaks
           python -m fsl_timecourse.cli --db /tmp/fsl_sources_ci.sqlite readiness --as-of 2026-11-06
+      - name: v0.5 task duration horizon (synthetic smoke test only)
+        run: |
+          python -m fsl_timecourse.horizon_cli estimate --input tests/fixtures/synthetic_horizon_baseline.json --as-of 2026-11-07 --bootstrap 60 --output /tmp/fsl_horizon_v05.json
+          python -m fsl_timecourse.horizon_cli compare --baseline tests/fixtures/synthetic_horizon_baseline.json --candidate tests/fixtures/synthetic_horizon_candidate.json --as-of 2026-11-07 --bootstrap 0 --output /tmp/fsl_horizon_comparison_v05.json
+          python -c "import json; p=json.load(open('/tmp/fsl_horizon_comparison_v05.json')); assert p['general_intelligence_multiplier'] is None; assert p['is_synthetic']"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

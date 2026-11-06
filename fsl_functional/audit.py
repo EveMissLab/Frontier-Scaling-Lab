@@ -303,11 +303,12 @@ def evaluate(db, run_id, *, as_of):
             g3_missing.append("two distinct external quality reviewers")
         if not delivered:
             g3_missing.append("integrated deployable/playable artifact and independent acceptance")
-        g3=_gate(not g3_missing,missing=g3_missing,evidence_class=eclass,
+        g3=(_not_applicable() if run["kind"]=="art" else
+            _gate(not g3_missing,missing=g3_missing,evidence_class=eclass,
                  measurements={"substantive_user_rounds":user_rounds,
                                "reference_standard":run["reference_url"],
                                "reference_date":run["reference_date"],
-                               "critical_quality_evidence":q})
+                               "critical_quality_evidence":q}))
         # G4 is also independent of G3: a complete original animation
         # or other art need not be a AAA game or commercial application.
         g4_missing=[]
@@ -315,6 +316,8 @@ def evaluate(db, run_id, *, as_of):
             g4_missing.append("completed, accepted, goal-aligned creative work")
         if direct_execution:
             g4_missing.append("creative core was directly executed by a human")
+        if run["kind"]=="art" and (q["missing"] or q["reviewer_count"]<2):
+            g4_missing.append("completed art and rights provenance require independent quality review")
         for axis,count in styles.items():
             if count<2:
                 g4_missing.append(f"2 independent positive reviews for {axis} original style axis")

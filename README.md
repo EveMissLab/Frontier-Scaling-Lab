@@ -5,6 +5,51 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.8 — Blind dynamic goal adaptation (G2) / 盲式適應干預
+
+This phase extends the **functional completion** goals rather than replacing
+them with short-test scores. It measures whether a continuing AI understands
+**when to change its strategy, when to maintain it, and when to clarify or
+escalate**, then genuinely completes the user's latest goal.
+
+[Canonical UTF-8 v0.8 research protocol](docs/BLIND_DYNAMIC_GOAL_ADAPTATION_v0.8.md) ·
+[Latest real first-party GitHub evidence observer](.github/workflows/observatory-pilot.yml)
+
+- An independent evaluator **seals** a hidden, case-specific oracle before
+  a user/environment perturbation occurs. Its scenario context, expected action,
+  final-goal hash, and random nonce are sealed as one SHA-256 commitment.
+- No universal rule maps every goal change to replanning; one goal change
+  might appropriately leave the current strategy intact. Four scenario
+  categories and four alternative actions are measured separately.
+- An experimental case includes a fixed completion deadline. The AI's
+  recorded decision must refer to that change, occur in time, and be
+  irrevocably attached before the evaluator reveals any answers.
+- Final credit additionally requires externally claimed success of the
+  **latest user goal**, the G1 continuation prerequisite, and actual artifact
+  hash receipts (v0.7). No internal record automatically certifies completion.
+- A bounded **Agent JSONL intake** accepts only its own actions: progress,
+  checkpoint, strategy, deliverable, runtime change and physical task switch.
+  It cannot write user intentions, evaluator success claims or hidden oracles.
+
+~~~bash
+python -m unittest discover -s tests -v
+python -m fsl_interventions.cli --db reports/g2_synthetic.sqlite synthetic-demo \
+  --file tests/fixtures/g2_intervention_synthetic.json \
+  --as-of 2026-01-18T00:00:00Z \
+  --output reports/g2_synthetic_result.json
+~~~
+
+The provided simulated "16 days" of AI work, reviewers and final application
+are FICTIONAL software regression inputs. The synthetic demonstration cannot
+confirm real long-duration autonomy, world-class apps, or Agent cognition.
+The experiment's hidden nonce and oracle label for a real study must never
+be included in public repos or shared with the tested model.
+
+The original G1–G4 digital and E1 embodied goals remain primary. In particular,
+**only G2 is dependent on G1**, while G3/G4 can be achieved independently.
+
+---
+
 ## v0.7 — Functional Mission Observatory / 真實任務證據觀測層
 
 **The functional G1–G4/E1 targets remain primary.** This version observes

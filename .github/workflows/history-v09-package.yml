@@ -1,0 +1,66 @@
+name: FSL v0.9 official history and evidence research bundle
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/history-v09-package.yml'
+      - 'fsl_history/**'
+      - 'docs/HISTORICAL_AI_MARKET_AND_RESEARCH_EVIDENCE_v0.9.md'
+      - 'data/official_ai_history_2024_2026_v0.9.json'
+      - 'tests/test_market_history.py'
+      - 'tests/test_market_metrics_bridge.py'
+      - 'tests/test_private_math_bridge.py'
+
+permissions:
+  contents: read
+
+jobs:
+  research-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate primary-source catalog and all existing regression tests
+        run: |
+          python -m compileall -q fsl_history fsl_economics fsl_functional tests
+          python -m unittest discover -s tests -q
+          python -m fsl_history.cli validate --output /tmp/historical_catalog_validation.json
+
+      - name: Export 2024 2025 2026 retrospective access and price facts
+        run: |
+          mkdir -p reports
+          python -m fsl_history.cli validate --output reports/source_validation.json
+          python -m fsl_history.cli timeline --as-of 2024-12-31 --mode strict_known_at_time --output reports/2024_strict_issued_knowledge.json
+          python -m fsl_history.cli timeline --as-of 2024-12-31 --mode retrospective --output reports/2024_retrospective_market.json
+          python -m fsl_history.cli timeline --as-of 2025-12-31 --mode retrospective --output reports/2025_retrospective_market.json
+          python -m fsl_history.cli timeline --as-of 2026-11-07 --mode retrospective --output reports/2026-11-07_retrospective_market.json
+          python -m fsl_history.cli matrix --month-ends '2024-12-31;2025-12-31;2026-11-07' --output reports/five_provider_time_matrix.json
+          python -c "import json,csv; v=json.load(open('reports/2026-11-07_retrospective_market.json')); f=open('reports/provider_event_history.csv','w',newline='',encoding='utf-8'); w=csv.DictWriter(f,fieldnames=['event_id','provider','model_key','identifier_kind','kind','occurred_on','source_published_on','source_first_captured_on','channels','source_url','proof_limit']); w.writeheader(); [w.writerow({k:(','.join(r.get(k,[])) if k=='channels' else r.get(k,'')) for k in w.fieldnames}) for r in v['events'] if r['included']]; f.close()"
+
+      - name: Check no future leakage or synthetic inference of task success
+        run: |
+          python -c "import json; s=json.load(open('reports/2024_strict_issued_knowledge.json')); r=json.load(open('reports/2024_retrospective_market.json')); v=json.load(open('reports/source_validation.json')); m=json.load(open('reports/five_provider_time_matrix.json')); assert s['included_count']==0 and r['included_count']>=6; assert v['event_count']>=40 and v['source_count']>=30 and len(v['providers'])==5; assert not any(x['admissible_to_original_forecast'] for x in r['events']); assert m['no_task_completion_scores_inferred'] and len(m['periods'])==3; assert all(z['actual_48h_agent_completions'] is None for p in m['periods'] for z in p['provider_rows'])"
+
+      - name: Seal the canonical UTF-8 text, original source and timestamp
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/HISTORICAL_AI_MARKET_AND_RESEARCH_EVIDENCE_v0.9.md reports/HISTORICAL_AI_MARKET_AND_RESEARCH_EVIDENCE_v0.9.md
+          cp data/official_ai_history_2024_2026_v0.9.json reports/official_ai_history_2024_2026_v0.9.json
+          cp LICENSE reports/LICENSE
+          git rev-parse HEAD > reports/COMMIT_SHA.txt
+          python -c "from datetime import datetime,timezone;from zoneinfo import ZoneInfo;from pathlib import Path;import json;t=datetime.now(timezone.utc);p={'generated_at_utc':t.isoformat(),'generated_at_Asia_Taipei':t.astimezone(ZoneInfo('Asia/Taipei')).isoformat(),'provider_history_first_FSL_capture_on':'2026-11-07','source_publication_is_not_capture':'true','clock_source':'GitHub runner OS clock, not trusted attestation'};Path('reports/PACKAGE_TIMESTAMP.json').write_text(json.dumps(p,indent=2)+'\n',encoding='utf-8')"
+          (cd reports && sha256sum Frontier-Scaling-Lab-source.zip HISTORICAL_AI_MARKET_AND_RESEARCH_EVIDENCE_v0.9.md official_ai_history_2024_2026_v0.9.json LICENSE provider_event_history.csv source_validation.json 2024_strict_issued_knowledge.json 2024_retrospective_market.json 2025_retrospective_market.json 2026-11-07_retrospective_market.json five_provider_time_matrix.json PACKAGE_TIMESTAMP.json > SHA256SUMS.txt)
+
+      - name: Save one auditable public historical research archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.9-primary-sources-and-private-safe-bridge-${{ github.run_id }}
+          path: |
+            reports/
+          retention-days: 90
+          if-no-files-found: error

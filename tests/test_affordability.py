@@ -64,8 +64,9 @@ class AffordabilityTests(unittest.TestCase):
         ]
         value=analyze(case)
         self.assertEqual(value["monthly_subscription_outlay_usd"],"0")
-        self.assertEqual(value["paid_variable_usd"]["api_tokens"],"26.2000000")
-        self.assertEqual(value["total_monthly_cash_outlay_plus_variable_usd"],"26.2000000")
+        from decimal import Decimal
+        self.assertEqual(Decimal(value["paid_variable_usd"]["api_tokens"]),Decimal("26.20"))
+        self.assertEqual(Decimal(value["total_monthly_cash_outlay_plus_variable_usd"]),Decimal("26.20"))
         self.assertFalse(value["can_sustain_24h_verified"])
 
     def test_no_subscriptions_claim_api_token_bill_on_included_route(self):

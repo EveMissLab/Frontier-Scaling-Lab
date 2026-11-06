@@ -113,6 +113,25 @@ class InterventionTests(unittest.TestCase):
         with self.assertRaises(InterventionError):
             bind_choice(self.db,early)
 
+    def test_outcome_deadline_cannot_be_changed_after_decision(self):
+        fixture=copy.deepcopy(FIXTURE)
+        for case in fixture["preregistered_cases"]:
+            case["outcome_due_at"]="2026-01-20T00:00:00Z"
+        replay(self.db,fixture,do_reveal=False)
+        with self.assertRaises(InterventionError):
+            reveal(self.db,fixture["reveals"][0])
+
+    def test_correct_decision_but_after_deadline_does_not_count(self):
+        fixture=copy.deepcopy(FIXTURE)
+        fixture["preregistered_cases"][0]["outcome_due_at"]="2026-01-03T08:30:00Z"
+        # The delayed choice is still logged for retrospective failure.
+        # The other cases retain their normal dates and oracle commitments.
+        replay(self.db,fixture)
+        result=evaluate(self.db,fixture["protocol"]["protocol_id"],CUTOFF)
+        case=next(x for x in result["case_records"] if x["case_id"]=="case-replan")
+        self.assertFalse(case["decision_before_preregistered_deadline"])
+        self.assertFalse(case["recorded_outcome_gate"])
+
     def test_wrong_action_remains_failure_even_if_goal_accepted(self):
         fixture=copy.deepcopy(FIXTURE)
         wrong=next(e for e in fixture["mission_events"]

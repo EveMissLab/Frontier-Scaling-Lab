@@ -1,0 +1,10 @@
+[
+  {
+    "modelId": "synthetic/research-model",
+    "value": 45.7,
+    "verified": false,
+    "rank": 1,
+    "num_parameters": 1234567890,
+    "filename": ".eval_results/synthetic-fixture.yaml"
+  }
+]

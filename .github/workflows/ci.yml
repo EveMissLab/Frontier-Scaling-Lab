@@ -70,5 +70,13 @@ jobs:
           python -m fsl_economics.cli compare --input tests/fixtures/task_purchasing_power_synthetic.json --output /tmp/fsl_task_purchasing_power.json --save-db /tmp/fsl_economics_ci.sqlite --study-id synthetic-comparison
           python -m fsl_economics.cli history --input tests/fixtures/historical_task_cost_synthetic.json --output /tmp/fsl_historical_cost.json --save-db /tmp/fsl_economics_ci.sqlite --study-id synthetic-historical
           python -c "import json; p=json.load(open('/tmp/fsl_task_purchasing_power.json')); h=json.load(open('/tmp/fsl_historical_cost.json')); assert len(p['cohorts'])==3 and not p['has_independently_certified_result']; assert h['scenarios'][1]['status']=='historical_cost_unidentifiable' and h['scenarios'][3]['status']=='modern_replay_requires_real_trials'"
+      - name: v0.8.3 dated original-publication versus source-capture cutoff
+        run: |
+          python -m fsl_economics.timeaxis_cli audit-sources --catalog data/verified_release_and_price_vintage_2026-11-07.json --as-of 2024-05-13 --mode strict_known_at_time --output /tmp/fsl_2024_strict.json
+          python -m fsl_economics.timeaxis_cli audit-sources --catalog data/verified_release_and_price_vintage_2026-11-07.json --as-of 2024-05-13 --mode retrospective_reconstruction --output /tmp/fsl_2024_retrospective.json
+          python -m fsl_economics.timeaxis_cli audit-sources --catalog data/verified_release_and_price_vintage_2026-11-07.json --as-of 2026-11-07 --mode strict_known_at_time --output /tmp/fsl_2026_strict.json
+          python -m fsl_economics.timeaxis_cli audit-mission --file tests/fixtures/mission_clock_synthetic_2026-11-07.json --output /tmp/fsl_mission_clock.json
+          python -m fsl_economics.timeaxis_cli audit-panel --file tests/fixtures/time_anchored_task_panel_synthetic.json --output /tmp/fsl_panel_clock.json
+          python -c "import json; s=json.load(open('/tmp/fsl_2024_strict.json')); r=json.load(open('/tmp/fsl_2024_retrospective.json')); p=json.load(open('/tmp/fsl_panel_clock.json')); m=json.load(open('/tmp/fsl_mission_clock.json')); assert not any(x['included_for_requested_mode'] for x in s['rows']); assert sum(x['included_for_requested_mode'] for x in r['rows'])==2; assert len(p['observed_trial_clocks'])==3 and not p['can_assert_24_48h_autonomy']; assert m['elapsed_execution_hours']==47.5; assert s['report_generated_at_utc'] and s['report_generated_at_Asia_Taipei']"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

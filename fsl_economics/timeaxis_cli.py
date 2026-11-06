@@ -13,6 +13,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .timeaxis import TemporalError, audit_asof, validate_mission_clock
+from .temporal_panel import compare_time_anchored
 
 
 def _read(path):
@@ -35,12 +36,17 @@ def main(argv=None):
     mission = actions.add_parser("audit-mission")
     mission.add_argument("--file", required=True)
     mission.add_argument("--output")
+    panel = actions.add_parser("audit-panel")
+    panel.add_argument("--file", required=True)
+    panel.add_argument("--output")
     args = parser.parse_args(argv)
     now = datetime.now(timezone.utc)
     try:
         if args.command == "audit-sources":
             result = audit_asof(
                 _read(args.catalog), as_of=args.as_of, mode=args.mode)
+        elif args.command == "audit-panel":
+            result = compare_time_anchored(_read(args.file), checked_at=now.isoformat())
         else:
             result = validate_mission_clock(
                 _read(args.file), checked_at=now.isoformat())

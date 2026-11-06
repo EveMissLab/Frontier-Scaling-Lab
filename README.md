@@ -5,6 +5,53 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.10 — Public AI AGI/ASI narratives, intention & reversibility histories
+
+[**Canonical UTF-8 v0.10 research paper**](docs/AI_PUBLIC_NARRATIVES_INTENT_REVERSIBILITY_v0.10.md) ·
+[First dated original-interview corpus](data/agi_asi_public_interviews_seed_2026-11-07.json) ·
+[7 provisional history links](data/discourse_to_model_history_links_v0.10.json)
+
+**New methodological axis**: What AI company leaders/researchers publicly
+believed they were describing, what directions they expressed, how those
+statements may affect later actions, and whether reversal/path dependence is
+even meaningful under a specified observation horizon.
+
+The curated first batch comprises **7 publisher-grounded public interviews,
+6 named speakers, 6 AI organizations and 23 short original paraphrases**.
+Source publications span 2023–2026 and were **first catalogued by FSL on
+2026-11-07 (Taiwan date)**. The batch is NOT an exhaustive census of AI
+companies, AI executives, or public AGI/ASI interviews. Claims about ASI
+have not yet been sourced to the required passage precision; the first
+batch therefore has **zero explicitly ASI-tagged claims**, not invented data.
+
+Seven case-specific links to dated v0.9 model-release records or a later
+interview are preserved as **provisional research relations**:
+- Public utterance != speaker's unknowable inner belief.
+- Interviewed CEO != legally binding corporate strategy or unanimous view.
+- Public forecast != verified capability or objective future outcome.
+- Later product release != proof of causation or strategic irreversibility.
+- Interview date is unknown unless recording evidence exists; publisher
+  publication and first FSL capture are distinct date fields.
+- Copyrighted transcripts remain on original publisher sites: no
+  wholesale mirroring, only links, timecodes, short original summaries.
+
+~~~bash
+python -m unittest discover -s tests -q
+python -m fsl_discourse.cli validate
+python -m fsl_discourse.cli asof --as-of 2024-12-31 --mode strict_known_at_time
+python -m fsl_discourse.cli asof --as-of 2024-12-31 --mode retrospective
+python -m fsl_discourse.cli speaker --speaker-id dario-amodei --as-of 2026-11-07
+python -m fsl_discourse.cli links --as-of 2026-11-07
+~~~
+
+As usual, source-grounded release dates and opinions cannot establish real
+G1–G4/E1 autonomy, cost efficiency, specific technical capability or
+cause-effect relationships without independently authenticated observations.
+The reversal concept is left theoretically open instead of hardcoding a
+simple "prediction retracted" score.
+
+---
+
 ## v0.9 — 2024–2026 official model history, same-era panels & AMRAL/FELRA
 
 [**Canonical UTF-8 v0.9 research source**](docs/HISTORICAL_AI_MARKET_AND_RESEARCH_EVIDENCE_v0.9.md) ·

@@ -45,6 +45,16 @@ Read [v0.3 public evidence protocol](docs/PUBLIC_EVIDENCE_v0.3.md)
 for dataset licenses, the 100-row paginated Arena API, data schema, feedback
 privacy protections, identity crosswalk, and strict as-of leakage guards.
 
+**Public evidence refresh:** the repository also has a separate read-only
+[weekly workflow](.github/workflows/public-evidence-refresh.yml) (Monday
+03:19 UTC, or manual dispatch). It fetches one Hugging Face model, the latest
+Arena text/agent pages and a bounded SWE-bench leaderboard sample.
+The normalized SQLite file and retrieval manifest are uploaded as GitHub
+Actions artifacts, retained for **90 days**. This workflow does not push
+third-party results or user content into source control. Researchers should
+archive important observations in a durable, licensed dataset before
+these temporary workflow artifacts expire.
+
 **Do not multiply a leaderboard score by a parameter count** to invent a
 universal cognition score. Model parameter ratios, user preferences and
 task benchmarks stay independent until a controlled longitudinal study

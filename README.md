@@ -5,6 +5,51 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.7 — Functional Mission Observatory / 真實任務證據觀測層
+
+**The functional G1–G4/E1 targets remain primary.** This version observes
+the execution trails of existing Agents and engineering repos; it does not
+invent a new AI learner or compress outcomes into an intelligence number.
+
+The new read-only source layer checks official GitHub commit SHA / CI run
+metadata / artifact presence and computes actual local file hashes. It
+links only compatible receipts to immutable v0.6 mission events, preserves
+what was known as-of each UTC timestamp, and reports missing source proofs.
+
+**First live first-party pilot succeeded:** the observer captured the
+project's actual GitHub commit, its Actions-run metadata and the SHA-256
+of local README bytes. This is evidence of source existence, *not* of
+autonomous days-to-months of work or finished AAA game quality.
+
+~~~bash
+python -m unittest discover -s tests -v
+
+python -m fsl_observatory.cli --db reports/mission.sqlite init
+python -m fsl_observatory.cli --db reports/mission.sqlite session \
+  --id fsl-observe-001 --project EveMissLab/YourProject
+
+python -m fsl_observatory.cli --db reports/mission.sqlite github-commit \
+  --session fsl-observe-001 --repo EveMissLab/YourProject --sha EXACT_COMMIT_SHA
+
+python -m fsl_observatory.cli --db reports/mission.sqlite local-file \
+  --session fsl-observe-001 --root . --path README.md
+
+python -m fsl_observatory.cli --db reports/mission.sqlite audit \
+  --session fsl-observe-001
+~~~
+
+For mission-linked experiments, preregister the v0.6 mission spec/run first,
+then attach real receipts using the supported event link roles; see
+[**canonical v0.7 observatory protocol (UTF-8 MD)**](docs/FUNCTIONAL_OBSERVATORY_v0.7.md).
+The database must persist in an actual Agent environment across dates;
+an ephemeral GitHub Actions run alone cannot measure a months-long mission.
+CI success and file hashes never certify product functionality by themselves.
+
+[Live first-party pilot workflow](.github/workflows/observatory-pilot.yml) ·
+[Functional source standard v0.6](docs/FUNCTIONAL_FRONTIER_v0.6.md)
+
+---
+
 ## Primary research target — FSL v0.6 functional frontier / 功能性智能完成度
 
 **The primary measurement is no longer a short-task or METR-style H50/H80 time

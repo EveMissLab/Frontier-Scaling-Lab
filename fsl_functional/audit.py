@@ -214,9 +214,13 @@ def evaluate(db, run_id, *, as_of):
     duration=(end_time-moment(start["occurred_at"])).total_seconds()/86400.0 if (
               end_time and start and end_time>=moment(start["occurred_at"])) else None
     days,weeks=_recorded_progress(events)
+    stack_changes=_events_of(events,"stack_change")
     if duration is not None:
-        min_checkpoint_days=(4 if duration>=28 else 3 if duration>=7 else 2)
-        min_checkpoint_weeks=(3 if duration>=28 else 2 if duration>=7 else 1)
+        span_weeks=max(1,math.ceil(duration/7.0))
+        min_checkpoint_weeks=(max(3,math.ceil(span_weeks*0.6)) if duration>=28
+                              else 2 if duration>=7 else 1)
+        min_checkpoint_days=(max(4,min_checkpoint_weeks) if duration>=28
+                             else 3 if duration>=7 else 2)
     else:
         min_checkpoint_days=2
         min_checkpoint_weeks=1
@@ -255,6 +259,9 @@ def evaluate(db, run_id, *, as_of):
                       "source_backed_progress_days":len(days),
                       "progress_calendar_weeks":len(weeks),
                       "checkpoint_recoveries":len(recovered),
+                      "min_required_progress_days":min_checkpoint_days,
+                      "min_required_progress_weeks":min_checkpoint_weeks,
+                      "runtime_stack_revisions_logged":len(stack_changes),
                       "human_direct_execution_events":direct_execution},
     )
 
@@ -330,6 +337,8 @@ def evaluate(db, run_id, *, as_of):
         "track":track,"work_kind":run["kind"],
         "goal_title":run["title"],
         "user_instruction_rounds":user_rounds,
+        "initial_system_manifest_sha256":run["system_manifest_sha256"],
+        "runtime_stack_revisions_logged":len(stack_changes),
         "calendar_days_claimed":duration,
         "human_interventions":{
             "total":len(intervention),

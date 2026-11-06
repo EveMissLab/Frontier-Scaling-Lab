@@ -122,6 +122,24 @@ class SourcesTests(unittest.TestCase):
         self.assertEqual(metric["measure"], "submitted_benchmark_value")
         self.assertIn("entry_not_marked_verified", metric["provenance_flags"])
 
+    def test_multiple_benchmark_submissions_per_model_are_distinct(self):
+        values = [
+            {"modelId": "demo/example", "value": 85.0,
+             "filename": ".eval_results/agent-a.yaml", "verified": False},
+            {"modelId": "demo/example", "value": 70.0,
+             "filename": ".eval_results/agent-b.yaml", "verified": False},
+        ]
+        prepared = parse_hf_benchmark(
+            values, dataset_id="SWE-bench/SWE-bench_Verified",
+            retrieved_on="2026-11-06")
+        self.assertEqual(len(prepared["observations"]), 2)
+        self.assertNotEqual(prepared["observations"][0]["methodology"],
+                            prepared["observations"][1]["methodology"])
+        result = save_snapshot(self.db, **prepared)
+        self.assertEqual(result["observation_count"], 2)
+        observed = list_observations(self.db, model_id="hf:demo/example")
+        self.assertEqual(len(observed), 2)
+
     def test_subjective_aggregate_wilson_and_strict_no_raw_comments(self):
         item = parse_community_rollup(feedback(), retrieved_on="2026-11-06")
         metric = item["observations"][0]

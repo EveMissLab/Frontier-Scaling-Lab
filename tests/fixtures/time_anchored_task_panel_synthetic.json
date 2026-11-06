@@ -1,0 +1,378 @@
+{
+  "_WARNING": "ALL PROVIDERS, PRICES, OUTCOMES, MODEL FIRST-ACCESS DAYS AND 24–36H RUNS ARE FICTIONAL. Temporal software validation only.",
+  "schema": "fsl/time-anchored-panel/0.8.3",
+  "cutoff_at": "2026-10-31T23:59:00+08:00",
+  "panel": {
+    "_WARNING": "ENTIRE STUDY IS FICTITIOUS. NO AI MODEL OR HUMAN ACTUALLY COMPLETED THESE TASKS.",
+    "schema": "fsl/task-purchasing-power/0.8.2",
+    "task": {
+      "task_id": "SYNTHETIC-long-agent-math-delivery",
+      "task_revision_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "quality_gate_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "environment_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "budget_policy_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "reference_source_url": "https://example.org/SYNTHETIC-task-definition-not-real"
+    },
+    "evidence_class": "synthetic",
+    "design": "cross_model_matched_runtime",
+    "evaluation_month": "2026-10",
+    "cohorts": [
+      {
+        "cohort_id": "synthetic-frontier-subscription",
+        "model_id": "FICTIONAL-FRONTIER-A",
+        "model_revision": "fictional-a-1",
+        "model_class": "frontier_at_time",
+        "provider": "synthetic-provider-1",
+        "plan_id": "illustrative-high-subscription",
+        "billing_route": "subscription",
+        "runtime_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "price_snapshot_on": "2026-10-01",
+        "pricing_source_url": "https://example.org/SYNTHETIC-pricing-1",
+        "monthly_subscription_usd": "200",
+        "subscription_allocation_fraction": "0.10",
+        "trials": [
+          {
+            "trial_id": "A1",
+            "evaluated_on": "2026-10-07",
+            "outcome": "accepted_reported",
+            "variable_cash_usd": "4",
+            "human_assist_hours": "0",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-A1-not-real",
+            "outcome_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          },
+          {
+            "trial_id": "A2",
+            "evaluated_on": "2026-10-08",
+            "outcome": "failed_reported",
+            "variable_cash_usd": "6",
+            "human_assist_hours": "1.5",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-A2-not-real",
+            "outcome_sha256": null
+          },
+          {
+            "trial_id": "A3",
+            "evaluated_on": "2026-10-09",
+            "outcome": "accepted_reported",
+            "variable_cash_usd": "5",
+            "human_assist_hours": "0",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-A3-not-real",
+            "outcome_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          }
+        ]
+      },
+      {
+        "cohort_id": "synthetic-frontier-api",
+        "model_id": "FICTIONAL-FRONTIER-B",
+        "model_revision": "fictional-b-1",
+        "model_class": "frontier_at_time",
+        "provider": "synthetic-provider-2",
+        "plan_id": "illustrative-api-route",
+        "billing_route": "api",
+        "runtime_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "price_snapshot_on": "2026-10-01",
+        "pricing_source_url": "https://example.org/SYNTHETIC-pricing-2",
+        "monthly_subscription_usd": "0",
+        "subscription_allocation_fraction": "0",
+        "trials": [
+          {
+            "trial_id": "B1",
+            "evaluated_on": "2026-10-07",
+            "outcome": "accepted_reported",
+            "variable_cash_usd": "8",
+            "human_assist_hours": "0",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-B1-not-real",
+            "outcome_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          },
+          {
+            "trial_id": "B2",
+            "evaluated_on": "2026-10-08",
+            "outcome": "accepted_reported",
+            "variable_cash_usd": "9",
+            "human_assist_hours": "0",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-B2-not-real",
+            "outcome_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          },
+          {
+            "trial_id": "B3",
+            "evaluated_on": "2026-10-09",
+            "outcome": "failed_reported",
+            "variable_cash_usd": "7",
+            "human_assist_hours": "0.25",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-B3-not-real",
+            "outcome_sha256": null
+          }
+        ]
+      },
+      {
+        "cohort_id": "synthetic-smaller-api",
+        "model_id": "FICTIONAL-SMALLER-C",
+        "model_revision": "fictional-c-1",
+        "model_class": "other_at_time",
+        "provider": "synthetic-provider-3",
+        "plan_id": "illustrative-small-model-api",
+        "billing_route": "api",
+        "runtime_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "price_snapshot_on": "2026-10-01",
+        "pricing_source_url": "https://example.org/SYNTHETIC-pricing-3",
+        "monthly_subscription_usd": "0",
+        "subscription_allocation_fraction": "0",
+        "trials": [
+          {
+            "trial_id": "C1",
+            "evaluated_on": "2026-10-07",
+            "outcome": "failed_reported",
+            "variable_cash_usd": "3",
+            "human_assist_hours": "1",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-C1-not-real",
+            "outcome_sha256": null
+          },
+          {
+            "trial_id": "C2",
+            "evaluated_on": "2026-10-08",
+            "outcome": "failed_reported",
+            "variable_cash_usd": "4",
+            "human_assist_hours": "2",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-C2-not-real",
+            "outcome_sha256": null
+          },
+          {
+            "trial_id": "C3",
+            "evaluated_on": "2026-10-09",
+            "outcome": "accepted_reported",
+            "variable_cash_usd": "5",
+            "human_assist_hours": "0.5",
+            "evidence_url": "https://example.org/SYNTHETIC-trial-C3-not-real",
+            "outcome_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          }
+        ]
+      }
+    ]
+  },
+  "mission_clocks": [
+    {
+      "cohort_id": "synthetic-frontier-subscription",
+      "trial_id": "A1",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-frontier-subscription-A1",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-1",
+        "model_id": "FICTIONAL-FRONTIER-A",
+        "model_revision": "fictional-a-1",
+        "access_route": "subscription",
+        "goal_frozen_at": "2026-10-06T07:00:00+08:00",
+        "execution_started_at": "2026-10-06T09:00:00+08:00",
+        "last_progress_at": "2026-10-07T19:00:00+08:00",
+        "execution_finished_at": "2026-10-07T20:00:00+08:00",
+        "accepted_at": "2026-10-07T20:10:00+08:00",
+        "captured_at": "2026-10-07T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    },
+    {
+      "cohort_id": "synthetic-frontier-subscription",
+      "trial_id": "A2",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-frontier-subscription-A2",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-1",
+        "model_id": "FICTIONAL-FRONTIER-A",
+        "model_revision": "fictional-a-1",
+        "access_route": "subscription",
+        "goal_frozen_at": "2026-10-07T07:00:00+08:00",
+        "execution_started_at": "2026-10-07T09:00:00+08:00",
+        "last_progress_at": "2026-10-08T19:00:00+08:00",
+        "execution_finished_at": "2026-10-08T20:00:00+08:00",
+        "accepted_at": null,
+        "captured_at": "2026-10-08T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    },
+    {
+      "cohort_id": "synthetic-frontier-subscription",
+      "trial_id": "A3",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-frontier-subscription-A3",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-1",
+        "model_id": "FICTIONAL-FRONTIER-A",
+        "model_revision": "fictional-a-1",
+        "access_route": "subscription",
+        "goal_frozen_at": "2026-10-08T07:00:00+08:00",
+        "execution_started_at": "2026-10-08T09:00:00+08:00",
+        "last_progress_at": "2026-10-09T19:00:00+08:00",
+        "execution_finished_at": "2026-10-09T20:00:00+08:00",
+        "accepted_at": "2026-10-09T20:10:00+08:00",
+        "captured_at": "2026-10-09T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    },
+    {
+      "cohort_id": "synthetic-frontier-api",
+      "trial_id": "B1",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-frontier-api-B1",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-2",
+        "model_id": "FICTIONAL-FRONTIER-B",
+        "model_revision": "fictional-b-1",
+        "access_route": "api",
+        "goal_frozen_at": "2026-10-06T07:00:00+08:00",
+        "execution_started_at": "2026-10-06T09:00:00+08:00",
+        "last_progress_at": "2026-10-07T19:00:00+08:00",
+        "execution_finished_at": "2026-10-07T20:00:00+08:00",
+        "accepted_at": "2026-10-07T20:10:00+08:00",
+        "captured_at": "2026-10-07T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    },
+    {
+      "cohort_id": "synthetic-frontier-api",
+      "trial_id": "B2",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-frontier-api-B2",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-2",
+        "model_id": "FICTIONAL-FRONTIER-B",
+        "model_revision": "fictional-b-1",
+        "access_route": "api",
+        "goal_frozen_at": "2026-10-07T07:00:00+08:00",
+        "execution_started_at": "2026-10-07T09:00:00+08:00",
+        "last_progress_at": "2026-10-08T19:00:00+08:00",
+        "execution_finished_at": "2026-10-08T20:00:00+08:00",
+        "accepted_at": "2026-10-08T20:10:00+08:00",
+        "captured_at": "2026-10-08T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    },
+    {
+      "cohort_id": "synthetic-frontier-api",
+      "trial_id": "B3",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-frontier-api-B3",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-2",
+        "model_id": "FICTIONAL-FRONTIER-B",
+        "model_revision": "fictional-b-1",
+        "access_route": "api",
+        "goal_frozen_at": "2026-10-08T07:00:00+08:00",
+        "execution_started_at": "2026-10-08T09:00:00+08:00",
+        "last_progress_at": "2026-10-09T19:00:00+08:00",
+        "execution_finished_at": "2026-10-09T20:00:00+08:00",
+        "accepted_at": null,
+        "captured_at": "2026-10-09T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    },
+    {
+      "cohort_id": "synthetic-smaller-api",
+      "trial_id": "C1",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-smaller-api-C1",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-3",
+        "model_id": "FICTIONAL-SMALLER-C",
+        "model_revision": "fictional-c-1",
+        "access_route": "api",
+        "goal_frozen_at": "2026-10-06T07:00:00+08:00",
+        "execution_started_at": "2026-10-06T09:00:00+08:00",
+        "last_progress_at": "2026-10-07T19:00:00+08:00",
+        "execution_finished_at": "2026-10-07T20:00:00+08:00",
+        "accepted_at": null,
+        "captured_at": "2026-10-07T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    },
+    {
+      "cohort_id": "synthetic-smaller-api",
+      "trial_id": "C2",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-smaller-api-C2",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-3",
+        "model_id": "FICTIONAL-SMALLER-C",
+        "model_revision": "fictional-c-1",
+        "access_route": "api",
+        "goal_frozen_at": "2026-10-07T07:00:00+08:00",
+        "execution_started_at": "2026-10-07T09:00:00+08:00",
+        "last_progress_at": "2026-10-08T19:00:00+08:00",
+        "execution_finished_at": "2026-10-08T20:00:00+08:00",
+        "accepted_at": null,
+        "captured_at": "2026-10-08T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    },
+    {
+      "cohort_id": "synthetic-smaller-api",
+      "trial_id": "C3",
+      "clock": {
+        "schema": "fsl/mission-clock/0.8.3",
+        "run_id": "synthetic-synthetic-smaller-api-C3",
+        "evidence_class": "synthetic",
+        "task_contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "runtime_manifest_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "provider": "synthetic-provider-3",
+        "model_id": "FICTIONAL-SMALLER-C",
+        "model_revision": "fictional-c-1",
+        "access_route": "api",
+        "goal_frozen_at": "2026-10-08T07:00:00+08:00",
+        "execution_started_at": "2026-10-08T09:00:00+08:00",
+        "last_progress_at": "2026-10-09T19:00:00+08:00",
+        "execution_finished_at": "2026-10-09T20:00:00+08:00",
+        "accepted_at": "2026-10-09T20:10:00+08:00",
+        "captured_at": "2026-10-09T21:00:00+08:00",
+        "model_first_available_on": "2026-09-01",
+        "pricing_effective_on": "2026-10-01",
+        "price_first_captured_on": "2026-10-01",
+        "price_source_url": "https://example.org/SYNTHETIC-cost-vintage"
+      }
+    }
+  ]
+}

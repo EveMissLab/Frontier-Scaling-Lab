@@ -226,6 +226,11 @@ def add_alias(db, *, source_type, external_model_id, canonical_model_key,
         raise CatalogError("invalid alias source")
     source_url(source)
     iso_day(recorded_on, "recorded_on")
+    prior = db.execute("""SELECT canonical_model_key FROM public_aliases
+        WHERE source_type=? AND external_model_id=?""",
+        (source_type, external_model_id)).fetchone()
+    if prior is not None and prior["canonical_model_key"] != canonical_model_key:
+        raise CatalogError("conflicting model identity: review before changing mapping")
     alias_id = stable_hash([source_type, external_model_id, canonical_model_key])
     with db:
         db.execute("""INSERT OR IGNORE INTO public_aliases

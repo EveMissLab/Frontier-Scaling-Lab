@@ -5,6 +5,9 @@ on:
   push:
     paths:
       - '.github/workflows/temporal-vintage-package.yml'
+      - 'fsl_economics/timeaxis.py'
+      - 'fsl_economics/temporal_panel.py'
+      - 'docs/TEMPORAL_VINTAGE_AND_ACCESS_v0.8.3.md'
 
 permissions:
   contents: read

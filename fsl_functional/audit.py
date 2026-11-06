@@ -215,6 +215,11 @@ def evaluate(db, run_id, *, as_of):
               end_time and start and end_time>=moment(start["occurred_at"])) else None
     days,weeks=_recorded_progress(events)
     stack_changes=_events_of(events,"stack_change")
+    stage=("multi_month_90d_plus" if duration is not None and duration>=90
+           else "month_30d_plus" if duration is not None and duration>=30
+           else "week_7d_plus" if duration is not None and duration>=7
+           else "day_2d_plus" if duration is not None and duration>=2
+           else "not_observed")
     if duration is not None:
         span_weeks=max(1,math.ceil(duration/7.0))
         min_checkpoint_weeks=(max(3,math.ceil(span_weeks*0.6)) if duration>=28
@@ -340,6 +345,11 @@ def evaluate(db, run_id, *, as_of):
         "initial_system_manifest_sha256":run["system_manifest_sha256"],
         "runtime_stack_revisions_logged":len(stack_changes),
         "calendar_days_claimed":duration,
+        "duration_stage_claimed":stage,
+        "multi_month_frontier_recorded":bool(
+            duration is not None and duration>=90 and
+            g1["recorded_conditions_satisfied"]
+        ) if track=="digital" else False,
         "human_interventions":{
             "total":len(intervention),
             "direct_execution":direct_execution,

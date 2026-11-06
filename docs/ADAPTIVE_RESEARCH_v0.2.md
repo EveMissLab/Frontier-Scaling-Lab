@@ -40,7 +40,7 @@ $$
 
 where $a_i$ is years since the conditional ready date; if $a_i<0$, the cohort is ineligible. The half-at-launch starting factor is an illustrative research assumption, **not** an empirical hardware law.
 
-Planned construction is excluded unless the user explicitly enables \`--include-planned\`. Each hypothesis can specify commissioning delay and a *separate* model-release lag. The active training capacity is **the largest eligible connected site**, not the sum of all geographically distributed GPUs. This intentionally produces a restrictive envelope until verified cross-site training fabrics can be incorporated.
+Planned construction is excluded unless the user explicitly enables `--include-planned`. Each hypothesis can specify commissioning delay and a *separate* model-release lag. The active training capacity is **the largest eligible connected site**, not the sum of all geographically distributed GPUs. This intentionally produces a restrictive envelope until verified cross-site training fabrics can be incorporated.
 
 The release-lag adjusted hardware time is $t-\ell$. With $H_0$ at the baseline date, the resource ratio is:
 
@@ -94,15 +94,15 @@ Implemented now in SQLite:
 - **feedback**: later sourced parameter-multiplier disclosure referring to a saved forecast. UPDATE/DELETE blocked.
 
 Recommended normalized extensions in M2/M3:
-- \`source_document\`: URL, published_at, fetched_at, source hash, original excerpt, edition.
-- \`facility\` / \`campus\` / \`building\`: stable non-interchangeable IDs and geography.
-- \`grid_interconnect\`: requested MW, contracted MW, energized MW, date/time.
-- \`hardware_sku\` and \`deployment_batch\`: precision, theoretical vs actual throughput, shipment vs installation.
-- \`compute_partition\`: locally connected GPUs, interconnect topology, dedicated training allocation, MFU distribution.
-- \`training_run\`: estimated epoch, reported vs inferred tokens, architecture family, training fractions.
-- \`model_release\`: public release, model weights disclosure, token cost, benchmark configuration.
-- \`evaluation_trial\`: inference budget, tools/agents, tasks, scoring, repetition, provenance.
-- \`forecast_revision\`: algorithm/config hash, as-of, data lineage, residual and structural-change alerts.
+- `source_document`: URL, published_at, fetched_at, source hash, original excerpt, edition.
+- `facility` / `campus` / `building`: stable non-interchangeable IDs and geography.
+- `grid_interconnect`: requested MW, contracted MW, energized MW, date/time.
+- `hardware_sku` and `deployment_batch`: precision, theoretical vs actual throughput, shipment vs installation.
+- `compute_partition`: locally connected GPUs, interconnect topology, dedicated training allocation, MFU distribution.
+- `training_run`: estimated epoch, reported vs inferred tokens, architecture family, training fractions.
+- `model_release`: public release, model weights disclosure, token cost, benchmark configuration.
+- `evaluation_trial`: inference budget, tools/agents, tasks, scoring, repetition, provenance.
+- `forecast_revision`: algorithm/config hash, as-of, data lineage, residual and structural-change alerts.
 
 **Never add campus MW, buildings, racks and accelerator counts as if they shared units.** A planned project is not a live GPU; total model parameters are not activated parameters; parameters are not a general intelligence score.
 
@@ -120,7 +120,7 @@ python -m fsl_adaptive.cli weights --as-of 2026-11-06
 
 The second command is purely synthetic until true site/model evidence is registered. An observational target must have real sourced baseline and outcomes before its weights have scientific meaning.
 
-An event can be appended with \`python -m fsl_adaptive.cli ingest --event file.json\`. A *verified* later model outcome can be appended using \`python -m fsl_adaptive.cli feedback --event disclosure.json\`. Sample source schema appears in docs/DATABASE.md.
+An event can be appended with `python -m fsl_adaptive.cli ingest --event file.json`. A *verified* later model outcome can be appended using `python -m fsl_adaptive.cli feedback --event disclosure.json`. Sample source schema appears in docs/DATABASE.md.
 
 This project is not an automated crawler and does not periodically claim to have gathered data. These remain separately auditable ingestion tasks.
 

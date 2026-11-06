@@ -1,0 +1,457 @@
+{
+  "_WARNING": "All events, human assistance, reviewers and 16 days of work are FICTIONAL. Test the measurement software only.",
+  "mode": "synthetic",
+  "spec": {
+    "spec_id": "fsl-g2-demo-spec",
+    "track": "digital",
+    "kind": "general_digital",
+    "title": "FICTIONAL 16-day adaptable project (never an actual autonomous Agent)",
+    "reference_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/benchmark",
+    "reference_date": "2025-12-01",
+    "created_at": "2026-01-01T00:00:00Z",
+    "min_duration_days": 7,
+    "max_user_rounds": 3,
+    "required_criteria": [
+      "end_to_end_functionality",
+      "integrated_delivery",
+      "independent_user_acceptance"
+    ],
+    "evidence_class": "synthetic"
+  },
+  "run": {
+    "run_id": "fsl-synthetic-continuing-mission",
+    "spec_id": "fsl-g2-demo-spec",
+    "system_key": "FICTIONAL-LONG-RUN-AGENT",
+    "system_revision": "fixture-not-real-v1",
+    "initiated_at": "2026-01-01T01:00:00Z",
+    "evidence_class": "synthetic"
+  },
+  "protocol": {
+    "protocol_id": "fsl-g2-demo-protocol",
+    "run_id": "fsl-synthetic-continuing-mission",
+    "created_at": "2026-01-01T02:00:00Z",
+    "evaluator_key": "SYNTHETIC_EVALUATOR",
+    "question_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "rubric_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "intervention_policy_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "evidence_class": "synthetic"
+  },
+  "preregistered_cases": [
+    {
+      "case_id": "case-replan",
+      "protocol_id": "fsl-g2-demo-protocol",
+      "future_perturbation_event_id": "pert-goal",
+      "committed_at": "2026-01-01T03:00:00Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-replan"
+    },
+    {
+      "case_id": "case-maintain",
+      "protocol_id": "fsl-g2-demo-protocol",
+      "future_perturbation_event_id": "pert-noise",
+      "committed_at": "2026-01-01T03:00:00Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-maintain"
+    },
+    {
+      "case_id": "case-clarify",
+      "protocol_id": "fsl-g2-demo-protocol",
+      "future_perturbation_event_id": "pert-ambiguous",
+      "committed_at": "2026-01-01T03:00:00Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-clarify"
+    },
+    {
+      "case_id": "case-escalate",
+      "protocol_id": "fsl-g2-demo-protocol",
+      "future_perturbation_event_id": "pert-exception",
+      "committed_at": "2026-01-01T03:00:00Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/sealed-commitment-case-escalate"
+    }
+  ],
+  "synthetic_oracles": {
+    "case-replan": {
+      "expected_action": "replan",
+      "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "oracle_nonce": "11111111111111111111111111111111"
+    },
+    "case-maintain": {
+      "expected_action": "maintain",
+      "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "oracle_nonce": "22222222222222222222222222222222"
+    },
+    "case-clarify": {
+      "expected_action": "clarify",
+      "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "oracle_nonce": "33333333333333333333333333333333"
+    },
+    "case-escalate": {
+      "expected_action": "escalate",
+      "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "oracle_nonce": "44444444444444444444444444444444"
+    }
+  },
+  "mission_events": [
+    {
+      "event_id": "user-intent",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "intent",
+      "actor": "user",
+      "occurred_at": "2026-01-01T04:00:00.000Z",
+      "recorded_at": "2026-01-01T04:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/user-intent",
+      "payload": {
+        "goal_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "event_id": "checkpoint-0",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-02T10:00:00.000Z",
+      "recorded_at": "2026-01-02T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/checkpoint-0",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    },
+    {
+      "event_id": "checkpoint-1",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-06T10:00:00.000Z",
+      "recorded_at": "2026-01-06T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/checkpoint-1",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    },
+    {
+      "event_id": "checkpoint-2",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-10T10:00:00.000Z",
+      "recorded_at": "2026-01-10T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/checkpoint-2",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    },
+    {
+      "event_id": "checkpoint-3",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-13T10:00:00.000Z",
+      "recorded_at": "2026-01-13T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/checkpoint-3",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    },
+    {
+      "event_id": "checkpoint-4",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "checkpoint",
+      "actor": "ai",
+      "occurred_at": "2026-01-15T10:00:00.000Z",
+      "recorded_at": "2026-01-15T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/checkpoint-4",
+      "payload": {
+        "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    },
+    {
+      "event_id": "resume-jan04",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "recovery",
+      "actor": "system",
+      "occurred_at": "2026-01-04T10:00:00.000Z",
+      "recorded_at": "2026-01-04T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/resume-jan04",
+      "payload": {
+        "checkpoint_event_id": "checkpoint-0",
+        "restored_state_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "cause": "restart"
+      }
+    },
+    {
+      "event_id": "pert-goal",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "goal_revision",
+      "actor": "user",
+      "occurred_at": "2026-01-03T08:00:00.000Z",
+      "recorded_at": "2026-01-03T08:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/pert-goal",
+      "payload": {
+        "goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    },
+    {
+      "event_id": "decision-case-replan",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "strategy_decision",
+      "actor": "ai",
+      "occurred_at": "2026-01-03T09:00:00.000Z",
+      "recorded_at": "2026-01-03T09:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/decision-case-replan",
+      "payload": {
+        "change_event_id": "pert-goal",
+        "choice": "replan",
+        "reason_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "event_id": "pert-noise",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "environment_change",
+      "actor": "environment",
+      "occurred_at": "2026-01-05T08:00:00.000Z",
+      "recorded_at": "2026-01-05T08:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/pert-noise",
+      "payload": {
+        "disturbance_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "case_visibility": "fictional_observed_input_only"
+      }
+    },
+    {
+      "event_id": "decision-case-maintain",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "strategy_decision",
+      "actor": "ai",
+      "occurred_at": "2026-01-05T09:00:00.000Z",
+      "recorded_at": "2026-01-05T09:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/decision-case-maintain",
+      "payload": {
+        "change_event_id": "pert-noise",
+        "choice": "maintain",
+        "reason_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "event_id": "pert-ambiguous",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "environment_change",
+      "actor": "environment",
+      "occurred_at": "2026-01-07T08:00:00.000Z",
+      "recorded_at": "2026-01-07T08:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/pert-ambiguous",
+      "payload": {
+        "disturbance_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "case_visibility": "fictional_observed_input_only"
+      }
+    },
+    {
+      "event_id": "decision-case-clarify",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "strategy_decision",
+      "actor": "ai",
+      "occurred_at": "2026-01-07T09:00:00.000Z",
+      "recorded_at": "2026-01-07T09:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/decision-case-clarify",
+      "payload": {
+        "change_event_id": "pert-ambiguous",
+        "choice": "clarify",
+        "reason_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "event_id": "clarification-recorded",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "human_assist",
+      "actor": "user",
+      "occurred_at": "2026-01-07T10:00:00.000Z",
+      "recorded_at": "2026-01-07T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/clarification-recorded",
+      "payload": {
+        "level": "clarification"
+      }
+    },
+    {
+      "event_id": "pert-exception",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "environment_change",
+      "actor": "environment",
+      "occurred_at": "2026-01-09T08:00:00.000Z",
+      "recorded_at": "2026-01-09T08:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/pert-exception",
+      "payload": {
+        "disturbance_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "case_visibility": "fictional_observed_input_only"
+      }
+    },
+    {
+      "event_id": "decision-case-escalate",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "strategy_decision",
+      "actor": "ai",
+      "occurred_at": "2026-01-09T09:00:00.000Z",
+      "recorded_at": "2026-01-09T09:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/decision-case-escalate",
+      "payload": {
+        "change_event_id": "pert-exception",
+        "choice": "escalate",
+        "reason_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    },
+    {
+      "event_id": "escalation-recorded",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "human_assist",
+      "actor": "operator",
+      "occurred_at": "2026-01-09T10:00:00.000Z",
+      "recorded_at": "2026-01-09T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/escalation-recorded",
+      "payload": {
+        "level": "exception"
+      }
+    },
+    {
+      "event_id": "final-artifact",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "deliverable",
+      "actor": "ai",
+      "occurred_at": "2026-01-16T10:00:00.000Z",
+      "recorded_at": "2026-01-16T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/final-artifact",
+      "payload": {
+        "artifact_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "artifact_type": "FICTIONAL integrated app"
+      }
+    },
+    {
+      "event_id": "accepted-final-goal",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "final_acceptance",
+      "actor": "evaluator",
+      "occurred_at": "2026-01-16T12:00:00.000Z",
+      "recorded_at": "2026-01-16T12:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/accepted-final-goal",
+      "payload": {
+        "deliverable_event_id": "final-artifact",
+        "accepted": true,
+        "goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    },
+    {
+      "event_id": "judge-case-replan",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "adaptation_judgement",
+      "actor": "evaluator",
+      "occurred_at": "2026-01-17T10:00:00.000Z",
+      "recorded_at": "2026-01-17T10:05:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/judge-case-replan",
+      "payload": {
+        "decision_event_id": "decision-case-replan",
+        "correct": true,
+        "revised_goal_met": true
+      }
+    },
+    {
+      "event_id": "judge-case-maintain",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "adaptation_judgement",
+      "actor": "evaluator",
+      "occurred_at": "2026-01-17T10:10:00.000Z",
+      "recorded_at": "2026-01-17T10:15:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/judge-case-maintain",
+      "payload": {
+        "decision_event_id": "decision-case-maintain",
+        "correct": true,
+        "revised_goal_met": true
+      }
+    },
+    {
+      "event_id": "judge-case-clarify",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "adaptation_judgement",
+      "actor": "evaluator",
+      "occurred_at": "2026-01-17T10:20:00.000Z",
+      "recorded_at": "2026-01-17T10:25:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/judge-case-clarify",
+      "payload": {
+        "decision_event_id": "decision-case-clarify",
+        "correct": true,
+        "revised_goal_met": true
+      }
+    },
+    {
+      "event_id": "judge-case-escalate",
+      "run_id": "fsl-synthetic-continuing-mission",
+      "kind": "adaptation_judgement",
+      "actor": "evaluator",
+      "occurred_at": "2026-01-17T10:30:00.000Z",
+      "recorded_at": "2026-01-17T10:35:00.000Z",
+      "source_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/judge-case-escalate",
+      "payload": {
+        "decision_event_id": "decision-case-escalate",
+        "correct": true,
+        "revised_goal_met": true
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "case_id": "case-replan",
+      "decision_event_id": "decision-case-replan",
+      "bound_at": "2026-01-03T09:20:00Z"
+    },
+    {
+      "case_id": "case-maintain",
+      "decision_event_id": "decision-case-maintain",
+      "bound_at": "2026-01-05T09:20:00Z"
+    },
+    {
+      "case_id": "case-clarify",
+      "decision_event_id": "decision-case-clarify",
+      "bound_at": "2026-01-07T09:20:00Z"
+    },
+    {
+      "case_id": "case-escalate",
+      "decision_event_id": "decision-case-escalate",
+      "bound_at": "2026-01-09T09:20:00Z"
+    }
+  ],
+  "reveals": [
+    {
+      "case_id": "case-replan",
+      "expected_action": "replan",
+      "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "oracle_nonce": "11111111111111111111111111111111",
+      "declared_case_type": "goal_changed",
+      "judgement_event_id": "judge-case-replan",
+      "adjudicated_at": "2026-01-17T11:00:00Z",
+      "evaluator_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/review-case-replan"
+    },
+    {
+      "case_id": "case-maintain",
+      "expected_action": "maintain",
+      "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "oracle_nonce": "22222222222222222222222222222222",
+      "declared_case_type": "irrelevant_noise",
+      "judgement_event_id": "judge-case-maintain",
+      "adjudicated_at": "2026-01-17T11:00:00Z",
+      "evaluator_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/review-case-maintain"
+    },
+    {
+      "case_id": "case-clarify",
+      "expected_action": "clarify",
+      "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "oracle_nonce": "33333333333333333333333333333333",
+      "declared_case_type": "intent_ambiguous",
+      "judgement_event_id": "judge-case-clarify",
+      "adjudicated_at": "2026-01-17T11:00:00Z",
+      "evaluator_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/review-case-clarify"
+    },
+    {
+      "case_id": "case-escalate",
+      "expected_action": "escalate",
+      "expected_goal_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "oracle_nonce": "44444444444444444444444444444444",
+      "declared_case_type": "exception_boundary",
+      "judgement_event_id": "judge-case-escalate",
+      "adjudicated_at": "2026-01-17T11:00:00Z",
+      "evaluator_url": "https://example.org/SYNTHETIC-G2-ONLY-NOT-EMPIRICAL/review-case-escalate"
+    }
+  ]
+}

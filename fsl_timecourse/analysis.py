@@ -244,7 +244,7 @@ def analyze_series(db, *, model_id, measure, category, methodology, channel,
 def study_readiness(db, *, as_of):
     """Audit what longitudinal evidence is missing instead of inventing an index."""
     iso_day(as_of, "as_of")
-    rows = db.execute("""SELECT o.channel,o.source_type,o.measure,
+    rows = db.execute("""SELECT o.channel,s.source_type,o.measure,
              o.methodology,o.external_model_id,o.published_on,
              s.retrieved_on
            FROM public_observations o JOIN public_snapshots s

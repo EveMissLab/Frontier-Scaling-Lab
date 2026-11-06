@@ -31,7 +31,7 @@ class AgentIntakeTests(unittest.TestCase):
         preregister(self.db,dict(
             case,sealed_oracle_sha256=oracle_commitment(
                 case["case_id"],secret["expected_action"],
-                secret["expected_goal_sha256"],secret["oracle_nonce"])))
+                secret["expected_goal_sha256"],secret["oracle_nonce"],secret["case_type"])))
         for name in ("user-intent","pert-goal"):
             add_event(self.db,next(x for x in FIXTURE["mission_events"]
                                    if x["event_id"]==name))

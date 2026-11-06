@@ -1,0 +1,67 @@
+{
+  "schema": "fsl/affordability-input/0.8.1",
+  "_warning": "SYNTHETIC ILLUSTRATION ONLY: no real 48-hour AI run or customer bill was observed",
+  "access": {
+    "run_id": "synthetic-pro200-two-day",
+    "evidence_class": "synthetic",
+    "provider": "OpenAI",
+    "plan_id": "ChatGPT Pro 200",
+    "billing_mode": "hybrid",
+    "plan_source_url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+    "monthly_subscription_usd": "200",
+    "price_as_of": "2026-11-07",
+    "starts_at": "2026-11-07T00:00:00Z",
+    "ends_at": "2026-11-09T00:00:00Z"
+  },
+  "monthly_subscription_allocation_fraction": "0.10",
+  "activity_windows": [
+    {
+      "start": "2026-11-07T00:00:00Z",
+      "end": "2026-11-07T04:00:00Z",
+      "source_url": "https://example.org/synthetic-work-receipt-1"
+    },
+    {
+      "start": "2026-11-08T00:00:00Z",
+      "end": "2026-11-08T04:00:00Z",
+      "source_url": "https://example.org/synthetic-work-receipt-2"
+    }
+  ],
+  "interruptions": [
+    {
+      "start": "2026-11-07T06:00:00Z",
+      "end": "2026-11-07T08:00:00Z",
+      "reason": "quota_exhausted",
+      "source_url": "https://example.org/synthetic-quota-block"
+    }
+  ],
+  "charges": [
+    {
+      "id": "credits-1",
+      "type": "purchased_credit",
+      "at": "2026-11-08T06:00:00Z",
+      "usd": "10",
+      "source_url": "https://example.org/synthetic-credit-charge"
+    },
+    {
+      "id": "tool-1",
+      "type": "external_tool",
+      "at": "2026-11-08T10:00:00Z",
+      "usd": "4",
+      "source_url": "https://example.org/synthetic-tool-charge"
+    },
+    {
+      "id": "compute-1",
+      "type": "local_compute",
+      "at": "2026-11-08T11:00:00Z",
+      "usd": "2",
+      "source_url": "https://example.org/synthetic-compute-charge"
+    },
+    {
+      "id": "included-1",
+      "type": "included_credit",
+      "at": "2026-11-07T05:00:00Z",
+      "usd": "5",
+      "source_url": "https://example.org/synthetic-included-credit-use"
+    }
+  ]
+}

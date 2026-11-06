@@ -1,0 +1,124 @@
+{
+  "schema": "fsl/scenario/0.1",
+  "as_of": "2026-11-06",
+  "scenarios": [
+    {
+      "id": "rubin_100mw_reference",
+      "kind": "reference_simulation",
+      "target_year": 2027,
+      "description": "NVIDIA vendor design reference, not an observed operating site. All training factors are illustrative.",
+      "site": {
+        "stage": "reference",
+        "site_count": 1,
+        "gpu_count": 40000
+      },
+      "hardware": {
+        "name": "NVIDIA Rubin BF16 dense peak",
+        "precision": "BF16",
+        "peak_flops_per_gpu": 4000000000000000,
+        "source_url": "https://www.nvidia.com/en-sg/data-center/vera-rubin-nvl72/"
+      },
+      "run": {
+        "connected_fraction": [
+          0.25,
+          0.6
+        ],
+        "training_fraction": [
+          0.5,
+          0.8
+        ],
+        "days": [
+          90,
+          150
+        ],
+        "mfu": [
+          0.25,
+          0.4
+        ],
+        "pretraining_fraction": [
+          0.6,
+          0.9
+        ],
+        "tokens": [
+          20000000000000,
+          50000000000000
+        ],
+        "overhead": [
+          1,
+          1.6
+        ],
+        "active_ratio": [
+          0.03,
+          0.1
+        ],
+        "cross_site_fabric": false
+      },
+      "capability_hypothesis_multiplier": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "planned_campuses_2028",
+      "kind": "counterfactual",
+      "target_year": 2028,
+      "description": "Synthetic 2-4-site plan only; no claim such facilities are built or connected.",
+      "site": {
+        "stage": "planned",
+        "site_count": [
+          2,
+          4
+        ],
+        "gpu_count": [
+          15000,
+          40000
+        ]
+      },
+      "hardware": {
+        "name": "Rubin BF16 scenario comparator",
+        "precision": "BF16",
+        "peak_flops_per_gpu": 4000000000000000,
+        "source_url": "https://www.nvidia.com/en-sg/data-center/vera-rubin-nvl72/"
+      },
+      "run": {
+        "connected_fraction": [
+          0.25,
+          0.6
+        ],
+        "training_fraction": [
+          0.5,
+          0.8
+        ],
+        "days": [
+          90,
+          180
+        ],
+        "mfu": [
+          0.25,
+          0.4
+        ],
+        "pretraining_fraction": [
+          0.6,
+          0.9
+        ],
+        "tokens": [
+          20000000000000,
+          60000000000000
+        ],
+        "overhead": [
+          1,
+          1.6
+        ],
+        "active_ratio": [
+          0.03,
+          0.1
+        ],
+        "cross_site_fabric": false
+      },
+      "capability_hypothesis_multiplier": [
+        2,
+        3
+      ]
+    }
+  ]
+}

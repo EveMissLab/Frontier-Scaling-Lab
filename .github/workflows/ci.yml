@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -60,5 +60,10 @@ jobs:
         run: |
           python -m fsl_interventions.cli --db /tmp/fsl_g2_synthetic.sqlite synthetic-demo --file tests/fixtures/g2_intervention_synthetic.json --as-of 2026-01-18T00:00:00Z --output /tmp/fsl_g2_synthetic.json
           python -c "import json; a=json.load(open('/tmp/fsl_g2_synthetic.json')); assert a['four_case_recorded_outcomes_satisfied']; assert not a['G2_externally_verified'] and not a['G2_recorded_conditions_satisfied']; assert a['assessment_status']=='synthetic_demonstration_only'"
+      - name: v0.8.1 affordability smoke (SYNTHETIC cost and plan source)
+        run: |
+          python -m fsl_affordability.cli analyze --file tests/fixtures/affordability_synthetic_48h.json --output /tmp/fsl_cost_48h.json
+          python -c "import json; x=json.load(open('/tmp/fsl_cost_48h.json')); assert x['wall_hours']==48 and x['observed_active_hours']==8; assert x['total_monthly_cash_outlay_plus_variable_usd']=='216'; assert not x['can_sustain_48h_verified'] and x['cost_per_independently_verified_result_usd'] is None"
+          python -m fsl_affordability.cli save --db /tmp/fsl_costs_ci.sqlite --file tests/fixtures/affordability_synthetic_48h.json
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

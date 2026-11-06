@@ -13,7 +13,7 @@ from pathlib import Path
 
 from .ledger import (
     InterventionError, add_protocol, bind_choice,
-    connect, evaluate, preregister, reveal,
+    connect, evaluate, oracle_commitment, preregister, reveal,
 )
 
 
@@ -75,8 +75,15 @@ def main(argv=None):
                 add_spec(db,fixture["spec"])
                 add_run(db,fixture["run"])
                 add_protocol(db,fixture["protocol"])
+                # A fabricated fixture may carry expected answers openly;
+                # this must NEVER be done in observational Agent trials.
+                # Production preregister accepts only sealed hashes.
                 for case in fixture["preregistered_cases"]:
-                    preregister(db,case)
+                    claim=fixture["synthetic_oracles"][case["case_id"]]
+                    prepared=dict(case,sealed_oracle_sha256=oracle_commitment(
+                        case["case_id"],claim["expected_action"],
+                        claim["expected_goal_sha256"],claim["oracle_nonce"]))
+                    preregister(db,prepared)
                 for event in fixture["mission_events"]:
                     add_event(db,event)
                 for item in fixture["bindings"]:

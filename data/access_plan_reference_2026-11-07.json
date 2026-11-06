@@ -1,0 +1,123 @@
+{
+  "schema": "fsl/plan-reference/0.8.1",
+  "checked_on": "2026-11-07",
+  "currency": "USD",
+  "price_kind": "published_US_monthly_list_price_not_account_bill",
+  "disclaimer": "No published fixed 24/48h quota or guaranteed completion; prices/features vary by region/date/account; never extrapolate subscription tokens from monthly price.",
+  "sources": [
+    "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+    "https://chatgpt.com/pricing",
+    "https://support.claude.com/en/articles/11049762-choose-a-claude-plan",
+    "https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits"
+  ],
+  "plans": [
+    {
+      "provider": "OpenAI",
+      "plan_id": "ChatGPT Free",
+      "monthly_usd": "0",
+      "source_url": "https://chatgpt.com/pricing",
+      "role": "low-quota baseline",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    },
+    {
+      "provider": "OpenAI",
+      "plan_id": "ChatGPT Plus",
+      "monthly_usd": "20",
+      "source_url": "https://chatgpt.com/pricing",
+      "role": "standard paid baseline",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    },
+    {
+      "provider": "OpenAI",
+      "plan_id": "ChatGPT Pro 100",
+      "monthly_usd": "100",
+      "source_url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+      "role": "high-usage candidate",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    },
+    {
+      "provider": "OpenAI",
+      "plan_id": "ChatGPT Pro 200",
+      "monthly_usd": "200",
+      "source_url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+      "role": "higher-usage candidate",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    },
+    {
+      "provider": "OpenAI",
+      "plan_id": "ChatGPT Pro 500",
+      "monthly_usd": "500",
+      "source_url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+      "role": "highest-usage/speed candidate",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    },
+    {
+      "provider": "Anthropic",
+      "plan_id": "Claude Free",
+      "monthly_usd": "0",
+      "source_url": "https://support.claude.com/en/articles/11049762-choose-a-claude-plan",
+      "role": "low-quota baseline",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    },
+    {
+      "provider": "Anthropic",
+      "plan_id": "Claude Pro",
+      "monthly_usd": "20",
+      "source_url": "https://support.claude.com/en/articles/11049762-choose-a-claude-plan",
+      "role": "standard paid baseline",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    },
+    {
+      "provider": "Anthropic",
+      "plan_id": "Claude Max 5x",
+      "monthly_usd": "100",
+      "source_url": "https://support.claude.com/en/articles/11049762-choose-a-claude-plan",
+      "role": "high-usage candidate",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    },
+    {
+      "provider": "Anthropic",
+      "plan_id": "Claude Max 20x",
+      "monthly_usd": "200",
+      "source_url": "https://support.claude.com/en/articles/11049762-choose-a-claude-plan",
+      "role": "higher-usage candidate",
+      "long_agent_24h_eligibility": "unknown_requires_observation",
+      "long_agent_48h_eligibility": "unknown_requires_observation",
+      "absolute_usable_tokens": "not_publicly_fixed",
+      "verified_result_count": 0,
+      "measurement_status": "listed_price_only"
+    }
+  ]
+}

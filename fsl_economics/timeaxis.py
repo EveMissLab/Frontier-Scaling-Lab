@@ -15,6 +15,7 @@ SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
 from datetime import datetime, date, timezone
+from zoneinfo import ZoneInfo
 from decimal import Decimal
 import hashlib
 import json
@@ -299,7 +300,13 @@ def validate_mission_clock(data, *, checked_at=None):
     price_captured = data.get("price_first_captured_on")
     if price_captured is not None:
         _date(price_captured,"price_first_captured_on")
-        if date.fromisoformat(price_captured)>times["captured_at"].date():
+        # The price source catalog uses Asia/Taipei calendar dates, whereas
+        # machine timestamps have an exact UTC instant. Converting the UTC
+        # instant to its declared calendar timezone prevents off-by-one-day
+        # errors around local midnight.
+        captured_taipei=times["captured_at"].astimezone(
+            ZoneInfo("Asia/Taipei")).date()
+        if date.fromisoformat(price_captured)>captured_taipei:
             raise TemporalError("cannot record a price that was captured after this mission report")
     if data.get("price_source_url") is not None:
         _url(data["price_source_url"],"price_source_url")
@@ -321,6 +328,7 @@ def validate_mission_clock(data, *, checked_at=None):
                           for k,v in times.items()},
         "goal_to_outcome_hours":goal_to_accept,
         "elapsed_execution_hours":duration,
+        "source_vintage_calendar_timezone":"Asia/Taipei",
         "price_vintage_backfilled_from_after_run_start":backfilled,
         "price_vintage_admissible_at_run_start":(
             bool(price_captured and not backfilled and pricing_effective

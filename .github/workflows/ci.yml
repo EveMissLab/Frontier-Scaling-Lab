@@ -93,5 +93,13 @@ jobs:
           python -m fsl_discourse.cli speaker --speaker-id dario-amodei --as-of 2026-11-07 --output /tmp/fsl_speech_dario_timeline.json
           python -m fsl_discourse.cli links --as-of 2026-11-07 --output /tmp/fsl_speech_agnostic_links.json
           python -c "import json; f=lambda x:json.load(open('/tmp/'+x+'.json')); v=f('fsl_speech_validate'); s=f('fsl_speech_strict2024'); r=f('fsl_speech_retro2024'); d=f('fsl_speech_dario_timeline'); l=f('fsl_speech_agnostic_links'); assert v['interview_count']==7 and v['claim_count']==23 and v['organization_count']==6; assert s['included_claims']==0 and r['included_claims']>=15; assert d['source_publication_years']==['2023','2026']; assert l['causal_links_verified']==0 and l['actual_strategy_reversals_verified']==0"
+      - name: v0.11 freeze-and-replay three longitudinal narratives (no AGI scoring)
+        run: |
+          python -m fsl_discourse.replay_cli validate --output /tmp/fsl_v011_validate.json
+          python -m fsl_discourse.replay_cli case --case-id dario-2023-2026-scaling-diffusion --as-of 2023-08-08 --mode retrospective --output /tmp/fsl_v011_dario_past.json
+          python -m fsl_discourse.replay_cli case --case-id dario-2023-2026-scaling-diffusion --as-of 2023-08-08 --mode strict_known_at_time --output /tmp/fsl_v011_dario_strict.json
+          python -m fsl_discourse.replay_cli all --as-of 2026-11-07 --output /tmp/fsl_v011_three_cases.json
+          python -m fsl_discourse.replay_export --as-of 2026-11-07 --output /tmp/fsl_v011_three_cases.csv
+          python -c "import json,csv; v=json.load(open('/tmp/fsl_v011_validate.json')); p=json.load(open('/tmp/fsl_v011_dario_past.json')); s=json.load(open('/tmp/fsl_v011_dario_strict.json')); x=json.load(open('/tmp/fsl_v011_three_cases.json')); rows=list(csv.DictReader(open('/tmp/fsl_v011_three_cases.csv'))); assert v['case_count']==3 and v['interpretation_winners_declared']==0; assert not p['analyst_interpretations_visible_at_cutoff'] and s['documented_observation_count']==0; assert len(x['cases'])==3 and len(rows)==3 and x['actual_reversibility_certificates']==0; assert next(z for z in x['cases'] if z['speaker_id']=='demis-hassabis')['dated_forecast_statuses'][0]['status']=='not_due'; assert x['report_generated_at_Asia_Taipei']"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

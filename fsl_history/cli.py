@@ -9,6 +9,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .catalog import CatalogError, validate, timeline, period_matrix
+from .metrics_bridge import read_observation_panel, MetricsBridgeError
 
 DEFAULT="data/official_ai_history_2024_2026_v0.9.json"
 
@@ -47,17 +48,26 @@ def main(argv=None):
     matrix.add_argument("--month-ends",required=True,
                         help="semicolon-separated YYYY-MM-DD explicit cutoff dates")
     matrix.add_argument("--output")
+    metrics=sub.add_parser("metrics")
+    metrics.add_argument("--db",required=True,help="v0.3/0.4 evidence database (read-only)")
+    metrics.add_argument("--model",action="append",required=True,
+                         help="exact source model ID; repeat for multiple models")
+    metrics.add_argument("--as-of",required=True)
+    metrics.add_argument("--output")
     args=p.parse_args(argv)
     try:
-        data=_read(args.catalog)
+        data=_read(args.catalog) if args.action!="metrics" else None
         if args.action=="validate":
             result=validate(data)
         elif args.action=="timeline":
             result=timeline(data,as_of=args.as_of,mode=args.mode)
+        elif args.action=="metrics":
+            result=read_observation_panel(args.db,source_model_ids=args.model,
+                                          as_of=args.as_of)
         else:
             result=period_matrix(data,month_ends=args.month_ends.split(";"))
         _output(result,getattr(args,"output",None),args.action)
-    except (CatalogError,ValueError,KeyError,TypeError,OSError) as exc:
+    except (CatalogError,MetricsBridgeError,ValueError,KeyError,TypeError,OSError) as exc:
         p.exit(2,"historical catalog error: "+str(exc)+"\n")
     return 0
 

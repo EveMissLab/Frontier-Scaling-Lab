@@ -178,10 +178,19 @@ def audit_asof(data, *, as_of, mode="strict_known_at_time"):
     for r in rows:
         event = r["event_effective_on"] <= as_of and (
             r.get("effective_until") is None or as_of <= r["effective_until"])
+        # A provider quoted a USD price on its launch day. This does NOT
+        # certify that the same rate remained available years later.
+        quote_point_only = (r["kind"]=="price_quote" and
+                            r.get("effective_until") is None and
+                            as_of > r["event_effective_on"])
+        if quote_point_only:
+            event=False
         published = r["published_on"] <= as_of
         captured = r["first_captured_on"] <= as_of
         if not event:
-            status = ("not_yet_effective" if r["event_effective_on"] > as_of
+            status = ("historical_point_price_not_verified_for_later_date"
+                      if quote_point_only else
+                      "not_yet_effective" if r["event_effective_on"] > as_of
                       else "effective_period_expired")
         elif not published:
             status = "not_published_at_cutoff"
@@ -207,6 +216,7 @@ def audit_asof(data, *, as_of, mode="strict_known_at_time"):
             "asof_status":status,
             "admissible_to_previously_issued_forecast":admissible,
             "retrospective_historical_publication_supported":retrospective,
+            "day_precision_ambiguous_within_same_day":as_of==r["published_on"],
             "included_for_requested_mode":(
                 admissible if mode == "strict_known_at_time" else retrospective),
         })

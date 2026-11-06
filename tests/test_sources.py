@@ -14,7 +14,7 @@ from fsl_sources.adapters import (
     parse_arena_page, parse_community_rollup, parse_hf_benchmark, parse_hf_model,
 )
 from fsl_sources.catalog import (
-    CatalogError, add_alias, connect, list_observations, save_snapshot, trend,
+    CatalogError, add_alias, connect, list_observations, model_dossier, save_snapshot, trend,
 )
 
 
@@ -193,6 +193,59 @@ class SourcesTests(unittest.TestCase):
                       canonical_model_key="different:maybe",
                       source="https://example.org/model-card",
                       recorded_on="2026-11-06")
+
+    def test_asof_does_not_leak_later_ingested_history(self):
+        # A leaderboard history may have been published in October but
+        # fetched only in November: October forecasts cannot retroactively
+        # use newly fetched material without a genuine archived snapshot.
+        prepared = parse_arena_page(
+            arena_text(date="2026-10-01"),
+            config="text", split="full", offset=0,
+            retrieved_on="2026-11-06")
+        save_snapshot(self.db, **prepared)
+        early = list_observations(
+            self.db, model_id="arena:SYNTHETIC-CHAT-001",
+            as_of="2026-10-31")
+        self.assertEqual(early, [])
+        later = list_observations(
+            self.db, model_id="arena:SYNTHETIC-CHAT-001",
+            as_of="2026-11-06")
+        self.assertEqual(len(later), 1)
+        early_trend = trend(
+            self.db, model_id="arena:SYNTHETIC-CHAT-001",
+            measure="arena_rating", category="overall",
+            methodology="arena-dataset:text:arena_rating",
+            channel="preference", as_of="2026-10-31")
+        self.assertEqual(early_trend["n_distinct_dates"], 0)
+
+    def test_dossier_requires_audited_alias(self):
+        a = parse_hf_model(model_api(), model_id="demo/example",
+                           retrieved_on="2026-11-06")
+        b = parse_arena_page(
+            arena_text(), config="text", split="latest", offset=0,
+            retrieved_on="2026-11-06")
+        save_snapshot(self.db, **a)
+        save_snapshot(self.db, **b)
+        unknown = model_dossier(
+            self.db, canonical_model_key="example:chat:v1", as_of="2026-11-06")
+        self.assertEqual(unknown["total_latest_metrics"], 0)
+        add_alias(
+            self.db, source_type="hf_model", external_model_id="hf:demo/example",
+            canonical_model_key="example:chat:v1",
+            source="https://example.org/public-model-release",
+            recorded_on="2026-11-06")
+        add_alias(
+            self.db, source_type="arena",
+            external_model_id="arena:SYNTHETIC-CHAT-001",
+            canonical_model_key="example:chat:v1",
+            source="https://example.org/verified-alias",
+            recorded_on="2026-11-06")
+        linked = model_dossier(
+            self.db, canonical_model_key="example:chat:v1", as_of="2026-11-06")
+        self.assertEqual(len(linked["channels"]["metadata"]), 3)
+        self.assertEqual(len(linked["channels"]["preference"]), 1)
+        self.assertEqual(linked["channels"]["benchmark"], [])
+        self.assertIn("not a composite intelligence index", linked["warning"])
 
     def test_url_and_bounded_requests(self):
         self.assertTrue(hf_model_request("Qwen/Qwen3-0.6B").startswith("https://huggingface.co/"))

@@ -153,6 +153,16 @@ def add_evidence(db, event):
     if event["source_kind"] != "assumption":
         https_url(event.get("source_url"))
     value = event.get("value")
+    # Do not permit implicit unit conversion in physical site observations.
+    units = {
+        "site.gpus": "GPU",
+        "site.ready_year": "year",
+        "site.peak_flops_gpu": "FLOP/s/GPU",
+        "site.connected_fraction": "ratio",
+    }
+    if event["state"] == "asserted" and event["field"] in units:
+        if event.get("unit") != units[event["field"]]:
+            raise DataError(f"{event['field']} needs unit {units[event['field']]}")
     if event["state"] == "retracted":
         if value is not None or not event.get("supersedes_id"):
             raise DataError("retractions require a supersedes_id and null value")

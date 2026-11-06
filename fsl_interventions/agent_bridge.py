@@ -21,6 +21,17 @@ ALLOWED_AGENT_EVENTS = frozenset({
     "progress", "checkpoint", "strategy_decision", "deliverable",
     "stack_change", "task_switch",
 })
+# Only machine-readable evidence references, not raw user prompts or oracle data.
+ALLOWED_PAYLOAD_KEYS = {
+    "progress":{"evidence_sha256","github_head_sha"},
+    "checkpoint":{"evidence_sha256","github_head_sha"},
+    "strategy_decision":{"change_event_id","choice","reason_sha256",
+                         "input_state_sha256","next_plan_sha256"},
+    "deliverable":{"artifact_sha256","artifact_type"},
+    "stack_change":{"previous_manifest_sha256","next_manifest_sha256",
+                    "change_reason"},
+    "task_switch":{"from_domain","to_domain"},
+}
 
 
 def load_jsonl(path, *, max_events=1000, max_bytes=8*1024*1024):
@@ -77,6 +88,10 @@ def ingest(db, *, run_id, events, collector_at, protocol_id=None):
         if ev.get("run_id")!=run_id:
             raise InterventionError("cross-mission event rejected")
         validate_event(ev)
+        payload=ev.get("payload")
+        if not isinstance(payload,dict) or (
+            set(payload)-ALLOWED_PAYLOAD_KEYS[ev["kind"]]):
+            raise InterventionError("Agent payload contains non-whitelisted or hidden data")
         if moment(ev["occurred_at"])>now or moment(ev["recorded_at"])>now:
             raise InterventionError("Agent events cannot be stamped in the future")
         existing=db.execute("SELECT event_sha256 FROM functional_events WHERE event_id=?",
@@ -91,6 +106,14 @@ def ingest(db, *, run_id, events, collector_at, protocol_id=None):
              (protocol_id,ev["payload"]["change_event_id"])).fetchone()
             if case is None:
                 raise InterventionError("strategy decision has no preregistered intervention")
+            perturbation=db.execute("""SELECT kind,occurred_at,recorded_at
+              FROM functional_events WHERE event_id=? AND run_id=?""",
+              (ev["payload"]["change_event_id"],run_id)).fetchone()
+            if perturbation is None or perturbation["kind"] not in (
+                    "goal_revision","environment_change"):
+                raise InterventionError("independent user/environment challenge not recorded yet")
+            if moment(perturbation["recorded_at"])>now:
+                raise InterventionError("change event was not known to the observer yet")
             case_id=case["case_id"]
         planned.append((ev,existing is None,case_id))
 

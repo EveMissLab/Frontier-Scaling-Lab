@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -56,5 +56,9 @@ jobs:
         run: |
           python -m fsl_observatory.cli --db /tmp/fsl_observatory_ci.sqlite init
           python -c "from fsl_observatory.registry import connect; db=connect('/tmp/fsl_observatory_ci.sqlite'); assert db.execute('select count(*) from observer_receipts').fetchone()[0]==0; db.close()"
+      - name: v0.8 blinded adaptation scenario replay (SYNTHETIC, not agent results)
+        run: |
+          python -m fsl_interventions.cli --db /tmp/fsl_g2_synthetic.sqlite synthetic-demo --file tests/fixtures/g2_intervention_synthetic.json --as-of 2026-01-18T00:00:00Z --output /tmp/fsl_g2_synthetic.json
+          python -c "import json; a=json.load(open('/tmp/fsl_g2_synthetic.json')); assert a['four_case_recorded_outcomes_satisfied']; assert not a['G2_externally_verified'] and not a['G2_recorded_conditions_satisfied']; assert a['assessment_status']=='synthetic_demonstration_only'"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

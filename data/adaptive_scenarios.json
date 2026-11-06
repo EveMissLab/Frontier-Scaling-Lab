@@ -1,0 +1,85 @@
+{
+  "schema_version": "fsl-adaptive/0.2",
+  "description": "Entire example is SYNTHETIC; not measured GPU deployments or proprietary model parameter data.",
+  "calibration_group": "moe_research_reference_v0",
+  "baseline": {
+    "year": 2026,
+    "as_of": "2026-11-06"
+  },
+  "cohorts": [
+    {
+      "site_id": "demo-operational-2023",
+      "stage": "operational",
+      "gpus": 8000,
+      "ready_year": 2023,
+      "peak_flops_gpu": 4000000000000000,
+      "connected_fraction": 0.6,
+      "description": "SYNTHETIC starting site, not a reported data center"
+    },
+    {
+      "site_id": "demo-planned-2027",
+      "stage": "planned",
+      "gpus": 32000,
+      "ready_year": 2027,
+      "peak_flops_gpu": 8000000000000000,
+      "connected_fraction": 0.65,
+      "description": "SYNTHETIC planned cluster with a hypothetical hardware generation upgrade"
+    },
+    {
+      "site_id": "demo-planned-2029",
+      "stage": "planned",
+      "gpus": 60000,
+      "ready_year": 2029,
+      "peak_flops_gpu": 12000000000000000,
+      "connected_fraction": 0.6,
+      "description": "SYNTHETIC larger follow-on installation; not an actual company projection"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "lagged_plateau",
+      "description": "Slow commissioning and stronger saturation",
+      "installation_lag_years": 1.5,
+      "maturation_tau_years": 1.5,
+      "release_lag_years": 1,
+      "parameter_elasticity": 0.55,
+      "parameter_ceiling": 5,
+      "training_fraction": 0.55,
+      "mfu": 0.27,
+      "annual_algorithmic_yield": 0.02
+    },
+    {
+      "id": "delayed_payback",
+      "description": "Earlier investment becomes useful with a moderate lag",
+      "installation_lag_years": 0.75,
+      "maturation_tau_years": 1.1,
+      "release_lag_years": 0.6,
+      "parameter_elasticity": 0.72,
+      "parameter_ceiling": 8,
+      "training_fraction": 0.65,
+      "mfu": 0.35,
+      "annual_algorithmic_yield": 0.05
+    },
+    {
+      "id": "sustained_expansion",
+      "description": "Fast rollout, hardware improvements, weaker saturation",
+      "installation_lag_years": 0.35,
+      "maturation_tau_years": 0.8,
+      "release_lag_years": 0.3,
+      "parameter_elasticity": 0.92,
+      "parameter_ceiling": 10,
+      "training_fraction": 0.7,
+      "mfu": 0.4,
+      "annual_algorithmic_yield": 0.07
+    }
+  ],
+  "cognitive_multiplier_hypothesis": [
+    2,
+    3
+  ],
+  "warnings": [
+    "NOT historical observations.",
+    "Parameter ceilings are hypotheses, not physical laws.",
+    "The entire benchmark series must be identified before observational scoring."
+  ]
+}

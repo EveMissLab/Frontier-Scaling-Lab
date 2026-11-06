@@ -38,6 +38,8 @@ def main(argv=None):
     parser.add_argument("--db",default="data/fsl_observatory.sqlite")
     actions=parser.add_subparsers(dest="command",required=True)
     actions.add_parser("init")
+    seal=actions.add_parser("seal",help="evaluator-only: hash hidden oracle without exposing labels")
+    seal.add_argument("--file",required=True,help="private JSON with case_id, expected_action, expected_goal_sha256, oracle_nonce")
     for command in ("protocol","preregister","bind","reveal"):
         p=actions.add_parser(command)
         p.add_argument("--file",required=True)
@@ -61,6 +63,13 @@ def main(argv=None):
             if args.command=="init":
                 result={"database":args.db,"schema":"fsl/g2/v0.8",
                         "state":"initialized_not_an_agent"}
+            elif args.command=="seal":
+                private=load(args.file)
+                result={"case_id":private["case_id"],
+                        "sealed_oracle_sha256":oracle_commitment(
+                           private["case_id"],private["expected_action"],
+                           private["expected_goal_sha256"],private["oracle_nonce"]),
+                        "warning":"Keep the input file, nonce and expected action unavailable to the tested Agent"}
             elif args.command=="protocol":
                 result={"protocol_id":add_protocol(db,load(args.file))}
             elif args.command=="preregister":

@@ -1,0 +1,23 @@
+{
+  "features": [],
+  "rows": [
+    {
+      "row_idx": 0,
+      "row": {
+        "model_name": "SYNTHETIC-CHAT-FIXTURE",
+        "organization": "example",
+        "license": "fixture",
+        "rating": 1400,
+        "rating_lower": 1385,
+        "rating_upper": 1415,
+        "vote_count": 400,
+        "rank": 1,
+        "category": "overall",
+        "leaderboard_publish_date": "2026-11-04"
+      }
+    }
+  ],
+  "num_rows_total": 1,
+  "num_rows_per_page": 100,
+  "fixture_warning": "SYNTHETIC OFFLINE FIXTURE, NOT REAL ARENA RANKINGS"
+}

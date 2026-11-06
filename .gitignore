@@ -5,3 +5,9 @@ results/
 dist/
 build/
 *.egg-info/
+data/*.sqlite
+data/*.sqlite-*
+reports/
+*.db-journal
+*.db-wal
+*.db-shm

@@ -5,6 +5,55 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.8.3 — Time-aware evidence vintage / 時間與資料截止日鎖定
+
+[**Canonical UTF-8 temporal study**](docs/TEMPORAL_VINTAGE_AND_ACCESS_v0.8.3.md) ·
+[Official 2024/2026 source-date anchors](data/verified_release_and_price_vintage_2026-11-07.json)
+
+An AI-era comparison without dates is not scientifically interpretable.
+v0.8.3 records separate:
+- **Event / effective calendar date**: e.g., a model launch, price quote, tool
+  availability change, or the shutdown of a specific old model snapshot.
+- **Original publisher date**: when a source publicly claimed an event.
+- **First FSL capture date**: when *this study* first actually retrieved it.
+- **Real task instants**: timezone-aware goal freeze, start, last progress,
+  finish, acceptance, and evidence capture, preserving local +08:00 and UTC.
+
+The first verified publisher-date anchors (2024-05-13 OpenAI GPT-4o,
+2024-06-21 Anthropic Claude 3.5 Sonnet and launch-price quote,
+2026-10-23 legacy GPT-4o API shutdown) were **first catalogued by FSL in
+Taiwan on 2026-11-07**. Their presence today does not establish they were
+observed by this study in 2024, and the 2024 API price is not silently
+carried into 2026.
+
+The new time-anchored economics adapter requires an exact model/runtime
+identity and a time spine for **every attempt** (including failed/censored),
+with no future observations past its declared cutoff. Full Agent autonomy,
+task correctness, subscription quotas and accepted product quality still
+require separate independent evidence.
+
+~~~bash
+python -m unittest discover -s tests -v
+
+python -m fsl_economics.timeaxis_cli audit-sources \
+  --catalog data/verified_release_and_price_vintage_2026-11-07.json \
+  --as-of 2024-05-13 --mode strict_known_at_time
+
+python -m fsl_economics.timeaxis_cli audit-sources \
+  --catalog data/verified_release_and_price_vintage_2026-11-07.json \
+  --as-of 2024-05-13 --mode retrospective_reconstruction
+
+python -m fsl_economics.timeaxis_cli audit-panel \
+  --file tests/fixtures/time_anchored_task_panel_synthetic.json
+~~~
+
+All task times in these examples are **synthetic**, not evidence of 24–48h
+successful autonomous Agent work. Every generated report includes its
+actual UTC and Asia/Taipei generation timestamps; publisher-only dates
+remain day-precision and are never made into invented midnight UTC instants.
+
+---
+
 ## v0.8.2 — Effective Task Purchasing Power / 同期跨 AI 與歷史反事實成本
 
 [**Canonical v0.8.2 UTF-8 research document**](docs/EFFECTIVE_TASK_PURCHASING_POWER_v0.8.2.md) ·

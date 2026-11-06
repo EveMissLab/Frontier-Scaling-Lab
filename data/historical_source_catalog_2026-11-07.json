@@ -1,0 +1,109 @@
+{
+  "schema": "fsl/historical-price-and-model-sources/0.8.2",
+  "recorded_on": "2026-11-07",
+  "status": "source_directory_only_no_provider_data_imported",
+  "policy": "Each source requires as-of vintage and validity audit before quoting real historic costs. Licenses are not transferred by this repo's Apache-2.0.",
+  "resources": [
+    {
+      "id": "openai-api-current",
+      "type": "current_pricing",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "covers": [
+        "token prices",
+        "cached tokens",
+        "tool charges",
+        "provider endpoint"
+      ],
+      "cautions": [
+        "Live page is not a substitute for 2024/2025 price archive",
+        "Different service tiers and token brackets"
+      ]
+    },
+    {
+      "id": "openai-deprecations",
+      "type": "historical_model_status_and_legacy_prices",
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "covers": [
+        "old model retirement notices",
+        "some previous model prices"
+      ],
+      "cautions": [
+        "Only listed historical SKUs; not a task completion experiment"
+      ]
+    },
+    {
+      "id": "openai-gpt4o-2024-release",
+      "type": "historical_access_rollout",
+      "url": "https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free/",
+      "source_published_on": "2024-05-13",
+      "covers": [
+        "public rollout",
+        "Free/Plus/Team feature and quota conditions at release"
+      ],
+      "cautions": [
+        "An accessible Chat UI does not imply full multi-day Agent capability",
+        "Does not reconstruct 2024 prompt/caching/tool runtime"
+      ]
+    },
+    {
+      "id": "anthropic-historical-pricelist-2026-05",
+      "type": "dated_historical_price_document",
+      "url": "https://www-cdn.anthropic.com/files/4zrzovbb/website/3684c2faafb97418665782cea0001f439f74b1d2.pdf",
+      "source_effective_on": "2026-05-27",
+      "covers": [
+        "model SKU price by model/platform",
+        "cache",
+        "regional tiers"
+      ],
+      "cautions": [
+        "Cannot assume May 2026 prices apply to other historical months"
+      ]
+    },
+    {
+      "id": "artificial-analysis-api",
+      "type": "third_party_metrics_and_prices",
+      "url": "https://artificialanalysis.ai/data-api/docs",
+      "covers": [
+        "model/provider identity",
+        "benchmark scores",
+        "provider prices",
+        "speed metrics"
+      ],
+      "cautions": [
+        "API key required",
+        "time-series privileges vary by tier",
+        "attribution and redistribution terms require review"
+      ]
+    },
+    {
+      "id": "epoch-ai-models",
+      "type": "historical_frontier_classification",
+      "url": "https://epoch.ai/data/ai-models",
+      "covers": [
+        "model history",
+        "training compute estimates",
+        "time-relative frontier classification"
+      ],
+      "cautions": [
+        "Different report filters and source definitions should not be combined",
+        "Training compute frontier is not task performance ranking"
+      ]
+    },
+    {
+      "id": "fsl-functional-protocol",
+      "type": "internal_task_quality_contract",
+      "url": "https://github.com/EveMissLab/Frontier-Scaling-Lab/blob/main/docs/FUNCTIONAL_FRONTIER_v0.6.md",
+      "covers": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "E1"
+      ],
+      "cautions": [
+        "Operational framework, not independently verified model achievements"
+      ]
+    }
+  ],
+  "next_step": "Build original dated, sourced panel per model/period/task with explicit permission; leave missing old success probabilities null."
+}

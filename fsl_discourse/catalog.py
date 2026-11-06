@@ -31,6 +31,11 @@ DIMENSIONS={
     "research_strategy","governance","safety","economic_diffusion",
     "verification_criterion","reversibility","uncertainty","public_influence",
 }
+TOPICS={
+    "AI","AGI","ASI","alignment","autonomy","world_model",
+    "consciousness","economic_deployment","governance","scientific_discovery",
+    "research_strategy","embodiment",
+}
 MODALITIES={
     "asserted","hypothesized","explicitly_uncertain","conditional",
     "personal_preference","organizational_intention_claim",
@@ -151,7 +156,7 @@ def validate(catalog):
     for c in claims:
         req=("claim_id","source_id","speaker_id","source_locator",
              "record_status","original_language","paraphrase_zh_tw",
-             "claim_scope","modality","dimensions",
+             "claim_scope","modality","dimensions","topics",
              "reversibility_assessment","stance_link_hypothesis",
              "annotation_status","analytic_limits")
         if not isinstance(c,dict) or any(k not in c for k in req):
@@ -184,8 +189,26 @@ def validate(catalog):
         if (not isinstance(dims,list) or not dims or len(dims)!=len(set(dims))
                 or not set(dims)<=DIMENSIONS):
             raise DiscourseError("supported non-exclusive research dimensions required")
+        topics=c["topics"]
+        if (not isinstance(topics,list) or not topics or len(set(topics))!=len(topics)
+                or not set(topics)<=TOPICS):
+            raise DiscourseError("explicit AI/AGI/ASI topic terms required; do not invent ASI references")
         if c["reversibility_assessment"] not in REVERSIBILITY:
             raise DiscourseError("reversibility must allow explicit unknown")
+        forecast=c.get("forecast")
+        if forecast is not None:
+            if (not isinstance(forecast,dict) or set(forecast)!={
+                    "target_by","probability","definition_scope","citation_mode"}):
+                raise DiscourseError("forecast must encode time, uncertainty and definition")
+            _date(forecast["target_by"],"forecast.target_by")
+            _plain(forecast["definition_scope"],"forecast.definition_scope",220)
+            if forecast["citation_mode"]!="explicit_speaker_value":
+                raise DiscourseError("numeric forecast must be explicitly in original speech")
+            from decimal import Decimal,InvalidOperation
+            try:p=Decimal(str(forecast["probability"]))
+            except InvalidOperation as ex:raise DiscourseError("invalid explicit numeric confidence") from ex
+            if not p.is_finite() or not 0<=p<=1:
+                raise DiscourseError("explicit numeric probability must be 0..1")
         if c["annotation_status"]!="analyst_provisional_not_fact":
             raise DiscourseError("do not present a researcher interpretation as speaker fact")
         if c["stance_link_hypothesis"] is not None:
@@ -231,6 +254,8 @@ def asof_view(catalog,*,as_of,mode="retrospective"):
             "first_captured_on":source["first_captured_on"],
             "paraphrase_zh_tw":c["paraphrase_zh_tw"],
             "dimensions":c["dimensions"],
+            "topics":c["topics"],
+            "forecast":c.get("forecast"),
             "modality":c["modality"],
             "reversibility_assessment":c["reversibility_assessment"],
             "source_locator":c["source_locator"],

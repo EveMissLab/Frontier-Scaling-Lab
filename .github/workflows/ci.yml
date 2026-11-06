@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -65,5 +65,10 @@ jobs:
           python -m fsl_affordability.cli analyze --file tests/fixtures/affordability_synthetic_48h.json --output /tmp/fsl_cost_48h.json
           python -c "import json; x=json.load(open('/tmp/fsl_cost_48h.json')); assert x['wall_hours']==48 and x['observed_active_hours']==8; assert x['total_monthly_cash_outlay_plus_variable_usd']=='216'; assert not x['can_sustain_48h_verified'] and x['cost_per_independently_verified_result_usd'] is None"
           python -m fsl_affordability.cli save --db /tmp/fsl_costs_ci.sqlite --file tests/fixtures/affordability_synthetic_48h.json
+      - name: v0.8.2 task purchasing power and historical counterfactual (synthetic)
+        run: |
+          python -m fsl_economics.cli compare --input tests/fixtures/task_purchasing_power_synthetic.json --output /tmp/fsl_task_purchasing_power.json --save-db /tmp/fsl_economics_ci.sqlite --study-id synthetic-comparison
+          python -m fsl_economics.cli history --input tests/fixtures/historical_task_cost_synthetic.json --output /tmp/fsl_historical_cost.json --save-db /tmp/fsl_economics_ci.sqlite --study-id synthetic-historical
+          python -c "import json; p=json.load(open('/tmp/fsl_task_purchasing_power.json')); h=json.load(open('/tmp/fsl_historical_cost.json')); assert len(p['cohorts'])==3 and not p['has_independently_certified_result']; assert h['scenarios'][1]['status']=='historical_cost_unidentifiable' and h['scenarios'][3]['status']=='modern_replay_requires_real_trials'"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

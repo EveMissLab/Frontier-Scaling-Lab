@@ -14,6 +14,7 @@ multiweek and multi-month **start-to-finished-outcome** autonomy (G1); knowing
 user goal (G2); creation in **one/few user instruction rounds** of fully functional,
 world-class games or high-value apps (G3); and both personal-author and distinctive
 AI-native creative style in finished artistic works (G4).
+**Only G2 depends on G1. G3 and G4 are independent functional end-state goals.**
 
 **Embodied adaptive intelligence (E1) is a separate track**, requiring a single
 physical AI system to recognize and switch between multiple real task categories,

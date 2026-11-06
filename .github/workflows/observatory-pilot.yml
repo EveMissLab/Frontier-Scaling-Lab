@@ -5,6 +5,9 @@ on:
   push:
     paths:
       - '.github/workflows/observatory-pilot.yml'
+      - 'fsl_observatory/**'
+      - 'docs/FUNCTIONAL_OBSERVATORY_v0.7.md'
+      - 'tests/test_observatory.py'
 
 permissions:
   contents: read
@@ -42,7 +45,9 @@ jobs:
         run: |
           git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
           git rev-parse HEAD > reports/git_commit.sha
-          (cd reports && sha256sum pilot.sqlite pilot_report.json Frontier-Scaling-Lab-source.zip > SHA256SUMS.txt)
+          cp docs/FUNCTIONAL_OBSERVATORY_v0.7.md reports/FUNCTIONAL_OBSERVATORY_v0.7.md
+          cp LICENSE reports/LICENSE
+          (cd reports && sha256sum pilot.sqlite pilot_report.json Frontier-Scaling-Lab-source.zip FUNCTIONAL_OBSERVATORY_v0.7.md LICENSE > SHA256SUMS.txt)
       - name: Retain local evidence and one-source archive
         if: always()
         uses: actions/upload-artifact@v4
@@ -54,5 +59,7 @@ jobs:
             reports/Frontier-Scaling-Lab-source.zip
             reports/git_commit.sha
             reports/SHA256SUMS.txt
+            reports/FUNCTIONAL_OBSERVATORY_v0.7.md
+            reports/LICENSE
           if-no-files-found: warn
           retention-days: 90

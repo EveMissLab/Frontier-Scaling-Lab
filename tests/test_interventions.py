@@ -31,7 +31,7 @@ def replay(db, fixture=FIXTURE, *, do_bind=True, do_reveal=True):
     for case in fixture["preregistered_cases"]:
         oracle=fixture["synthetic_oracles"][case["case_id"]]
         commitment=oracle_commitment(case["case_id"],oracle["expected_action"],
-                                      oracle["expected_goal_sha256"],oracle["oracle_nonce"])
+                                      oracle["expected_goal_sha256"],oracle["oracle_nonce"],oracle["case_type"])
         preregister(db,dict(case,sealed_oracle_sha256=commitment))
     for event in fixture["mission_events"]:
         add_event(db,event)
@@ -97,7 +97,7 @@ class InterventionTests(unittest.TestCase):
         case=FIXTURE["preregistered_cases"][0]
         secret=FIXTURE["synthetic_oracles"][case["case_id"]]
         commitment=oracle_commitment(case["case_id"],secret["expected_action"],
-                    secret["expected_goal_sha256"],secret["oracle_nonce"])
+                    secret["expected_goal_sha256"],secret["oracle_nonce"],secret["case_type"])
         with self.assertRaises(InterventionError):
             preregister(self.db,dict(case,sealed_oracle_sha256=commitment))
 
@@ -229,9 +229,9 @@ class InterventionTests(unittest.TestCase):
 
     def test_oracle_salt_validation(self):
         with self.assertRaises(InterventionError):
-            oracle_commitment("case", "replan", "b"*64, "abc")
+            oracle_commitment("case", "replan", "b"*64, "abc", "goal_changed")
         with self.assertRaises(InterventionError):
-            oracle_commitment("case", "random_action", "b"*64, "1"*32)
+            oracle_commitment("case", "random_action", "b"*64, "1"*32, "goal_changed")
 
     def test_public_event_history_is_a_result_not_policy_for_the_agent(self):
         replay(self.db)

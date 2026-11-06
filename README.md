@@ -5,6 +5,48 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.9 — 2024–2026 official model history, same-era panels & AMRAL/FELRA
+
+[**Canonical UTF-8 v0.9 research source**](docs/HISTORICAL_AI_MARKET_AND_RESEARCH_EVIDENCE_v0.9.md) ·
+[49 date-stamped primary-provider events](data/official_ai_history_2024_2026_v0.9.json)
+
+**Completed research infrastructure (2026-11-07 Asia/Taipei):**
+- 49 original, dated **provider release/tool/API-price/retirement claims** from 38
+  official source entries for **OpenAI, Anthropic, Google, xAI and DeepSeek**,
+  across the historical years **2024, 2025 and 2026**.
+- Each record preserves its event day, source-publication day, first **FSL
+  capture date** (2026-11-07), model identity precision (family/alias/snapshot),
+  initial product access route and proof limit. Price quotes are point-in-time,
+  never automatically extrapolated to later months.
+- Three-view as-of comparison: 2024-12-31, 2025-12-31, 2026-11-07.
+  A strict historical forecast cannot see information first captured in 2026;
+  retrospective reconstruction is explicitly marked as such.
+- Existing v0.3/v0.4 real Arena/HF observations can be read from their existing
+  local SQLite as **separate model/methodology/source strata**; no synthetic
+  conversion of rating points into G1–G4 quality or task-cost multiples.
+- A **local-only, privacy-preserving AMRAL/FELRA integration** checks exact
+  source bytes and dated epoch/commit identity. It knows the PPV receipt/status/
+  ledger types, but cannot claim a theorem was proved without independent
+  FELRA ppv-verify execution. An optional keyed HMAC exporter publishes
+  redacted counts, not research manuscript, private paths or private hashes.
+- All unknown plan quotas, historical model accessibility, complete autonomous
+  mission durations and accepted-output costs remain unmeasured, not invented.
+
+~~~bash
+python -m unittest discover -s tests -v
+python -m fsl_history.cli validate
+python -m fsl_history.cli timeline --as-of 2024-12-31 --mode strict_known_at_time
+python -m fsl_history.cli timeline --as-of 2024-12-31 --mode retrospective
+python -m fsl_history.cli matrix --month-ends '2024-12-31;2025-12-31;2026-11-07'
+~~~
+
+Use fsl_history.research_cli only in a user-controlled local/private checkout
+with an explicit artifact manifest and the actual file bytes. **Never push
+private AMRAL/FELRA raw research, license-limited material or HMAC keys to FSL.**
+The user's future alternative data is intentionally not preclassified.
+
+---
+
 ## v0.8.3 — Time-aware evidence vintage / 時間與資料截止日鎖定
 
 [**Canonical UTF-8 temporal study**](docs/TEMPORAL_VINTAGE_AND_ACCESS_v0.8.3.md) ·

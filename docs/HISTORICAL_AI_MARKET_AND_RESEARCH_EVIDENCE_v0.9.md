@@ -140,11 +140,29 @@ python -m fsl_history.cli metrics \
   --db /path/to/existing_fsl_evidence.sqlite \
   --model EXACT_SOURCE_MODEL_ID --as-of 2026-11-07
 
+# 在自己的私人工作區先計算真實檔案雜湊，不需要手動填表
+python -m fsl_history.manifest_cli \
+  --root /path/to/private/research \
+  --output /path/to/private/epoch_manifest.json \
+  --epoch-id ACTUAL_EPOCH_ID --research-line ACTUAL_RESEARCH_LINE \
+  --source-branch ACTUAL_GIT_BRANCH \
+  --source-commit-sha ACTUAL_FULL_GIT_SHA \
+  --model-provider anthropic --model-revision ACTUAL_MODEL_REVISION \
+  --started-at 2026-11-05T08:00:00+08:00 \
+  --runtime-manifest-sha256 ACTUAL_RUNTIME_SHA256 \
+  --task-contract-sha256 ACTUAL_TASK_SHA256 \
+  --material felra_ppv_receipts=ppv/receipts.json \
+  --material felra_ppv_status=ppv/status.json \
+  --material felra_ppv_ledger=ppv/ledger.jsonl
+
+# 回頭驗證私有檔案是否真的與指定 SHA 相符
 python -m fsl_history.research_cli \
-  --manifest PRIVATE_epoch_manifest.json \
+  --manifest /path/to/private/epoch_manifest.json \
   --root /path/to/private/research \
   --private-output /path/to/private/audit.json
 ~~~
+
+manifest_cli 會計算指定本地檔案的實際 SHA-256，採**私人路徑、只建立新檔而不覆寫**，並以機器時鐘記錄真正擷取時間；範例中的 EPOCH、Git SHA、模型修訂、路徑與時間必須由真實執行資料填入，不是可直接引用的實證紀錄。
 
 真正要進行公開研究輸出時，需要提供 FSL_BRIDGE_EXPORT_KEY 作為本地環境變數，另行指定 public-output 的目的路徑。不得將密鑰、私人 manifest 或公開未經授權研究素材提交到公開 FSL。
 

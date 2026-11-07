@@ -1,0 +1,76 @@
+name: FSL v0.12 historical documentary divergence research package
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/divergence-v012-package.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verified-public-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate full FSL regression suite and canonical source syntax
+        run: |
+          python -m compileall -q fsl_discourse fsl_history fsl_economics tests
+          python -m unittest discover -s tests -q
+
+      - name: Produce strictly time-bounded, source-grounded reports
+        run: |
+          mkdir -p reports
+          python -m fsl_discourse.divergence_cli validate
+          python -m fsl_discourse.divergence_cli replay \
+            --as-of 2019-02-14 --mode retrospective \
+            --output reports/2019-02-14_initial_gpt2_state.json
+          python -m fsl_discourse.divergence_cli replay \
+            --as-of 2019-11-05 --mode strict_known_at_time \
+            --output reports/2019-11-05_strict_source_possession.json
+          python -m fsl_discourse.divergence_cli replay \
+            --as-of 2019-11-05 --mode retrospective \
+            --output reports/2019-11-05_release_retrospective.json
+          python -m fsl_discourse.divergence_cli replay \
+            --as-of 2024-06-25 --mode retrospective \
+            --output reports/2024-06-25_voice_plan_revision.json
+          python -m fsl_discourse.divergence_cli replay \
+            --as-of 2025-04-28 --mode retrospective \
+            --output reports/2025-04-28_before_postmortem.json
+          python -m fsl_discourse.divergence_cli replay \
+            --as-of 2025-05-02 --mode retrospective \
+            --output reports/2025-05-02_postmortem_accessible.json
+          python -m fsl_discourse.divergence_cli replay \
+            --as-of 2026-11-07 --mode retrospective \
+            --output reports/2026-11-07_full_documentary_matrix.json
+          python -m fsl_discourse.divergence_cli csv \
+            --as-of 2026-11-07 \
+            --output reports/2026-11-07_case_status.csv
+
+      - name: Assert actual scope, no future knowledge and no mind reading
+        run: |
+          python -c "import json,csv; load=lambda p:json.load(open('reports/'+p+'.json')); r=load('2026-11-07_full_documentary_matrix'); s=load('2019-11-05_strict_source_possession'); b=load('2025-04-28_before_postmortem'); a=load('2025-05-02_postmortem_accessible'); rows=list(csv.DictReader(open('reports/2026-11-07_case_status.csv',encoding='utf-8'))); assert len(r['cases'])==8 and len(rows)==8; assert r['documented_local_changes_reported_by_sources']==4 and r['fully_independently_adjudicated_direction_changes']==0 and r['scientifically_verified_personal_belief_change']==0; assert s['documented_local_changes_reported_by_sources']==0; before=next(x for x in b['cases'] if x['case_id']=='gpt4o-2025-sycophancy-rollback'); after=next(x for x in a['cases'] if x['case_id']=='gpt4o-2025-sycophancy-rollback'); assert not before['provider_reports_intent_outcome_gap'] and after['provider_reports_intent_outcome_gap']; assert all(x['independent_review_done']=='False' and x['causality_established']=='False' for x in rows)"
+
+      - name: Freeze canonical UTF-8 source, raw provenance and audit metadata
+        run: |
+          git archive --format=zip --output=reports/Frontier-Scaling-Lab-source.zip HEAD
+          cp docs/AI_DOCUMENTED_DIRECTION_DIVERGENCE_v0.12.md reports/AI_DOCUMENTED_DIRECTION_DIVERGENCE_v0.12.md
+          cp data/ai_documented_divergences_2019_2026_v0.12.json reports/ai_documented_divergences_2019_2026_v0.12.json
+          cp LICENSE reports/LICENSE
+          git rev-parse HEAD > reports/GIT_HEAD.sha
+          python -c "from datetime import datetime,timezone;from zoneinfo import ZoneInfo;from pathlib import Path;import json;t=datetime.now(timezone.utc);j={'generated_at_utc':t.isoformat(),'generated_at_Asia_Taipei':t.astimezone(ZoneInfo('Asia/Taipei')).isoformat(),'source_first_FSL_capture_on':'2026-11-07','source_timezone':'Asia/Taipei','primary_documents_and_reuters_linked_not_copied':True,'original_forecast_in_2019_or_2025_claimed':False,'independent_model_rollbacks_verified':False,'external_timestamp_attestation':False};Path('reports/PACKAGE_TIMESTAMP.json').write_text(json.dumps(j,indent=2)+'\n',encoding='utf-8')"
+          (cd reports && sha256sum Frontier-Scaling-Lab-source.zip AI_DOCUMENTED_DIRECTION_DIVERGENCE_v0.12.md ai_documented_divergences_2019_2026_v0.12.json LICENSE 2019-02-14_initial_gpt2_state.json 2019-11-05_strict_source_possession.json 2019-11-05_release_retrospective.json 2024-06-25_voice_plan_revision.json 2025-04-28_before_postmortem.json 2025-05-02_postmortem_accessible.json 2026-11-07_full_documentary_matrix.json 2026-11-07_case_status.csv PACKAGE_TIMESTAMP.json > SHA256SUMS.txt)
+
+      - name: Publish source-linked original research bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: FSL-v0.12-documented-direction-and-reversibility-${{ github.run_id }}
+          path: reports/
+          retention-days: 90
+          if-no-files-found: error

@@ -188,7 +188,8 @@
           "state": "withheld",
           "locating_heading": "Better language models — Release strategy",
           "factual_paraphrase": "Publisher stated it was not then releasing full GPT-2 weights due to misuse risks, explicitly as a staged-release experiment.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "gpt-2-1.5b-weights"
         },
         {
           "event_id": "gpt2-nov-weights",
@@ -197,7 +198,8 @@
           "state": "weights_released",
           "locating_heading": "GPT-2: 1.5B release — Introduction",
           "factual_paraphrase": "Publisher announced full 1.5B code and model weights release as the final stage of its earlier staged plan.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "gpt-2-1.5b-weights"
         }
       ],
       "falsification_questions": [
@@ -228,7 +230,8 @@
           "state": "deployed",
           "locating_heading": "Improvements to GPT-4o (April 25, 2025)",
           "factual_paraphrase": "Provider's dated release notes described rollout intended to improve default model behavior, including more proactive interaction.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "chatgpt-gpt4o-apr25-personality-update"
         },
         {
           "event_id": "gpt4o-0428-rollback",
@@ -237,7 +240,8 @@
           "state": "rolled_back",
           "locating_heading": "What we did to address the issue",
           "factual_paraphrase": "Published May 2 postmortem states rollback to previous GPT-4o version was initiated on April 28 after the April 25 deployment.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "chatgpt-gpt4o-apr25-personality-update"
         }
       ],
       "falsification_questions": [
@@ -276,7 +280,8 @@
           "state": "deployed",
           "locating_heading": "Update to o4-mini (June 6, 2025)",
           "factual_paraphrase": "Official June 6 note says a snapshot was deployed less than a week earlier but does not disclose its precise deployment date.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "chatgpt-o4mini-early-june-snapshot"
         },
         {
           "event_id": "o4mini-june6-rollback",
@@ -285,7 +290,8 @@
           "state": "rolled_back",
           "locating_heading": "Update to o4-mini (June 6, 2025)",
           "factual_paraphrase": "OpenAI states it is rolling back the snapshot after automated monitoring reported increased content flags.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "chatgpt-o4mini-early-june-snapshot"
         }
       ],
       "falsification_questions": [
@@ -316,7 +322,8 @@
           "state": "roadmap_announced",
           "locating_heading": "Hello GPT-4o — Availability",
           "factual_paraphrase": "At initial announcement the company expected a voice alpha to reach Plus users in the coming weeks, without a definite calendar day.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "chatgpt-gpt4o-advanced-voice-paid-user-rollout"
         },
         {
           "event_id": "voice-june-revision",
@@ -325,7 +332,8 @@
           "state": "roadmap_revised",
           "locating_heading": "Reuters June 25 report — Voice Mode delay",
           "factual_paraphrase": "Reuters reported an OpenAI plan revision from a late-June small alpha target to July, citing safety/scale readiness.",
-          "source_corroboration": "third_party_attribution"
+          "source_corroboration": "third_party_attribution",
+          "subject_key": "chatgpt-gpt4o-advanced-voice-paid-user-rollout"
         },
         {
           "event_id": "voice-sept-rollout",
@@ -334,7 +342,8 @@
           "state": "available_to_paying_users",
           "locating_heading": "Advanced voice (September 24, 2024)",
           "factual_paraphrase": "OpenAI dated its Advanced Voice Plus/Team release entry September 24, with daily usage limits.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "chatgpt-gpt4o-advanced-voice-paid-user-rollout"
         }
       ],
       "falsification_questions": [
@@ -365,7 +374,8 @@
           "state": "weights_released",
           "locating_heading": "GPT-2: 1.5B release",
           "factual_paraphrase": "GPT-2 1.5B weights were publicly released as a staged policy decision.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "gpt-2-1.5b-weights"
         },
         {
           "event_id": "gptoss-2025-openweights",
@@ -374,7 +384,8 @@
           "state": "different_open_weight_family_released",
           "locating_heading": "Introducing gpt-oss",
           "factual_paraphrase": "OpenAI released gpt-oss-120b and gpt-oss-20b under Apache 2.0, its first open-weight LMs since GPT-2.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "gpt-oss-2025-reasoning-weights"
         }
       ],
       "falsification_questions": [
@@ -405,7 +416,8 @@
           "state": "public_assertion",
           "locating_heading": "Scaling and specific skills",
           "factual_paraphrase": "He distinguished smooth aggregate scaling from uncertainty about exact specific capability thresholds and mechanism.",
-          "source_corroboration": "original_interview"
+          "source_corroboration": "original_interview",
+          "subject_key": "dario-scaling-versus-ability-prediction"
         },
         {
           "event_id": "dario-2026-observation",
@@ -414,7 +426,8 @@
           "state": "later_public_assertion",
           "locating_heading": "What exactly are we scaling?",
           "factual_paraphrase": "He described broad technical progress as compatible with earlier scaling expectations, while specific coding paths were partly surprising.",
-          "source_corroboration": "original_interview"
+          "source_corroboration": "original_interview",
+          "subject_key": "dario-scaling-versus-ability-prediction"
         }
       ],
       "falsification_questions": [
@@ -445,7 +458,8 @@
           "state": "public_assertion",
           "locating_heading": "Path to AGI",
           "factual_paraphrase": "Public interview includes approximately 50% chance around 2030 under speaker's high-bar AGI definition.",
-          "source_corroboration": "original_interview"
+          "source_corroboration": "original_interview",
+          "subject_key": "demis-high-bar-agi-by-2030"
         }
       ],
       "falsification_questions": [
@@ -477,7 +491,8 @@
           "state": "public_assertion",
           "locating_heading": "更多的投入並不一定產生更多的創新",
           "factual_paraphrase": "He discussed open research, original architectures and affordable AI as publicly preferred research directions.",
-          "source_corroboration": "original_interview"
+          "source_corroboration": "original_interview",
+          "subject_key": "deepseek-public-research-and-openness"
         },
         {
           "event_id": "deepseek-r1-2025-release",
@@ -486,7 +501,8 @@
           "state": "different_open_weight_family_released",
           "locating_heading": "DeepSeek-R1 announcement",
           "factual_paraphrase": "Official R1 release provided model/weight artefacts, but it addresses one specific model and deployment set.",
-          "source_corroboration": "provider_direct"
+          "source_corroboration": "provider_direct",
+          "subject_key": "deepseek-r1-model-weights"
         }
       ],
       "falsification_questions": [

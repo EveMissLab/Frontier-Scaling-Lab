@@ -227,7 +227,7 @@ class DocumentaryDivergenceTests(unittest.TestCase):
     def test_primary_self_report_cannot_be_inflated_to_independent_judgment(self):
         r=replay(DATA,as_of="2026-11-07")
         self.assertEqual(r["fully_independently_adjudicated_direction_changes"],0)
-        self.assertEqual(r["provider_documented_state_transitions"],4)
+        self.assertEqual(r["documented_local_changes_reported_by_sources"],4)
         self.assertFalse(any(c["independent_review_done"] for c in r["cases"]))
         self.assertTrue(all(not c["causal_influence_identified"] for c in r["cases"]))
 

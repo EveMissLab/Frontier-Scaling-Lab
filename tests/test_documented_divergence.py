@@ -183,6 +183,20 @@ class DocumentaryDivergenceTests(unittest.TestCase):
         case["scope_relation"]="different_model_family"
         with self.assertRaises(DivergenceError):validate(bad)
 
+    def test_two_different_weights_cannot_be_claimed_to_rollback_each_other(self):
+        bad=deepcopy(DATA)
+        c=next(c for c in bad["cases"] if c["case_id"]==
+               "gpt4o-2025-sycophancy-rollback")
+        c["documented_events"][1]["subject_key"]="some-unrelated-model"
+        with self.assertRaises(DivergenceError):
+            validate(bad)
+        bad=deepcopy(DATA)
+        c=next(c for c in bad["cases"] if c["case_id"]==
+               "gpt2-to-gptoss-different-families")
+        c["documented_events"][1]["subject_key"]=c["documented_events"][0]["subject_key"]
+        with self.assertRaises(DivergenceError):
+            validate(bad)
+
     def test_access_transition_requires_dated_withheld_and_released_states(self):
         bad=deepcopy(DATA)
         bad["cases"][0]["documented_events"][1]["state"]="public_assertion"

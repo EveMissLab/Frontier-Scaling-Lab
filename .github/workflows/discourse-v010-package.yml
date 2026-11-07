@@ -5,7 +5,10 @@ on:
   push:
     paths:
       - '.github/workflows/discourse-v010-package.yml'
-      - 'fsl_discourse/**'
+      - 'fsl_discourse/catalog.py'
+      - 'fsl_discourse/relations.py'
+      - 'fsl_discourse/cli.py'
+      - 'fsl_discourse/export.py'
       - 'data/agi_asi_public_interviews_seed_2026-11-07.json'
       - 'data/discourse_to_model_history_links_v0.10.json'
       - 'docs/AI_PUBLIC_NARRATIVES_INTENT_REVERSIBILITY_v0.10.md'

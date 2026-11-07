@@ -147,13 +147,14 @@ def validate(data):
             raise DivergenceError("case must cite 1-8 dated events")
         event_ids=set()
         for e in events:
-            keys=("event_id","source_id","occurred_on","state","locating_heading",
+            keys=("event_id","source_id","subject_key","occurred_on","state","locating_heading",
                   "factual_paraphrase","source_corroboration")
             if not isinstance(e,dict) or set(e)!=set(keys):
                 raise DivergenceError("event needs exact source/date/status/locator")
             eid=_id(e["event_id"],"event_id")
             if eid in event_ids:raise DivergenceError("duplicate event")
             event_ids.add(eid)
+            _text(e["subject_key"],"subject_key",170)
             original=src.get(e["source_id"])
             if original is None:raise DivergenceError("unknown source ref")
             if e["state"] not in EVENT_STATES:
@@ -175,6 +176,18 @@ def validate(data):
                     raise DivergenceError("source evidence grade mismatch")
             _text(e["locating_heading"],"locating_heading",220)
             _text(e["factual_paraphrase"],"factual_paraphrase",480)
+        # Explicit event-level referent prevents silently comparing two
+        # different models or service populations as if they were the
+        # same exact operational object.
+        subjects=[e["subject_key"] for e in events]
+        if c["scope_relation"] in (
+            "same_model_weights","same_serving_snapshot_family",
+            "same_product_feature","one_speaker_statements"):
+            if any(subject!=c["scope_key"] for subject in subjects):
+                raise DivergenceError("same-scope case illegally mixes different artifacts/speakers")
+        elif c["scope_relation"]=="different_model_family":
+            if len(set(subjects))<2:
+                raise DivergenceError("distinct-model case must cite genuinely different artifacts")
         for f in ("falsification_questions","unknowns"):
             v=c[f]
             if not isinstance(v,list) or not v:

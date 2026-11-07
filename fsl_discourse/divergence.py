@@ -217,6 +217,25 @@ def validate(data):
         if interpretation=="documented_local_rollback" and (
             c["scope_relation"]=="different_model_family"):
             raise DivergenceError("mixed model versions cannot imply snapshot rollback")
+        gap=c.get("intended_effect_vs_observed")
+        if gap is not None:
+            req_gap={"original_intent_source_id","observed_effect_source_id",
+                     "declared_intent","provider_reported_unexpected_effect",
+                     "same_deployment_unit","provisional_gap_status"}
+            if not isinstance(gap,dict) or set(gap)!=req_gap:
+                raise DivergenceError("intent/outcome gap must be source-typed and scoped")
+            for x in ("original_intent_source_id","observed_effect_source_id"):
+                if gap[x] not in src:raise DivergenceError("unknown source in declared outcome gap")
+            if gap["same_deployment_unit"] is not True:
+                raise DivergenceError("incomparable product scope cannot be a directly observed effect gap")
+            if gap["provisional_gap_status"]!="provider_postmortem_reports_unexpected_effect":
+                raise DivergenceError("actual effect gap cannot be called independently confirmed")
+            if interpretation!="documented_local_rollback":
+                raise DivergenceError("this pilot only validates reported effects of local rollback cases")
+            if src[gap["original_intent_source_id"]]["published_on"]>src[gap["observed_effect_source_id"]]["published_on"]:
+                raise DivergenceError("outcome evidence cannot precede announced intent")
+            _text(gap["declared_intent"],"declared_intent",500)
+            _text(gap["provider_reported_unexpected_effect"],"unexpected_effect",500)
         # Order must respect the observed event dates; a retrospective account
         # published in May about Apr-28 remains an Apr-28 event.
         dated=[e["occurred_on"] for e in events if e["occurred_on"] is not None]
@@ -318,6 +337,12 @@ def replay(data,*,as_of,mode="retrospective"):
             "corporate_strategic_reversal_verified":False,
             "speaker_belief_change_verified":False,
             "causal_influence_identified":False,
+            "provider_reports_intent_outcome_gap":bool(
+                documented and c.get("intended_effect_vs_observed") is not None and
+                all(sources.get(c["intended_effect_vs_observed"][key],{}).get(
+                    "published_on","9999")<=as_of for key in (
+                    "original_intent_source_id","observed_effect_source_id"))),
+            "outcome_gap_independently_verified":False,
             "unanswered_questions":(
                 c["falsification_questions"]+c["unknowns"]
                 if data["first_FSL_reviewed_on"]<=as_of else []),
@@ -331,6 +356,7 @@ def replay(data,*,as_of,mode="retrospective"):
         "fully_independently_adjudicated_direction_changes":0,
         "scientifically_verified_personal_belief_change":0,
         "AGI_ASI_or_general_irreversibility_proved":0,
+        "independently_verified_intent_outcome_mismatches":0,
         "limits":[
             "Provider self-reports are documentary evidence, not independent runtime validation.",
             "A rollback of one serving snapshot does not reverse broader AI research or public knowledge.",

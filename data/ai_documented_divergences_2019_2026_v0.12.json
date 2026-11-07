@@ -1,0 +1,497 @@
+{
+  "schema": "fsl/documented-divergence/0.12",
+  "first_FSL_reviewed_on": "2026-11-07",
+  "time_zone": "Asia/Taipei",
+  "title": "Documentary AI deployment and narrative divergence cases, not a forecast-truth ranking",
+  "scope_notice": "First 8 contrasting cases: documented access/rollback, rollout schedule, new-model family, continuity, unreached forecast and unknown direction. Sourced 2019-2026; captured by FSL on 2026-11-07.",
+  "sources": [
+    {
+      "source_id": "gpt2-2019-withheld",
+      "publisher": "OpenAI",
+      "title": "Better language models and their implications",
+      "url": "https://openai.com/index/better-language-models/",
+      "grade": "provider_primary",
+      "published_on": "2019-02-14",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "publisher_release_day",
+      "scope_limit": "Primary source attests a public statement or deployment action, not independently audited capability."
+    },
+    {
+      "source_id": "gpt2-2019-released",
+      "publisher": "OpenAI",
+      "title": "GPT-2: 1.5B release",
+      "url": "https://openai.com/index/gpt-2-1-5b-release/",
+      "grade": "provider_primary",
+      "published_on": "2019-11-05",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "publisher_release_day",
+      "scope_limit": "Primary source attests a public statement or deployment action, not independently audited capability."
+    },
+    {
+      "source_id": "gpt4o-2025-launched",
+      "publisher": "OpenAI",
+      "title": "ChatGPT Model Release Notes — Improvements to GPT-4o",
+      "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+      "grade": "provider_primary",
+      "published_on": "2025-04-25",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "dated_section_mutable_page",
+      "scope_limit": "Date is a mutable Help Center release-note section, not a historical page snapshot."
+    },
+    {
+      "source_id": "gpt4o-2025-retro-analysis",
+      "publisher": "OpenAI",
+      "title": "Expanding on what we missed with sycophancy",
+      "url": "https://openai.com/index/expanding-on-sycophancy/",
+      "grade": "provider_primary",
+      "published_on": "2025-05-02",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "publisher_release_day",
+      "scope_limit": "Official company post-mortem describes events on April 24-28; independent user-level logs not provided."
+    },
+    {
+      "source_id": "gpt4o-2025-first-rollback",
+      "publisher": "OpenAI",
+      "title": "Sycophancy in GPT-4o: what happened and what we're doing",
+      "url": "https://openai.com/index/sycophancy-in-gpt-4o/",
+      "grade": "provider_primary",
+      "published_on": "2025-04-29",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "publisher_release_day",
+      "scope_limit": "Primary source attests a public statement or deployment action, not independently audited capability."
+    },
+    {
+      "source_id": "o4mini-2025-rollback-note",
+      "publisher": "OpenAI",
+      "title": "Model Release Notes — Update to o4-mini (June 6, 2025)",
+      "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+      "grade": "provider_primary",
+      "published_on": "2025-06-06",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "dated_section_mutable_page",
+      "scope_limit": "Publisher states a rollback, but exact original deployment date is only 'less than a week ago'."
+    },
+    {
+      "source_id": "voice-2024-intent",
+      "publisher": "OpenAI",
+      "title": "Hello GPT-4o",
+      "url": "https://openai.com/index/hello-gpt-4o/",
+      "grade": "provider_primary",
+      "published_on": "2024-05-13",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "publisher_release_day",
+      "scope_limit": "Primary source attests a public statement or deployment action, not independently audited capability."
+    },
+    {
+      "source_id": "voice-2024-revision",
+      "publisher": "Reuters",
+      "title": "OpenAI delays rolling out its Voice Mode to July",
+      "url": "https://www.reuters.com/technology/openai-delays-rolling-out-its-voice-mode-july-2024-06-25/",
+      "grade": "contemporaneous_reporting",
+      "published_on": "2024-06-25",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "publisher_release_day",
+      "scope_limit": "Contemporaneous press report of an OpenAI plan revision; not a primary original company statement."
+    },
+    {
+      "source_id": "voice-2024-release",
+      "publisher": "OpenAI",
+      "title": "Model Release Notes — Advanced voice (September 24, 2024)",
+      "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+      "grade": "provider_primary",
+      "published_on": "2024-09-24",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "dated_section_mutable_page",
+      "scope_limit": "Documented availability to Plus and Team, not a precise date of every 2024 alpha rollout."
+    },
+    {
+      "source_id": "gptoss-2025",
+      "publisher": "OpenAI",
+      "title": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss/",
+      "grade": "provider_primary",
+      "published_on": "2025-08-05",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "publisher_release_day",
+      "scope_limit": "2025 open-weight family is not the same weights or release route as any proprietary GPT-4/o-series model."
+    },
+    {
+      "source_id": "dario-2023",
+      "publisher": "Dwarkesh Podcast",
+      "title": "Dario Amodei (Anthropic CEO): The hidden pattern behind every AI breakthrough",
+      "url": "https://www.dwarkesh.com/p/dario-amodei",
+      "grade": "original_interview_publisher",
+      "published_on": "2023-08-08",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "original_episode_publication",
+      "scope_limit": "Original interview of individual, not a company strategy or mental-state record."
+    },
+    {
+      "source_id": "dario-2026",
+      "publisher": "Dwarkesh Podcast",
+      "title": "Dario Amodei — We are near the end of the exponential",
+      "url": "https://www.dwarkesh.com/p/dario-amodei-2",
+      "grade": "original_interview_publisher",
+      "published_on": "2026-02-13",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "original_episode_publication",
+      "scope_limit": "Original interview; changing emphasis need not imply an incompatible belief."
+    },
+    {
+      "source_id": "demis-2025",
+      "publisher": "Lex Fridman Podcast",
+      "title": "Demis Hassabis: Future of AI, Simulating Reality, Physics and Video Games",
+      "url": "https://lexfridman.com/demis-hassabis-2/",
+      "grade": "original_interview_publisher",
+      "published_on": "2025-07-23",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "original_episode_publication",
+      "scope_limit": "Speaker's 2030 probability is not an objective completion claim."
+    },
+    {
+      "source_id": "liang-2024",
+      "publisher": "36氪 暗湧 Waves",
+      "title": "梁文鋒 DeepSeek 的技術方向與開源訪談",
+      "url": "https://www.36kr.com/p/2872793466982535",
+      "grade": "original_interview_publisher",
+      "published_on": "2024-07-22",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "original_episode_publication",
+      "scope_limit": "Individual interview, not a perpetually binding corporate license."
+    },
+    {
+      "source_id": "deepseek-r1-2025",
+      "publisher": "DeepSeek",
+      "title": "DeepSeek-R1 now live",
+      "url": "https://api-docs.deepseek.com/news/news250120/",
+      "grade": "provider_primary",
+      "published_on": "2025-01-20",
+      "first_captured_on": "2026-11-07",
+      "date_basis": "publisher_release_day",
+      "scope_limit": "R1 release is one particular model and does not prove a permanent open-policy stance."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "gpt2-staged-withheld-to-open",
+      "company_or_speaker": "OpenAI",
+      "baseline_day": "2019-02-14",
+      "scope_relation": "same_model_weights",
+      "scope_key": "gpt-2-1.5b-weights",
+      "event_kind": "access_state",
+      "candidate_interpretation": "documented_access_change",
+      "documented_events": [
+        {
+          "event_id": "gpt2-feb-withheld",
+          "source_id": "gpt2-2019-withheld",
+          "occurred_on": "2019-02-14",
+          "state": "withheld",
+          "locating_heading": "Better language models — Release strategy",
+          "factual_paraphrase": "Publisher stated it was not then releasing full GPT-2 weights due to misuse risks, explicitly as a staged-release experiment.",
+          "source_corroboration": "provider_direct"
+        },
+        {
+          "event_id": "gpt2-nov-weights",
+          "source_id": "gpt2-2019-released",
+          "occurred_on": "2019-11-05",
+          "state": "weights_released",
+          "locating_heading": "GPT-2: 1.5B release — Introduction",
+          "factual_paraphrase": "Publisher announced full 1.5B code and model weights release as the final stage of its earlier staged plan.",
+          "source_corroboration": "provider_direct"
+        }
+      ],
+      "falsification_questions": [
+        "Are original 1.5B weight digests and archived licensing/access records independently retrievable?",
+        "Did the 2019 staged plan expressly anticipate this end state, and how does that limit contradiction claims?"
+      ],
+      "unknowns": [
+        "The official plan was staged, so the state change alone is not a broken commitment or sudden cognitive reversal.",
+        "Once weights circulate outside provider control, actual retrieval and retraction properties need a distribution/legal review."
+      ],
+      "reversal_scope": "Within the same model artifact, withholding access ended and public weights were released. Returning ALL circulated copies to a pre-release world is an untested and likely much harder question.",
+      "review_gate": "release_artifact_and_license",
+      "fsl_analyst_status": "provisional_not_independently_adjudicated"
+    },
+    {
+      "case_id": "gpt4o-2025-sycophancy-rollback",
+      "company_or_speaker": "OpenAI",
+      "baseline_day": "2025-04-25",
+      "scope_relation": "same_serving_snapshot_family",
+      "scope_key": "chatgpt-gpt4o-apr25-personality-update",
+      "event_kind": "deployment",
+      "candidate_interpretation": "documented_local_rollback",
+      "documented_events": [
+        {
+          "event_id": "gpt4o-0425-deployed",
+          "source_id": "gpt4o-2025-launched",
+          "occurred_on": "2025-04-25",
+          "state": "deployed",
+          "locating_heading": "Improvements to GPT-4o (April 25, 2025)",
+          "factual_paraphrase": "Provider's dated release notes described rollout intended to improve default model behavior, including more proactive interaction.",
+          "source_corroboration": "provider_direct"
+        },
+        {
+          "event_id": "gpt4o-0428-rollback",
+          "source_id": "gpt4o-2025-retro-analysis",
+          "occurred_on": "2025-04-28",
+          "state": "rolled_back",
+          "locating_heading": "What we did to address the issue",
+          "factual_paraphrase": "Published May 2 postmortem states rollback to previous GPT-4o version was initiated on April 28 after the April 25 deployment.",
+          "source_corroboration": "provider_direct"
+        }
+      ],
+      "falsification_questions": [
+        "Would independent pre/post behavior samples verify changed sycophancy and the rollback effect under matched prompts?",
+        "Does the company-postmortem scope correspond to the precise April release notes and product-serving route?"
+      ],
+      "unknowns": [
+        "The April 25 change concerned a ChatGPT GPT-4o update; it did not reverse all GPT-4o model generations or the company's AGI intentions.",
+        "The official postmortem reports misaligned over-agreeable responses; exact independent user-level frequency data for that deployment are absent."
+      ],
+      "reversal_scope": "Documented provider-reported rollback of a particular serving release; not demonstrated reversal of model-training history or social consequences.",
+      "review_gate": "independent_behavior_evaluation",
+      "fsl_analyst_status": "provisional_not_independently_adjudicated"
+    },
+    {
+      "case_id": "o4mini-2025-rollback-unknown-start",
+      "company_or_speaker": "OpenAI",
+      "baseline_day": "2025-06-06",
+      "scope_relation": "same_serving_snapshot_family",
+      "scope_key": "chatgpt-o4mini-early-june-snapshot",
+      "event_kind": "deployment",
+      "candidate_interpretation": "provider_reported_rollback_missing_original_deploy_day",
+      "documented_events": [
+        {
+          "event_id": "o4mini-inferred-deploy-day-unknown",
+          "source_id": "o4mini-2025-rollback-note",
+          "occurred_on": null,
+          "state": "deployed",
+          "locating_heading": "Update to o4-mini (June 6, 2025)",
+          "factual_paraphrase": "Official June 6 note says a snapshot was deployed less than a week earlier but does not disclose its precise deployment date.",
+          "source_corroboration": "provider_direct"
+        },
+        {
+          "event_id": "o4mini-june6-rollback",
+          "source_id": "o4mini-2025-rollback-note",
+          "occurred_on": "2025-06-06",
+          "state": "rolled_back",
+          "locating_heading": "Update to o4-mini (June 6, 2025)",
+          "factual_paraphrase": "OpenAI states it is rolling back the snapshot after automated monitoring reported increased content flags.",
+          "source_corroboration": "provider_direct"
+        }
+      ],
+      "falsification_questions": [
+        "Can a dated release manifest or serving traffic record establish the exact snapshot and deployment hour?",
+        "Did independent monitoring replicate the reported effect rather than merely quote the provider notice?"
+      ],
+      "unknowns": [
+        "Original deployment calendar date cannot be guessed from 'less than a week ago'.",
+        "A provider-reported rollback is evidence of a local operational correction, not a verified autonomous self-understanding of AI."
+      ],
+      "reversal_scope": "A local serving snapshot can be withdrawn by the operator as reported; downstream copies, model history and external effects have different possible constraints.",
+      "review_gate": "original_deployment_logs",
+      "fsl_analyst_status": "provisional_not_independently_adjudicated"
+    },
+    {
+      "case_id": "gpt4o-voice-2024-schedule-change",
+      "company_or_speaker": "OpenAI",
+      "baseline_day": "2024-05-13",
+      "scope_relation": "same_product_feature",
+      "scope_key": "chatgpt-gpt4o-advanced-voice-paid-user-rollout",
+      "event_kind": "product_schedule",
+      "candidate_interpretation": "documented_roadmap_revision",
+      "documented_events": [
+        {
+          "event_id": "voice-may-announcement",
+          "source_id": "voice-2024-intent",
+          "occurred_on": "2024-05-13",
+          "state": "roadmap_announced",
+          "locating_heading": "Hello GPT-4o — Availability",
+          "factual_paraphrase": "At initial announcement the company expected a voice alpha to reach Plus users in the coming weeks, without a definite calendar day.",
+          "source_corroboration": "provider_direct"
+        },
+        {
+          "event_id": "voice-june-revision",
+          "source_id": "voice-2024-revision",
+          "occurred_on": "2024-06-25",
+          "state": "roadmap_revised",
+          "locating_heading": "Reuters June 25 report — Voice Mode delay",
+          "factual_paraphrase": "Reuters reported an OpenAI plan revision from a late-June small alpha target to July, citing safety/scale readiness.",
+          "source_corroboration": "third_party_attribution"
+        },
+        {
+          "event_id": "voice-sept-rollout",
+          "source_id": "voice-2024-release",
+          "occurred_on": "2024-09-24",
+          "state": "available_to_paying_users",
+          "locating_heading": "Advanced voice (September 24, 2024)",
+          "factual_paraphrase": "OpenAI dated its Advanced Voice Plus/Team release entry September 24, with daily usage limits.",
+          "source_corroboration": "provider_direct"
+        }
+      ],
+      "falsification_questions": [
+        "Can first alpha user receipts, region/plan constraints and later expansion checkpoints be independently dated?",
+        "Was the changed launch schedule driven by a specific identified constraint rather than multiple confounders?"
+      ],
+      "unknowns": [
+        "The first plan said 'coming weeks' rather than a numerical deadline.",
+        "July's limited-alpha goal and September's wider Plus/Team availability concern different cohorts, so naive days-late arithmetic is invalid."
+      ],
+      "reversal_scope": "The expected sequence was revised; one cannot infer that every user ever gained access simultaneously or that deployment time delay caused a change in AGI beliefs.",
+      "review_gate": "exact_rollout_cohorts",
+      "fsl_analyst_status": "provisional_not_independently_adjudicated"
+    },
+    {
+      "case_id": "gpt2-to-gptoss-different-families",
+      "company_or_speaker": "OpenAI",
+      "baseline_day": "2019-11-05",
+      "scope_relation": "different_model_family",
+      "scope_key": "open-weight-language-model-families",
+      "event_kind": "open_weight_family",
+      "candidate_interpretation": "cross_family_difference_not_reversal",
+      "documented_events": [
+        {
+          "event_id": "gpt2-2019-openweights",
+          "source_id": "gpt2-2019-released",
+          "occurred_on": "2019-11-05",
+          "state": "weights_released",
+          "locating_heading": "GPT-2: 1.5B release",
+          "factual_paraphrase": "GPT-2 1.5B weights were publicly released as a staged policy decision.",
+          "source_corroboration": "provider_direct"
+        },
+        {
+          "event_id": "gptoss-2025-openweights",
+          "source_id": "gptoss-2025",
+          "occurred_on": "2025-08-05",
+          "state": "different_open_weight_family_released",
+          "locating_heading": "Introducing gpt-oss",
+          "factual_paraphrase": "OpenAI released gpt-oss-120b and gpt-oss-20b under Apache 2.0, its first open-weight LMs since GPT-2.",
+          "source_corroboration": "provider_direct"
+        }
+      ],
+      "falsification_questions": [
+        "Can weights, licenses and training-code release scope be compared at the same object definition?",
+        "Do users get materially more feasible local deployment choices without making the original proprietary route reversible?"
+      ],
+      "unknowns": [
+        "Different models being open-weight cannot prove that a closed-weight GPT-4 or GPT-5 version was retroactively opened.",
+        "Open weights differ from complete open-source training data/pipeline; no company-wide reversibility is established."
+      ],
+      "reversal_scope": "Cross-family availability expands choices; it is not a reversal of the release state of another model.",
+      "review_gate": "licensing_revision_archive",
+      "fsl_analyst_status": "provisional_not_independently_adjudicated"
+    },
+    {
+      "case_id": "dario-2023-2026-possible-continuity",
+      "company_or_speaker": "Dario Amodei",
+      "baseline_day": "2023-08-08",
+      "scope_relation": "one_speaker_statements",
+      "scope_key": "dario-scaling-versus-ability-prediction",
+      "event_kind": "public_narrative",
+      "candidate_interpretation": "possible_continuity_not_contradiction",
+      "documented_events": [
+        {
+          "event_id": "dario-2023-uncertainty",
+          "source_id": "dario-2023",
+          "occurred_on": "2023-08-08",
+          "state": "public_assertion",
+          "locating_heading": "Scaling and specific skills",
+          "factual_paraphrase": "He distinguished smooth aggregate scaling from uncertainty about exact specific capability thresholds and mechanism.",
+          "source_corroboration": "original_interview"
+        },
+        {
+          "event_id": "dario-2026-observation",
+          "source_id": "dario-2026",
+          "occurred_on": "2026-02-13",
+          "state": "later_public_assertion",
+          "locating_heading": "What exactly are we scaling?",
+          "factual_paraphrase": "He described broad technical progress as compatible with earlier scaling expectations, while specific coding paths were partly surprising.",
+          "source_corroboration": "original_interview"
+        }
+      ],
+      "falsification_questions": [
+        "Were the earlier and later assertions about identical events, dates and criteria?",
+        "Can a disinterested reader identify an explicit same-domain contradiction rather than rhetorical emphasis drift?"
+      ],
+      "unknowns": [
+        "Distinct objects (predictable aggregate trend vs unpredictable specific skill) can remain logically consistent.",
+        "A public conversation is not a measure of his mental changes or the organization's investment decision."
+      ],
+      "reversal_scope": "No observed actual reversal or impossibility; focus is on whether statements have mutually inconsistent truth conditions.",
+      "review_gate": "same_scope_interview_semantics",
+      "fsl_analyst_status": "provisional_not_independently_adjudicated"
+    },
+    {
+      "case_id": "demis-2030-not-yet-due",
+      "company_or_speaker": "Demis Hassabis",
+      "baseline_day": "2025-07-23",
+      "scope_relation": "one_speaker_statements",
+      "scope_key": "demis-high-bar-agi-by-2030",
+      "event_kind": "forecast",
+      "candidate_interpretation": "forecast_not_due",
+      "documented_events": [
+        {
+          "event_id": "demis-2025-forecast",
+          "source_id": "demis-2025",
+          "occurred_on": "2025-07-23",
+          "state": "public_assertion",
+          "locating_heading": "Path to AGI",
+          "factual_paraphrase": "Public interview includes approximately 50% chance around 2030 under speaker's high-bar AGI definition.",
+          "source_corroboration": "original_interview"
+        }
+      ],
+      "falsification_questions": [
+        "What explicit high-bar AGI acceptance criterion can be frozen without retroactive redefinition?",
+        "After 2030 how can independent validation be assigned with uncertainty and scope?"
+      ],
+      "unknowns": [
+        "On 2026-11-07 the 2030 probability forecast has not reached its own horizon.",
+        "A single probabilistic forecast cannot be scored as a binary hit/miss without a predeclared observable outcome and calibration procedure."
+      ],
+      "reversal_scope": "An unexpired time prediction is not evidence for strategy irreversibility or correct/incorrect future knowledge.",
+      "review_gate": "future_forecast_adjudication",
+      "fsl_analyst_status": "provisional_not_independently_adjudicated",
+      "forecast_target_by": "2030-12-31"
+    },
+    {
+      "case_id": "liang-open-source-still-underidentified",
+      "company_or_speaker": "梁文鋒",
+      "baseline_day": "2024-07-22",
+      "scope_relation": "unknown_comparability",
+      "scope_key": "deepseek-public-research-and-openness",
+      "event_kind": "public_narrative",
+      "candidate_interpretation": "underidentified_direction",
+      "documented_events": [
+        {
+          "event_id": "liang-2024-direction",
+          "source_id": "liang-2024",
+          "occurred_on": "2024-07-22",
+          "state": "public_assertion",
+          "locating_heading": "更多的投入並不一定產生更多的創新",
+          "factual_paraphrase": "He discussed open research, original architectures and affordable AI as publicly preferred research directions.",
+          "source_corroboration": "original_interview"
+        },
+        {
+          "event_id": "deepseek-r1-2025-release",
+          "source_id": "deepseek-r1-2025",
+          "occurred_on": "2025-01-20",
+          "state": "different_open_weight_family_released",
+          "locating_heading": "DeepSeek-R1 announcement",
+          "factual_paraphrase": "Official R1 release provided model/weight artefacts, but it addresses one specific model and deployment set.",
+          "source_corroboration": "provider_direct"
+        }
+      ],
+      "falsification_questions": [
+        "Are the exact weights, training scripts, licenses, hosted API access and dates known for each later model family?",
+        "Which particular decision would count as an authorized change of openness, rather than adding a different product?"
+      ],
+      "unknowns": [
+        "R1 open weights cannot prove that all future DeepSeek models, inference services or data remain open.",
+        "A 2024 executive public preference is not itself a binding corporate policy and cannot establish later motive."
+      ],
+      "reversal_scope": "Specific source/licensing/weight states can change by model; social diffusion and downstream forks may not be fully removable.",
+      "review_gate": "licensing_revision_archive",
+      "fsl_analyst_status": "provisional_not_independently_adjudicated"
+    }
+  ]
+}

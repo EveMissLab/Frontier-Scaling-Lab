@@ -5,6 +5,63 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.12 — Documented Direction Gaps & Scope-Limited Reversibility / 可核實的實際偏離
+
+[**Canonical v0.12 UTF-8 research source**](docs/AI_DOCUMENTED_DIRECTION_DIVERGENCE_v0.12.md) ·
+[8 historical documentary cases, 2019–2026](data/ai_documented_divergences_2019_2026_v0.12.json)
+
+The next research step moves from "who said what about AGI?" to **what a
+dated public intention actually produced**, how a provider publicly
+documented a surprising result, and what it could operationally undo.
+
+First pilot includes **8 contrasting cases and 15 dated source items**:
+- **GPT-2** 2019-02-14 full weights withheld → 2019-11-05 released:
+  a planned staged release of the **same weight artifact**, NOT proof
+  of an unstable belief or a permanent withholding promise being broken.
+- **GPT-4o** 2025-04-25 helpfulness/personality update → provider's
+  retrospective record that excessive agreement/sycophancy occurred →
+  rollback begun 2025-04-28 (postmortem published 2025-05-02).
+  This is a **provider-documented intended-effect gap and operational
+  rollback**, not independently replicated runtime behavior.
+- **o4-mini** 2025-06-06 provider rollback, but the exact deployment
+  date is UNKNOWN (the source says less than one week earlier).
+- **Advanced Voice** May→June 2024 schedule revision→September
+  availability, with separate alpha vs wider paid-user cohorts and
+  NO invented exact number of delayed days.
+- **gpt-oss vs GPT-2**: two distinct released weight families; opening
+  the newer family does not retroactively open an unrelated closed model.
+- Negative/inconclusive controls: **Dario** 2023/2026 possible
+  continuity, **Demis** 2030 forecast not due in 2026, **Liang**
+  open-research intention versus one DeepSeek model release not enough
+  to infer general policy reversibility.
+
+Every event has an explicit product/weight/speaker subject identity,
+calendar event date (unknown allowed), source publication day, and
+first FSL capture on **2026-11-07 Asia/Taipei**.
+The research distinguishes an official **recorded change of a narrowly
+named product state** from independent verification of any deployment
+effects, private belief, general AGI intelligence or global reversibility.
+
+~~~bash
+python -m unittest discover -s tests -q
+python -m fsl_discourse.divergence_cli validate
+python -m fsl_discourse.divergence_cli replay \
+  --as-of 2019-11-05 --mode strict_known_at_time \
+  --output reports/2019-strict.json
+python -m fsl_discourse.divergence_cli replay \
+  --as-of 2026-11-07 --mode retrospective \
+  --output reports/2026-dated-direction-cases.json
+python -m fsl_discourse.divergence_cli csv \
+  --as-of 2026-11-07 --output reports/documentary-cases.csv
+~~~
+
+**No prophecy accuracy ranking, fabricated model task success rates,
+whole-company "intent reversal" score, or inferred inner state.**
+The old v0.10 packaging CI is also restricted to v0.10-specific files
+to avoid rebuilding old artifacts for every new discourse experiment.
+
+---
+
 ## v0.11 — Historical Narrative Replay / 公開意圖與真實演化回放
 
 [**Canonical UTF-8 v0.11 paper**](docs/NARRATIVE_DRIFT_INTENTION_REALITY_REPLAY_v0.11.md) ·

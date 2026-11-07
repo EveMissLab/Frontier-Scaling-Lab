@@ -338,7 +338,8 @@ def replay(data,*,as_of,mode="retrospective"):
             "visible_events":observed,
             "documented_state_transition_from_sources":documented,
             "time_bounded_classification":label,
-            "classification_is_limited_to_provider_reports":documented,
+            "classification_is_based_on_dated_source_reports":documented,
+            "visible_evidence_grades":sorted({x["source_grade"] for x in available}),
             "reversal_scope":c["reversal_scope"],
             "analyst_interpretation_authored_on":data["first_FSL_reviewed_on"],
             "analyst_interpretation_visible_at_asof":(
@@ -364,9 +365,10 @@ def replay(data,*,as_of,mode="retrospective"):
         "schema":"fsl/documented-divergence-replay/0.12",
         "as_of":as_of,"mode":mode,
         "cases":results,
-        "provider_documented_state_transitions":sum(
+        "documented_local_changes_reported_by_sources":sum(
             x["documented_state_transition_from_sources"] for x in results),
         "fully_independently_adjudicated_direction_changes":0,
+        "all_documentary_changes_are_self_reports_or_relayed_public_sources":True,
         "scientifically_verified_personal_belief_change":0,
         "AGI_ASI_or_general_irreversibility_proved":0,
         "independently_verified_intent_outcome_mismatches":0,

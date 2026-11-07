@@ -5,6 +5,30 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.13 — General Intelligence-Entity Civilizational Capability Framework (GICCF) / 通用智慧體文明能力
+
+[**Canonical UTF-8 v0.13 research protocol**](docs/CIVILIZATIONAL_GENERAL_AGENT_CAPABILITIES_v0.13.md) ·
+[**224 observable capability indicators × 38 civilizational domains**](data/giccf_capability_catalog_v0.13.json) ·
+[**Append-only trial observation schema**](data/giccf_observation_schema_v0.13.json) ·
+[**SYNTHETIC validator fixture**](tests/fixtures/giccf_observations_synthetic_v0.13.json)
+
+New **independent research axis** alongside G1–G4/E1, not a replacement for the established functional targets:
+- **28 axes / 224 operationally defined subcapabilities**, including intent and relationship understanding, long-term memory, context, attention allocation, delegated agency, social coordination, learning, creative and institutional participation, physical execution, safety and correct *non-action*.
+- **38 human-civilizational activity domains / 114 example task families**, including everyday life, research, industry, public service, healthcare support, law, culture, and emergent domains.
+- Distinguishes base model, model-with-tools, deployed product Agent, multi-Agent system, and embodied systems; observed function **does not establish consciousness or legal/moral personhood**.
+- Keeps **source claim vs vendor demo vs repeatable test vs independently reviewed longitudinal observation**, as-of timestamps, human core-work contribution, authorization, actual outcomes, and system stack versions distinct.
+- No aggregate AGI/ASI/human-replacement score and **no v0.13-independent capability certification**. The catalog is a test taxonomy, not a leaderboard. Source claims about Dots, Grok Bot and Muse are illustrative first-party product descriptions, not FSL trial results.
+
+~~~bash
+python -m unittest discover -s tests -q
+python -m fsl_civilization.cli catalog
+python -m fsl_civilization.cli audit \
+  --file tests/fixtures/giccf_observations_synthetic_v0.13.json \
+  --as-of 2026-11-06
+~~~
+
+---
+
 ## v0.12 — Documented Direction Gaps & Scope-Limited Reversibility / 可核實的實際偏離
 
 [**Canonical v0.12 UTF-8 research source**](docs/AI_DOCUMENTED_DIRECTION_DIVERGENCE_v0.12.md) ·

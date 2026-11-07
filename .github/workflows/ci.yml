@@ -101,5 +101,13 @@ jobs:
           python -m fsl_discourse.replay_cli all --as-of 2026-11-07 --output /tmp/fsl_v011_three_cases.json
           python -m fsl_discourse.replay_export --as-of 2026-11-07 --output /tmp/fsl_v011_three_cases.csv
           python -c "import json,csv; v=json.load(open('/tmp/fsl_v011_validate.json')); p=json.load(open('/tmp/fsl_v011_dario_past.json')); s=json.load(open('/tmp/fsl_v011_dario_strict.json')); x=json.load(open('/tmp/fsl_v011_three_cases.json')); rows=list(csv.DictReader(open('/tmp/fsl_v011_three_cases.csv'))); assert v['case_count']==3 and v['interpretation_winners_declared']==0; assert not p['analyst_interpretations_visible_at_cutoff'] and s['documented_observation_count']==0; assert len(x['cases'])==3 and len(rows)==3 and x['actual_reversibility_certificates']==0; assert next(z for z in x['cases'] if z['speaker_id']=='demis-hassabis')['dated_forecast_statuses'][0]['status']=='not_due'; assert x['report_generated_at_Asia_Taipei']"
+      - name: v0.12 source-dated rollout/access/rollback evidence gates
+        run: |
+          python -m fsl_discourse.divergence_cli validate --output /tmp/fsl_v012_valid.json
+          python -m fsl_discourse.divergence_cli replay --as-of 2019-11-05 --mode strict_known_at_time --output /tmp/fsl_v012_strict2019.json
+          python -m fsl_discourse.divergence_cli replay --as-of 2025-04-28 --mode retrospective --output /tmp/fsl_v012_pre_may_postmortem.json
+          python -m fsl_discourse.divergence_cli replay --as-of 2026-11-07 --mode retrospective --output /tmp/fsl_v012_present.json
+          python -m fsl_discourse.divergence_cli csv --as-of 2026-11-07 --output /tmp/fsl_v012_present.csv
+          python -c "import json,csv; v=json.load(open('/tmp/fsl_v012_valid.json')); old=json.load(open('/tmp/fsl_v012_strict2019.json')); cur=json.load(open('/tmp/fsl_v012_present.json')); rows=list(csv.DictReader(open('/tmp/fsl_v012_present.csv',encoding='utf-8'))); assert v['case_count']==8 and v['source_count']==15; assert old['provider_documented_state_transitions']==0; assert len(rows)==8 and cur['provider_documented_state_transitions']==4; assert cur['fully_independently_adjudicated_direction_changes']==0 and cur['scientifically_verified_personal_belief_change']==0; assert sum(r['provider_reported_unexpected_effect']=='True' for r in rows)==1"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

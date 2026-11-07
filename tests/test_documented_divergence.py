@@ -67,6 +67,29 @@ class DocumentaryDivergenceTests(unittest.TestCase):
         self.assertFalse(case["speaker_belief_change_verified"])
         self.assertEqual(case["scope_relation"],"same_serving_snapshot_family")
 
+    def test_intention_vs_realized_behavior_mismatch_not_independently_proved(self):
+        case=by_id(replay(DATA,as_of="2026-11-07"),
+                   "gpt4o-2025-sycophancy-rollback")
+        self.assertTrue(case["provider_reports_intent_outcome_gap"])
+        self.assertFalse(case["outcome_gap_independently_verified"])
+        before=by_id(replay(DATA,as_of="2025-04-25"),
+                     "gpt4o-2025-sycophancy-rollback")
+        self.assertFalse(before["provider_reports_intent_outcome_gap"])
+        self.assertFalse(before["documented_state_transition_from_sources"])
+        actual=DATA["cases"][1]["intended_effect_vs_observed"]
+        self.assertEqual(actual["observed_effect_source_id"],
+                         "gpt4o-2025-retro-analysis")
+
+    def test_scopeless_postmortem_cannot_prove_belief_mismatch(self):
+        bad=deepcopy(DATA)
+        bad["cases"][1]["intended_effect_vs_observed"]["same_deployment_unit"]=False
+        with self.assertRaises(DivergenceError):
+            validate(bad)
+        bad=deepcopy(DATA)
+        bad["cases"][1]["intended_effect_vs_observed"]["provisional_gap_status"] = "independently_proved"
+        with self.assertRaises(DivergenceError):
+            validate(bad)
+
     def test_april_28_event_only_disclosed_by_may_2_postmortem(self):
         case=by_id(replay(DATA,as_of="2025-04-28"),
                    "gpt4o-2025-sycophancy-rollback")

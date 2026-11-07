@@ -1,0 +1,390 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/EveMissLab/Frontier-Scaling-Lab/blob/main/data/giccf_observation_schema_v0.13.json",
+  "title": "GICCF v0.13 append-only trial observation (structural validation only)",
+  "description": "One entry is an evidence-backed assertion. Validation does not prove an actual AI capability or verify a claimed external assessor. Timestamp ordering, IDs, independence and provenance need the Python validator and an external auditor.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "measurement_set_id",
+    "observations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "giccf-observations-v0.13"
+    },
+    "catalog_version": {
+      "const": "0.13.0"
+    },
+    "measurement_set_id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    }
+  },
+  "$defs": {
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observation_id",
+        "subject_id",
+        "stack_sha256",
+        "system_scope",
+        "indicator_id",
+        "domain_id",
+        "test_case_id",
+        "data_class",
+        "evidence_tier",
+        "outcome",
+        "human_contribution",
+        "authorization",
+        "temporal_scope",
+        "environment",
+        "task_novelty",
+        "stakeholders",
+        "risk_level",
+        "outcome_adjudication",
+        "event_occurred_at",
+        "source_published_at",
+        "fsl_recorded_at",
+        "source_kind",
+        "source_url",
+        "artifact_sha256",
+        "acceptance_reference",
+        "negative_control",
+        "wall_clock_seconds",
+        "human_substantive_steps"
+      ],
+      "properties": {
+        "observation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{2,127}$"
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "stack_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "model_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 160
+        },
+        "system_scope": {
+          "enum": [
+            "base_model",
+            "model_plus_tools",
+            "product_agent",
+            "multi_agent_system",
+            "embodied_system"
+          ]
+        },
+        "indicator_id": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}-[0-9]{2}$"
+        },
+        "domain_id": {
+          "type": "string",
+          "pattern": "^D[0-9]{2}$"
+        },
+        "test_case_id": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 160
+        },
+        "data_class": {
+          "enum": [
+            "synthetic",
+            "observational"
+          ]
+        },
+        "evidence_tier": {
+          "enum": [
+            "unobserved",
+            "provider_claim",
+            "provider_demo",
+            "repeatable_test",
+            "independent_repeated",
+            "longitudinal_independent"
+          ]
+        },
+        "outcome": {
+          "enum": [
+            "passed",
+            "partial",
+            "failed",
+            "not_applicable",
+            "not_tested"
+          ]
+        },
+        "human_contribution": {
+          "enum": [
+            "none",
+            "clarification_only",
+            "approval_or_adjudication",
+            "substantive_core_work",
+            "unknown"
+          ]
+        },
+        "authorization": {
+          "enum": [
+            "within_scope",
+            "required_escalation",
+            "revoked_and_stopped",
+            "unauthorized",
+            "not_applicable",
+            "unknown"
+          ]
+        },
+        "temporal_scope": {
+          "enum": [
+            "single_turn",
+            "session",
+            "cross_session",
+            "days",
+            "weeks",
+            "months",
+            "years"
+          ]
+        },
+        "environment": {
+          "enum": [
+            "controlled_simulation",
+            "sandbox_tools",
+            "live_digital",
+            "live_physical"
+          ]
+        },
+        "task_novelty": {
+          "enum": [
+            "seen",
+            "held_out",
+            "shifted_domain",
+            "novel_real_world"
+          ]
+        },
+        "stakeholders": {
+          "enum": [
+            "single_user",
+            "multi_person",
+            "organization",
+            "public_collective"
+          ]
+        },
+        "risk_level": {
+          "enum": [
+            "low",
+            "moderate",
+            "high",
+            "critical"
+          ]
+        },
+        "outcome_adjudication": {
+          "enum": [
+            "none",
+            "self_report",
+            "provider_record",
+            "independent_evaluator",
+            "external_receipt_plus_independent_evaluator"
+          ]
+        },
+        "event_occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "fsl_recorded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_kind": {
+          "enum": [
+            "provider_publication",
+            "independent_lab",
+            "official_system_receipt",
+            "user_attested",
+            "synthetic_fixture",
+            "other"
+          ]
+        },
+        "source_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "maxLength": 2048
+        },
+        "artifact_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acceptance_reference": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 2048
+        },
+        "negative_control": {
+          "anyOf": [
+            {
+              "enum": [
+                "no_action_is_correct",
+                "ask_clarification_is_correct",
+                "maintain_plan_is_correct",
+                "respect_revocation",
+                "reject_third_party_injection",
+                "refuse_unlicensed_external_action",
+                "admit_unknown",
+                "detect_false_memory",
+                "unlearn_obsolete_preference",
+                "separate_human_substantive_work"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "wall_clock_seconds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "human_substantive_steps": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "supersedes_observation_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "data_class": {
+                "const": "synthetic"
+              }
+            },
+            "required": [
+              "data_class"
+            ]
+          },
+          "then": {
+            "properties": {
+              "source_kind": {
+                "const": "synthetic_fixture"
+              },
+              "source_url": {
+                "type": "null"
+              },
+              "outcome_adjudication": {
+                "enum": [
+                  "none",
+                  "self_report"
+                ]
+              },
+              "evidence_tier": {
+                "enum": [
+                  "unobserved",
+                  "provider_demo",
+                  "repeatable_test"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_tier": {
+                "const": "provider_claim"
+              }
+            },
+            "required": [
+              "evidence_tier"
+            ]
+          },
+          "then": {
+            "properties": {
+              "outcome": {
+                "const": "not_tested"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_tier": {
+                "enum": [
+                  "independent_repeated",
+                  "longitudinal_independent"
+                ]
+              }
+            },
+            "required": [
+              "evidence_tier"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data_class": {
+                "const": "observational"
+              },
+              "artifact_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "outcome_adjudication": {
+                "enum": [
+                  "independent_evaluator",
+                  "external_receipt_plus_independent_evaluator"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

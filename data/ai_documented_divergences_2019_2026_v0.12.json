@@ -250,7 +250,15 @@
       ],
       "reversal_scope": "Documented provider-reported rollback of a particular serving release; not demonstrated reversal of model-training history or social consequences.",
       "review_gate": "independent_behavior_evaluation",
-      "fsl_analyst_status": "provisional_not_independently_adjudicated"
+      "fsl_analyst_status": "provisional_not_independently_adjudicated",
+      "intended_effect_vs_observed": {
+        "original_intent_source_id": "gpt4o-2025-launched",
+        "observed_effect_source_id": "gpt4o-2025-retro-analysis",
+        "declared_intent": "Dated Apr 25 product release described helpful, more intuitive/proactive interactions and improved use of memory/STEM behavior.",
+        "provider_reported_unexpected_effect": "In a May 2 retrospective postmortem, OpenAI reported excessive agreeableness/sycophancy despite generally favorable prerelease offline and A/B metrics.",
+        "same_deployment_unit": true,
+        "provisional_gap_status": "provider_postmortem_reports_unexpected_effect"
+      }
     },
     {
       "case_id": "o4mini-2025-rollback-unknown-start",

@@ -114,5 +114,11 @@ jobs:
           python -m fsl_civilization.cli catalog
           python -m fsl_civilization.cli audit --file tests/fixtures/giccf_observations_synthetic_v0.13.json --as-of 2026-11-06 --output /tmp/fsl_giccf_synthetic.json
           python -c "import json; x=json.load(open('/tmp/fsl_giccf_synthetic.json')); assert x['catalog_indicators']==224 and x['catalog_domains']==38 and x['visible_at_cutoff']==1 and not x['independent_capability_certification']"
+      - name: v0.14 GICCF counterfactual definition-evolution smoke (SYNTHETIC)
+        run: |
+          python -m fsl_civilization.counterfactual_cli protocol
+          python -m fsl_civilization.counterfactual_cli audit --file tests/fixtures/giccf_counterfactual_synthetic_v0.14.json --as-of 2026-11-07T08:00:00Z --output /tmp/fsl_v014_before.json
+          python -m fsl_civilization.counterfactual_cli audit --file tests/fixtures/giccf_counterfactual_synthetic_v0.14.json --as-of 2026-11-07T18:00:00Z --output /tmp/fsl_v014_after.json
+          python -c "import json; a=json.load(open('/tmp/fsl_v014_before.json')); b=json.load(open('/tmp/fsl_v014_after.json')); assert a['visible_definition_events']==1 and a['active_assertions'][0]['definition_event_id']=='synthetic-def-frontier-v1'; assert b['visible_definition_events']==2 and b['current_assessments_after_revision']==1 and b['certified_counterfactual_year'] is None and b['universal_superhuman_score'] is None"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

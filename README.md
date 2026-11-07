@@ -5,6 +5,29 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.14 — Counterfactual Civilizational Capability Lead & Definition Evolution / 反事實文明能力時差
+
+[**Canonical UTF-8 v0.14 source**](docs/COUNTERFACTUAL_CIVILIZATIONAL_CAPABILITY_TIME_v0.14.md) ·
+[**Versioned no-AI counterfactual protocol**](data/giccf_counterfactual_protocol_v0.14.json) ·
+[**SYNTHETIC definition/assessment revision history**](tests/fixtures/giccf_counterfactual_synthetic_v0.14.json)
+
+This additive research track addresses **what AI may accomplish today that an unmodified natural-human scientific civilization might only accomplish later without AI**, with mathematics, non-AI algorithms, instruments, computing, collaborative research and future non-AI science **allowed**. It does **not** imply human permanent incapacity, consciousness, ASI, or an objective future completion year.
+
+- **Never-AI historical trajectory** and **no AI after an anchor date** are distinct counterfactual scenarios; AI-legacy knowledge cannot be silently imported into a never-AI world.
+- An uncertain human future remains **unknown** by default. Conditional years require a documented counterfactual model, assumptions and an interval; no single extrapolated "AI is X years ahead" score.
+- Definition events and assessment events have **separate append-only provenance**. Later evidence can revise or reclassify an earlier hypothesis without editing its historical meaning.
+- v0.13's **28 axes, 224 indicators, 38 domains** remain intact. v0.14 adds no observed model score or certified benchmark results.
+
+~~~bash
+python -m unittest discover -s tests -q
+python -m fsl_civilization.counterfactual_cli protocol
+python -m fsl_civilization.counterfactual_cli audit \
+  --file tests/fixtures/giccf_counterfactual_synthetic_v0.14.json \
+  --as-of 2026-11-07T08:00:00Z
+~~~
+
+---
+
 ## v0.13 — General Intelligence-Entity Civilizational Capability Framework (GICCF) / 通用智慧體文明能力
 
 [**Canonical UTF-8 v0.13 research protocol**](docs/CIVILIZATIONAL_GENERAL_AGENT_CAPABILITIES_v0.13.md) ·

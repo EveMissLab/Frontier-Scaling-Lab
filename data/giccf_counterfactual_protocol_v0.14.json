@@ -1,0 +1,135 @@
+{
+  "protocol_id": "GICCF-CCCL-DE",
+  "version": "0.14.0",
+  "released_on": "2026-11-08",
+  "framework_anchor": {
+    "catalog_id": "GICCF",
+    "version": "0.13.0"
+  },
+  "status": "provisional_protocol_only",
+  "description_zh": "反事實文明能力時差、無AI人類科學路線與版本化定義事件；不得由此宣稱既定年份或超越性本體地位。",
+  "scenario_kinds": [
+    "never_ai_trajectory",
+    "no_ai_after_anchor"
+  ],
+  "natural_human_substrate": "unaltered_biological_human",
+  "allowed_support_categories": [
+    "human_collective_organization",
+    "mathematics_and_science",
+    "non_ai_computation",
+    "non_ai_algorithms",
+    "non_ai_instruments",
+    "non_ai_infrastructure",
+    "non_ai_external_memory",
+    "other_explicitly_defined_support"
+  ],
+  "knowledge_policies": [
+    "counterfactual_reconstructed",
+    "ai_legacy_explicitly_acknowledged",
+    "historical_dependency_unresolved"
+  ],
+  "event_types": [
+    "introduced",
+    "revised",
+    "reclassified",
+    "split",
+    "merged",
+    "retired"
+  ],
+  "ai_evidence_levels": [
+    "unassessed",
+    "provider_claim",
+    "provider_demo",
+    "reproducible_test",
+    "independent_replication"
+  ],
+  "ai_outcomes": [
+    "not_tested",
+    "passed",
+    "partial",
+    "failed"
+  ],
+  "human_baseline_statuses": [
+    "documented_feasible",
+    "possibly_feasible",
+    "unknown",
+    "plausibly_hard_under_contract",
+    "no_documented_success"
+  ],
+  "future_no_ai_statuses": [
+    "unknown",
+    "possible_conditional",
+    "plausibly_reachable_with_future_non_ai_science"
+  ],
+  "lead_labels": [
+    "unassessed",
+    "candidate_possible_lead",
+    "plausible_contemporary_lead",
+    "comparable_human_achieved",
+    "not_comparable"
+  ],
+  "task_kinds": [
+    "historically_known_task",
+    "new_problem_candidate",
+    "new_method_candidate",
+    "new_activity_domain_candidate"
+  ],
+  "evidence_classes": [
+    "synthetic",
+    "observational"
+  ],
+  "data_principles": {
+    "preserve_historical_assertions": true,
+    "definitions_and_assessments_separate": true,
+    "different_scenarios_not_pooled": true,
+    "no_ai_is_not_no_science": true,
+    "no_automatic_future_year": true,
+    "no_exact_year_lead_score": true,
+    "future_year_range_only_if_conditional": true,
+    "no_ai_never_and_post_anchor_not_equivalent": true,
+    "human_absence_of_evidence_is_not_impossibility": true,
+    "system_claim_not_automatic_test": true,
+    "no_consciousness_or_personhood_inference": true,
+    "no_AGI_or_ASI_total_score": true,
+    "source_and_definition_dates_are_distinct": true
+  },
+  "required_definition_fields": [
+    "definition_event_id",
+    "concept_id",
+    "version",
+    "event_type",
+    "supersedes",
+    "scope_zh",
+    "reason_zh",
+    "linked_indicator_ids",
+    "recorded_at"
+  ],
+  "required_assessment_fields": [
+    "assessment_id",
+    "definition_event_id",
+    "revision_of",
+    "subject_id",
+    "task_id",
+    "domain_id",
+    "task_kind",
+    "comparison_contract",
+    "scenario",
+    "ai_capability",
+    "no_ai_human_current",
+    "no_ai_human_future",
+    "lead_label",
+    "data_class",
+    "event_occurred_at",
+    "source_published_at",
+    "recorded_at",
+    "source_url",
+    "reason_zh"
+  ],
+  "conventions": {
+    "no_ai_future_year": "null when unknown; optional structured conditional_range only with low/high/method/assumptions",
+    "date": "timezone-aware ISO 8601 for temporal events",
+    "examples": "Synthetic examples demonstrate data discipline only; no model evaluated.",
+    "time_replay": "as-of requires both source published and FSL recorded no later than cutoff; corrections append new events",
+    "comparability": "Task acceptance, budget, time, tool/algorithm boundary, human assistance and outcome criteria must be explicitly scoped."
+  }
+}

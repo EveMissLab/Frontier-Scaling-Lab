@@ -1,0 +1,143 @@
+{
+  "protocol_version": "0.14.0",
+  "framework_version": "0.13.0",
+  "evidence_note": "SYNTHETIC TEST FIXTURE ONLY. No real AI result or no-AI world is measured.",
+  "definition_events": [
+    {
+      "definition_event_id": "synthetic-def-frontier-v1",
+      "concept_id": "counterfactual-capability-possibility",
+      "version": 1,
+      "event_type": "introduced",
+      "supersedes": [],
+      "scope_zh": "合成例子：討論沒有 AI 時自然人類配合非 AI 科學輔助的能力可能性。",
+      "reason_zh": "測試動態定義事件與能力指標連接；不是真實模型研究。",
+      "linked_indicator_ids": [
+        "EPI-03",
+        "CIV-04"
+      ],
+      "recorded_at": "2026-11-07T00:00:00Z"
+    },
+    {
+      "definition_event_id": "synthetic-def-frontier-v2",
+      "concept_id": "counterfactual-capability-possibility",
+      "version": 2,
+      "event_type": "revised",
+      "supersedes": [
+        "synthetic-def-frontier-v1"
+      ],
+      "scope_zh": "合成例子：補充分辨歷史上從無 AI 與某基準年後不用 AI 的不同反事實世界。",
+      "reason_zh": "模擬研究者發現基線污染問題而修訂範圍；保留早期定義。",
+      "linked_indicator_ids": [
+        "EPI-03",
+        "CIV-04"
+      ],
+      "recorded_at": "2026-11-07T12:00:00Z"
+    }
+  ],
+  "assessment_events": [
+    {
+      "assessment_id": "synthetic-counterfactual-a1",
+      "definition_event_id": "synthetic-def-frontier-v1",
+      "revision_of": null,
+      "subject_id": "synthetic-ai-study",
+      "task_id": "synthetic-toy-material-pattern",
+      "domain_id": "D06",
+      "task_kind": "new_method_candidate",
+      "comparison_contract": {
+        "acceptance_criteria": "僅為合成材料排列問題；需有外部可重現結果才算真實通過",
+        "time_budget": "比較契約：一個研究計畫內的合理時窗",
+        "resource_budget": "比較契約：固定人力與硬體預算（數值待真實試驗）",
+        "algorithm_boundary": "允許純數值搜尋與傳統符號法；不允許自訓生成式 AI",
+        "human_assistance_policy": "人類可協作與使用合規非 AI 工具，不可後人類化",
+        "linked_indicator_ids": [
+          "EPI-03",
+          "CIV-04"
+        ]
+      },
+      "scenario": {
+        "kind": "never_ai_trajectory",
+        "human_substrate": "unaltered_biological_human",
+        "ai_allowed": false,
+        "non_ai_science_progress": true,
+        "knowledge_policy": "historical_dependency_unresolved",
+        "allowed_support": [
+          "human_collective_organization",
+          "mathematics_and_science",
+          "non_ai_computation",
+          "non_ai_algorithms"
+        ],
+        "anchor_year": 2026
+      },
+      "ai_capability": {
+        "evidence_level": "unassessed",
+        "outcome": "not_tested"
+      },
+      "no_ai_human_current": {
+        "status": "unknown"
+      },
+      "no_ai_human_future": {
+        "status": "unknown",
+        "conditional_year_range": null
+      },
+      "lead_label": "unassessed",
+      "data_class": "synthetic",
+      "event_occurred_at": "2026-11-07T01:00:00Z",
+      "source_published_at": "2026-11-07T01:15:00Z",
+      "recorded_at": "2026-11-07T02:00:00Z",
+      "source_url": null,
+      "reason_zh": "純合成案例，用來確認歷史截點不會提前引用尚未記錄的定義。"
+    },
+    {
+      "assessment_id": "synthetic-counterfactual-a2",
+      "definition_event_id": "synthetic-def-frontier-v2",
+      "revision_of": "synthetic-counterfactual-a1",
+      "subject_id": "synthetic-ai-study",
+      "task_id": "synthetic-toy-material-pattern",
+      "domain_id": "D06",
+      "task_kind": "new_method_candidate",
+      "comparison_contract": {
+        "acceptance_criteria": "僅為合成材料排列問題；需有外部可重現結果才算真實通過",
+        "time_budget": "比較契約：一個研究計畫內的合理時窗",
+        "resource_budget": "比較契約：固定人力與硬體預算（數值待真實試驗）",
+        "algorithm_boundary": "允許純數值搜尋與傳統符號法；不允許自訓生成式 AI",
+        "human_assistance_policy": "人類可協作與使用合規非 AI 工具，不可後人類化",
+        "linked_indicator_ids": [
+          "EPI-03",
+          "CIV-04"
+        ]
+      },
+      "scenario": {
+        "kind": "never_ai_trajectory",
+        "human_substrate": "unaltered_biological_human",
+        "ai_allowed": false,
+        "non_ai_science_progress": true,
+        "knowledge_policy": "historical_dependency_unresolved",
+        "allowed_support": [
+          "human_collective_organization",
+          "mathematics_and_science",
+          "non_ai_computation",
+          "non_ai_algorithms"
+        ],
+        "anchor_year": 2026
+      },
+      "ai_capability": {
+        "evidence_level": "unassessed",
+        "outcome": "not_tested"
+      },
+      "no_ai_human_current": {
+        "status": "possibly_feasible"
+      },
+      "no_ai_human_future": {
+        "status": "unknown",
+        "conditional_year_range": null
+      },
+      "lead_label": "unassessed",
+      "data_class": "synthetic",
+      "event_occurred_at": "2026-11-07T13:00:00Z",
+      "source_published_at": "2026-11-07T13:15:00Z",
+      "recorded_at": "2026-11-07T14:00:00Z",
+      "source_url": null,
+      "reason_zh": "示範補充了可行的非 AI 研究路線後，修訂人類可達性，但仍不推定年份或 AI 領先。"
+    }
+  ]
+}

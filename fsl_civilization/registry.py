@@ -25,7 +25,7 @@ SCHEMA_PATH = ROOT / "data" / "giccf_observation_schema_v0.13.json"
 
 HEX64 = re.compile(r"^[a-f0-9]{64}$")
 ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{2,127}$")
-INDICATOR = re.compile(r"^[A-Z]{3}-[0-9]{2}$")
+INDICATOR = re.compile(r"^[A-Z]{3,4}-[0-9]{2}$")
 DOMAIN = re.compile(r"^D[0-9]{2}$")
 INDEPENDENT = {"independent_repeated", "longitudinal_independent"}
 
@@ -60,7 +60,7 @@ def validate_catalog(catalog):
     axis_ids, indicator_ids, domain_ids = set(), set(), set()
     for axis in axes:
         axis_id = axis.get("id")
-        if not isinstance(axis_id, str) or not re.fullmatch(r"[A-Z]{3}", axis_id):
+        if not isinstance(axis_id, str) or not re.fullmatch(r"[A-Z]{3,4}", axis_id):
             raise GICCFError("bad capability axis")
         if axis_id in axis_ids:
             raise GICCFError("duplicate capability axis")

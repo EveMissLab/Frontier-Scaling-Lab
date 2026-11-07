@@ -96,7 +96,7 @@
         },
         "indicator_id": {
           "type": "string",
-          "pattern": "^[A-Z]{3}-[0-9]{2}$"
+          "pattern": "^[A-Z]{3,4}-[0-9]{2}$"
         },
         "domain_id": {
           "type": "string",

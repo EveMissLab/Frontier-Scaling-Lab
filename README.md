@@ -5,6 +5,29 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.17 — SAS-01 Systemic AI Singularity Canonical Bridge / 真 AI 奇點定義與證據接口
+
+[**Canonical UTF-8 v0.17 research document**](docs/SYSTEMIC_AI_SINGULARITY_CANONICAL_BRIDGE_v0.17.md) ·
+[**Machine-readable two-gate evidence protocol**](data/systemic_singularity_protocol_v0.17.json) ·
+[**SYNTHETIC multi-cycle revision fixture**](tests/fixtures/systemic_singularity_synthetic_v0.17.json)
+
+This **source-faithful measurement bridge, not a new definition**, references Neo.K's **SAS-01** (2026-08-18, original two thresholds) and **EWDT-19** (2026-10-03, world-domain role/type transition).
+
+- **Σsys**: AI-mediated, causally attributable **regenerative physical/computational support growth** across genuine production and maintenance cycles. A single increased GPU count, improved model, cheaper token, orbital test or satellite network expansion is not sufficient.
+- **Σciv**: the distinct stronger **civilizational positive-sum** question, after energy, materials, land, environmental, safety, labor, distribution and institutional externalities. Σsys **does not imply** Σciv.
+- Original eight-component support vector **I,C,E,H,M,L,R,N** remains intact. Science, robotics and repair are coupling mechanisms; the new FSL-NET **v0.16 14-axis/70-indicator** observatory helps measure the **N/network-and-infrastructure** bottleneck.
+- EWDT-19's five non-interchangeable state dimensions remain separate: **Rsys**, AI-attributable contribution, chain closure, external human-actuation growth dependency, and persistence across cycles.
+- This framework **does not require removing humans or natural resources**, nor thermodynamic closure; it checks whether AI can sustain and regenerate capacity without proportional new external human actuation.
+- The new validator is **read-only**, evidence-time-aware, correction-preserving and **never auto-certifies either singularity threshold**. Fixture records and all example numerical values are **SYNTHETIC**.
+
+```bash
+python -m fsl_singularity.cli definition
+python -m fsl_singularity.cli audit --file tests/fixtures/systemic_singularity_synthetic_v0.17.json --as-of 2026-11-07T20:00:00+08:00
+python -m unittest discover -s tests -q
+```
+
+---
+
 ## v0.16 — AI Connectivity Infrastructure and Continuity Observatory / AI 連線與文明持續運作
 
 [**Canonical UTF-8 v0.16 research source**](docs/AI_CONNECTIVITY_INFRASTRUCTURE_CONTINUITY_v0.16.md) ·

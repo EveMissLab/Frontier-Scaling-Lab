@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -126,5 +126,11 @@ jobs:
           python -m fsl_connectivity.cli audit --file tests/fixtures/connectivity_synthetic_v0.16.json --as-of 2026-11-08T04:45:00+08:00 --output /tmp/fsl_net_before.json
           python -m fsl_connectivity.cli audit --file tests/fixtures/connectivity_synthetic_v0.16.json --as-of 2026-11-08 --output /tmp/fsl_net_after.json
           python -c "import json; a=json.load(open('/tmp/fsl_net_before.json')); b=json.load(open('/tmp/fsl_net_after.json')); assert a['events_visible']==4 and b['active_event_count']==4 and b['indicator_count']==70; assert b['failure_scope_counts']['physical_up_service_denied']==1 and not b['ai_capability_independently_certified']"
+      - name: v0.17 SAS-01 systemic closure versus civilization gain (SYNTHETIC)
+        run: |
+          python -m fsl_singularity.cli definition
+          python -m fsl_singularity.cli audit --file tests/fixtures/systemic_singularity_synthetic_v0.17.json --as-of 2026-11-07T20:00:00+08:00 --output /tmp/fsl_sas_before.json
+          python -m fsl_singularity.cli audit --file tests/fixtures/systemic_singularity_synthetic_v0.17.json --as-of 2026-11-08 --output /tmp/fsl_sas_after.json
+          python -c "import json; a=json.load(open('/tmp/fsl_sas_before.json')); b=json.load(open('/tmp/fsl_sas_after.json')); assert a['visible_events']==3 and b['archived_events']==7 and b['current_assertions_after_correction']==6; assert b['canonical_two_gates']==['Sigma_sys','Sigma_civ'] and not b['systemic_singularity_certified'] and not b['civilizational_singularity_certified']"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

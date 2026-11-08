@@ -1,0 +1,231 @@
+{
+  "protocol_id": "FSL-SAS-BRIDGE",
+  "version": "0.17.0",
+  "created_on": "2026-11-08",
+  "timezone": "Asia/Taipei",
+  "status": "research interface only; neither Sigma_sys nor Sigma_civ is certified",
+  "definition_priority": [
+    {
+      "document_id": "SAS-01",
+      "date": "2026-08-18",
+      "version": "v1.0",
+      "canonical_filename": "SAS-01_Redefining_AI_Singularity_Positive_Regenerative_Loop_v1.0_2026-08-18.md",
+      "authority": "primary_definition"
+    },
+    {
+      "document_id": "EWDT-19",
+      "date": "2026-10-03",
+      "version": "v0.1",
+      "canonical_filename": "EWDT-19_系統性AI奇點作為經濟世界域相變_v0.1_2026-10-03.md",
+      "authority": "later_world_domain_interface"
+    },
+    {
+      "document_id": "FSL-v0.17",
+      "date": "2026-11-08",
+      "version": "v0.17",
+      "canonical_filename": "docs/SYSTEMIC_AI_SINGULARITY_CANONICAL_BRIDGE_v0.17.md",
+      "authority": "noncanonical_provisional_measurement_protocol"
+    }
+  ],
+  "boundary_gates": [
+    {
+      "id": "Sigma_sys",
+      "zh": "系統閉環門檻",
+      "description": "Positive regenerative growth, causally attributed AI contribution, sufficiently closed necessary support chain, nonproportional external human actuation dependence, persistence over actual cycles. Cannot be certified by this validator."
+    },
+    {
+      "id": "Sigma_civ",
+      "zh": "文明正和門檻",
+      "description": "A distinct stronger question: persistent civilization-wide net-positive effects after externalities, environmental and social distribution included. Sigma_sys does not imply it. Cannot be certified by this validator."
+    }
+  ],
+  "system_vector": [
+    {
+      "code": "I",
+      "name_zh": "智能／知識",
+      "evidence_examples_zh": [
+        "獨立可用的科研結果",
+        "受控方法改善",
+        "可重播知識轉移"
+      ],
+      "prohibited_proxy": "model_name_or_AGI_claim"
+    },
+    {
+      "code": "C",
+      "name_zh": "有效算力",
+      "evidence_examples_zh": [
+        "已部署且可用算力",
+        "真實訓練／推理工作結果",
+        "瓶頸與連接拓撲"
+      ],
+      "prohibited_proxy": "GPU_count_only"
+    },
+    {
+      "code": "E",
+      "name_zh": "能源",
+      "evidence_examples_zh": [
+        "電網／發電真正可用容量",
+        "穩定供電／冷卻",
+        "淨能源效率與回饋"
+      ],
+      "prohibited_proxy": "announced_MW"
+    },
+    {
+      "code": "H",
+      "name_zh": "硬體",
+      "evidence_examples_zh": [
+        "晶片／裝置實際交付",
+        "耐用度及故障率",
+        "設備產能提升"
+      ],
+      "prohibited_proxy": "vendor_roadmap"
+    },
+    {
+      "code": "M",
+      "name_zh": "製造",
+      "evidence_examples_zh": [
+        "跨次製造能力",
+        "更新與維修",
+        "真正合格成品"
+      ],
+      "prohibited_proxy": "demo_factory"
+    },
+    {
+      "code": "L",
+      "name_zh": "物流",
+      "evidence_examples_zh": [
+        "供應鏈可靠性交付",
+        "跨網路協調與實體運輸",
+        "維修實際到位"
+      ],
+      "prohibited_proxy": "planned_hubs"
+    },
+    {
+      "code": "R",
+      "name_zh": "資源",
+      "evidence_examples_zh": [
+        "材料投入與回收",
+        "土地／水與礦產成本",
+        "資源瓶頸變動"
+      ],
+      "prohibited_proxy": "unlimited_resources_assumption"
+    },
+    {
+      "code": "N",
+      "name_zh": "網路／基礎設施",
+      "evidence_examples_zh": [
+        "端到端工作可達",
+        "備援實際恢復",
+        "AI 實際建設的有效網路能力"
+      ],
+      "prohibited_proxy": "traffic_or_satellite_bandwidth_only",
+      "interoperability": "FSL-NET v0.16"
+    }
+  ],
+  "system_state_dimensions": [
+    {
+      "id": "R_sys",
+      "zh": "系統再生係數",
+      "supports": "effective_AI_support_capacity_growth",
+      "probe": "Same-contract usable K_AI time series across real physical production/support cycles",
+      "non_claim": "Positive single-period growth is not AI-caused self-regeneration."
+    },
+    {
+      "id": "alpha_AI",
+      "zh": "AI 中介增量歸因比例",
+      "supports": "causally_attributed_AI_effect",
+      "probe": "Documented AI vs non-AI counterfactual with capital/human-labor and external suppliers accounted for",
+      "non_claim": "Vendor labeling or cost reductions alone cannot identify causality."
+    },
+    {
+      "id": "kappa_closure",
+      "zh": "再生支撐鏈閉合程度",
+      "supports": "multi_layer_dependency_closure",
+      "probe": "Physical I,C,E,H,M,L,R,N constraints, required directed edges and critical shared dependencies audited",
+      "non_claim": "A connected flowchart is not an operating closed loop."
+    },
+    {
+      "id": "epsilon_H",
+      "zh": "新增外部人類直接致動依賴彈性",
+      "supports": "nonproportional_external_human_actuation",
+      "probe": "Independent accounting of external human core labor and capital/infrastructure inputs against capacity growth",
+      "non_claim": "Zero visible operators may hide outsourced or prepaid human work."
+    },
+    {
+      "id": "P_persist",
+      "zh": "跨多個實際週期持續性",
+      "supports": "continued_physical_reproduction",
+      "probe": "Durable net capacity increments across production/maintenance/replacement cycles, including failures",
+      "non_claim": "Repeating a software benchmark is not a physical industrial cycle."
+    }
+  ],
+  "separate_process_channels": [
+    "scientific_discovery",
+    "embodied_execution",
+    "repair_maintenance",
+    "governance_authorization",
+    "safety_verification"
+  ],
+  "civilization_externality_categories": [
+    "energy",
+    "materials",
+    "land_and_water",
+    "environment",
+    "labor_income_distribution",
+    "human_rights_and_governance",
+    "safety_and_security",
+    "public_services_and_access",
+    "social_absorption"
+  ],
+  "operational_research_markers": [
+    "S0_unobserved",
+    "S1_local_efficiency",
+    "S2_usable_capacity_increase",
+    "S3_ai_attribution_candidate",
+    "S4_support_chain_linked",
+    "S5_multi_cycle_persistence_candidate",
+    "S6_civilization_outcome_study"
+  ],
+  "evidence_classes": [
+    "synthetic",
+    "observational"
+  ],
+  "source_classes": [
+    "synthetic_fixture",
+    "provider_claim",
+    "independent_measurement",
+    "public_documentary_evidence"
+  ],
+  "assessment_states": [
+    "unknown",
+    "candidate_positive",
+    "candidate_negative",
+    "noncomparable"
+  ],
+  "counterfactual_quality": [
+    "unknown",
+    "claimed_only",
+    "predeclared_comparison",
+    "external_controlled_comparison"
+  ],
+  "human_dependency_states": [
+    "unknown",
+    "proportional_growth",
+    "sublinear_growth",
+    "no_direct_human_scaling_claim"
+  ],
+  "limits": [
+    "Do not treat AGI/ASI/superhuman system labels as a singularity gate.",
+    "An AI model, user product, orbital compute demo, data center expansion or satellite bandwidth claim is not a complete systemic regeneration cycle.",
+    "An increased R_sys without causal alpha_AI, chain closure, appropriate external dependency accounting and persistence is insufficient.",
+    "Systemic loop closure does not require zero human labor, no natural resources, or thermodynamic closure.",
+    "Sigma_sys does not imply Sigma_civ; a beneficial AI without regenerative closure is also not Sigma_sys.",
+    "One part of the network/media stack is neither whole-world compute nor fully available authorized AI service.",
+    "Requests and economic final demand are different measurements.",
+    "Any threshold applied to system-state dimensions must be preregistered in an external study; this code has no threshold or empirical certification.",
+    "Historical definitions must be preserved and subsequent scientific definitions appended, not overwritten.",
+    "No unknown future year or physically impossible capability inferred from missing data.",
+    "All negative outcomes and human core work remain visible.",
+    "Provenance schema validates claims, not authenticity or external evaluator independence."
+  ]
+}

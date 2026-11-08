@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CATALOG_PATH = ROOT / "data" / "ai_connectivity_capability_catalog_v0.16.json"
 ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._:-]{2,127}\Z")
 HASH = re.compile(r"[a-f0-9]{64}\Z")
-METRIC = re.compile(r"NET-[A-Z]{3}-[0-9]{2}\Z")
+METRIC = re.compile(r"NET-[A-Z0-9]{3}-[0-9]{2}\Z")
 
 DATA_CLASSES = {"synthetic", "observational"}
 EVIDENCE_KINDS = {"synthetic_test", "provider_assertion",
@@ -79,7 +79,7 @@ def load_catalog(path=CATALOG_PATH):
     ids, axis_ids = set(), set()
     for a in axes:
         aid = a.get("id")
-        if not isinstance(aid, str) or not re.fullmatch(r"[A-Z]{3}", aid):
+        if not isinstance(aid, str) or not re.fullmatch(r"[A-Z0-9]{3}", aid):
             raise NetworkStudyError("invalid axis")
         if aid in axis_ids:
             raise NetworkStudyError("duplicate axis")

@@ -23,7 +23,7 @@ class FrontierGeopoliticsAndCostV019Tests(unittest.TestCase):
         m = validate(self.geo, self.cost)
         self.assertEqual((m["geo_axes"], m["geo_indicators"]), (8, 40))
         self.assertEqual((m["cost_axes"], m["cost_indicators"]), (9, 45))
-        self.assertEqual((m["sources"], m["cases"], m["cost_buckets"],
+        self.assertEqual((m["source_count"], m["cases"], m["cost_buckets"],
                           m["strategies"], m["cost_observations"]), (7, 7, 13, 8, 3))
 
     def test_first_capture_is_2026_11_08_not_prior_known_model(self):

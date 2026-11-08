@@ -1,0 +1,309 @@
+{
+  "schema": "fsl/dated-agentic-network-orbit-hypotheses/0.15",
+  "review_date": "2026-11-08",
+  "timezone": "Asia/Taipei",
+  "status": "OPEN_RESEARCH_CANDIDATES_NOT_CLOSED_PREDICTIONS",
+  "scope": "Public descriptions of AI demand, agentic Internet and orbital computing, not private beliefs, demonstrated future outcomes, or a technology endorsement.",
+  "predecessors": [
+    "docs/AI_PUBLIC_NARRATIVES_INTENT_REVERSIBILITY_v0.10.md",
+    "docs/NARRATIVE_DRIFT_INTENTION_REALITY_REPLAY_v0.11.md",
+    "docs/AI_DOCUMENTED_DIRECTION_DIVERGENCE_v0.12.md",
+    "docs/COUNTERFACTUAL_CIVILIZATIONAL_CAPABILITY_TIME_v0.14.md"
+  ],
+  "sources": [
+    {
+      "id": "musk-20261106-baron",
+      "kind": "archived_original_interview",
+      "publisher": "Elon Musk Archive (independent archived transcript linked to video)",
+      "url": "https://www.elonmuskarchive.org/video/baron-investment-conference-2026-11-06",
+      "event_on": "2026-11-06",
+      "published_on": null,
+      "first_captured_on": "2026-11-08",
+      "date_note": "Session is dated 2026-11-06; transcript page publication time is not separately verified",
+      "scope": "Attests publicly attributed speech, not engineering performance or inner beliefs"
+    },
+    {
+      "id": "cloudflare-20260806-prince",
+      "kind": "original_earnings_call_transcript_republication",
+      "publisher": "Cloudflare Q2 2026 earnings call via Quartr/StockAnalysis",
+      "url": "https://stockanalysis.com/stocks/net/transcripts/662709-q2-2026/",
+      "event_on": "2026-08-06",
+      "published_on": "2026-08-06",
+      "first_captured_on": "2026-11-08",
+      "date_note": "August 6 earnings call, Q2 2026",
+      "scope": "CEO retrospective report and forecast, not a transparent full-network universal census"
+    },
+    {
+      "id": "cloudflare-2026-connect",
+      "kind": "official_transcript_undated_publication",
+      "publisher": "Cloudflare Connect 2026",
+      "url": "https://www.cloudflare.com/connect/2026/session/the-agentic-internet-building-and-securing-what-comes-next/",
+      "event_on": null,
+      "published_on": null,
+      "first_captured_on": "2026-11-08",
+      "date_note": "2026 session, calendar publication day not established; do not backdate to a specific day",
+      "scope": "First-party CEO speech supports his attributed claims, not independent AI classification"
+    },
+    {
+      "id": "cloudflare-radar-20261001-12",
+      "kind": "provider_public_dynamic_dashboard",
+      "publisher": "Cloudflare Radar",
+      "url": "https://radar.cloudflare.com/traffic?dateEnd=2026-10-12&dateStart=2026-10-01",
+      "event_on": "2026-10-12",
+      "published_on": null,
+      "first_captured_on": "2026-11-08",
+      "date_note": "Period 2026-10-01 through 2026-10-12; dynamic results, no frozen request counts",
+      "scope": "Bot-vs-human metric is HTML-response HTTP requests on Cloudflare-measured traffic; not AI-agent fraction of all global bytes"
+    },
+    {
+      "id": "google-20261030-suncatcher",
+      "kind": "provider_primary",
+      "publisher": "Google Research blog",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/",
+      "event_on": "2026-10-30",
+      "published_on": "2026-10-30",
+      "first_captured_on": "2026-11-08",
+      "date_note": "Provider publication day",
+      "scope": "Company reports a TPU prototype running early model/telemetry output in orbit; not an industrial-scale orbital data center"
+    },
+    {
+      "id": "gao-20260428-orbit",
+      "kind": "government_technology_assessment",
+      "publisher": "U.S. GAO",
+      "url": "https://www.gao.gov/products/gao-26-109012",
+      "event_on": "2026-04-28",
+      "published_on": "2026-04-28",
+      "first_captured_on": "2026-11-08",
+      "date_note": "GAO document publication",
+      "scope": "Independent assessment of engineering/financial barriers as at April 2026"
+    }
+  ],
+  "statements": [
+    {
+      "id": "s01",
+      "speaker": "Elon Musk",
+      "uttered_on": "2026-11-06",
+      "source_id": "musk-20261106-baron",
+      "locator": "Agentic internet traffic passage; speaker Musk",
+      "kind": "third_party_estimate_repeated",
+      "proposition_zh": "引述 Cloudflare，稱 Agent 網路活動似乎已超過人類；認為未來約五年 Agent 流量相較人類可能達千倍，並猜測千倍還是低估。",
+      "metric": {
+        "quantity": "agentic_to_human_traffic_ratio",
+        "value": 1000,
+        "relation": "possible_forecast",
+        "horizon": "~5 years from 2026-11-06",
+        "unit": "ratio_unspecified_traffic_metric"
+      },
+      "first_party_forecast_origin": "cloudflare-20260806-prince",
+      "verification_status": "speech_verified_forecast_unverified",
+      "notes": "Musk presents Cloudflare estimate, not Musk-originated 1000x data; exact denominator, byte/request measure and global population unknown."
+    },
+    {
+      "id": "s02",
+      "speaker": "Matthew Prince",
+      "uttered_on": "2026-08-06",
+      "source_id": "cloudflare-20260806-prince",
+      "locator": "Q2 2026 earnings call, analyst Q&A non-human traffic",
+      "kind": "provider_reported_retrospective_observation",
+      "proposition_zh": "稱 Cloudflare 團隊於 2026 年五月觀察到非人類自動化流量超過人類流量，較原先預測提前。",
+      "metric": {
+        "quantity": "provider_classified_nonhuman_vs_human_traffic",
+        "value": null,
+        "relation": "reported_greater_than",
+        "horizon": "reported for 2026-05",
+        "unit": "provider_defined_traffic_unspecified"
+      },
+      "first_party_forecast_origin": null,
+      "verification_status": "provider_report_not_independent_global_verification",
+      "notes": "Non-human includes more than AI agents; may include bots and malicious traffic. Scope and measurement method require independent review."
+    },
+    {
+      "id": "s03",
+      "speaker": "Matthew Prince",
+      "uttered_on": "2026-08-06",
+      "source_id": "cloudflare-20260806-prince",
+      "locator": "Q2 2026 earnings call, conditional five-year forecast",
+      "kind": "conditional_forecast",
+      "proposition_zh": "若當時趨勢延續，五年後非人類網路流量可能達人類流量的約千倍。",
+      "metric": {
+        "quantity": "nonhuman_to_human_traffic_ratio",
+        "value": 1000,
+        "relation": "possible_forecast",
+        "horizon": "~5 years from 2026-08-06",
+        "unit": "ratio_unspecified_traffic_metric"
+      },
+      "first_party_forecast_origin": null,
+      "verification_status": "prediction_not_due",
+      "notes": "Original speaker says non-human rather than strictly AI agent. Conditional projection, not a point observation."
+    },
+    {
+      "id": "s04",
+      "speaker": "Elon Musk",
+      "uttered_on": "2026-11-06",
+      "source_id": "musk-20261106-baron",
+      "locator": "Starlink V2/V3 comparison and fleet forecast",
+      "kind": "technology_roadmap_expectation",
+      "proposition_zh": "認為 Starlink V3 衛星能力相較 V2 超過十倍，配合衛星數擴張，期望約兩到三年內系統總頻寬達當時約百倍。",
+      "metric": {
+        "quantity": "starlink_total_system_bandwidth_multiplier",
+        "value": 100,
+        "relation": "speaker_projection",
+        "horizon": "2–3 years from 2026-11-06",
+        "unit": "multiplier_vs_2026_claimed_baseline"
+      },
+      "first_party_forecast_origin": null,
+      "verification_status": "forecast_not_independently_measured",
+      "notes": "More-than-10x per-V3 hardware statement is separate from the 100x system-level future forecast."
+    },
+    {
+      "id": "s05",
+      "speaker": "Elon Musk",
+      "uttered_on": "2026-11-06",
+      "source_id": "musk-20261106-baron",
+      "locator": "Starlink V4 satellite and laser links",
+      "kind": "future_hardware_capability_projection",
+      "proposition_zh": "估計 Starlink V4 衛星可能比 V3 再有十倍能力，並談到下一代衛星間雷射連結容量提高。",
+      "metric": {
+        "quantity": "starlink_v4_vs_v3_capability_multiplier",
+        "value": 10,
+        "relation": "speaker_projection",
+        "horizon": "unknown",
+        "unit": "generation_to_generation_capacity_multiplier"
+      },
+      "first_party_forecast_origin": null,
+      "verification_status": "no_frozen_independent_comparison",
+      "notes": "Do not confuse with AI traffic ratio, V3/V2 ratio, total Starlink bandwidth or real traffic demand."
+    },
+    {
+      "id": "s06",
+      "speaker": "Elon Musk",
+      "uttered_on": "2026-11-06",
+      "source_id": "musk-20261106-baron",
+      "locator": "Space computing Starmind launch passage",
+      "kind": "personal_timeline_guess",
+      "proposition_zh": "猜測約於 2027 年第三季開始發射與 NVIDIA 共同設計的軌道運算系統，2028 年較明顯擴張、2029 年可能大規模部署。",
+      "metric": {
+        "quantity": "starmind_initial_launch_estimate",
+        "value": null,
+        "relation": "personal_guess",
+        "horizon": "2027-Q3, possible 2028–2029 ramp",
+        "unit": "stated_calendar_window"
+      },
+      "first_party_forecast_origin": null,
+      "verification_status": "project_timeline_unverified",
+      "notes": "Speaker explicitly indicates guess; not a dated commitment or tested large orbital computing service."
+    },
+    {
+      "id": "s07",
+      "speaker": "Elon Musk",
+      "uttered_on": "2026-11-06",
+      "source_id": "musk-20261106-baron",
+      "locator": "Digital superintelligence demand and orbital energy passage",
+      "kind": "conceptual_economic_hypothesis",
+      "proposition_zh": "認為未來巨量數位智慧的主要需求部分可能來自其他數位智慧，並視太空能源及軌道運算為實現極大算力擴張的途徑。",
+      "metric": null,
+      "first_party_forecast_origin": null,
+      "verification_status": "narrative_hypothesis_not_empirically_demonstrated",
+      "notes": "Agent-to-agent traffic is not proven final human purchasing power; orbital compute ability is not evidence of self-sustaining economic revenue."
+    }
+  ],
+  "counter_evidence": [
+    {
+      "id": "e01",
+      "source_id": "google-20261030-suncatcher",
+      "topic": "orbital_ai_feasibility",
+      "observation_zh": "Google 報告軌道 TPU 原型已完成初期模型回應與遙測工作；顯示小規模技術展示有進展。",
+      "establishes": "provider_reported_small_scale_test",
+      "does_not_establish": "large_operational_orbital_data_center_or_economic_cost_advantage"
+    },
+    {
+      "id": "e02",
+      "source_id": "gao-20260428-orbit",
+      "topic": "orbital_ai_limitations",
+      "observation_zh": "GAO 指出大型軌道資料中心散熱、供電、通訊、成本與太空碰撞風險尚有重大工程障礙。",
+      "establishes": "documented_known_barriers_as_of_april_2026",
+      "does_not_establish": "permanent_infeasibility_or_failure_of_future_designs"
+    },
+    {
+      "id": "e03",
+      "source_id": "cloudflare-radar-20261001-12",
+      "topic": "traffic_metric_population",
+      "observation_zh": "Cloudflare Radar 的 bot/human 比較針對特定期間、回應 HTML 的 HTTP 請求；其數據集合與整個網路流量總位元組不同。",
+      "establishes": "metric_scope_definition_only",
+      "does_not_establish": "all_internet_AI_share_or_autonomous_agent_only_share"
+    }
+  ],
+  "research_hypotheses": [
+    {
+      "id": "h01",
+      "question_zh": "未來某些網路請求、代理流程或機器對機器互動能否在特定可定義母體中占多數？",
+      "classification": "open_directional_hypothesis",
+      "numerical_threshold": null,
+      "observation_requirements": [
+        "fixed population and observation interval",
+        "separate bot, AI agent, non-AI automation and human proxies",
+        "request count versus bytes versus final task outcomes",
+        "independent sampled provider comparisons"
+      ],
+      "rival_explanations": [
+        "many requests generated by a few crawlers",
+        "browser or security automation classified as non-human",
+        "count inflation from redundant polling",
+        "human-facing tasks still dominate economic demand"
+      ],
+      "status": "unadjudicated"
+    },
+    {
+      "id": "h02",
+      "question_zh": "衛星算力是否在特定任務與總成本契約下優於地面資料中心？",
+      "classification": "open_engineering_economic_hypothesis",
+      "numerical_threshold": null,
+      "observation_requirements": [
+        "launch and replacement costs",
+        "real compute throughput/uptime",
+        "heat rejection, radiation tolerance and maintenance",
+        "inter-satellite optical link and return bandwidth",
+        "energy balance including ground and orbit",
+        "orbital debris, permissions and liability"
+      ],
+      "rival_explanations": [
+        "terrestrial energy/grid improvements beat launch savings",
+        "radiator mass overwhelms launch economics",
+        "satellite constraints favor edge processing only",
+        "bandwidth/latency limits distributed training"
+      ],
+      "status": "unadjudicated"
+    },
+    {
+      "id": "h03",
+      "question_zh": "AI 產生的 AI 網路工作量，能否形成實際具可持續收益來源的終端需求？",
+      "classification": "open_economic_absorption_hypothesis",
+      "numerical_threshold": null,
+      "observation_requirements": [
+        "agent spending party and authorization",
+        "ultimate beneficiary of work",
+        "accepted productive outcomes",
+        "net paid demand and costs",
+        "human/AI/hybrid transaction distinctions"
+      ],
+      "rival_explanations": [
+        "internal loop traffic not paid final demand",
+        "unbounded polling without marginal social benefit",
+        "agent demand economically financed by humans and institutions",
+        "models optimizing requests instead of results"
+      ],
+      "status": "unadjudicated"
+    }
+  ],
+  "guards": {
+    "no_global_majority_claim": true,
+    "no_proved_1000x": true,
+    "no_conflated_10x_100x_1000x": true,
+    "no_independent_orbital_economics_certification": true,
+    "no_automatic_ai_consciousness_or_self_demand_certification": true,
+    "no_unobserved_future_event_disclosed_as_fact": true,
+    "no_private_belief_inference": true,
+    "no_reference_to_undated_2026_as_historical_asof": true,
+    "original_sources_linked_not_mirrored": true
+  }
+}

@@ -5,6 +5,23 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.15 — Dated Agentic Internet & Orbital-Compute Possibility Records / AI 網路與太空運算
+
+[**Canonical UTF-8 v0.15 study note**](docs/AI_NETWORK_ORBITAL_COMPUTE_NARRATIVE_v0.15.md) ·
+[**Dated speaker/source/hypothesis dataset**](data/ai_network_orbit_narrative_candidates_2026-11-08_v0.15.json)
+
+- Records Elon Musk's **2026-11-06 Baron conference** statements as historical speech, separately from Cloudflare CEO Matthew Prince's **2026-08-06** conditional forecast and report of non-human traffic.
+- **1,000×** refers to a *conditional five-year nonhuman/agentic-vs-human traffic projection*; **10×** to Starlink generation capability, **100×** to an anticipated fleet bandwidth multiplier. These numbers are **not interchangeable** or FSL forecasts.
+- Google reported limited orbital TPU model tests by 2026-10-30; GAO's April 2026 assessment documents the scale-up barriers. Neither proves orbital AI training farms will become broadly economical.
+- Separates AI-to-AI requests from autonomous agency, verified outcomes, final paid demand and sustainable economic value. No inferred private intent, global AI-majority certification, or AGI/ASI claims.
+- The three open hypotheses (AI share of network activity, orbital compute economics, AI-to-AI effective demand) preserve rival explanations, rejection criteria and dated provenance. No alterations to historical v0.10–v0.14 counts.
+
+```bash
+python -m unittest discover -s tests -q
+```
+
+---
+
 ## v0.14 — Counterfactual Civilizational Capability Lead & Definition Evolution / 反事實文明能力時差
 
 [**Canonical UTF-8 v0.14 source**](docs/COUNTERFACTUAL_CIVILIZATIONAL_CAPABILITY_TIME_v0.14.md) ·

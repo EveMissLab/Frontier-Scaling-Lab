@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -132,5 +132,12 @@ jobs:
           python -m fsl_singularity.cli audit --file tests/fixtures/systemic_singularity_synthetic_v0.17.json --as-of 2026-11-07T20:00:00+08:00 --output /tmp/fsl_sas_before.json
           python -m fsl_singularity.cli audit --file tests/fixtures/systemic_singularity_synthetic_v0.17.json --as-of 2026-11-08 --output /tmp/fsl_sas_after.json
           python -c "import json; a=json.load(open('/tmp/fsl_sas_before.json')); b=json.load(open('/tmp/fsl_sas_after.json')); assert a['visible_events']==3 and b['archived_events']==7 and b['current_assertions_after_correction']==6; assert b['canonical_two_gates']==['Sigma_sys','Sigma_civ'] and not b['systemic_singularity_certified'] and not b['civilizational_singularity_certified']"
+      - name: v0.18 dated legal feasibility, advisory and vote-certification guards
+        run: |
+          python -m fsl_legal.cli validate
+          python -m fsl_legal.cli replay --as-of 2026-11-07 --mode strict_known_at_time --output /tmp/fsl_law_strict.json
+          python -m fsl_legal.cli replay --as-of 2026-11-07 --mode retrospective_reconstruction --output /tmp/fsl_law_retrospective.json
+          python -m fsl_legal.cli replay --as-of 2026-11-08 --mode strict_known_at_time --output /tmp/fsl_law_present.json
+          python -c "import json; a=json.load(open('/tmp/fsl_law_strict.json')); b=json.load(open('/tmp/fsl_law_retrospective.json')); c=json.load(open('/tmp/fsl_law_present.json')); assert a['visible_source_events']==0 and b['visible_source_events']==7 and c['active_after_corrections']==7; assert c['nonbinding_advisory_votes']==1 and c['local_binding_candidate_pending_certification']==1 and not c['causal_effect_certified']"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

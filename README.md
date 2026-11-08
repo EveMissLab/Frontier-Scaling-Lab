@@ -5,6 +5,30 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.18 — Legal Feasibility, Data-Center Regulation & Political-Economic Feedback / 法律可行域
+
+[**Canonical UTF-8 legal feasibility study (v0.18)**](docs/DATACENTER_LEGAL_REGULATORY_FEASIBILITY_v0.18.md) ·
+[**Source-dated US / EU / China legal and policy archive**](data/ai_datacenter_legal_governance_2026-11-08_v0.18.json)
+
+**Adds a distinct governance/legal feasibility track** after the 2026-11-03 US midterm election and local ballot measures. This does not overwrite the canonical SAS-01 singularity definition nor any earlier FSL capability metric:
+
+- **12 legal research axes / 60 unmeasured subindicators**, including jurisdiction, legal status vs effective date, land-use approval, utility tariffs, water, emissions, environmental review, tax and project guarantees, courts, disclosure, labor and cross-jurisdictional comparison.
+- **7 dated seed cases**: federal FERC procedural large-load tariff order; Virginia signed energy-cost legislation; Pennsylvania introduced moratorium proposal as of its legislative-tracker snapshot; Ohio Piqua preliminary charter-amendment vote; Illinois Bloomington **nonbinding advisory**; EU 2024/1364 **binding reporting**; Chinese green data-center **policy targets**.
+- Distinguishes **political/election signal → proposed → signed → legally effective → permitted → energized → installed → operational compute**. No automatic inference that an election passes laws or that a law is a national construction ban.
+- Keeps the prior **unconditional approval / conditional approval / moratorium or prohibition** alternatives as **counterfactual research cases**, without advocating one political outcome or asserting regulatory causality.
+- Strict historical-known-at-time versus retrospective reconstruction; original publication and first FSL capture stay distinct. Changes must append, not rewrite history.
+- No legal advice, site-permit certification, project delay causal estimate, law-restrictiveness score, or new singularity certification.
+
+```bash
+python -m fsl_legal.cli validate
+python -m fsl_legal.cli replay --as-of 2026-11-07 --mode strict_known_at_time
+python -m fsl_legal.cli replay --as-of 2026-11-07 --mode retrospective_reconstruction
+python -m fsl_legal.cli replay --as-of 2026-11-08
+python -m unittest discover -s tests -q
+```
+
+---
+
 ## v0.17 — SAS-01 Systemic AI Singularity Canonical Bridge / 真 AI 奇點定義與證據接口
 
 [**Canonical UTF-8 v0.17 research document**](docs/SYSTEMIC_AI_SINGULARITY_CANONICAL_BRIDGE_v0.17.md) ·

@@ -1,0 +1,895 @@
+{
+  "schema": "fsl/legal-governance-events/0.18",
+  "research_version": "0.18.0",
+  "recorded_on": "2026-11-08",
+  "timezone": "Asia/Taipei",
+  "prior_studies": [
+    "美國AI數據中心_選後政治與資源衝突_研究札記_2026-11-06.md",
+    "docs/SYSTEMIC_AI_SINGULARITY_CANONICAL_BRIDGE_v0.17.md",
+    "docs/AI_CONNECTIVITY_INFRASTRUCTURE_CONTINUITY_v0.16.md"
+  ],
+  "research_scope": [
+    "US post-election state and local legal environments",
+    "US federal utility rules",
+    "EU data center sustainability disclosure",
+    "China published green data center action plan",
+    "comparative data center permitting and public-cost allocation"
+  ],
+  "critical_guards": [
+    "Election outcome is not a law and is not proof of election causality",
+    "A nonbinding advisory vote never auto-creates a zoning prohibition",
+    "A state bill introduced is not an enacted or in-force law",
+    "Signed and effective dates must be separate; unknown effective_on is null",
+    "Local project grandfathering, judicial review and regional authority are not assumed",
+    "Regulatory action can facilitate, condition, delay or block capacity, not always reduce it",
+    "Approved/announced/constructed/energized/installed/training-ready are distinct project states",
+    "Primary legal text vs government announcement vs legislative tracker vs election counting must retain source rank",
+    "A national policy action plan is not automatically a locally binding construction permit ban",
+    "A law's presence does not establish causal delay, investment relocation or its desirability",
+    "Source vintage and first FSL capture are separate; no future hindsight leak",
+    "US/EU/CN sources cannot be normalized into a single law-restrictiveness score",
+    "Legal operability does not imply systemic AI singularity or civilizational net gain"
+  ],
+  "jurisdiction_levels": [
+    "federal",
+    "state",
+    "municipal",
+    "supranational",
+    "national"
+  ],
+  "law_classes": [
+    "bill_proposal",
+    "state_legislation",
+    "administrative_order",
+    "ballot_charter_amendment",
+    "nonbinding_advisory_ballot",
+    "delegated_regulation",
+    "policy_action_plan"
+  ],
+  "statuses": [
+    "agency_order_issued",
+    "signed",
+    "introduced_as_of_source",
+    "approved_unofficial_pending_certification",
+    "advisory_approved_unofficial",
+    "in_force_per_eurlex",
+    "policy_plan_published"
+  ],
+  "bindingness": [
+    "binding_procedural_on_addressees",
+    "enacted_effective_date_not_verified",
+    "not_enacted_in_record",
+    "binding_candidate_pending_certification_and_applicability",
+    "nonbinding_advice",
+    "binding_reporting_scope_limited",
+    "policy_target_not_direct_permit_ban"
+  ],
+  "policy_scenarios": [
+    {
+      "id": "unconditional_approval",
+      "zh": "無條件批准",
+      "description": "可能縮短設址前期，成本、保護、風險及實際併網仍必須觀測，非已批准某案",
+      "measures": [
+        "approval_duration",
+        "grid_cost_bearer",
+        "electricity_price",
+        "water_stress",
+        "air_noise",
+        "construction_jobs",
+        "permanent_jobs",
+        "public_finance",
+        "project_migration"
+      ]
+    },
+    {
+      "id": "conditional_approval",
+      "zh": "有條件批准",
+      "description": "公用事業成本內部化、取水或噪音條件、獨立審查、保證金等條件可比較但效果未知",
+      "measures": [
+        "approval_duration",
+        "electricity_price",
+        "grid_cost_bearer",
+        "environmental_compliance_cost",
+        "operational_MW",
+        "actual_jobs",
+        "project_migration"
+      ]
+    },
+    {
+      "id": "moratorium_or_prohibition",
+      "zh": "暫緩或禁止",
+      "description": "可能阻止、延期或使投資轉移；須辨認地方效力、例外、合法性及設施階段",
+      "measures": [
+        "approval_duration",
+        "project_migration",
+        "regional_operational_MW",
+        "stranded_grid_assets",
+        "public_service_impact"
+      ]
+    }
+  ],
+  "legal_indicator_axes": [
+    {
+      "id": "JUR",
+      "label_zh": "法源階層與管轄",
+      "label_en": "Jurisdiction and authority",
+      "indicators": [
+        {
+          "id": "LAW-JUR-01",
+          "axis_id": "JUR",
+          "label_zh": "區分聯邦／州／地方／歐盟／中國中央與實際適用地",
+          "measurement_key": "jurisdiction_check",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-JUR-02",
+          "axis_id": "JUR",
+          "label_zh": "區分行政機關、議會、地方選舉與法院",
+          "measurement_key": "issuer_check",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-JUR-03",
+          "axis_id": "JUR",
+          "label_zh": "判定對開發商、電網、社區何者有拘束",
+          "measurement_key": "addressee_check",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-JUR-04",
+          "axis_id": "JUR",
+          "label_zh": "聯邦—州—地方權限衝突與優先適用",
+          "measurement_key": "preemption_check",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-JUR-05",
+          "axis_id": "JUR",
+          "label_zh": "界定跨境服務與國內設址的不同法律",
+          "measurement_key": "crossborder_scope_check",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "STA",
+      "label_zh": "法規生命週期與法律效力",
+      "label_en": "Legal status and effect",
+      "indicators": [
+        {
+          "id": "LAW-STA-01",
+          "axis_id": "STA",
+          "label_zh": "草案、提案、已通過、簽署、生效精確分離",
+          "measurement_key": "status_stage",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-STA-02",
+          "axis_id": "STA",
+          "label_zh": "公投結果尚未認證與真正已生效分離",
+          "measurement_key": "certification_stage",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-STA-03",
+          "axis_id": "STA",
+          "label_zh": "具有拘束力和諮詢性投票分離",
+          "measurement_key": "bindingness",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-STA-04",
+          "axis_id": "STA",
+          "label_zh": "法規暫停、終止、修訂及日落條款",
+          "measurement_key": "expiry_review",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-STA-05",
+          "axis_id": "STA",
+          "label_zh": "過時來源只能證明來源當時狀態",
+          "measurement_key": "source_vintage",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "ZON",
+      "label_zh": "用地與建築許可",
+      "label_en": "Zoning and construction permits",
+      "indicators": [
+        {
+          "id": "LAW-ZON-01",
+          "axis_id": "ZON",
+          "label_zh": "使用分區與土地用途變更",
+          "measurement_key": "zoning_eligibility",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ZON-02",
+          "axis_id": "ZON",
+          "label_zh": "地方案場特殊許可及鄰近居民",
+          "measurement_key": "conditional_use",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ZON-03",
+          "axis_id": "ZON",
+          "label_zh": "建築、消防、施工審查",
+          "measurement_key": "construction_permits",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ZON-04",
+          "axis_id": "ZON",
+          "label_zh": "最低／最高規模和容量門檻",
+          "measurement_key": "capacity_threshold",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ZON-05",
+          "axis_id": "ZON",
+          "label_zh": "既有權利、分期與祖父條款",
+          "measurement_key": "grandfathering",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "ELC",
+      "label_zh": "電網接入與成本分攤",
+      "label_en": "Grid access and costs",
+      "indicators": [
+        {
+          "id": "LAW-ELC-01",
+          "axis_id": "ELC",
+          "label_zh": "電網接入排隊、併網協議及費率",
+          "measurement_key": "interconnection_state",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ELC-02",
+          "axis_id": "ELC",
+          "label_zh": "電廠與輸配電工程實際供電日期",
+          "measurement_key": "energization_date",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ELC-03",
+          "axis_id": "ELC",
+          "label_zh": "新建基礎設施成本的負擔者",
+          "measurement_key": "cost_allocation",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ELC-04",
+          "axis_id": "ELC",
+          "label_zh": "最低承諾、取消成本與擔保",
+          "measurement_key": "exit_guarantee",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ELC-05",
+          "axis_id": "ELC",
+          "label_zh": "自備發電、需量反應與可靠性要求",
+          "measurement_key": "flexible_load_rules",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "WAT",
+      "label_zh": "取水、冷卻與流域",
+      "label_en": "Water and cooling permits",
+      "indicators": [
+        {
+          "id": "LAW-WAT-01",
+          "axis_id": "WAT",
+          "label_zh": "取水／用水權與季節性水源",
+          "measurement_key": "water_rights",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-WAT-02",
+          "axis_id": "WAT",
+          "label_zh": "現場取水、耗水及放流水口徑",
+          "measurement_key": "withdrawal_consumption",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-WAT-03",
+          "axis_id": "WAT",
+          "label_zh": "廢熱、廢水與污染排放",
+          "measurement_key": "discharge_permit",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-WAT-04",
+          "axis_id": "WAT",
+          "label_zh": "缺水或乾旱期間限制",
+          "measurement_key": "drought_conditions",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-WAT-05",
+          "axis_id": "WAT",
+          "label_zh": "回收水及替代冷卻技術合規",
+          "measurement_key": "alternative_cooling",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "AIR",
+      "label_zh": "空污、排放及備援電力",
+      "label_en": "Air and backup generation",
+      "indicators": [
+        {
+          "id": "LAW-AIR-01",
+          "axis_id": "AIR",
+          "label_zh": "柴油與天然氣備援機組排放許可",
+          "measurement_key": "generator_permit",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-AIR-02",
+          "axis_id": "AIR",
+          "label_zh": "排放時數、NOx與PM紀錄",
+          "measurement_key": "emissions_record",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-AIR-03",
+          "axis_id": "AIR",
+          "label_zh": "溫室氣體義務與能源來源",
+          "measurement_key": "carbon_rules",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-AIR-04",
+          "axis_id": "AIR",
+          "label_zh": "當地實際執行及違規處分",
+          "measurement_key": "enforcement_status",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-AIR-05",
+          "axis_id": "AIR",
+          "label_zh": "排放政策公告與已核准機組差異",
+          "measurement_key": "permit_vs_announced",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "ENV",
+      "label_zh": "噪音、土地與環境影響",
+      "label_en": "Environmental and community effects",
+      "indicators": [
+        {
+          "id": "LAW-ENV-01",
+          "axis_id": "ENV",
+          "label_zh": "環境評估是否因特定法定觸發而必需",
+          "measurement_key": "review_trigger",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ENV-02",
+          "axis_id": "ENV",
+          "label_zh": "晝夜噪音與低頻測點及標準",
+          "measurement_key": "noise_limit",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ENV-03",
+          "axis_id": "ENV",
+          "label_zh": "水、熱排與土地利用的合併影響",
+          "measurement_key": "impact_scope",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ENV-04",
+          "axis_id": "ENV",
+          "label_zh": "居民公聽、資訊取得及程序正當性",
+          "measurement_key": "public_participation",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-ENV-05",
+          "axis_id": "ENV",
+          "label_zh": "累積影響有無法定要求及研究資料",
+          "measurement_key": "cumulative_review",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "TAX",
+      "label_zh": "稅制、補貼與保證",
+      "label_en": "Taxes and incentives",
+      "indicators": [
+        {
+          "id": "LAW-TAX-01",
+          "axis_id": "TAX",
+          "label_zh": "設備稅優惠有無與條件",
+          "measurement_key": "tax_incentive_status",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-TAX-02",
+          "axis_id": "TAX",
+          "label_zh": "用電稅或其他地方稅的實際法源",
+          "measurement_key": "tax_rate_source",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-TAX-03",
+          "axis_id": "TAX",
+          "label_zh": "招商獎勵與開發商履約擔保",
+          "measurement_key": "financial_guarantee",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-TAX-04",
+          "axis_id": "TAX",
+          "label_zh": "擴建取消後閒置資產負擔",
+          "measurement_key": "stranded_asset_cost",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-TAX-05",
+          "axis_id": "TAX",
+          "label_zh": "社區收益分配及違約追索",
+          "measurement_key": "benefit_agreement",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "JUD",
+      "label_zh": "司法救濟與法規衝突",
+      "label_en": "Litigation and legal review",
+      "indicators": [
+        {
+          "id": "LAW-JUD-01",
+          "axis_id": "JUD",
+          "label_zh": "訴訟提出與勝訴敗訴分離",
+          "measurement_key": "case_status",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-JUD-02",
+          "axis_id": "JUD",
+          "label_zh": "禁制令、暫緩執行及上訴效力",
+          "measurement_key": "stay_and_injunction",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-JUD-03",
+          "axis_id": "JUD",
+          "label_zh": "法規是否被地方／州／聯邦推翻",
+          "measurement_key": "validity_review",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-JUD-04",
+          "axis_id": "JUD",
+          "label_zh": "已簽署法規是否真的能適用指定案場",
+          "measurement_key": "applicability",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-JUD-05",
+          "axis_id": "JUD",
+          "label_zh": "判決對其他地區有無拘束先例",
+          "measurement_key": "precedent_scope",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "DAT",
+      "label_zh": "揭露、治理與資料規範",
+      "label_en": "Disclosure and governance",
+      "indicators": [
+        {
+          "id": "LAW-DAT-01",
+          "axis_id": "DAT",
+          "label_zh": "能源／水／散熱公開申報義務",
+          "measurement_key": "reporting_obligation",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-DAT-02",
+          "axis_id": "DAT",
+          "label_zh": "申報門檻與設施定義",
+          "measurement_key": "reporting_scope",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-DAT-03",
+          "axis_id": "DAT",
+          "label_zh": "跨境資料與資安要求",
+          "measurement_key": "crossborder_data_law",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-DAT-04",
+          "axis_id": "DAT",
+          "label_zh": "營運、事故與職責透明度",
+          "measurement_key": "incident_disclosure",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-DAT-05",
+          "axis_id": "DAT",
+          "label_zh": "公司承諾與法律義務清楚分開",
+          "measurement_key": "voluntary_vs_law",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "LAB",
+      "label_zh": "施工勞動與公共安全",
+      "label_en": "Labor and public safety",
+      "indicators": [
+        {
+          "id": "LAW-LAB-01",
+          "axis_id": "LAB",
+          "label_zh": "施工職業安全與承包責任",
+          "measurement_key": "construction_safety",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-LAB-02",
+          "axis_id": "LAB",
+          "label_zh": "消防、建築與設備安全",
+          "measurement_key": "fire_safety",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-LAB-03",
+          "axis_id": "LAB",
+          "label_zh": "熟練維護與工作許可",
+          "measurement_key": "labor_requirements",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-LAB-04",
+          "axis_id": "LAB",
+          "label_zh": "事故應急程序及地方協同",
+          "measurement_key": "emergency_plan",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-LAB-05",
+          "axis_id": "LAB",
+          "label_zh": "居民安全、機器人或現場自動化責任",
+          "measurement_key": "public_safety",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    },
+    {
+      "id": "CMP",
+      "label_zh": "比較法、制度變動與投資遷移",
+      "label_en": "Comparative governance and relocation",
+      "indicators": [
+        {
+          "id": "LAW-CMP-01",
+          "axis_id": "CMP",
+          "label_zh": "美中歐不同法律機制不可當同一分數",
+          "measurement_key": "comparative_law",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-CMP-02",
+          "axis_id": "CMP",
+          "label_zh": "無條件批准、有條件批准、暫緩三路徑",
+          "measurement_key": "policy_scenario",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-CMP-03",
+          "axis_id": "CMP",
+          "label_zh": "核准—施工—供電—裝機—運轉分開",
+          "measurement_key": "deployment_stage",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-CMP-04",
+          "axis_id": "CMP",
+          "label_zh": "行政裁量與政策變更時滯",
+          "measurement_key": "implementation_lag",
+          "status": "definition_only_not_legal_advice"
+        },
+        {
+          "id": "LAW-CMP-05",
+          "axis_id": "CMP",
+          "label_zh": "法律改變導致的投資遷移需獨立識別",
+          "measurement_key": "relocation_causality",
+          "status": "definition_only_not_legal_advice"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-ferc-2026",
+      "publisher": "U.S. Federal Energy Regulatory Commission",
+      "title": "FERC Launches Aggressive Targeted Action to Speed Large Load Integration",
+      "url": "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration",
+      "published_on": "2026-06-18",
+      "kind": "federal_regulator_primary",
+      "scope": "Six grid operators, show-cause orders under Federal Power Act section 206; procedural action, not a data center ban.",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "src-va-2026",
+      "publisher": "Governor of Virginia",
+      "title": "Governor Spanberger Signs Legislation to Address High Energy Costs & Rejoin RGGI",
+      "url": "https://www.governor.virginia.gov/newsroom/news-releases/2026/june-releases/name-1120477-en.html",
+      "published_on": "2026-06-30",
+      "kind": "state_executive_primary",
+      "scope": "Signing announcement for HB1191 and others; does not independently specify effective date of every provision.",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "src-pa-ncsl-2026",
+      "publisher": "National Conference of State Legislatures",
+      "title": "Which States Are Banning Data Centers?",
+      "url": "https://www.ncsl.org/fiscal/which-states-are-banning-data-centers",
+      "published_on": "2026-09-15",
+      "kind": "nonpartisan_legislative_tracker",
+      "scope": "Status of state proposals as of NCSL September 15 update, not automatically current on November 8.",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "src-piqua-2026",
+      "publisher": "Ballotpedia",
+      "title": "Piqua, Ohio, Prohibit Data Center Construction Initiative (November 2026)",
+      "url": "https://ballotpedia.org/Piqua,_Ohio,_Prohibit_Data_Center_Construction_Initiative_(November_2026)",
+      "published_on": "2026-11-04",
+      "kind": "election_measure_text_secondary",
+      "scope": "Unofficial election result; charter amendment >25 MW, certification/effective applicability not independently established.",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "src-bloomington-2026",
+      "publisher": "Ballotpedia",
+      "title": "Bloomington, Illinois, Large-Scale Data Center Moratorium Advisory Measure (November 2026)",
+      "url": "https://ballotpedia.org/Bloomington,_Illinois,_Large-Scale_Data_Center_Moratorium_Advisory_Measure_(November_2026)",
+      "published_on": "2026-11-04",
+      "kind": "election_measure_text_secondary",
+      "scope": "Advisory vote only; does not itself create enforceable moratorium. Unofficial count.",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "src-eu-2024",
+      "publisher": "European Union Official Journal / EUR-Lex",
+      "title": "Commission Delegated Regulation (EU) 2024/1364",
+      "url": "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj",
+      "published_on": "2024-05-17",
+      "kind": "binding_primary_legal_text",
+      "scope": "EU data centre reporting regulation, installed IT demand >=500 kW. EUR-Lex marks instrument in force; implementation by member states must be separately checked.",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "src-cn-2024",
+      "publisher": "State Council of the People's Republic of China / Xinhua",
+      "title": "China sets green targets for data centers",
+      "url": "https://english.www.gov.cn/news/202407/24/content_WS66a0b167c6d0868f4e8e96ba.html",
+      "published_on": "2024-07-24",
+      "kind": "official_policy_reporting",
+      "scope": "Reports a national green-development action plan and targets, not proof every measure is binding local law.",
+      "first_FSL_captured_on": "2026-11-08"
+    }
+  ],
+  "legal_events": [
+    {
+      "id": "us-ferc-large-load-20260618",
+      "jurisdiction": "United States",
+      "jurisdiction_level": "federal",
+      "authority": "FERC",
+      "jurisdiction_code": "US-FED",
+      "instrument": "administrative_order",
+      "instrument_id": "Section 206 tailored show-cause orders for 6 RTO/ISO operators",
+      "source_id": "src-ferc-2026",
+      "action_on": "2026-06-18",
+      "status": "agency_order_issued",
+      "bindingness": "binding_procedural_on_addressees",
+      "effect_on": null,
+      "subject": "RTO/ISO and transmission owners; large-load integration",
+      "mechanism": "grid_interconnection_tariff_review",
+      "description_zh": "要求六個區域電網業者說明其大型負載接入費率是否合理，或提出改革；不是直接禁止數據中心。",
+      "outcome_evidence": "no_data_center_project_outcome_adjudicated",
+      "project_applicability": "scope_dependent",
+      "source_precision": "day",
+      "uncertainties": [
+        "具体各区域后续规则与执行需再查",
+        "命令不是全国一体适用的最终费率"
+      ],
+      "recorded_on": "2026-11-08",
+      "supersedes_event_id": null,
+      "assessment_kind": "documented_source_status_not_project_impact",
+      "status_history_exhaustive": false
+    },
+    {
+      "id": "us-va-hb1191-signed-20260630",
+      "jurisdiction": "United States",
+      "jurisdiction_level": "state",
+      "authority": "Virginia Governor",
+      "jurisdiction_code": "US-VA",
+      "instrument": "state_legislation",
+      "instrument_id": "HB 1191",
+      "source_id": "src-va-2026",
+      "action_on": "2026-06-30",
+      "status": "signed",
+      "bindingness": "enacted_effective_date_not_verified",
+      "effect_on": null,
+      "subject": "large electricity users and ratepayer protection",
+      "mechanism": "ratepayer_grid_cost_protection",
+      "description_zh": "州長宣布簽署 HB1191，允許大型用電客戶投資新電力基礎建設，同時保護一般費率用戶避免承擔新增成本。",
+      "outcome_evidence": "not_estimated",
+      "project_applicability": "requires_statute_text_and_utility_case",
+      "source_precision": "day",
+      "uncertainties": [
+        "各條款實際生效日需要對照成文法",
+        "實施費率與成本轉嫁須核對能源監管紀錄"
+      ],
+      "recorded_on": "2026-11-08",
+      "supersedes_event_id": null,
+      "assessment_kind": "documented_source_status_not_project_impact",
+      "status_history_exhaustive": false
+    },
+    {
+      "id": "us-pa-sb1359-proposed-asof-20260915",
+      "jurisdiction": "United States",
+      "jurisdiction_level": "state",
+      "authority": "Pennsylvania General Assembly",
+      "jurisdiction_code": "US-PA",
+      "instrument": "bill_proposal",
+      "instrument_id": "SB 1359",
+      "source_id": "src-pa-ncsl-2026",
+      "action_on": "2026-09-15",
+      "status": "introduced_as_of_source",
+      "bindingness": "not_enacted_in_record",
+      "effect_on": null,
+      "subject": "proposed data centre three-year moratorium and impact studies",
+      "mechanism": "possible_moratorium",
+      "description_zh": "NCSL 2026-09-15 彙編將賓州 SB1359 列為提出中的暫緩建設提案，不能以此宣稱在 11 月已生效。",
+      "outcome_evidence": "not_estimated",
+      "project_applicability": "proposal_no_direct_obligation",
+      "source_precision": "tracker_snapshot",
+      "uncertainties": [
+        "首次提出日期未由本案例核實",
+        "此來源只證明 9 月 15 日所列狀態，11 月實際最新進程未知"
+      ],
+      "recorded_on": "2026-11-08",
+      "supersedes_event_id": null,
+      "assessment_kind": "documented_source_status_not_project_impact",
+      "status_history_exhaustive": false
+    },
+    {
+      "id": "us-oh-piqua-ballot-20261103",
+      "jurisdiction": "United States",
+      "jurisdiction_level": "municipal",
+      "authority": "Piqua electorate / charter amendment",
+      "jurisdiction_code": "US-OH-PIQUA",
+      "instrument": "ballot_charter_amendment",
+      "instrument_id": "Proposed Charter Section 138",
+      "source_id": "src-piqua-2026",
+      "action_on": "2026-11-03",
+      "status": "approved_unofficial_pending_certification",
+      "bindingness": "binding_candidate_pending_certification_and_applicability",
+      "effect_on": null,
+      "subject": "construction of data centers with aggregate monthly demand or peak load >25 MW",
+      "mechanism": "municipal_siting_prohibition_candidate",
+      "description_zh": "選民初步結果通過市憲章修正案，擬禁止符合其25 MW以上定義的數據中心建設；認證、既有工程效力及司法審查未知。",
+      "outcome_evidence": "ballot_result_not_operational_impact",
+      "project_applicability": "unverified_for_existing_projects",
+      "source_precision": "election_day",
+      "uncertainties": [
+        "投票數據尚待官方認證",
+        "對現有已批准工程是否適用尚不確定",
+        "不要把市級措施稱為全俄亥俄州禁令"
+      ],
+      "recorded_on": "2026-11-08",
+      "supersedes_event_id": null,
+      "assessment_kind": "documented_source_status_not_project_impact",
+      "status_history_exhaustive": false
+    },
+    {
+      "id": "us-il-bloomington-advisory-20261103",
+      "jurisdiction": "United States",
+      "jurisdiction_level": "municipal",
+      "authority": "Bloomington electorate",
+      "jurisdiction_code": "US-IL-BLOOMINGTON",
+      "instrument": "nonbinding_advisory_ballot",
+      "instrument_id": "Large-Scale Data Center Moratorium Advisory Measure",
+      "source_id": "src-bloomington-2026",
+      "action_on": "2026-11-03",
+      "status": "advisory_approved_unofficial",
+      "bindingness": "nonbinding_advice",
+      "effect_on": null,
+      "subject": "recommendation that city implement moratorium on large data centers",
+      "mechanism": "public_consultation_signal",
+      "description_zh": "通過的是建議市政府施行大型數據中心暫緩措施的諮詢性問題，並未因投票本身自動生成可執行禁令。",
+      "outcome_evidence": "public_vote_only",
+      "project_applicability": "none_without_subsequent_enactment",
+      "source_precision": "election_day",
+      "uncertainties": [
+        "初步選票計票尚未正式認證",
+        "未核對其後市議會有無另行立法"
+      ],
+      "recorded_on": "2026-11-08",
+      "supersedes_event_id": null,
+      "assessment_kind": "documented_source_status_not_project_impact",
+      "status_history_exhaustive": false
+    },
+    {
+      "id": "eu-reporting-2024-1364",
+      "jurisdiction": "European Union",
+      "jurisdiction_level": "supranational",
+      "authority": "European Commission / EU Official Journal",
+      "jurisdiction_code": "EU",
+      "instrument": "delegated_regulation",
+      "instrument_id": "Commission Delegated Regulation (EU) 2024/1364",
+      "source_id": "src-eu-2024",
+      "action_on": "2024-05-17",
+      "status": "in_force_per_eurlex",
+      "bindingness": "binding_reporting_scope_limited",
+      "effect_on": null,
+      "subject": "operators of data centres with installed IT power demand >=500 kW",
+      "mechanism": "mandatory_energy_water_sustainability_reporting",
+      "description_zh": "歐盟資料中心可持續性申報規定，包含用電、用水、餘熱與能源使用等指標；不能把申報規定直接當作禁建。",
+      "outcome_evidence": "reporting_law_not_measured_site_performance",
+      "project_applicability": "scope_by_500kw_installed_IT_and_member_state",
+      "source_precision": "official_publication_day",
+      "uncertainties": [
+        "國別實施、保密與具體設施適用須另查",
+        "生效日與文書版本須按 EUR-Lex 合併文本核實"
+      ],
+      "recorded_on": "2026-11-08",
+      "supersedes_event_id": null,
+      "assessment_kind": "documented_source_status_not_project_impact",
+      "status_history_exhaustive": false
+    },
+    {
+      "id": "cn-green-plan-20240724",
+      "jurisdiction": "China",
+      "jurisdiction_level": "national",
+      "authority": "National Development and Reform Commission / MIIT et al. (reported by State Council)",
+      "jurisdiction_code": "CN",
+      "instrument": "policy_action_plan",
+      "instrument_id": "Green development action plan for data centers (2024)",
+      "source_id": "src-cn-2024",
+      "action_on": "2024-07-24",
+      "status": "policy_plan_published",
+      "bindingness": "policy_target_not_direct_permit_ban",
+      "effect_on": null,
+      "subject": "national energy efficiency and renewable energy objectives for data centers",
+      "mechanism": "green_efficiency_and_siting_targets",
+      "description_zh": "官方公布綠色數據中心行動方案及PUE、可再生能源、用水效率目標；個別地方規範與許可效力仍要另行查證。",
+      "outcome_evidence": "policy_objectives_not_measured_results",
+      "project_applicability": "requires_local_implementation",
+      "source_precision": "official_report_day",
+      "uncertainties": [
+        "2025目標是否達成尚未以本研究驗證",
+        "政策方案不能直接分類為某地法定禁建"
+      ],
+      "recorded_on": "2026-11-08",
+      "supersedes_event_id": null,
+      "assessment_kind": "documented_source_status_not_project_impact",
+      "status_history_exhaustive": false
+    }
+  ],
+  "forecasts": {
+    "observed_effect_on_energized_MW": null,
+    "observed_effect_on_gpu_installations": null,
+    "impact_causality_certified": false,
+    "probabilities_calibrated": false
+  },
+  "note": "The records preserve source claims as of publication and initial 2026-11-08 capture; future updates must append new legal events and retain old snapshots."
+}

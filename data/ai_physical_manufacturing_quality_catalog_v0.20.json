@@ -1,0 +1,818 @@
+{
+  "catalog_id": "FSL-PMQ",
+  "version": "0.20.0",
+  "created_on": "2026-11-08",
+  "purpose_zh": "AI 實體製造的實物品質、實際合格產量、量測能力、成本、耐久性、超越當代人類工業品質前沿等非互相替代的可修訂研究軸。",
+  "state": "definitions only, no real AI manufacturing performance implied",
+  "comparison_baselines": [
+    "H_PLUS_CURRENT_NON_AI_TOOLS",
+    "CONVENTIONAL_NON_AI_AUTOMATION",
+    "HUMAN_PLUS_AI_AUGMENTATION",
+    "AI_MEDIATED_PHYSICAL_PRODUCTION"
+  ],
+  "human_comparison_note": "Current human civilization can use extant science, non-AI algorithms, robots, industrial tools, metrology and collaboration; never compare production AI against bare human only.",
+  "evaluation_types": [
+    "equal_budget_quality_comparison",
+    "equal_quality_lifecycle_cost",
+    "equal_time_accepted_throughput",
+    "new_physical_property_candidate"
+  ],
+  "evidence_tiers": [
+    "unobserved",
+    "vendor_claim",
+    "paper_reported",
+    "reproducible_physical_test",
+    "independent_physical_replication",
+    "longitudinal_field_validation"
+  ],
+  "physical_completion_stages": [
+    "design_only",
+    "physical_prototype",
+    "physical_function_test",
+    "batch_repeatable",
+    "field_durability_evidenced",
+    "qualified_for_regulated_use",
+    "sustainable_scaled_production"
+  ],
+  "candidate_claim_labels": [
+    "unassessed",
+    "quality_improvement_candidate",
+    "beyond_contemporary_quality_frontier_candidate",
+    "different_tradeoff_not_dominance",
+    "uncertain",
+    "measured_quality_regression"
+  ],
+  "quality_properties": [
+    "accepted_throughput",
+    "conformance",
+    "precision",
+    "variation",
+    "defect_tail",
+    "function",
+    "durability",
+    "material_novelty",
+    "cost",
+    "safety",
+    "environment"
+  ],
+  "counterfactual": {
+    "link": "FSL v0.14",
+    "natural_human_baseline": "human_with_non_AI_scientific_and_industrial_technology",
+    "future_no_ai_human_attainability": "unknown",
+    "future_year": null
+  },
+  "guards": [
+    "More quantity is not automatically better quality",
+    "AI inspector accuracy is not actual product quality",
+    "Simulated design is not qualified physical manufactured output",
+    "Baseline includes best current human+nonAI industrial tools",
+    "Uncertainty and traceable metrology required for precision comparison",
+    "No zero-defect inference from small samples",
+    "Pareto quality tradeoffs and legal safety gates cannot be collapsed into one score",
+    "Novel properties require physical repeatability and independent verification",
+    "Future human inability cannot be inferred from current missing demonstrations",
+    "Cost denominators must use accepted and usable outputs plus lifecycle and warranty",
+    "Do not double count rented hardware and owner depreciation or energy",
+    "All AI core work vs human core work documented",
+    "Physical multi-cycle quality does not itself certify Sigma_sys or Sigma_civ",
+    "Preserve prior definitions and negative results in append-only records"
+  ],
+  "axes": [
+    {
+      "id": "BAS",
+      "label_zh": "公平比較與人工歸因",
+      "indicators": [
+        {
+          "id": "PMQ-BAS-01",
+          "axis_id": "BAS",
+          "label_zh": "人類加非AI工具基準",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-BAS-02",
+          "axis_id": "BAS",
+          "label_zh": "傳統非AI自動化基準",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-BAS-03",
+          "axis_id": "BAS",
+          "label_zh": "AI作用角色與人類補工",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-BAS-04",
+          "axis_id": "BAS",
+          "label_zh": "材料設備工況匹配",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-BAS-05",
+          "axis_id": "BAS",
+          "label_zh": "固定品質與固定成本契約",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "MET",
+      "label_zh": "精密量測與物理驗收",
+      "indicators": [
+        {
+          "id": "PMQ-MET-01",
+          "axis_id": "MET",
+          "label_zh": "儀器校準與追溯",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-MET-02",
+          "axis_id": "MET",
+          "label_zh": "量測不確定度對公差",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-MET-03",
+          "axis_id": "MET",
+          "label_zh": "盲樣與獨立複測",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-MET-04",
+          "axis_id": "MET",
+          "label_zh": "微觀宏觀量測區分",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-MET-05",
+          "axis_id": "MET",
+          "label_zh": "量測系統漂移",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "SPC",
+      "label_zh": "製程統計穩定",
+      "indicators": [
+        {
+          "id": "PMQ-SPC-01",
+          "axis_id": "SPC",
+          "label_zh": "統計控制與時間漂移",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-SPC-02",
+          "axis_id": "SPC",
+          "label_zh": "適用的Cp Cpk Ppk",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-SPC-03",
+          "axis_id": "SPC",
+          "label_zh": "分布尾端失效",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-SPC-04",
+          "axis_id": "SPC",
+          "label_zh": "跨生產周期一致性",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-SPC-05",
+          "axis_id": "SPC",
+          "label_zh": "不同零件混合校正",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "YLD",
+      "label_zh": "良率與合格產量",
+      "indicators": [
+        {
+          "id": "PMQ-YLD-01",
+          "axis_id": "YLD",
+          "label_zh": "首輪合格率FPY",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-YLD-02",
+          "axis_id": "YLD",
+          "label_zh": "重工與報廢",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-YLD-03",
+          "axis_id": "YLD",
+          "label_zh": "每小時合格件數",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-YLD-04",
+          "axis_id": "YLD",
+          "label_zh": "換線停機成本",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-YLD-05",
+          "axis_id": "YLD",
+          "label_zh": "量產擴張品質維持",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "DEF",
+      "label_zh": "缺陷發現和預防",
+      "indicators": [
+        {
+          "id": "PMQ-DEF-01",
+          "axis_id": "DEF",
+          "label_zh": "漏判與誤判",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-DEF-02",
+          "axis_id": "DEF",
+          "label_zh": "未見缺陷類型",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-DEF-03",
+          "axis_id": "DEF",
+          "label_zh": "瑕疵成因物理驗證",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-DEF-04",
+          "axis_id": "DEF",
+          "label_zh": "偵測轉實際缺陷降低",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-DEF-05",
+          "axis_id": "DEF",
+          "label_zh": "零缺陷的抽樣上界",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "PRE",
+      "label_zh": "幾何表面與裝配",
+      "indicators": [
+        {
+          "id": "PMQ-PRE-01",
+          "axis_id": "PRE",
+          "label_zh": "尺寸公差符合",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-PRE-02",
+          "axis_id": "PRE",
+          "label_zh": "表面品質",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-PRE-03",
+          "axis_id": "PRE",
+          "label_zh": "微尺度結構可製",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-PRE-04",
+          "axis_id": "PRE",
+          "label_zh": "裝配公差累積",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-PRE-05",
+          "axis_id": "PRE",
+          "label_zh": "溫度負載下形變",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "MAT",
+      "label_zh": "材料與微結構",
+      "indicators": [
+        {
+          "id": "PMQ-MAT-01",
+          "axis_id": "MAT",
+          "label_zh": "成分與雜質",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-MAT-02",
+          "axis_id": "MAT",
+          "label_zh": "內部缺陷及空隙",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-MAT-03",
+          "axis_id": "MAT",
+          "label_zh": "強度韌性權衡",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-MAT-04",
+          "axis_id": "MAT",
+          "label_zh": "多來源材料一致",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-MAT-05",
+          "axis_id": "MAT",
+          "label_zh": "新材料相可再製",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "FUN",
+      "label_zh": "實際功能與性能",
+      "indicators": [
+        {
+          "id": "PMQ-FUN-01",
+          "axis_id": "FUN",
+          "label_zh": "額定負載實際表現",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-FUN-02",
+          "axis_id": "FUN",
+          "label_zh": "同功能能源效率",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-FUN-03",
+          "axis_id": "FUN",
+          "label_zh": "多工況性能組合",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-FUN-04",
+          "axis_id": "FUN",
+          "label_zh": "整機整合驗收",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-FUN-05",
+          "axis_id": "FUN",
+          "label_zh": "終端實用需求符合",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "DUR",
+      "label_zh": "耐久與壽命時間域",
+      "indicators": [
+        {
+          "id": "PMQ-DUR-01",
+          "axis_id": "DUR",
+          "label_zh": "壽命至失效分布",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-DUR-02",
+          "axis_id": "DUR",
+          "label_zh": "疲勞腐蝕老化",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-DUR-03",
+          "axis_id": "DUR",
+          "label_zh": "維修可恢復性",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-DUR-04",
+          "axis_id": "DUR",
+          "label_zh": "現場退貨保固",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-DUR-05",
+          "axis_id": "DUR",
+          "label_zh": "跨更換周期品質",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "ROB",
+      "label_zh": "跨場景穩健性",
+      "indicators": [
+        {
+          "id": "PMQ-ROB-01",
+          "axis_id": "ROB",
+          "label_zh": "原料供應商轉換",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-ROB-02",
+          "axis_id": "ROB",
+          "label_zh": "設備感測漂移",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-ROB-03",
+          "axis_id": "ROB",
+          "label_zh": "氣候環境漂移",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-ROB-04",
+          "axis_id": "ROB",
+          "label_zh": "未知產品分布",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-ROB-05",
+          "axis_id": "ROB",
+          "label_zh": "跨工廠複製",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "NOV",
+      "label_zh": "超越當代品質前沿",
+      "indicators": [
+        {
+          "id": "PMQ-NOV-01",
+          "axis_id": "NOV",
+          "label_zh": "品質非支配組合",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-NOV-02",
+          "axis_id": "NOV",
+          "label_zh": "新物理品質維度",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-NOV-03",
+          "axis_id": "NOV",
+          "label_zh": "新工藝實物收據",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-NOV-04",
+          "axis_id": "NOV",
+          "label_zh": "人類加工具反事實",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-NOV-05",
+          "axis_id": "NOV",
+          "label_zh": "新品質獨立重現",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "AUT",
+      "label_zh": "AI實體閉環製造",
+      "indicators": [
+        {
+          "id": "PMQ-AUT-01",
+          "axis_id": "AUT",
+          "label_zh": "設計到實物的完成",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-AUT-02",
+          "axis_id": "AUT",
+          "label_zh": "量測反饋與製程改造",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-AUT-03",
+          "axis_id": "AUT",
+          "label_zh": "實際人工核心工作",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-AUT-04",
+          "axis_id": "AUT",
+          "label_zh": "斷線安全降級",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-AUT-05",
+          "axis_id": "AUT",
+          "label_zh": "回滾重製與追溯",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "CST",
+      "label_zh": "合格品全生命周期成本",
+      "indicators": [
+        {
+          "id": "PMQ-CST-01",
+          "axis_id": "CST",
+          "label_zh": "每合格件總成本",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-CST-02",
+          "axis_id": "CST",
+          "label_zh": "檢驗重工報廢成本",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-CST-03",
+          "axis_id": "CST",
+          "label_zh": "保修與退役",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-CST-04",
+          "axis_id": "CST",
+          "label_zh": "材料能源算力分帳",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-CST-05",
+          "axis_id": "CST",
+          "label_zh": "固定品質成本前沿",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "SAF",
+      "label_zh": "工業安全與資格",
+      "indicators": [
+        {
+          "id": "PMQ-SAF-01",
+          "axis_id": "SAF",
+          "label_zh": "機器人安全與合規",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-SAF-02",
+          "axis_id": "SAF",
+          "label_zh": "產品法定資格",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-SAF-03",
+          "axis_id": "SAF",
+          "label_zh": "稀有重大失效風險",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-SAF-04",
+          "axis_id": "SAF",
+          "label_zh": "人類撤權與安全停止",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-SAF-05",
+          "axis_id": "SAF",
+          "label_zh": "事故召回責任追溯",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "ENV",
+      "label_zh": "環境與社會外部性",
+      "indicators": [
+        {
+          "id": "PMQ-ENV-01",
+          "axis_id": "ENV",
+          "label_zh": "全生命周期能源",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-ENV-02",
+          "axis_id": "ENV",
+          "label_zh": "材料取水及廢料",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-ENV-03",
+          "axis_id": "ENV",
+          "label_zh": "污染與循環回收",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-ENV-04",
+          "axis_id": "ENV",
+          "label_zh": "品質與資源效率權衡",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-ENV-05",
+          "axis_id": "ENV",
+          "label_zh": "文明淨效益另行核實",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    },
+    {
+      "id": "REP",
+      "label_zh": "跨批次與外部複驗",
+      "indicators": [
+        {
+          "id": "PMQ-REP-01",
+          "axis_id": "REP",
+          "label_zh": "外部實驗室複測",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-REP-02",
+          "axis_id": "REP",
+          "label_zh": "實驗設備材料收據",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-REP-03",
+          "axis_id": "REP",
+          "label_zh": "真實合格品收據",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-REP-04",
+          "axis_id": "REP",
+          "label_zh": "來源時間與版本修訂",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        },
+        {
+          "id": "PMQ-REP-05",
+          "axis_id": "REP",
+          "label_zh": "失敗案例完整保留",
+          "definition_status": "provisional",
+          "evidence_required": "predeclared specification, metrology, physical outcome and dated audit receipt",
+          "measurement_unit": "task_contract_required"
+        }
+      ]
+    }
+  ]
+}

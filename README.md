@@ -5,6 +5,32 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.20 — AI-Mediated Physical Manufacturing: Quality, Completion, Cost and Beyond-Human Frontiers / 物理實體製造品質
+
+[**Canonical UTF-8 v0.20 research source**](docs/AI_PHYSICAL_MANUFACTURING_QUALITY_FRONTIER_v0.20.md) ·
+[**16 quality axes × 5 unmeasured indicators = 80 research indicators**](data/ai_physical_manufacturing_quality_catalog_v0.20.json) ·
+[**Dated industrial standards and bounded published claims**](data/ai_physical_manufacturing_quality_sources_v0.20.json) ·
+[**SYNTHETIC outcome/definition-history fixture**](tests/fixtures/manufacturing_quality_synthetic_v0.20.json)
+
+A final pre-rest update to the Frontier-Scaling-Lab program: **AI may expand physical production volume without improving real product quality**. This track measures actual manufactured material and long-term performance, not AI simulations or model claims:
+
+- **Comparators:** strongest appropriate contemporary **human + non-AI tools and science**, traditional automation, human–AI augmentation and AI-mediated physical manufacturing. These are different contracts and attribution claims.
+- **Quality isn't one-dimensional:** precision, traceable metrology, process variation/tail failures, first-pass yield, defects, material microstructure, functional acceptance, durability, robustness, genuine new physical properties, safety and environmental costs remain separate.
+- **Beyond-contemporary frontier** requires actually manufactured and independently measured physical products or properties, justified comparisons to existing industrial methods, explicit trade-offs and replicated safety tests. No assertion of permanent human impossibility or invented no-AI future year.
+- **Costs count usable accepted goods**: material, scrap, rework, metrology, model/runtime, labor, energy, maintenance, warranty and disposal; not uninspected output volume. Prevent double counting cloud rent and amortized hardware/power.
+- **Evidence gates:** measurement uncertainty and calibration, sample size, physical stage, actual human core work, durability period, source date and receipt. Improved defect classifier F1, a simulated part design, or a brief prototype demo are not automatic product-quality success.
+- **Standards sourced:** ISO 9001:2026, ISO 22514-2/7:2026, ISO 10218-2:2025 and NIST smart manufacturing/metrology; the cited 2026 case-study measurement consistency result is **narrow published evidence**, not proof of global product superiority.
+- **No product or system certificated:** all new example factory records are **SYNTHETIC**, older GICCF, CCCL-DE, SAS-01/EWDT-19 and v0.17–v0.19 mechanisms remain intact; no AI systemic-singularity or civilizational-positive-sum certification.
+
+```bash
+python -m fsl_manufacturing.cli catalog
+python -m fsl_manufacturing.cli sources
+python -m fsl_manufacturing.cli audit --file tests/fixtures/manufacturing_quality_synthetic_v0.20.json --as-of 2026-11-08
+python -m unittest discover -s tests -q
+```
+
+---
+
 ## v0.19 — US–China AI Geopolitics and Frontier Participation Economics / 美中 AI 競爭與國家投入成本
 
 [**Canonical UTF-8 v0.19 research source**](docs/GEOPOLITICAL_FRONTIER_COST_PARTICIPATION_v0.19.md) ·

@@ -1,0 +1,171 @@
+{
+  "schema": "fsl/manufacturing-quality-sources/0.20",
+  "version": "0.20.0",
+  "research_cutoff": "2026-11-08",
+  "sources": [
+    {
+      "id": "nist-roadmap-2026-07-03",
+      "publisher": "NIST",
+      "title": "2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing",
+      "url": "https://www.nist.gov/publications/2026-roadmap-artificial-intelligence-and-machine-learning-smart-manufacturing",
+      "published_on": "2026-07-03",
+      "publication_precision": "day",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "institutional_research_roadmap",
+      "scope_limit": "Roadmap identifies industrial opportunities, data integration and reliability challenges, not a measured worldwide quality improvement."
+    },
+    {
+      "id": "nist-aims-undated",
+      "publisher": "NIST",
+      "title": "Augmented Intelligence for Manufacturing Systems (AIMS)",
+      "url": "https://www.nist.gov/programs-projects/augmented-intelligence-manufacturing-systems-aims",
+      "published_on": null,
+      "publication_precision": "undated_webpage",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "institutional_research_program",
+      "scope_limit": "Measurement science, physical metrology and machine-specific digital twin goals; current webpage not a dated single experimental report."
+    },
+    {
+      "id": "nist-am-quality-undated",
+      "publisher": "NIST",
+      "title": "Advanced Informatics and Artificial Intelligence for Additive Manufacturing",
+      "url": "https://www.nist.gov/programs-projects/advanced-informatics-and-artificial-intelligence-additive-manufacturing",
+      "published_on": null,
+      "publication_precision": "undated_webpage",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "institutional_research_program",
+      "scope_limit": "Program research goals for first-part-correct and born-qualified, not proven universal qualification."
+    },
+    {
+      "id": "nist-dt-2026-07-21",
+      "publisher": "NIST",
+      "title": "Digital Twins Workshops Summary Report",
+      "url": "https://www.nist.gov/publications/digital-twins-workshops-summary-report",
+      "published_on": "2026-07-21",
+      "publication_precision": "day",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "government_research_report",
+      "scope_limit": "Interoperability, verification, validation and uncertainty issues in digital twins."
+    },
+    {
+      "id": "iso-9001-2026-09",
+      "publisher": "ISO",
+      "title": "ISO 9001:2026 Quality Management Systems",
+      "url": "https://www.iso.org/standard/88464.html",
+      "published_on": "2026-09",
+      "publication_precision": "month",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "international_quality_management_standard",
+      "scope_limit": "Quality management system standard; not direct qualification of any manufactured component or AI model."
+    },
+    {
+      "id": "iso-22514-2-2026-02",
+      "publisher": "ISO",
+      "title": "ISO 22514-2:2026 Process Capability and Performance",
+      "url": "https://www.iso.org/standard/88883.html",
+      "published_on": "2026-02",
+      "publication_precision": "month",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "industrial_statistical_standard",
+      "scope_limit": "Time-dependent process capability; assumptions and applicability must be validated for each task."
+    },
+    {
+      "id": "iso-22514-7-2026-09",
+      "publisher": "ISO",
+      "title": "ISO 22514-7:2026 Measurement Process Capability",
+      "url": "https://www.iso.org/standard/89276.html",
+      "published_on": "2026-09",
+      "publication_precision": "month",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "industrial_metrology_standard",
+      "scope_limit": "Measurement system/process can meet task requirements only under stated uncertainties and acceptance criteria."
+    },
+    {
+      "id": "iso-10218-2-2025-02",
+      "publisher": "ISO",
+      "title": "ISO 10218-2:2025 Industrial Robot Applications and Robot Cells",
+      "url": "https://www.iso.org/standard/73934.html",
+      "published_on": "2025-02",
+      "publication_precision": "month",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "industrial_robot_safety_standard",
+      "scope_limit": "Robot application/cell safety; specific scope exclusions and integration obligations remain."
+    },
+    {
+      "id": "ieee-ahamed-2026-08-12",
+      "publisher": "IEEE Engineering Management Review / Macquarie University",
+      "title": "Designing an integrated human–AI quality control framework: a 10-year case study in regulated medical device manufacturing",
+      "url": "https://researchers.mq.edu.au/en/publications/designing-an-integrated-humanai-quality-control-framework-a-10-ye/",
+      "published_on": "2026-08-12",
+      "publication_precision": "day",
+      "first_FSL_captured_on": "2026-11-08",
+      "source_type": "peer_reviewed_case_study",
+      "scope_limit": "A bounded measured inspection consistency comparison, not proof of superior manufactured product lifespan or global AI ability."
+    }
+  ],
+  "source_bound_claims": [
+    {
+      "id": "source-quality-roadmap-1",
+      "source_id": "nist-roadmap-2026-07-03",
+      "claim_type": "research_scope",
+      "observation_zh": "NIST 2026 路線圖討論製造 AI 在監控、機器人、增材製造、孿生等潛力，同時提醒資料、整合與可信運作挑戰。",
+      "direct_measurement": null,
+      "independent_physical_product_certification": false
+    },
+    {
+      "id": "source-metrology-1",
+      "source_id": "nist-aims-undated",
+      "claim_type": "research_program",
+      "observation_zh": "NIST AIMS 強調現場量測與物理模型和 AI 融合，避免以欠缺校準的模型推論真實機台品質。",
+      "direct_measurement": null,
+      "independent_physical_product_certification": false
+    },
+    {
+      "id": "source-iso-22514-7",
+      "source_id": "iso-22514-7-2026-09",
+      "claim_type": "standard_definition",
+      "observation_zh": "ISO 22514-7:2026 提供驗證量測過程能力及接受準則的方法，不直接認證任何 AI 製成零件。",
+      "direct_measurement": null,
+      "independent_physical_product_certification": false
+    },
+    {
+      "id": "source-ieee-consistency",
+      "source_id": "ieee-ahamed-2026-08-12",
+      "claim_type": "paper_reported_bounded_measurement",
+      "observation_zh": "該醫療器材案例報告在特定複雜幾何量測任務中，AI 量測的變異係數較受測人工檢驗者低，約有 4–12 倍一致性差異；不代表品質超越在全部產品維度成立。",
+      "direct_measurement": {
+        "quantity": "relative_measurement_consistency_reported",
+        "value_range": [
+          4,
+          12
+        ],
+        "unit": "reported_ratio",
+        "comparator": "five experienced human inspectors in specific study"
+      },
+      "independent_physical_product_certification": false
+    },
+    {
+      "id": "source-born-qualified-aim",
+      "source_id": "nist-am-quality-undated",
+      "claim_type": "research_program",
+      "observation_zh": "增材製造 first-part-correct／born-qualified 是建立感測、數位線索和物理品質保證的方法目標，不能誤稱為已全面實現。",
+      "direct_measurement": null,
+      "independent_physical_product_certification": false
+    },
+    {
+      "id": "source-digital-twin-boundary",
+      "source_id": "nist-dt-2026-07-21",
+      "claim_type": "measurement_warning",
+      "observation_zh": "數位孿生中的驗證、確認、不確定度量化和互通性，仍需與實際製造品質確認分離。",
+      "direct_measurement": null,
+      "independent_physical_product_certification": false
+    }
+  ],
+  "notes": [
+    "This registry records source assertions and standard scopes, not FSL-measured AI manufacturing outcomes.",
+    "Publication dates and source review date are separate.",
+    "Month-precision standards dates must not become invented first-day timestamps.",
+    "One bounded measuring-consistency result cannot automatically imply higher final physical part quality."
+  ],
+  "no_real_factory_benchmark_performed": true
+}

@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -146,5 +146,12 @@ jobs:
           python -m fsl_strategy.cli replay --as-of 2026-11-07 --mode retrospective_reconstruction --output /tmp/strategy_retro.json
           python -m fsl_strategy.cli replay --as-of 2026-11-08 --mode strict_known_at_time --output /tmp/strategy_current.json
           python -c "import json; a=json.load(open('/tmp/strategy_prior.json')); b=json.load(open('/tmp/strategy_retro.json')); c=json.load(open('/tmp/strategy_current.json')); assert a['visible_geopolitical_claims']==0 and b['visible_geopolitical_claims']==7 and c['visible_cost_source_claims']==3; assert c['geo_indicator_count']==40 and c['economics_indicator_count']==45 and c['frontier_model_training_roi_estimate'] is None and c['us_china_global_capability_winner'] is None"
+      - name: v0.20 physical manufacturing quality, real-world evidence gates (SYNTHETIC)
+        run: |
+          python -m fsl_manufacturing.cli catalog
+          python -m fsl_manufacturing.cli sources
+          python -m fsl_manufacturing.cli audit --file tests/fixtures/manufacturing_quality_synthetic_v0.20.json --as-of 2026-11-08T03:30:00+08:00 --output /tmp/pmq_prior.json
+          python -m fsl_manufacturing.cli audit --file tests/fixtures/manufacturing_quality_synthetic_v0.20.json --as-of 2026-11-08 --output /tmp/pmq_current.json
+          python -c "import json; a=json.load(open('/tmp/pmq_prior.json')); b=json.load(open('/tmp/pmq_current.json')); assert a['visible_observations']==4 and b['archived_observations']==5 and b['active_after_revisions']==4; assert b['indicators']==80 and not b['AI_manufacturing_quality_superiority_certified'] and not b['new_physical_quality_frontier_certified'] and b['future_no_AI_human_year'] is None"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

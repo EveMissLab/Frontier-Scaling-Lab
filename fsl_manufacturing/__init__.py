@@ -1,0 +1,2 @@
+"""FSL Physical Manufacturing Quality Observatory v0.20. SPDX-License-Identifier: Apache-2.0"""
+__version__ = "0.20.0"

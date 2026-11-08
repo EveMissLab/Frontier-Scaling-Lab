@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -139,5 +139,12 @@ jobs:
           python -m fsl_legal.cli replay --as-of 2026-11-07 --mode retrospective_reconstruction --output /tmp/fsl_law_retrospective.json
           python -m fsl_legal.cli replay --as-of 2026-11-08 --mode strict_known_at_time --output /tmp/fsl_law_present.json
           python -c "import json; a=json.load(open('/tmp/fsl_law_strict.json')); b=json.load(open('/tmp/fsl_law_retrospective.json')); c=json.load(open('/tmp/fsl_law_present.json')); assert a['visible_source_events']==0 and b['visible_source_events']==7 and c['active_after_corrections']==7; assert c['nonbinding_advisory_votes']==1 and c['local_binding_candidate_pending_certification']==1 and not c['causal_effect_certified']"
+      - name: v0.19 frontier geopolitical sources and full-cost boundaries
+        run: |
+          python -m fsl_strategy.cli validate
+          python -m fsl_strategy.cli replay --as-of 2026-11-07 --mode strict_known_at_time --output /tmp/strategy_prior.json
+          python -m fsl_strategy.cli replay --as-of 2026-11-07 --mode retrospective_reconstruction --output /tmp/strategy_retro.json
+          python -m fsl_strategy.cli replay --as-of 2026-11-08 --mode strict_known_at_time --output /tmp/strategy_current.json
+          python -c "import json; a=json.load(open('/tmp/strategy_prior.json')); b=json.load(open('/tmp/strategy_retro.json')); c=json.load(open('/tmp/strategy_current.json')); assert a['visible_geopolitical_claims']==0 and b['visible_geopolitical_claims']==7 and c['visible_cost_source_claims']==3; assert c['geo_indicator_count']==40 and c['economics_indicator_count']==45 and c['frontier_model_training_roi_estimate'] is None and c['us_china_global_capability_winner'] is None"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

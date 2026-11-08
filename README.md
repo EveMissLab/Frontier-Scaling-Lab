@@ -5,6 +5,31 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.19 — US–China AI Geopolitics and Frontier Participation Economics / 美中 AI 競爭與國家投入成本
+
+[**Canonical UTF-8 v0.19 research source**](docs/GEOPOLITICAL_FRONTIER_COST_PARTICIPATION_v0.19.md) ·
+[**8 geopolitical axes, 40 indicators, 7 source-linked observations**](data/ai_geopolitical_frontier_competition_v0.19.json) ·
+[**9 economic axes, 45 indicators, 13 cost buckets, 8 nonexclusive R&D strategies**](data/frontier_participation_cost_opportunity_v0.19.json)
+
+This additive study separates **geopolitical US–China AI competition** from **whether another advanced technology economy can rationally allocate limited capital to persistent general frontier-model training**, without political advocacy or a country ranking.
+
+- **Competition isn't a single frontier chat benchmark**: separate chip design/foundry, HBM and packaging, energy and deployed compute, export-control rules, original architectures, open weights, talent, products, governance, supply chains and global pricing.
+- **U.S. 2025 private investment versus China's** is a *narrow statistical funding series*, not all state/firm AI investment, total national capability or per-frontier-model training cost. China government guidance funds and policy actions require separate evidence.
+- **Export controls change**: the Jan 2026 US H200/MI325X rule became conditional case-by-case review for specified chips; never write categorical permanent opening/denial.
+- **Taiwan is not absent from AI models**: official NDC sovereign-AI/compute plans and the 2026 Gemma-3-TAIDE-12B midtraining release are documented. Being a semiconductor/supply-chain participant differs from maintaining a globally leading *from-scratch general-purpose foundation-model lab*.
+- The complete frontier-model economic decision includes **failed experimental runs, repeated model generations, data/licensing, frontier talent, hardware ownership vs cloud rental, inference operations, security, capital, legal exposure, marketing and counterfactual opportunity cost**. Prevent double-counting the same accelerator/power through rent and depreciation.
+- **Eight different, non-exclusive pathways**: global from-scratch, new open-weight frontier, sovereign/regional, open-weight/domain adaptation, multi-vendor Agent/API, original smaller architecture, chip/infrastructure/robotics, international consortium.
+- **Cash-flow return**, national sovereignty/option value, and net social gains remain separate accounts. No automated ROI, historical foreknowledge, or geopolitical winner certification. Parent v0.17 SAS two-gate singularity definition remains unchanged.
+
+```bash
+python -m fsl_strategy.cli validate
+python -m fsl_strategy.cli replay --as-of 2026-11-07 --mode retrospective_reconstruction
+python -m fsl_strategy.cli replay --as-of 2026-11-08
+python -m unittest discover -s tests -q
+```
+
+---
+
 ## v0.18 — Legal Feasibility, Data-Center Regulation & Political-Economic Feedback / 法律可行域
 
 [**Canonical UTF-8 legal feasibility study (v0.18)**](docs/DATACENTER_LEGAL_REGULATORY_FEASIBILITY_v0.18.md) ·

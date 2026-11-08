@@ -1,0 +1,505 @@
+{
+  "schema": "fsl/geopolitical-frontier-competition/0.19",
+  "version": "0.19.0",
+  "first_created_on": "2026-11-08",
+  "timezone": "Asia/Taipei",
+  "research_scope": "Comparative resource, export, and strategic frontier positioning; no geopolitical winner recommendation.",
+  "axes": [
+    {
+      "id": "CHP",
+      "label_zh": "半導體與設備依賴",
+      "label_en": "Semiconductor dependencies",
+      "indicators": [
+        {
+          "id": "GEO-CHP-01",
+          "label_zh": "晶片設計",
+          "probe_zh": "分開設計商與製造商",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-CHP-02",
+          "label_zh": "先進製程",
+          "probe_zh": "有無實際量產而非宣布",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-CHP-03",
+          "label_zh": "封裝及 HBM",
+          "probe_zh": "是否具備可靠供應",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-CHP-04",
+          "label_zh": "電力與網路設備",
+          "probe_zh": "晶片以外的上下游限制",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-CHP-05",
+          "label_zh": "跨境來源歸屬",
+          "probe_zh": "明示本國產量和境外來源",
+          "status": "provisional_definition"
+        }
+      ]
+    },
+    {
+      "id": "CMP",
+      "label_zh": "有效算力與能源",
+      "label_en": "Compute and power",
+      "indicators": [
+        {
+          "id": "GEO-CMP-01",
+          "label_zh": "現役訓練算力",
+          "probe_zh": "可稽核計算叢集和利用率",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-CMP-02",
+          "label_zh": "併網可用時間",
+          "probe_zh": "非宣布中的電力",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-CMP-03",
+          "label_zh": "模型推理容量",
+          "probe_zh": "訓練與長期服務分開",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-CMP-04",
+          "label_zh": "能源與水瓶頸",
+          "probe_zh": "供電水源成本及地域限制",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-CMP-05",
+          "label_zh": "路由與韌性",
+          "probe_zh": "全球連線、備援與物理共因",
+          "status": "provisional_definition"
+        }
+      ]
+    },
+    {
+      "id": "EXC",
+      "label_zh": "出口管制與合規",
+      "label_en": "Export control and compliance",
+      "indicators": [
+        {
+          "id": "GEO-EXC-01",
+          "label_zh": "法規版本",
+          "probe_zh": "實際生效日和品項範圍",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-EXC-02",
+          "label_zh": "許可類型",
+          "probe_zh": "逐案審查或推定拒絕",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-EXC-03",
+          "label_zh": "終端用戶及用途",
+          "probe_zh": "可核實授權邊界",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-EXC-04",
+          "label_zh": "再出口供應鏈",
+          "probe_zh": "下游及代工不可混淆",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-EXC-05",
+          "label_zh": "法律變動反事實",
+          "probe_zh": "改變哪些供應成本、時程",
+          "status": "provisional_definition"
+        }
+      ]
+    },
+    {
+      "id": "RND",
+      "label_zh": "科研、人才與模型路線",
+      "label_en": "Research and talent",
+      "indicators": [
+        {
+          "id": "GEO-RND-01",
+          "label_zh": "理論與架構",
+          "probe_zh": "原創突破與大規模訓練分開",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-RND-02",
+          "label_zh": "人才集聚",
+          "probe_zh": "團隊密度、流動和持續性",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-RND-03",
+          "label_zh": "學術產業接口",
+          "probe_zh": "研究成果能否商品化",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-RND-04",
+          "label_zh": "開放權重生態",
+          "probe_zh": "授權、安全及吸收能力",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-RND-05",
+          "label_zh": "能力評測",
+          "probe_zh": "不同任務與測試基準不得跨域推論",
+          "status": "provisional_definition"
+        }
+      ]
+    },
+    {
+      "id": "MKT",
+      "label_zh": "市場與平台分配",
+      "label_en": "Demand and platform economics",
+      "indicators": [
+        {
+          "id": "GEO-MKT-01",
+          "label_zh": "市場採用",
+          "probe_zh": "活躍使用、真正成果與營收分開",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-MKT-02",
+          "label_zh": "產品通路",
+          "probe_zh": "平台入口、企業銷售、API 定價",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-MKT-03",
+          "label_zh": "國內國際需求",
+          "probe_zh": "語言、規範和市場規模",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-MKT-04",
+          "label_zh": "供應商定價能力",
+          "probe_zh": "開源和多供應商競爭壓力",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-MKT-05",
+          "label_zh": "最終有效需求",
+          "probe_zh": "AI 對 AI 請求不能替代終端收益",
+          "status": "provisional_definition"
+        }
+      ]
+    },
+    {
+      "id": "SOV",
+      "label_zh": "主權能力及替代選項",
+      "label_en": "Sovereignty and options",
+      "indicators": [
+        {
+          "id": "GEO-SOV-01",
+          "label_zh": "模型取得自主",
+          "probe_zh": "模型權重、API、授權狀態分離",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-SOV-02",
+          "label_zh": "算力控制",
+          "probe_zh": "自建與合法雲端可用性",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-SOV-03",
+          "label_zh": "資料治理",
+          "probe_zh": "本地語料、隱私與審查",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-SOV-04",
+          "label_zh": "供應商替代",
+          "probe_zh": "多模型及可攜性",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-SOV-05",
+          "label_zh": "公共利益",
+          "probe_zh": "自主能力未必要求訓練世界最大模型",
+          "status": "provisional_definition"
+        }
+      ]
+    },
+    {
+      "id": "IND",
+      "label_zh": "產業轉化與具身應用",
+      "label_en": "Industrial integration",
+      "indicators": [
+        {
+          "id": "GEO-IND-01",
+          "label_zh": "晶片到產品鏈",
+          "probe_zh": "先進半導體、伺服器及網路",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-IND-02",
+          "label_zh": "能源、製造與物流",
+          "probe_zh": "實體再生與運算增長分開",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-IND-03",
+          "label_zh": "具身機器人",
+          "probe_zh": "本地安全和移動通訊",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-IND-04",
+          "label_zh": "AI 於產業的實收效益",
+          "probe_zh": "安裝、使用和成果收據",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-IND-05",
+          "label_zh": "跨產業外部性",
+          "probe_zh": "環境、工作、社會成本及供應韌性",
+          "status": "provisional_definition"
+        }
+      ]
+    },
+    {
+      "id": "GOV",
+      "label_zh": "制度與競爭演變",
+      "label_en": "Governance and strategic evolution",
+      "indicators": [
+        {
+          "id": "GEO-GOV-01",
+          "label_zh": "政策宣示與法令分離",
+          "probe_zh": "政策檔不自動變成已執行禁令",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-GOV-02",
+          "label_zh": "同盟與市場開放",
+          "probe_zh": "貿易、授權及跨境合作",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-GOV-03",
+          "label_zh": "安全與治理",
+          "probe_zh": "網路安全、責任和驗證",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-GOV-04",
+          "label_zh": "政治敘事來源",
+          "probe_zh": "公開立場不等於內部決策",
+          "status": "provisional_definition"
+        },
+        {
+          "id": "GEO-GOV-05",
+          "label_zh": "動態領先定義",
+          "probe_zh": "指標、證據、日期和研究問題可修訂",
+          "status": "provisional_definition"
+        }
+      ]
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "stanford-ai-index-2026",
+      "title": "The 2026 AI Index Report",
+      "publisher": "Stanford HAI",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "publication_date": null,
+      "publication_period": "2026-04",
+      "known_by": "2026-04-30",
+      "source_kind": "academic_public_statistics",
+      "scope_limit": "2025 private investment estimates, as-of-March-2026 benchmark rankings and 2025 infrastructure; differing denominator not national total spend",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "us-bis-2026-01-15",
+      "title": "Revision to License Review Policy for Advanced Computing Commodities, 91 FR 1684",
+      "publisher": "US Federal Register / BIS",
+      "url": "https://www.govinfo.gov/app/details/FR-2026-01-15/2026-00789",
+      "publication_date": "2026-01-15",
+      "publication_period": null,
+      "known_by": "2026-01-15",
+      "source_kind": "primary_binding_rule",
+      "scope_limit": "Case-by-case license for enumerated H200/equivalent products subject to prerequisites, not a blanket 2026 chip export freedom",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "china-five-year-2026",
+      "title": "十五五規劃綱要",
+      "publisher": "中華人民共和國教育部（轉載正式綱要）",
+      "url": "https://www.moe.gov.cn/jyb_xwfb/xw_zt/moe_357/2026/2026_zt03/yw/202603/t20260314_1430877.html",
+      "publication_date": "2026-03-14",
+      "publication_period": null,
+      "known_by": "2026-03-14",
+      "source_kind": "official_policy_text",
+      "scope_limit": "AI model, industrial R&D and semiconductor policy priorities, not realized investment or capacity",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "taiwan-ndc-ai10-2025",
+      "title": "【AI新十大建設-數位基磐】",
+      "publisher": "臺灣國家發展委員會",
+      "url": "https://www.ndc.gov.tw/nc_16183_39416",
+      "publication_date": "2025-10-08",
+      "publication_period": null,
+      "known_by": "2025-10-08",
+      "source_kind": "official_policy_text",
+      "scope_limit": "Policy aims for sovereign AI, computing, training corpora and model research; not delivered frontier model market standing",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "taiwan-taide-2026-02-13",
+      "title": "Gemma-3-TAIDE-12b-Chat-2602 發布",
+      "publisher": "TAIDE／國科會",
+      "url": "https://taide.stpi.niar.org.tw/public/latest-updates_show?id=4b1141869c45c11c019c4b261966001b",
+      "publication_date": "2026-02-13",
+      "publication_period": null,
+      "known_by": "2026-02-13",
+      "source_kind": "official_model_release",
+      "scope_limit": "A documented Taiwan-localized model derived from Gemma-3 12B through midtraining, not independent global leading from-scratch training",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "epoch-cost-2024-06",
+      "title": "How much does it cost to train frontier AI models?",
+      "publisher": "Epoch AI",
+      "url": "https://epoch.ai/publications/how-much-does-it-cost-to-train-frontier-ai-models",
+      "publication_date": "2024-06-03",
+      "publication_period": null,
+      "known_by": "2024-06-03",
+      "source_kind": "independent_cost_model",
+      "scope_limit": "Historical training cost model, conditional >$1B by 2027 prediction from 2024, not every actual 2026 model cost",
+      "first_FSL_captured_on": "2026-11-08"
+    },
+    {
+      "id": "reuters-hyperscaler-2026-07",
+      "title": "AI investment boom puts Big Tech's free cash flow under pressure",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/ai-investment-boom-puts-big-techs-free-cash-flow-under-pressure-2026-07-22/",
+      "publication_date": "2026-07-22",
+      "publication_period": null,
+      "known_by": "2026-07-22",
+      "source_kind": "financial_reporting_forecast",
+      "scope_limit": "Hyperscaler capex and analyst forward projections include broader infrastructure; not frontier training run costs",
+      "first_FSL_captured_on": "2026-11-08"
+    }
+  ],
+  "cases": [
+    {
+      "id": "geo-us-cn-private-ai-investment-2025",
+      "source_id": "stanford-ai-index-2026",
+      "region": "US+CN",
+      "type": "observed_statistical_estimate",
+      "reference_period": "2025",
+      "metric_name": "private_AI_investment",
+      "measured_values": [
+        {
+          "region": "US",
+          "value": 285.88,
+          "unit": "USD_billion"
+        },
+        {
+          "region": "CN",
+          "value": 12.41,
+          "unit": "USD_billion"
+        }
+      ],
+      "interpretation_zh": "2025 年可比私人 AI 投資統計，並非國家全口徑或模型訓練支出；中國政府引導基金使直接推總量不成立。",
+      "verified_independent_outcome": false
+    },
+    {
+      "id": "geo-model-gap-2026-march",
+      "source_id": "stanford-ai-index-2026",
+      "region": "US+CN",
+      "type": "dated_benchmark_summary",
+      "reference_period": "2026-03",
+      "metric_name": "specific_model_benchmark_performance",
+      "measured_values": [],
+      "interpretation_zh": "不同領域評測接近，不可推成某國在所有 AI、晶片、電力、具身或市場域普遍領先。",
+      "verified_independent_outcome": false
+    },
+    {
+      "id": "geo-chip-supply-taiwan-2026",
+      "source_id": "stanford-ai-index-2026",
+      "region": "US+CN+TW",
+      "type": "industrial_supply_network",
+      "reference_period": "2025",
+      "metric_name": "leading_AI_chip_fabrication_dependency",
+      "measured_values": [],
+      "interpretation_zh": "多數領先 AI 加速器供應高度依賴台灣先進晶圓代工；台灣在供應鏈的重要性不等於國內擁有全球最大通用模型。",
+      "verified_independent_outcome": false
+    },
+    {
+      "id": "geo-us-bis-2026-h200-license",
+      "source_id": "us-bis-2026-01-15",
+      "region": "US+CN",
+      "type": "effective_trade_rule",
+      "reference_period": "2026-01-15",
+      "metric_name": "chip_export_license_case_by_case",
+      "measured_values": [],
+      "interpretation_zh": "BIS 有條件逐案審核 H200 等產品出口；不是 2026 年全面禁止，也不是全品項自由輸出。",
+      "verified_independent_outcome": false
+    },
+    {
+      "id": "geo-china-five-year-plan-2026",
+      "source_id": "china-five-year-2026",
+      "region": "CN",
+      "type": "documented_policy_intent",
+      "reference_period": "2026-03",
+      "metric_name": "semiconductor_AI_self_reliance_policy",
+      "measured_values": [],
+      "interpretation_zh": "官方重視模型／晶片／算力／工業與具身領域；政策方向不等於已實現能力。",
+      "verified_independent_outcome": false
+    },
+    {
+      "id": "geo-taiwan-national-ai-plan",
+      "source_id": "taiwan-ndc-ai10-2025",
+      "region": "TW",
+      "type": "documented_policy_intent",
+      "reference_period": "2025-10",
+      "metric_name": "sovereign_AI_infrastructure_and_local_models",
+      "measured_values": [],
+      "interpretation_zh": "主權算力、繁體中文語料、基礎模型、供應鏈和應用均在政策範圍；不能說台灣不發展模型。",
+      "verified_independent_outcome": false
+    },
+    {
+      "id": "geo-taiwan-TAIDE-2602",
+      "source_id": "taiwan-taide-2026-02-13",
+      "region": "TW",
+      "type": "documented_model_release",
+      "reference_period": "2026-02-13",
+      "metric_name": "localized_midtrained_model",
+      "measured_values": [
+        {
+          "region": "TW",
+          "value": 12,
+          "unit": "billion_base_parameters"
+        }
+      ],
+      "interpretation_zh": "使用 Gemma-3-12B 為基底的本地化訓練，是自主研發與訓練的實際範例；不是全球最昂貴的從零前沿模型培訓。",
+      "verified_independent_outcome": false
+    }
+  ],
+  "case_count": 7,
+  "non_claims": [
+    "No national political ranking or preferred electoral result",
+    "No inference that private AI investment is total AI spending",
+    "No universal US vs China AI superiority claim from a benchmark",
+    "No model-training rank from Taiwan chip foundry importance",
+    "No assumption Taiwan avoids all LLM R&D",
+    "No equivalence of published policy and delivered compute",
+    "No single company revenue as whole-country profit",
+    "No international bloc assignment without dated source and legal specificity",
+    "No extrapolated future catch-up year or inevitability",
+    "No weaponization guidance, circumvention or export control evasion"
+  ],
+  "parent_links": [
+    "v0.17 SAS two-gate source interface",
+    "v0.18 US/EU/China data-center legal feasibility",
+    "v0.16 networks physical infrastructure"
+  ]
+}

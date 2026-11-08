@@ -1,0 +1,626 @@
+{
+  "schema": "fsl/frontier-participation-economics/0.19",
+  "version": "0.19.0",
+  "first_created_on": "2026-11-08",
+  "timezone": "Asia/Taipei",
+  "purpose_zh": "研究一個國家或企業是否值得為全球通用最前沿模型維持持續訓練競爭，而非認定非參賽國家較弱；將台灣視為高科技供應鏈與多重AI路線並存的案例。",
+  "cost_axes": [
+    {
+      "id": "DEF",
+      "label_zh": "前沿參戰與能力契約",
+      "indicators": [
+        {
+          "id": "FEC-DEF-01",
+          "label_zh": "前沿定義",
+          "probe_zh": "全球通用最高評測與領域小模型差別",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-DEF-02",
+          "label_zh": "一次訓練與持續迭代",
+          "probe_zh": "首次完成不代表每季持續前沿",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-DEF-03",
+          "label_zh": "基座從零與後訓練",
+          "probe_zh": "base pretrain, continued pretrain, fine-tune分開",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-DEF-04",
+          "label_zh": "市場交付與學術能力",
+          "probe_zh": "評測成功和商業可部署分開",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-DEF-05",
+          "label_zh": "基礎創新與效能追隨",
+          "probe_zh": "新架構研究未必投入最大訓練",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    },
+    {
+      "id": "TRN",
+      "label_zh": "訓練與實驗迭代成本",
+      "indicators": [
+        {
+          "id": "FEC-TRN-01",
+          "label_zh": "最終訓練計算",
+          "probe_zh": "有效芯片時間和折舊",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-TRN-02",
+          "label_zh": "失敗試次與搜尋",
+          "probe_zh": "原型消融、調參與多次重跑",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-TRN-03",
+          "label_zh": "資料合成驗證",
+          "probe_zh": "計算採樣和品質檢驗",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-TRN-04",
+          "label_zh": "後訓練與評測",
+          "probe_zh": "RL、人類審核、對抗測試",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-TRN-05",
+          "label_zh": "升版頻率",
+          "probe_zh": "一年持續代際投入不是一次性費",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    },
+    {
+      "id": "CAP",
+      "label_zh": "資本設備與硬體可用",
+      "indicators": [
+        {
+          "id": "FEC-CAP-01",
+          "label_zh": "自有硬體或租賃",
+          "probe_zh": "避免租金與相同硬體攤提重複記帳",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-CAP-02",
+          "label_zh": "資料中心與供電",
+          "probe_zh": "配電、變電、機房及 PUE",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-CAP-03",
+          "label_zh": "高階網路互連",
+          "probe_zh": "GPU叢集及大域資料網路",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-CAP-04",
+          "label_zh": "硬體折舊與替換",
+          "probe_zh": "設備更新、維修、停機",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-CAP-05",
+          "label_zh": "資金利用率",
+          "probe_zh": "閒置計算設備與多客戶分攤",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    },
+    {
+      "id": "OPS",
+      "label_zh": "推理與部署長期成本",
+      "indicators": [
+        {
+          "id": "FEC-OPS-01",
+          "label_zh": "推理工作負載",
+          "probe_zh": "請求數、輸入輸出及 reasoning 成本",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-OPS-02",
+          "label_zh": "可用率維運",
+          "probe_zh": "區域冗餘與 SRE",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-OPS-03",
+          "label_zh": "用戶支持",
+          "probe_zh": "企業 SLA、客服和交付",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-OPS-04",
+          "label_zh": "安全監控",
+          "probe_zh": "異常、回滾、修補、紅隊",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-OPS-05",
+          "label_zh": "長時供應義務",
+          "probe_zh": "模型退役、版本管理和遷移",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    },
+    {
+      "id": "DAT",
+      "label_zh": "資料、授權與本地市場",
+      "indicators": [
+        {
+          "id": "FEC-DAT-01",
+          "label_zh": "數據授權",
+          "probe_zh": "合法獲得高品質文本及多模態資料",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-DAT-02",
+          "label_zh": "資料清理",
+          "probe_zh": "去重、品質、污染與可追溯",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-DAT-03",
+          "label_zh": "人類領域專家",
+          "probe_zh": "評測資料及標記／驗證",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-DAT-04",
+          "label_zh": "在地語言",
+          "probe_zh": "小語言、行業資料與可用場景",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-DAT-05",
+          "label_zh": "版權法規衝突",
+          "probe_zh": "跨境資料使用限制及訴訟風險",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    },
+    {
+      "id": "TAL",
+      "label_zh": "人才與組織持續性",
+      "indicators": [
+        {
+          "id": "FEC-TAL-01",
+          "label_zh": "研究人員",
+          "probe_zh": "頂級模型研究團隊及競爭",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-TAL-02",
+          "label_zh": "系統工程師",
+          "probe_zh": "分散式訓練和硬體故障恢復",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-TAL-03",
+          "label_zh": "治理與產品",
+          "probe_zh": "合規、產品和銷售",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-TAL-04",
+          "label_zh": "人才機會成本",
+          "probe_zh": "人才由其他高價值部門流出",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-TAL-05",
+          "label_zh": "研究週期韌性",
+          "probe_zh": "失敗重來及關鍵人員離職",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    },
+    {
+      "id": "RGL",
+      "label_zh": "合規與地緣風險成本",
+      "indicators": [
+        {
+          "id": "FEC-RGL-01",
+          "label_zh": "晶片出口許可",
+          "probe_zh": "合法供應而非宣布額度",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-RGL-02",
+          "label_zh": "能源土地環境",
+          "probe_zh": "可核實行政許可與成本",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-RGL-03",
+          "label_zh": "資訊治理安全",
+          "probe_zh": "資料主權、法遵及資安",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-RGL-04",
+          "label_zh": "跨國部署",
+          "probe_zh": "雲端區域、商標與授權",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-RGL-05",
+          "label_zh": "政治不確定性",
+          "probe_zh": "政策更新不能假設永久固定",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    },
+    {
+      "id": "REV",
+      "label_zh": "回收能力與價值捕獲",
+      "indicators": [
+        {
+          "id": "FEC-REV-01",
+          "label_zh": "直接營收",
+          "probe_zh": "API、訂閱、企業合約實收",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-REV-02",
+          "label_zh": "實際毛利與貢獻",
+          "probe_zh": "變動推理和服務成本",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-REV-03",
+          "label_zh": "價格競爭與替代",
+          "probe_zh": "開源供應與市場定價力",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-REV-04",
+          "label_zh": "公共社會效益",
+          "probe_zh": "不能直接和企業現金流相加",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-REV-05",
+          "label_zh": "主權安全選擇權",
+          "probe_zh": "非現金選擇權需獨立價值框架",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    },
+    {
+      "id": "OPT",
+      "label_zh": "機會成本與替代參戰",
+      "indicators": [
+        {
+          "id": "FEC-OPT-01",
+          "label_zh": "先進製造和晶片",
+          "probe_zh": "資源可能留於產業瓶頸改善",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-OPT-02",
+          "label_zh": "開源基座領域強化",
+          "probe_zh": "在地訓練與高價值應用",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-OPT-03",
+          "label_zh": "API Agent與驗證",
+          "probe_zh": "多供應商調度及可靠性",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-OPT-04",
+          "label_zh": "新架構小型實驗",
+          "probe_zh": "模型大小不代表原創能力",
+          "status": "unmeasured_provisional"
+        },
+        {
+          "id": "FEC-OPT-05",
+          "label_zh": "放棄或等待大競賽",
+          "probe_zh": "保存未來參與選擇權非永久退出",
+          "status": "unmeasured_provisional"
+        }
+      ]
+    }
+  ],
+  "accounting_buckets": [
+    {
+      "id": "train_compute",
+      "class": "direct_variable_or_amortized",
+      "cost_type": "trainer_chiphours",
+      "source_or_assumption": "experiment_receipt",
+      "avoid_double_count": "hardware_chip_hour_amortization_versus_cloud_rental"
+    },
+    {
+      "id": "experimentation_search",
+      "class": "R_and_D",
+      "cost_type": "failed_runs_and_ablations",
+      "source_or_assumption": "trial_ledger",
+      "avoid_double_count": "do_not_recount_as_final_training"
+    },
+    {
+      "id": "data_acquisition",
+      "class": "R_and_D_or_recurrent",
+      "cost_type": "licensing_curation_human_raters",
+      "source_or_assumption": "contracts_payroll",
+      "avoid_double_count": "differentiate_capitalized_from_period_expense"
+    },
+    {
+      "id": "personnel",
+      "class": "R_and_D_or_recurrent",
+      "cost_type": "research_engineering_operations",
+      "source_or_assumption": "payroll",
+      "avoid_double_count": "avoid_contractor_double_count"
+    },
+    {
+      "id": "hardware_infrastructure",
+      "class": "CAPEX",
+      "cost_type": "accelerators_servers_network_power_cooling_land",
+      "source_or_assumption": "purchase_and_lease_records",
+      "avoid_double_count": "use_depreciation_or_lease_not_both_same_resource"
+    },
+    {
+      "id": "cloud_rental",
+      "class": "OPEX",
+      "cost_type": "rented_chip_hours_and_network",
+      "source_or_assumption": "invoice",
+      "avoid_double_count": "does_not_add_provider_hardware_energy_again"
+    },
+    {
+      "id": "energy",
+      "class": "OPEX_or_embedded",
+      "cost_type": "power_cooling_water",
+      "source_or_assumption": "meter_and_bill",
+      "avoid_double_count": "cloud_rent_may_include_power"
+    },
+    {
+      "id": "inference_serving",
+      "class": "recurrent",
+      "cost_type": "runtime_accelerators_SLA_storage_support",
+      "source_or_assumption": "production_ledger",
+      "avoid_double_count": "separate_new_training_and_shared_capacity"
+    },
+    {
+      "id": "safety_compliance",
+      "class": "R_and_D_or_recurrent",
+      "cost_type": "eval_audit_legal_red_team_incident",
+      "source_or_assumption": "contract_ledger",
+      "avoid_double_count": "separate_from_security_infrastructure"
+    },
+    {
+      "id": "distribution_market",
+      "class": "recurrent",
+      "cost_type": "sales_product_distribution",
+      "source_or_assumption": "operating_accounts",
+      "avoid_double_count": "not_included_in_training_run_cost"
+    },
+    {
+      "id": "finance_depreciation",
+      "class": "economic_cost",
+      "cost_type": "cost_of_capital_replacement_insurance",
+      "source_or_assumption": "financing_market_terms",
+      "avoid_double_count": "not_double_with_project_cashflow_interest_if_NPV"
+    },
+    {
+      "id": "opportunity_cost",
+      "class": "counterfactual_value",
+      "cost_type": "best_alternative_capital_and_talent",
+      "source_or_assumption": "explicit_scenario",
+      "avoid_double_count": "not_cash_outlay_and_not_sum_as_if_invoice"
+    },
+    {
+      "id": "externals",
+      "class": "public_economic_analysis",
+      "cost_type": "environment_labor_dependency_geopolitical",
+      "source_or_assumption": "independent_societal_study",
+      "avoid_double_count": "cannot_mix_to_company_cashflow_without_transparent_conversion"
+    }
+  ],
+  "policy_strategy_options": [
+    {
+      "id": "full_scratch_global_frontier",
+      "zh": "全球通用前沿模型從零訓練並持續逐代競爭",
+      "base_model_route": "train_general_base_from_scratch",
+      "intended_scope": "international_generality_and_continuous_model_releases",
+      "actual_country_choice": "not_asserted",
+      "questions": [
+        "capital_runway",
+        "frontier_team_density",
+        "repeated_retraining",
+        "global_distribution",
+        "viable_pricing"
+      ]
+    },
+    {
+      "id": "independent_open_weight_global",
+      "zh": "自主訓練並公開權重的跨域競爭型模型",
+      "base_model_route": "train_from_scratch_or_original_architecture",
+      "intended_scope": "international_open_weight_model_ecosystem",
+      "actual_country_choice": "not_asserted",
+      "questions": [
+        "continuous_funding",
+        "access_to_hardware",
+        "data_and_eval",
+        "open_license_costs",
+        "distribution_and_economics"
+      ]
+    },
+    {
+      "id": "sovereign_regional_foundation",
+      "zh": "主權、語言或本地制度專用基礎模型",
+      "base_model_route": "may_be_original_or_adapted",
+      "intended_scope": "sovereign_inference_and_domain_capacity",
+      "actual_country_choice": "not_asserted",
+      "questions": [
+        "control_of_weights",
+        "data_sovereignty",
+        "deployment_rights",
+        "costs_to_retrain",
+        "public_benefit"
+      ]
+    },
+    {
+      "id": "open_weight_specialized_training",
+      "zh": "在合法既有開放權重基座上做領域微調／中期訓練",
+      "base_model_route": "adapt_existing_base",
+      "intended_scope": "language_domain_tasks",
+      "actual_country_choice": "documented_taiwan_TAIDE_example",
+      "questions": [
+        "license",
+        "domain_gain",
+        "full_lifecycle_cost",
+        "upstream_base_dependency",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "multi_provider_services",
+      "zh": "透過多供應商 API／Agent／工具取得前沿能力",
+      "base_model_route": "buy_or_rent_capability",
+      "intended_scope": "product_and_service_delivery",
+      "actual_country_choice": "not_asserted",
+      "questions": [
+        "service_cost",
+        "governance",
+        "provider_lock_in",
+        "API_rights",
+        "fallback"
+      ]
+    },
+    {
+      "id": "original_small_architecture_lab",
+      "zh": "新架構與小型模型的可證偽研究",
+      "base_model_route": "small_original_research",
+      "intended_scope": "new_architecture_and_verification",
+      "actual_country_choice": "not_asserted",
+      "questions": [
+        "scientific_novelty",
+        "scaling_uncertainty",
+        "validation_cost",
+        "talent",
+        "rights_and_reproducibility"
+      ]
+    },
+    {
+      "id": "infrastructure_hardware_supply_chain",
+      "zh": "晶片製造、伺服器、網路、能源、工具鏈與具身 AI",
+      "base_model_route": "non_frontier_model_supplier",
+      "intended_scope": "upstream_and_industrial_AI",
+      "actual_country_choice": "documented_TW_semiconductor_strength",
+      "questions": [
+        "value_capture",
+        "customer_concentration",
+        "geopolitical_dependency",
+        "manufacturing_reinvestment",
+        "resource_externalities"
+      ]
+    },
+    {
+      "id": "international_consortium",
+      "zh": "共同出資、共享算力或跨境科研聯盟",
+      "base_model_route": "shared_model_or_compute",
+      "intended_scope": "research_access_and_shared_governance",
+      "actual_country_choice": "counterfactual_option_only",
+      "questions": [
+        "decision_rights",
+        "intellectual_property",
+        "secure_access",
+        "cost_sharing",
+        "exit_options"
+      ]
+    }
+  ],
+  "dated_cost_observations": [
+    {
+      "id": "epoch-2024-training-trend",
+      "source_id": "epoch-cost-2024-06",
+      "kind": "historical_cost_model",
+      "event_period": "2016–2024 estimated",
+      "value": 2.4,
+      "unit": "annual_training_amortized_hardware_plus_energy_multiplier",
+      "time_semantics": "reported retrospective trend",
+      "financial_scope": "estimated final training run, not full lab",
+      "scope_limit": "Historical regression; not a realized 2026 or 2027 training price; 2027 >US$1B prediction is conditional."
+    },
+    {
+      "id": "stanford-2026-private-inv",
+      "source_id": "stanford-ai-index-2026",
+      "kind": "2025_investment_estimate",
+      "event_period": "2025",
+      "value": null,
+      "unit": null,
+      "time_semantics": "official report Apr 2026",
+      "financial_scope": "private AI investment US and China as defined by Stanford",
+      "scope_limit": "Total private funding across AI investments, not per-country cost to train a single leading model."
+    },
+    {
+      "id": "reuters-2026-cashflow",
+      "source_id": "reuters-hyperscaler-2026-07",
+      "kind": "financial_forward_projection",
+      "event_period": "2025–2027 (forecast)",
+      "value": null,
+      "unit": null,
+      "time_semantics": "article 2026-07-22 analyst projections",
+      "financial_scope": "hyperscaler aggregate company capex/cashflows",
+      "scope_limit": "Includes broad cloud data centers and other investment; prospective analyst estimates, not a guaranteed 2027 fact."
+    }
+  ],
+  "source_reference_links": [
+    "epoch-cost-2024-06",
+    "stanford-ai-index-2026",
+    "reuters-hyperscaler-2026-07",
+    "taiwan-ndc-ai10-2025",
+    "taiwan-taide-2026-02-13"
+  ],
+  "required_evaluation_dimensions": [
+    "scope_and_frontier_contract",
+    "first_train_capex",
+    "repeated_rnd_and_iteration",
+    "deployment_inference_long_run",
+    "capital_financing_and_replacement",
+    "data_law_and_talent",
+    "comparative_cashflow_ROI",
+    "national_industry_benefit",
+    "sovereignty_and_risk_options",
+    "opportunity_cost_of_alternatives"
+  ],
+  "policy_analysis_constraints": [
+    "No welfare ranking or country recommendation from cost alone",
+    "No blanket assertion Taiwan lacks all frontier AI model research or no sovereign AI efforts",
+    "Do not replace sustained-run costs with one final training bill",
+    "Never sum hypothetical revenue and national social value without conversion",
+    "Cloud rental and owned hardware depreciation are alternative accounting pathways unless disjoint hardware",
+    "Training chip-hours not model parameter count or deployed GPU announcement",
+    "Private capital investment (US/CN) is not government spending and is not direct model-building expense",
+    "Epoch 2024 cost trend and 2027 >1B conditional projection must not be treated as 2026 verified actuals",
+    "Corporate company capex cannot all be assigned to AI training",
+    "Country tech strength is not identical to ability or desire to operate a top general model lab",
+    "Small model development can be original research; API usage is different from independent model creation",
+    "Open-weight licensing and lawful fine-tuning need explicit original-model license checks",
+    "Missing cost data stays null; no estimated quantitative ROC without source and contract",
+    "No deterministic country-entry/exit forecast; keep strategic scenarios revisable",
+    "Technical model feasibility, private cashflow ROI, sovereignty and civilizational social return stay separate"
+  ],
+  "synthetic_strategic_question": {
+    "example_only": true,
+    "subject": "fictional_technology_economy_T0",
+    "annual_cashflow_unknown": true,
+    "actual_model_strategy": null,
+    "unknowns": [
+      "compute spending",
+      "training iterations",
+      "legal access",
+      "market pricing",
+      "public strategic value",
+      "counterfactual alternative use of capital"
+    ],
+    "conclusion": "insufficient_evidence_no_country_level_recommendation"
+  }
+}

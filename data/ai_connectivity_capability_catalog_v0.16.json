@@ -1,0 +1,709 @@
+{
+  "catalog_id": "FSL-NET",
+  "version": "0.16.0",
+  "created_on": "2026-11-08",
+  "classification": "provisional taxonomy, no real measurement",
+  "purpose_zh": "將AI連線能力之建設、故障、網路存取權、離線自主及文明連續性列為獨立觀測軌道，而非AI智能或網速單一分數。",
+  "parent_catalog": "GICCF v0.13 (unchanged 28 axes / 224 indicators / 38 civilization domains)",
+  "related": "FSL v0.15 agentic Internet narratives; v0.14 counterfactual; FSL long-horizon autonomy",
+  "principles": [
+    "connectivity_not_intelligence",
+    "physical_link_not_application_permission",
+    "two_links_not_necessarily_independent",
+    "satellite_not_total_internet_without_ground",
+    "robot_local_safety_not_remote_RTT",
+    "traffic_not_verified_economic_value",
+    "offline_resilience_and_legal_authority_both_required",
+    "planned_not_operational",
+    "unmeasured_not_zero",
+    "no_global_starlink_speed_or_ai_majority_certification",
+    "dates_sources_and_revisions_append_only"
+  ],
+  "source_examples": [
+    {
+      "kind": "institutional",
+      "url": "https://www.itu.int/en/mediacentre/backgrounders/Pages/submarine-cable-resilience.aspx",
+      "role": "Submarine resilience and cable hazards"
+    },
+    {
+      "kind": "institutional",
+      "url": "https://wtpf.itu.int/2026/about/thematic-areas/resilience-of-telecommunication-icts/",
+      "role": "Complementary terrestrial/undersea/satellite networks"
+    },
+    {
+      "kind": "manufacturer_primary",
+      "url": "https://starlink.com/technology",
+      "role": "Optical ISLs as vendor specification, not validated application reach"
+    },
+    {
+      "kind": "public_research",
+      "url": "https://doi.org/10.1145/3715335.3735467",
+      "role": "Terrestrial gateways and PoP dependence in Starlink"
+    },
+    {
+      "kind": "official_standard",
+      "url": "https://www.itu.int/epublications/publication/recommendation-itu-r-m-2177-0-02-2026-detailed-specifications-of-the-satellite-radio-interfaces-of-international-mobile-telecommunications-2020-imt-2020",
+      "role": "NTN technical challenges"
+    }
+  ],
+  "research_axes": [
+    {
+      "id": "COV",
+      "label_zh": "有效覆蓋與終端接入",
+      "label_en": "Access and coverage",
+      "indicators": [
+        {
+          "id": "NET-COV-01",
+          "axis_id": "COV",
+          "label_zh": "偏鄉／海洋／災區有效覆蓋",
+          "probe_zh": "實測不同地理場景中能否完成指定任務",
+          "measurement": "task_reachable_sites",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-COV-02",
+          "axis_id": "COV",
+          "label_zh": "實際合法可使用性",
+          "probe_zh": "區分地圖顯示、營運許可及設備能否啟用",
+          "measurement": "eligible_sites",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-COV-03",
+          "axis_id": "COV",
+          "label_zh": "終端裝設能力",
+          "probe_zh": "實際驗證天線、電力、SIM 和配對程序",
+          "measurement": "commissioning_time",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-COV-04",
+          "axis_id": "COV",
+          "label_zh": "尖峰可用性",
+          "probe_zh": "負載時是否仍達成最低必要服務",
+          "measurement": "peak_hour_task_success",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-COV-05",
+          "axis_id": "COV",
+          "label_zh": "遠端與近端可達分離",
+          "probe_zh": "接入路由器不等於能呼叫指定雲端 API",
+          "measurement": "end_to_end_reachability",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "TOP",
+      "label_zh": "多媒介路徑及共因失效",
+      "label_en": "Media topology and independence",
+      "indicators": [
+        {
+          "id": "NET-TOP-01",
+          "axis_id": "TOP",
+          "label_zh": "光纖／行動／衛星實際備援",
+          "probe_zh": "比較至少兩種異質傳播介質",
+          "measurement": "operational_path_set",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-TOP-02",
+          "axis_id": "TOP",
+          "label_zh": "ISP／AS／對等互連共因",
+          "probe_zh": "識別名義獨立線路的共同上游",
+          "measurement": "shared_network_dependencies",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-TOP-03",
+          "axis_id": "TOP",
+          "label_zh": "海纜及登陸站風險",
+          "probe_zh": "區分纜線路徑、登陸點、陸域骨幹",
+          "measurement": "shared_physical_dependencies",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-TOP-04",
+          "axis_id": "TOP",
+          "label_zh": "衛星閘道及地面 PoP",
+          "probe_zh": "星間雷射不抹除衛星地面出口依賴",
+          "measurement": "ground_egress_dependency",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-TOP-05",
+          "axis_id": "TOP",
+          "label_zh": "供電及機房共因失效",
+          "probe_zh": "不同連線共享電網、機房或認證服務",
+          "measurement": "shared_power_dependencies",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "QOS",
+      "label_zh": "通訊品質與任務時限",
+      "label_en": "End-to-end QoS",
+      "indicators": [
+        {
+          "id": "NET-QOS-01",
+          "axis_id": "QOS",
+          "label_zh": "封包延遲與尾端延遲",
+          "probe_zh": "對最終目的伺服器量測 RTT p50/p95/p99",
+          "measurement": "rtt_ms",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-QOS-02",
+          "axis_id": "QOS",
+          "label_zh": "丟包與抖動",
+          "probe_zh": "觀察控制資料與串流品質而非只看平均 Mbps",
+          "measurement": "loss_and_jitter",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-QOS-03",
+          "axis_id": "QOS",
+          "label_zh": "尖峰上下載吞吐",
+          "probe_zh": "獨立記錄上下行、同時併發及擁塞",
+          "measurement": "goodput_mbps",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-QOS-04",
+          "axis_id": "QOS",
+          "label_zh": "API 與模型處理延遲分離",
+          "probe_zh": "拆解 DNS/TLS/RTT/排隊/TTFT/token生成",
+          "measurement": "latency_breakdown",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-QOS-05",
+          "axis_id": "QOS",
+          "label_zh": "任務截止時間達成率",
+          "probe_zh": "在硬限制內完成實際可驗證動作",
+          "measurement": "deadline_success_rate",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "E2E",
+      "label_zh": "從連線到應用權限",
+      "label_en": "Service and protocol access",
+      "indicators": [
+        {
+          "id": "NET-E2E-01",
+          "axis_id": "E2E",
+          "label_zh": "DNS/CDN 實際服務可達",
+          "probe_zh": "區分名稱解析與連至正確服務節點",
+          "measurement": "service_reachability",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-E2E-02",
+          "axis_id": "E2E",
+          "label_zh": "IPv4 IPv6 及 QUIC/TCP",
+          "probe_zh": "量測不同協定與防火牆政策差異",
+          "measurement": "protocol_matrix",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-E2E-03",
+          "axis_id": "E2E",
+          "label_zh": "API 授權與403區分",
+          "probe_zh": "有網路但帳號或網路政策拒絕不算斷線",
+          "measurement": "access_error_classification",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-E2E-04",
+          "axis_id": "E2E",
+          "label_zh": "跨供應商 Agent API",
+          "probe_zh": "不同服務商與跨平台網路規則有無阻斷",
+          "measurement": "authorized_agent_reachability",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-E2E-05",
+          "axis_id": "E2E",
+          "label_zh": "模型服務可用性",
+          "probe_zh": "模型雲端故障須與傳輸故障分開",
+          "measurement": "provider_availability",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "RES",
+      "label_zh": "備援切換與長期恢復",
+      "label_en": "Failover and recovery",
+      "indicators": [
+        {
+          "id": "NET-RES-01",
+          "axis_id": "RES",
+          "label_zh": "故障辨識時間",
+          "probe_zh": "量測主鏈路中斷後正確辨識的實際時間",
+          "measurement": "detect_seconds",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-RES-02",
+          "axis_id": "RES",
+          "label_zh": "真正服務恢復時間",
+          "probe_zh": "不以 ping 或衛星已連接代替任務恢復 RTO",
+          "measurement": "task_rto_seconds",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-RES-03",
+          "axis_id": "RES",
+          "label_zh": "資料復原點",
+          "probe_zh": "遺失或重做已授權任務的最大時間 RPO",
+          "measurement": "state_rpo_seconds",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-RES-04",
+          "axis_id": "RES",
+          "label_zh": "降級服務維持",
+          "probe_zh": "部分網路失效時關鍵工作是否安全完成",
+          "measurement": "essential_task_success",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-RES-05",
+          "axis_id": "RES",
+          "label_zh": "恢復後一致性",
+          "probe_zh": "重連後不重複交易、寫入或過期命令",
+          "measurement": "reconcile_success",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "LOC",
+      "label_zh": "離線本地自主與控制",
+      "label_en": "Local autonomy and safety",
+      "indicators": [
+        {
+          "id": "NET-LOC-01",
+          "axis_id": "LOC",
+          "label_zh": "本地感知控制即時性",
+          "probe_zh": "避障、緊急停止不依賴雲端往返",
+          "measurement": "local_deadline_success",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-LOC-02",
+          "axis_id": "LOC",
+          "label_zh": "本地推理與任務維持",
+          "probe_zh": "斷網下仍執行授權且安全的基本任務",
+          "measurement": "offline_task_success",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-LOC-03",
+          "axis_id": "LOC",
+          "label_zh": "安全降級或停止",
+          "probe_zh": "失去必要外部資訊時及時轉為安全狀態",
+          "measurement": "safe_stop_success",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-LOC-04",
+          "axis_id": "LOC",
+          "label_zh": "本地記憶持續",
+          "probe_zh": "離線事件保存 checkpoint 與因果先後",
+          "measurement": "durable_checkpoint_rate",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-LOC-05",
+          "axis_id": "LOC",
+          "label_zh": "撤權及過期命令處理",
+          "probe_zh": "重連不能重新執行已失效授權",
+          "measurement": "revocation_conformance",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "SYN",
+      "label_zh": "跨 AI 連線與狀態一致性",
+      "label_en": "Agent-to-agent synchronization",
+      "indicators": [
+        {
+          "id": "NET-SYN-01",
+          "axis_id": "SYN",
+          "label_zh": "非人語音式結構訊息",
+          "probe_zh": "訊息可直接交換狀態與事件語義",
+          "measurement": "schema_interop",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-SYN-02",
+          "axis_id": "SYN",
+          "label_zh": "身份、交付及執行回執",
+          "probe_zh": "區分送達、讀取、接受與已執行",
+          "measurement": "receipt_accuracy",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-SYN-03",
+          "axis_id": "SYN",
+          "label_zh": "重試冪等與去重",
+          "probe_zh": "網路恢復不能重複扣款或重複危險動作",
+          "measurement": "duplicate_action_count",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-SYN-04",
+          "axis_id": "SYN",
+          "label_zh": "事件因果排序",
+          "probe_zh": "不同裝置版本及時鐘偏差有可驗證界限",
+          "measurement": "ordering_violation",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-SYN-05",
+          "axis_id": "SYN",
+          "label_zh": "多代理管理權交接",
+          "probe_zh": "跨主機和雲端供應商切換仍保有合法授權",
+          "measurement": "handoff_success",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "SEC",
+      "label_zh": "隔離、授權及安全治理",
+      "label_en": "Security and governance",
+      "indicators": [
+        {
+          "id": "NET-SEC-01",
+          "axis_id": "SEC",
+          "label_zh": "傳輸與主體身份分離",
+          "probe_zh": "連線身份不自動等於智慧體執行權限",
+          "measurement": "identity_binding",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-SEC-02",
+          "axis_id": "SEC",
+          "label_zh": "最小權限與撤銷",
+          "probe_zh": "不同網路路徑皆不得越過授權政策",
+          "measurement": "permission_boundary",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-SEC-03",
+          "axis_id": "SEC",
+          "label_zh": "來源與端點完整性",
+          "probe_zh": "簽章、收據、版本與資料來源可稽核",
+          "measurement": "integrity_receipt",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-SEC-04",
+          "axis_id": "SEC",
+          "label_zh": "跨端提示注入防禦",
+          "probe_zh": "第三方訊息不可修改高層授權或執行密鑰",
+          "measurement": "injection_resistance",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-SEC-05",
+          "axis_id": "SEC",
+          "label_zh": "緊急斷連與本地拒絕",
+          "probe_zh": "必要時本地端可拒絕雲端指令並安全停止",
+          "measurement": "safe_local_override",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "PHY",
+      "label_zh": "電力、硬體與物理依賴",
+      "label_en": "Energy and physical dependency",
+      "indicators": [
+        {
+          "id": "NET-PHY-01",
+          "axis_id": "PHY",
+          "label_zh": "終端及閘道能源",
+          "probe_zh": "量測電池、備援電源與通訊終端耗能",
+          "measurement": "energy_autonomy",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-PHY-02",
+          "axis_id": "PHY",
+          "label_zh": "共同機房／雲端依賴",
+          "probe_zh": "失敗是否來自計算或電力而非網路本身",
+          "measurement": "dependency_graph",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-PHY-03",
+          "axis_id": "PHY",
+          "label_zh": "天候及環境包絡",
+          "probe_zh": "雨衰、遮蔽物、電磁干擾的實際通訊影響",
+          "measurement": "environmental_pass_rate",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-PHY-04",
+          "axis_id": "PHY",
+          "label_zh": "硬體故障與維修",
+          "probe_zh": "末端天線、海纜、地面站實際恢復需時",
+          "measurement": "repair_duration",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-PHY-05",
+          "axis_id": "PHY",
+          "label_zh": "時鐘與定位依賴",
+          "probe_zh": "GNSS 或時間同步異常時仍能安全操作",
+          "measurement": "time_source_resilience",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "MOB",
+      "label_zh": "機器人與移動平台網路",
+      "label_en": "Mobility and handover",
+      "indicators": [
+        {
+          "id": "NET-MOB-01",
+          "axis_id": "MOB",
+          "label_zh": "移動場景覆蓋",
+          "probe_zh": "車、船、無人機及野外機器人需按場景實測",
+          "measurement": "mobile_coverage",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-MOB-02",
+          "axis_id": "MOB",
+          "label_zh": "地面與衛星網路交接",
+          "probe_zh": "切換時是否遺失必要狀態或中斷服務",
+          "measurement": "handover_success",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-MOB-03",
+          "axis_id": "MOB",
+          "label_zh": "姿態速度及遮蔽",
+          "probe_zh": "高速轉彎與不同朝向下的連線穩定性",
+          "measurement": "operating_envelope",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-MOB-04",
+          "axis_id": "MOB",
+          "label_zh": "瞬斷本地緩衝",
+          "probe_zh": "斷鏈幾秒至數分鐘時仍可安全維持必要工作",
+          "measurement": "gap_survival",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-MOB-05",
+          "axis_id": "MOB",
+          "label_zh": "移動載體能源負擔",
+          "probe_zh": "通信終端消耗本地能源與機械空間",
+          "measurement": "mobile_terminal_cost",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "ORB",
+      "label_zh": "衛星網路與軌道運算分離",
+      "label_en": "Orbital communications and compute",
+      "indicators": [
+        {
+          "id": "NET-ORB-01",
+          "axis_id": "ORB",
+          "label_zh": "星間雷射能力",
+          "probe_zh": "區分衛星內鏈路與星地實際可交付服務",
+          "measurement": "isl_telemetry",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-ORB-02",
+          "axis_id": "ORB",
+          "label_zh": "星地出口瓶頸",
+          "probe_zh": "光學星間繞路仍需核對地面出口與 PoP",
+          "measurement": "egress_reachability",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-ORB-03",
+          "axis_id": "ORB",
+          "label_zh": "在軌計算真正驗收",
+          "probe_zh": "小型模型測試不等於大型太空資料中心",
+          "measurement": "orbital_task_receipt",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-ORB-04",
+          "axis_id": "ORB",
+          "label_zh": "軌道能源散熱成本",
+          "probe_zh": "太陽能、輻射散熱、散熱器重量與更換",
+          "measurement": "thermal_power_budget",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-ORB-05",
+          "axis_id": "ORB",
+          "label_zh": "衛星碰撞頻譜及責任",
+          "probe_zh": "軌道風險、監理與永續負擔計入評估",
+          "measurement": "orbital_externalities",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "ECO",
+      "label_zh": "建設進度、經濟及公共可及",
+      "label_en": "Deployment and economics",
+      "indicators": [
+        {
+          "id": "NET-ECO-01",
+          "axis_id": "ECO",
+          "label_zh": "規劃建成營運之別",
+          "probe_zh": "發布的容量不能等同已服役的通訊能力",
+          "measurement": "deployment_stage",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-ECO-02",
+          "axis_id": "ECO",
+          "label_zh": "建設與維運全生命週期成本",
+          "probe_zh": "包含鋪設、發射、折舊、能耗及替換",
+          "measurement": "lifecycle_cost",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-ECO-03",
+          "axis_id": "ECO",
+          "label_zh": "可驗收 AI 工作單位成本",
+          "probe_zh": "網路費、雲端及人類介入費用分開",
+          "measurement": "cost_per_accepted_task",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-ECO-04",
+          "axis_id": "ECO",
+          "label_zh": "法規與跨境實用性",
+          "probe_zh": "頻譜、衛星落地權、合法接入與管制",
+          "measurement": "regulatory_access",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-ECO-05",
+          "axis_id": "ECO",
+          "label_zh": "偏鄉與資源公平",
+          "probe_zh": "不能用都市少數高階用户代表全球可達",
+          "measurement": "equity_access",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "TRF",
+      "label_zh": "機器流量與有用活動",
+      "label_en": "AI-network activity and outcomes",
+      "indicators": [
+        {
+          "id": "NET-TRF-01",
+          "axis_id": "TRF",
+          "label_zh": "AI Agent 與普通 Bot 區分",
+          "probe_zh": "非人類 HTTP 請求不直接等於有意圖的 AI 工作",
+          "measurement": "traffic_classification",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-TRF-02",
+          "axis_id": "TRF",
+          "label_zh": "請求／位元組／任務各自統計",
+          "probe_zh": "明示分母期間與測量母體",
+          "measurement": "traffic_units",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-TRF-03",
+          "axis_id": "TRF",
+          "label_zh": "AI 到 AI 消息有效率",
+          "probe_zh": "重複輪詢或垃圾請求不充當完成工作",
+          "measurement": "valid_interaction_rate",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-TRF-04",
+          "axis_id": "TRF",
+          "label_zh": "實際成果與流量脫鉤",
+          "probe_zh": "流量增加不推定已完成社會工作",
+          "measurement": "outcome_per_request",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-TRF-05",
+          "axis_id": "TRF",
+          "label_zh": "誰付費誰得益",
+          "probe_zh": "辨認委託支付者、使用者及最終可持續需求",
+          "measurement": "economic_ultimate_payer",
+          "status": "not_yet_measured"
+        }
+      ]
+    },
+    {
+      "id": "PUB",
+      "label_zh": "公共韌性與文明連續運作",
+      "label_en": "Public resilience and civilization",
+      "indicators": [
+        {
+          "id": "NET-PUB-01",
+          "axis_id": "PUB",
+          "label_zh": "災害最低通訊服務",
+          "probe_zh": "在斷海纜或地面網故障保留可驗收任務",
+          "measurement": "essential_service_survival",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-PUB-02",
+          "axis_id": "PUB",
+          "label_zh": "跨組織緊急協調",
+          "probe_zh": "多政府與民間代理權限交接安全",
+          "measurement": "incident_interoperability",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-PUB-03",
+          "axis_id": "PUB",
+          "label_zh": "離線端的人類監督和拒絕",
+          "probe_zh": "不因 AI 網路成長剝奪合法責任與自主",
+          "measurement": "human_authority",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-PUB-04",
+          "axis_id": "PUB",
+          "label_zh": "韌性與監控的邊界",
+          "probe_zh": "不能以備援為由建立不必要的全域監控",
+          "measurement": "privacy_review",
+          "status": "not_yet_measured"
+        },
+        {
+          "id": "NET-PUB-05",
+          "axis_id": "PUB",
+          "label_zh": "文明效益與外部性",
+          "probe_zh": "實際少中斷多少、損失減少多少須核驗",
+          "measurement": "net_social_outcome",
+          "status": "not_yet_measured"
+        }
+      ]
+    }
+  ]
+}

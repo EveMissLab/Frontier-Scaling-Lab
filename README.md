@@ -5,6 +5,29 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.16 — AI Connectivity Infrastructure and Continuity Observatory / AI 連線與文明持續運作
+
+[**Canonical UTF-8 v0.16 research source**](docs/AI_CONNECTIVITY_INFRASTRUCTURE_CONTINUITY_v0.16.md) ·
+[**14 infrastructure axes / 70 preliminary measurable indicators**](data/ai_connectivity_capability_catalog_v0.16.json) ·
+[**Synthetic network failure replay fixture**](tests/fixtures/connectivity_synthetic_v0.16.json)
+
+This additive track measures **whether AI can remain reachable, locally safe, interoperable and operational when networks fail**, not just internet speed:
+
+- Actual rural/maritime access, terrestrial/undersea/satellite network roles, common failure dependencies (power, gateways, PoPs, DNS, API policies), real task latency and failover RTO/RPO.
+- Explicitly distinguishes **physical link availability**, IP/protocol delivery, **cloud/API authorization** (a 403 does not prove cable loss), agent-state exchange, and accepted real-world task outcomes.
+- Embodied agents retain **local safety and bounded autonomy** when internet access vanishes; satellite communications can extend coverage and routes, but do not guarantee cloud access or replace local hard real-time control.
+- Four research constraints: **Connectivity + Isolation + Verification + Reversibility**. Human authorization, data protection, idempotency, state recovery and independent receipts are maintained.
+- Fully separates AI-originated traffic from ordinary bots and from actual paid or societally useful results. Coverage, network capacity, orbital computation, economic externalities and operation status remain independently testable.
+- The 70 indicators are provisional **definitions, not observed capabilities**. The 2026-11-08 failure fixtures are **SYNTHETIC**, and the original GICCF v0.13 224 indicators remain unchanged.
+
+```bash
+python -m fsl_connectivity.cli catalog
+python -m fsl_connectivity.cli audit --file tests/fixtures/connectivity_synthetic_v0.16.json --as-of 2026-11-08
+python -m unittest discover -s tests -q
+```
+
+---
+
 ## v0.15 — Dated Agentic Internet & Orbital-Compute Possibility Records / AI 網路與太空運算
 
 [**Canonical UTF-8 v0.15 study note**](docs/AI_NETWORK_ORBITAL_COMPUTE_NARRATIVE_v0.15.md) ·

@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -120,5 +120,11 @@ jobs:
           python -m fsl_civilization.counterfactual_cli audit --file tests/fixtures/giccf_counterfactual_synthetic_v0.14.json --as-of 2026-11-07T08:00:00Z --output /tmp/fsl_v014_before.json
           python -m fsl_civilization.counterfactual_cli audit --file tests/fixtures/giccf_counterfactual_synthetic_v0.14.json --as-of 2026-11-07T18:00:00Z --output /tmp/fsl_v014_after.json
           python -c "import json; a=json.load(open('/tmp/fsl_v014_before.json')); b=json.load(open('/tmp/fsl_v014_after.json')); assert a['visible_definition_events']==1 and a['active_assertions'][0]['definition_event_id']=='synthetic-def-frontier-v1'; assert b['visible_definition_events']==2 and b['current_assessments_after_revision']==1 and b['certified_counterfactual_year'] is None and b['universal_superhuman_score'] is None"
+      - name: v0.16 connectivity, safe offline and API-policy controls (SYNTHETIC)
+        run: |
+          python -m fsl_connectivity.cli catalog
+          python -m fsl_connectivity.cli audit --file tests/fixtures/connectivity_synthetic_v0.16.json --as-of 2026-11-08T04:45:00+08:00 --output /tmp/fsl_net_before.json
+          python -m fsl_connectivity.cli audit --file tests/fixtures/connectivity_synthetic_v0.16.json --as-of 2026-11-08 --output /tmp/fsl_net_after.json
+          python -c "import json; a=json.load(open('/tmp/fsl_net_before.json')); b=json.load(open('/tmp/fsl_net_after.json')); assert a['events_visible']==4 and b['active_event_count']==4 and b['indicator_count']==70; assert b['failure_scope_counts']['physical_up_service_denied']==1 and not b['ai_capability_independently_certified']"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06

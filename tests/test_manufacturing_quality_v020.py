@@ -36,7 +36,7 @@ class ManufacturingQualityV020Tests(unittest.TestCase):
     def test_human_comparison_is_human_plus_nonai_tools(self):
         c,_=load_catalog()
         self.assertIn("H_PLUS_CURRENT_NON_AI_TOOLS",c["comparison_baselines"])
-        self.assertIn("bare unaided human",c["human_comparison_note"])
+        self.assertIn("bare human only",c["human_comparison_note"])
 
     def test_source_registry_has_published_scope_but_no_factory_certificate(self):
         sources=load_sources()

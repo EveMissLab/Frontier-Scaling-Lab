@@ -22,6 +22,12 @@
 
 **Document status:** PROPOSED_NOT_IMPLEMENTED. The RFC specifies an external orchestration MVP first, then an optional learned controller / adapter, and only then native recurrent hidden-state integration. It does not claim that any of these runtime modules or DAS models have been implemented or empirically validated. It requires verification receipts, budget-matched baselines, privacy and authorization gates, and an event ledger that separates inference from optimizer updates.
 
+## Deep Representation Conjecture (DRC) — multiscale field and repeated reasoning (2026-11-10)
+
+[**DRC three-paper series index**](DRC_SERIES_INDEX_2026-11-10.md) · [**01 — Observer-relative representation fields**](DRC_01_Multiscale_Representation_Field_and_Observer_2026-11-10.md) · [**02 — Time-budget / X-round answer experiment protocol**](DRC_02_Temporal_Reasoning_Repeated_Answer_Protocol_2026-11-10.md) · [**03 — Geometric and causal identification**](DRC_03_Geometric_Identification_and_Evidence_Boundaries_2026-11-10.md)
+
+New supplementary conjecture track, **not a replacement for the original six DAS-ARL papers**. DRC treats the whole AI as an observer-relative effective unit and proposes studying dynamic multiscale representations. Its future protocol varies direct vs deliberate answers, target budgets of 30/40/50/60 seconds, and independent vs continued reasoning rounds, strictly separating output changes from internal neural evidence. **Status: DOCUMENTED_NOT_TESTED; no experiment has been executed.** DRC-E01–12 and DRC-G01–10 are 22 proposed unmeasured indicators, not incorporated into the existing 72 DAS-ARL indicators.
+
 ## Supplementary research
 
 - [**SUP-01 — Synthetic Data Representational Re-mining and State-Dependent Relearning (2026-11-09)**](DAS_ARL_SUP_01_Synthetic_Data_Representational_Remining_2026-11-09.md)

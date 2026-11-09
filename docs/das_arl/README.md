@@ -22,6 +22,12 @@
 
 **Document status:** PROPOSED_NOT_IMPLEMENTED. The RFC specifies an external orchestration MVP first, then an optional learned controller / adapter, and only then native recurrent hidden-state integration. It does not claim that any of these runtime modules or DAS models have been implemented or empirically validated. It requires verification receipts, budget-matched baselines, privacy and authorization gates, and an event ledger that separates inference from optimizer updates.
 
+## Supplementary research
+
+- [**SUP-01 — Synthetic Data Representational Re-mining and State-Dependent Relearning (2026-11-09)**](DAS_ARL_SUP_01_Synthetic_Data_Representational_Remining_2026-11-09.md)
+
+This supplement explores conditional reuse of real/synthetic training sources, representation changes, verification boundaries, model-collapse risks, and equal-budget evaluation. It proposes 12 **additional unmeasured metric definitions (DAS-SR01–12)** only within the supplement; these are **not incorporated into or counted as part of the existing 72-item catalog**, and no model experiment or synthetic-data learning gain is claimed. The original six canonical papers remain unchanged.
+
 ## Candidate metric definitions
 
 Machine-readable catalog: [data/das_arl_indicator_catalog_v0.1.json](../../data/das_arl_indicator_catalog_v0.1.json).

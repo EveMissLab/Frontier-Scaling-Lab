@@ -1,0 +1,737 @@
+{
+  "series": "DAS-ARL",
+  "schema_version": "0.1",
+  "as_of": "2026-11-09",
+  "candidate_indicator_count": 72,
+  "research_status": "definitions_not_model_observations",
+  "evidence_class": "definitions_only",
+  "observation_policy": "null means not measured; never promote synthetic checks to observed AI performance",
+  "groups": {
+    "routing": 12,
+    "training": 16,
+    "ledger": 20,
+    "evaluation": 24
+  },
+  "metrics": [
+    {
+      "metric_id": "DAS-R01",
+      "name_zh": "自主重讀觸發率",
+      "operational_definition": "符合預註冊觸發條件且實際啟動 revisit 的任務占比",
+      "interpretation_limit": "高觸發率不代表高品質",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R02",
+      "name_zh": "同域重構成功率",
+      "operational_definition": "初始失敗、後續同域操作在固定義務上轉為通過的比例",
+      "interpretation_limit": "不可與原先一次答對混計",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R03",
+      "name_zh": "跨域橋接採納率",
+      "operational_definition": "有目標域橋接憑證且通過指定驗證的跨域候選比例",
+      "interpretation_limit": "需把未驗證類比列入分母定義",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R04",
+      "name_zh": "無效跨域採納率",
+      "operational_definition": "未通過必要橋接義務仍被對外當成已證結論的比例",
+      "interpretation_limit": "越低通常越好；依驗證契約",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R05",
+      "name_zh": "路由干預因果敏感度",
+      "operational_definition": "指定專家路由干預後的任務表現差異",
+      "interpretation_limit": "需固定模型、層、種子及預算",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R06",
+      "name_zh": "認知—專家耦合增益",
+      "operational_definition": "B4 與等成本 B3／B5 之間的任務效用差",
+      "interpretation_limit": "無內部路由控制時不可測",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R07",
+      "name_zh": "底層專家負載偏度",
+      "operational_definition": "可觀測專家使用量的分布統計",
+      "interpretation_limit": "不可單以平均負載判斷品質",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R08",
+      "name_zh": "來源約束保存率",
+      "operational_definition": "指定原始條件在新表示中經檢查保持的比例",
+      "interpretation_limit": "檢查器不完整時不可稱完全保真",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R09",
+      "name_zh": "停止與切換適切率",
+      "operational_definition": "停止／換域行為符合預定效用與驗證標準的比例",
+      "interpretation_limit": "需預先註冊比較契約",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R10",
+      "name_zh": "全任務有效成本",
+      "operational_definition": "成功任務的算力、延遲、工具、人類介入及失敗成本向量",
+      "interpretation_limit": "不得任意混成單一分數",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R11",
+      "name_zh": "路由可觀察性覆蓋率",
+      "operational_definition": "可由可信遙測確認的路由事件占全部申稱事件的比例",
+      "interpretation_limit": "黑箱 API 要保留未知欄位",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-R12",
+      "name_zh": "跨任務／跨版本路由穩定性",
+      "operational_definition": "固定對照下能力與路由聯動的可重現程度",
+      "interpretation_limit": "expert ID 需版本對齊",
+      "group": "routing",
+      "source_paper": "03",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L01",
+      "name_zh": "來源再接觸頻率",
+      "operational_definition": "同一 `source_hash` 在指定週期內的接觸事件數",
+      "interpretation_limit": "不等同 optimizer step",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L02",
+      "name_zh": "每來源前向運算量",
+      "operational_definition": "指定來源對應的實際前向次數、token／FLOPs",
+      "interpretation_limit": "需分 batch 與重算",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L03",
+      "name_zh": "有效重構率",
+      "operational_definition": "初始失敗且後續獨立驗證改善的任務比例",
+      "interpretation_limit": "固定初始失敗分母",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L04",
+      "name_zh": "重構品質增量",
+      "operational_definition": "同版本驗證器的前後任務效用差",
+      "interpretation_limit": "無可比標籤則未知",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L05",
+      "name_zh": "同域／跨域操作分布",
+      "operational_definition": "各操作實際被選取與執行的頻次",
+      "interpretation_limit": "需記錄分類尺度",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L06",
+      "name_zh": "跨域橋接有效率",
+      "operational_definition": "已提跨域候選中通過目標橋接義務者比例",
+      "interpretation_limit": "不可把漂亮類比算成功",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L07",
+      "name_zh": "參數更新實施率",
+      "operational_definition": "確實產生可測參數位移的 optimizer step 占比",
+      "interpretation_limit": "需固定數值精度與量測閾值",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L08",
+      "name_zh": "梯度路徑覆蓋",
+      "operational_definition": "指定模組與步次獲得有效梯度的比例",
+      "interpretation_limit": "不等同學到知識",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L09",
+      "name_zh": "停止決策品質",
+      "operational_definition": "與預先註冊的停止比較程序之效用差",
+      "interpretation_limit": "標記反事實不確定性",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L10",
+      "name_zh": "成本配對後增益",
+      "operational_definition": "DAS-L 與等總成本基線的任務表現差",
+      "interpretation_limit": "報完整成本向量",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L11",
+      "name_zh": "原始約束保留",
+      "operational_definition": "重構後通過原始條件檢查之比例",
+      "interpretation_limit": "檢查器覆蓋必須揭露",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L12",
+      "name_zh": "舊任務保留率",
+      "operational_definition": "新訓練後，舊任務延遲測試表現相對變化",
+      "interpretation_limit": "固定測試資料與時間",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L13",
+      "name_zh": "獨立驗證分歧",
+      "operational_definition": "品質代理高分而外部驗證失敗的比例",
+      "interpretation_limit": "與代理自報分數分離",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L14",
+      "name_zh": "人類重述負擔",
+      "operational_definition": "達成指定成功條件所需使用者重述次數",
+      "interpretation_limit": "必須記錄原敘述充分性",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L15",
+      "name_zh": "學習—調用事件可辨識率",
+      "operational_definition": "訓練事件中有可追溯 ID 與版本連結的比例",
+      "interpretation_limit": "未觀測內部狀態標未知",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-L16",
+      "name_zh": "跨版本表徵策略保留",
+      "operational_definition": "控制器跨檢查點在未見題上的有效策略保留程度",
+      "interpretation_limit": "不能只比表面輸出",
+      "group": "training",
+      "source_paper": "04",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL01",
+      "name_zh": "來源展示次數",
+      "operational_definition": "每來源／窗口 `PRESENT` 事件數",
+      "interpretation_limit": "不等於讀懂全文",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL02",
+      "name_zh": "來源檢索次數",
+      "operational_definition": "每來源／窗口 `RETRIEVE` 事件數",
+      "interpretation_limit": "不等於權重記憶",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL03",
+      "name_zh": "來源重讀次數",
+      "operational_definition": "每來源／窗口 `REVISIT` 事件數",
+      "interpretation_limit": "必須標記主動／被動觸發",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL04",
+      "name_zh": "來源前向次數",
+      "operational_definition": "`FORWARD` 事件數與樣本 token 量",
+      "interpretation_limit": "必須區分 batch 粒度",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL05",
+      "name_zh": "來源反向次數",
+      "operational_definition": "`BACKWARD` 事件數",
+      "interpretation_limit": "不等於更新步次",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL06",
+      "name_zh": "參與優化器步次",
+      "operational_definition": "含來源樣本的唯一更新 ID 數",
+      "interpretation_limit": "不等於因果貢獻",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL07",
+      "name_zh": "參數位移觀測率",
+      "operational_definition": "位移超閾值更新數／已測更新數",
+      "interpretation_limit": "閾值、權重與優化器版本固定",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL08",
+      "name_zh": "表徵重構候選數",
+      "operational_definition": "`RECONSTRUCT` 候選 ID 數",
+      "interpretation_limit": "不等於有效新知",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL09",
+      "name_zh": "重構外驗通過率",
+      "operational_definition": "外驗通過候選／已外驗候選",
+      "interpretation_limit": "題型與契約版本固定",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL10",
+      "name_zh": "同域深化比例",
+      "operational_definition": "經確認同域候選／可分類重構候選",
+      "interpretation_limit": "分類器有不確定性",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL11",
+      "name_zh": "跨域橋接候選數",
+      "operational_definition": "`DOMAIN_BRIDGE` 提案數",
+      "interpretation_limit": "類比不等於橋接成功",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL12",
+      "name_zh": "跨域橋接驗證率",
+      "operational_definition": "通過橋接義務候選／已正式驗證候選",
+      "interpretation_limit": "不使用無法證明者當失敗",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL13",
+      "name_zh": "專家路由可觀測率",
+      "operational_definition": "有內部路由憑證的調用／應記錄調用",
+      "interpretation_limit": "封閉模型標不適用或未知",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL14",
+      "name_zh": "路由負載分布",
+      "operational_definition": "專家啟用次數／全部已觀測啟用",
+      "interpretation_limit": "不推測學科語義",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL15",
+      "name_zh": "表徵跨檢查點可比較率",
+      "operational_definition": "滿足同基準契約比較數／擬比較數",
+      "interpretation_limit": "不把 CKA 當正確性",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL16",
+      "name_zh": "因果介入可識別率",
+      "operational_definition": "有受控介入且符合前提的主張／提出之因果主張",
+      "interpretation_limit": "需公開比較設計",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL17",
+      "name_zh": "訓練遺忘事件率",
+      "operational_definition": "固定題集正轉錯次數／符合重測條件對數",
+      "interpretation_limit": "隨機性與題庫污染揭露",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL18",
+      "name_zh": "再學習保留率",
+      "operational_definition": "再學後延遲測驗通過項／符合測驗項",
+      "interpretation_limit": "與單次再答對分開",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL19",
+      "name_zh": "事件溯源完備率",
+      "operational_definition": "必要欄位及父事件存在之紀錄／應記錄事件",
+      "interpretation_limit": "完備不等於真實",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-LL20",
+      "name_zh": "單位有效重構成本",
+      "operational_definition": "全任務成本向量／有效外驗重構數",
+      "interpretation_limit": "分母為零時不定義；公開失敗成本",
+      "group": "ledger",
+      "source_paper": "05",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V01",
+      "name_zh": "等預算外驗成功率",
+      "operational_definition": "指定外部契約下通過任務／全部合格分配任務",
+      "interpretation_limit": "固定總預算與工具",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V02",
+      "name_zh": "初始失敗救回率",
+      "operational_definition": "公共初始失敗題的後續通過比例",
+      "interpretation_limit": "分母須由分配前固定",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V03",
+      "name_zh": "原始條件遺漏率",
+      "operational_definition": "遺漏指定必要條件之候選／可檢候選",
+      "interpretation_limit": "驗證覆蓋要報告",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V04",
+      "name_zh": "表徵重構有效率",
+      "operational_definition": "有轉換憑證且增加外驗效用之候選／已正式檢候選",
+      "interpretation_limit": "不等同語義新穎度",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V05",
+      "name_zh": "同域深化有效率",
+      "operational_definition": "有效同域操作／可驗同域操作",
+      "interpretation_limit": "域分類標未知項",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V06",
+      "name_zh": "跨域橋接外驗率",
+      "operational_definition": "具橋接義務且通過者／已正式橋接驗證者",
+      "interpretation_limit": "類比不得當證明",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V07",
+      "name_zh": "未驗證類比當證明率",
+      "operational_definition": "未完成橋接驗證卻被宣稱成立者／相關宣稱",
+      "interpretation_limit": "分母包含失敗宣稱",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V08",
+      "name_zh": "獨立驗證分歧率",
+      "operational_definition": "內部判成功而外部判失敗之比較／有共同判準者",
+      "interpretation_limit": "需指定評審版本",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V09",
+      "name_zh": "無根據事實斷言率",
+      "operational_definition": "缺必要證據而確定宣稱之項／可稽核事實宣稱",
+      "interpretation_limit": "非所有無法查核即判錯",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V10",
+      "name_zh": "不確定表達適切率",
+      "operational_definition": "在不可判定題上合理標記未知之件數／有標註題",
+      "interpretation_limit": "拒答不等於正確完成",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V11",
+      "name_zh": "程式隱藏測試通過率",
+      "operational_definition": "通過未見測試之補丁／全部合格提交",
+      "interpretation_limit": "測試集污染需追查",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V12",
+      "name_zh": "程式回歸破壞率",
+      "operational_definition": "新破壞已保證行為之補丁／合格補丁",
+      "interpretation_limit": "環境版本一致",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V13",
+      "name_zh": "Agent 終態達標率",
+      "operational_definition": "合規到達目標狀態之試驗／全部試驗",
+      "interpretation_limit": "非僅最後文字答覆",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V14",
+      "name_zh": "Agent 多跑一致性",
+      "operational_definition": "$\\widehat{\\mathrm{pass}}^{\\,k}$ 與各 $k$ 的對照",
+      "interpretation_limit": "重跑未必獨立",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V15",
+      "name_zh": "越權或不可逆錯誤率",
+      "operational_definition": "有明確違規或不可逆錯誤之試驗／合格試驗",
+      "interpretation_limit": "需模擬安全邊界",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V16",
+      "name_zh": "人類語義重述負擔",
+      "operational_definition": "為補救初次誤解所需額外重述／任務",
+      "interpretation_limit": "澄清與補證另帳",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V17",
+      "name_zh": "完整任務總成本",
+      "operational_definition": "所有成功、失敗、重試與人類成本向量",
+      "interpretation_limit": "禁止只算成功案例",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V18",
+      "name_zh": "每有效成功總成本",
+      "operational_definition": "全部嘗試成本／外驗成功數",
+      "interpretation_limit": "零成功記未定義",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V19",
+      "name_zh": "延遲尾部成本",
+      "operational_definition": "p50、p95、p99 任務時延及超時比例",
+      "interpretation_limit": "固定硬體和排隊策略",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V20",
+      "name_zh": "無效探索率",
+      "operational_definition": "無通過新義務且消耗預算的操作／探索操作",
+      "interpretation_limit": "未驗證與無效分開",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V21",
+      "name_zh": "早停適切性",
+      "operational_definition": "符合預註冊停機契約之決策／可判定決策",
+      "interpretation_limit": "反事實最佳值通常未知",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V22",
+      "name_zh": "等預算路由消融效果",
+      "operational_definition": "全模組與移除指定認知／專家路由的配對差",
+      "interpretation_limit": "參數與控制介入對齊",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V23",
+      "name_zh": "未見題策略保留效益",
+      "operational_definition": "DAS-L 相對對照在保留集與延遲測試的效果",
+      "interpretation_limit": "訓練暴露與檢查點固定",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    },
+    {
+      "metric_id": "DAS-V24",
+      "name_zh": "數據污染與可觀測性覆蓋",
+      "operational_definition": "已審核任務／事件占應審核範圍之比例",
+      "interpretation_limit": "不可將未知寫成零污染",
+      "group": "evaluation",
+      "source_paper": "06",
+      "value": null,
+      "observation_state": "not_measured"
+    }
+  ]
+}

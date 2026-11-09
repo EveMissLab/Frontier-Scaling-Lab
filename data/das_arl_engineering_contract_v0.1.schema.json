@@ -1,0 +1,636 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/EveMissLab/Frontier-Scaling-Lab/blob/main/data/das_arl_engineering_contract_v0.1.schema.json",
+  "title": "DAS-ARL Engineering Contract v0.1",
+  "description": "Proposed strict record shapes; not a deployed service. Evidence class and event type must remain explicit.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/task_contract"
+    },
+    {
+      "$ref": "#/$defs/cognitive_event"
+    },
+    {
+      "$ref": "#/$defs/verification_receipt"
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "obligation_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receipt_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_input_tokens",
+        "max_output_tokens",
+        "max_tool_calls",
+        "max_wall_ms"
+      ],
+      "properties": {
+        "max_input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_output_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_tool_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_wall_ms": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "task_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_type",
+        "schema_version",
+        "task_id",
+        "source_sha256",
+        "source_visibility",
+        "model_ref",
+        "dataset_split",
+        "task_domain",
+        "obligation_ids",
+        "permitted_actions",
+        "max_iterations",
+        "budget",
+        "external_side_effects",
+        "evidence_class"
+      ],
+      "properties": {
+        "record_type": {
+          "const": "task_contract"
+        },
+        "schema_version": {
+          "const": "das-arl-engineering/0.1"
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_visibility": {
+          "enum": [
+            "private",
+            "authorized",
+            "public",
+            "synthetic"
+          ]
+        },
+        "model_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dataset_split": {
+          "enum": [
+            "synthetic",
+            "train",
+            "dev",
+            "test",
+            "holdout",
+            "unknown"
+          ]
+        },
+        "task_domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "obligation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "permitted_actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "RE_EXTRACT",
+              "INTRA",
+              "RE_FACTOR",
+              "CROSS",
+              "TOOL_VERIFY",
+              "STOP",
+              "ESCALATE"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "max_iterations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "budget": {
+          "$ref": "#/$defs/budget"
+        },
+        "external_side_effects": {
+          "enum": [
+            "disabled",
+            "restricted",
+            "allowed_by_preexisting_authorization"
+          ]
+        },
+        "evidence_class": {
+          "enum": [
+            "synthetic",
+            "observed",
+            "inferred",
+            "author_claimed",
+            "unresolved"
+          ]
+        },
+        "constraints_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verifier_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "privacy_policy_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "cognitive_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_type",
+        "schema_version",
+        "event_id",
+        "task_id",
+        "run_id",
+        "timestamp_utc",
+        "kind",
+        "iteration",
+        "source_sha256",
+        "model_version",
+        "evidence_class",
+        "observability",
+        "privacy_class",
+        "parent_event_ids",
+        "action",
+        "representation_id",
+        "verdict_ref",
+        "resource_receipt"
+      ],
+      "properties": {
+        "record_type": {
+          "const": "cognitive_event"
+        },
+        "schema_version": {
+          "const": "das-arl-engineering/0.1"
+        },
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "kind": {
+          "enum": [
+            "SOURCE_EXPOSE",
+            "RETRIEVE",
+            "INFER_FORWARD",
+            "RECONSTRUCT",
+            "VERIFY",
+            "TRAIN_FORWARD",
+            "TRAIN_BACKWARD",
+            "OPTIMIZER_STEP",
+            "PARAMETER_DELTA",
+            "REPLAY_EVAL"
+          ]
+        },
+        "iteration": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "model_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_class": {
+          "enum": [
+            "synthetic",
+            "observed",
+            "inferred",
+            "author_claimed",
+            "unresolved"
+          ]
+        },
+        "observability": {
+          "enum": [
+            "direct",
+            "estimated",
+            "intervention",
+            "unavailable"
+          ]
+        },
+        "privacy_class": {
+          "enum": [
+            "public_synthetic",
+            "public_authorized",
+            "internal_restricted"
+          ]
+        },
+        "parent_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "action": {
+          "oneOf": [
+            {
+              "enum": [
+                "RE_EXTRACT",
+                "INTRA",
+                "RE_FACTOR",
+                "CROSS",
+                "TOOL_VERIFY",
+                "STOP",
+                "ESCALATE"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "representation_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verdict_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resource_receipt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "input_tokens",
+            "output_tokens",
+            "tool_calls",
+            "wall_ms"
+          ],
+          "properties": {
+            "input_tokens": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "output_tokens": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "tool_calls": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "wall_ms": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "gpu_seconds": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "peak_vram_bytes": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "missing_reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "learning_run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "batch_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "microbatch_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "accumulation_group": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "optimizer_step_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "parameter_delta_l2": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "TRAIN_FORWARD",
+                  "TRAIN_BACKWARD",
+                  "OPTIMIZER_STEP",
+                  "PARAMETER_DELTA"
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "learning_run_id"
+            ],
+            "properties": {
+              "learning_run_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "OPTIMIZER_STEP"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "optimizer_step_id"
+            ],
+            "properties": {
+              "optimizer_step_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "verification_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_type",
+        "schema_version",
+        "receipt_id",
+        "task_id",
+        "candidate_id",
+        "timestamp_utc",
+        "verifier_id",
+        "verifier_version",
+        "status",
+        "obligation_results",
+        "receipt_ref",
+        "archival_decision",
+        "evidence_class"
+      ],
+      "properties": {
+        "record_type": {
+          "const": "verification_receipt"
+        },
+        "schema_version": {
+          "const": "das-arl-engineering/0.1"
+        },
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verifier_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verifier_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verifier_kind": {
+          "enum": [
+            "deterministic",
+            "human",
+            "independent_model",
+            "other"
+          ]
+        },
+        "independence_statement": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "unknown",
+            "not_applicable",
+            "timeout",
+            "unsupported",
+            "policy_blocked"
+          ]
+        },
+        "obligation_results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/obligation_result"
+          }
+        },
+        "receipt_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "archival_decision": {
+          "enum": [
+            "approved_verified",
+            "retain_as_unresolved",
+            "rejected",
+            "not_eligible"
+          ]
+        },
+        "evidence_class": {
+          "enum": [
+            "synthetic",
+            "observed",
+            "inferred",
+            "author_claimed",
+            "unresolved"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "archival_decision": {
+                "const": "approved_verified"
+              }
+            },
+            "required": [
+              "archival_decision"
+            ]
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "pass"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

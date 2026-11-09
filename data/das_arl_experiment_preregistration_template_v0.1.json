@@ -1,0 +1,114 @@
+{
+  "$comment": "SYNTHETIC/SCHEMA TEMPLATE ONLY — do not publish these fields as measured DAS performance.",
+  "schema_version": "das-arl-preregistration/0.1",
+  "status": "template_unregistered",
+  "research_track": "DAS-ARL",
+  "created_on": "2026-11-09",
+  "source_rfc": "docs/das_arl/DAS_ARL_ENGINEERING_RFC_001_2026-11-09.md",
+  "evidence_class": "definitions_only",
+  "study_id": null,
+  "submitted_before_evaluation": null,
+  "run_environment": {
+    "backbone_revision": null,
+    "tokenizer_revision": null,
+    "controller_revision": null,
+    "verifier_revision": null,
+    "hardware_receipt_ref": null,
+    "framework_versions": null,
+    "seed_list": [],
+    "data_license_manifest_ref": null
+  },
+  "split_policy": {
+    "train_manifest_ref": null,
+    "dev_manifest_ref": null,
+    "heldout_manifest_ref": null,
+    "leakage_audit_ref": null,
+    "stratification_keys": [
+      "task_family",
+      "source_version",
+      "time_period",
+      "language"
+    ]
+  },
+  "baselines": [
+    {
+      "id": "B0",
+      "description": "single-pass baseline"
+    },
+    {
+      "id": "B1",
+      "description": "extra fixed-budget self-reflection"
+    },
+    {
+      "id": "B2",
+      "description": "fixed repeated source reading"
+    },
+    {
+      "id": "B3",
+      "description": "full DAS cognitive control with independent validation"
+    },
+    {
+      "id": "B4",
+      "description": "DAS without original source revisit"
+    },
+    {
+      "id": "B5",
+      "description": "DAS without active representation operation routing"
+    },
+    {
+      "id": "B6",
+      "description": "MoE cognitive/compute-router separation ablation, when applicable"
+    }
+  ],
+  "task_families": [
+    "mathematics",
+    "code_repair",
+    "sandbox_agent",
+    "open_ended_argumentation"
+  ],
+  "budget_grid": {
+    "matched_input_tokens": [],
+    "matched_output_tokens": [],
+    "matched_tool_calls": [],
+    "matched_wall_ms": [],
+    "matched_total_costs": []
+  },
+  "primary_outcome": null,
+  "secondary_outcomes": [
+    "independently_verified_success",
+    "source_fidelity",
+    "obligation_coverage",
+    "valid_representation_gain",
+    "repeat_failure_rate",
+    "overthinking_regression_rate",
+    "end_to_end_latency_ms",
+    "total_task_cost",
+    "human_restatement_events",
+    "policy_violation_count"
+  ],
+  "statistical_plan": {
+    "paired_by": "task_id",
+    "sample_size_per_family": null,
+    "confidence_interval": "95_percent",
+    "alpha": null,
+    "multiple_comparisons_plan": null,
+    "stopping_rule": null,
+    "failure_handling": "include_all_failed_or_aborted_attempts",
+    "negative_results_reported": true
+  },
+  "release_gates": {
+    "unauthorized_tool_actions_max": 0,
+    "source_substitutions_max": 0,
+    "gold_answer_mutations_max": 0,
+    "private_content_leak_incidents_max": 0,
+    "schema_validation_required": true,
+    "baseline_comparison_required": true,
+    "independent_verifier_required_when_claiming_verified": true
+  },
+  "observation": {
+    "value": null,
+    "observation_state": "not_measured",
+    "evidence_receipt_refs": []
+  },
+  "notes": "Template requires explicit pre-registration and real independent evaluation before collecting observations. No pass/fail results here."
+}

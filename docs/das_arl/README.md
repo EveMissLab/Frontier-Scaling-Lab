@@ -26,7 +26,7 @@
 
 - [**SUP-01 — Synthetic Data Representational Re-mining and State-Dependent Relearning (2026-11-09)**](DAS_ARL_SUP_01_Synthetic_Data_Representational_Remining_2026-11-09.md)
 
-This supplement explores conditional reuse of real/synthetic training sources, representation changes, verification boundaries, model-collapse risks, and equal-budget evaluation. It proposes 12 **additional unmeasured metric definitions (DAS-SR01–12)** only within the supplement; these are **not incorporated into or counted as part of the existing 72-item catalog**, and no model experiment or synthetic-data learning gain is claimed. The original six canonical papers remain unchanged.
+**SUP-01 v0.2.0 (revised 2026-11-10)** extends the research from real/synthetic data reuse to the proposed second-to-X-stage reinterpretation and reuse of scientific theories, software, products, engineering artifacts, and historical AI outputs. It separates revisit counts from validated representation changes and actual utilization; proposes cross-model, time-isolated and budget-matched tests; and retains model-collapse and verifier-bias limits. The 12 supplementary DAS-SR01–12 definitions remain **unmeasured and outside the existing 72-item catalog**. No actual model or product gains are claimed. The original six canonical papers are unchanged.
 
 ## Candidate metric definitions
 

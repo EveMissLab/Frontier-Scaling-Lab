@@ -14,6 +14,14 @@
 5. [05 — Learning Spectrum Ledger and Neural Coupling](DAS_ARL_05_Learning_Spectrum_Ledger_Representation_Trajectories_Neural_Coupling_2026-11-09.md)
 6. [06 — Validation, Benefit and Cost Boundaries](DAS_ARL_06_Validation_Benefits_Cost_Boundaries_2026-11-09.md)
 
+## Engineering implementation RFC (2026-11-09)
+
+- [**RFC-001 — How to integrate DAS with current Transformer, optional MoE and Agent stacks**](DAS_ARL_ENGINEERING_RFC_001_2026-11-09.md)
+- [**Task / cognitive-event / verification-receipt JSON Schema (draft v0.1)**](../../data/das_arl_engineering_contract_v0.1.schema.json)
+- [**Experiment preregistration template (unregistered, unmeasured)**](../../data/das_arl_experiment_preregistration_template_v0.1.json)
+
+**Document status:** PROPOSED_NOT_IMPLEMENTED. The RFC specifies an external orchestration MVP first, then an optional learned controller / adapter, and only then native recurrent hidden-state integration. It does not claim that any of these runtime modules or DAS models have been implemented or empirically validated. It requires verification receipts, budget-matched baselines, privacy and authorization gates, and an event ledger that separates inference from optimizer updates.
+
 ## Candidate metric definitions
 
 Machine-readable catalog: [data/das_arl_indicator_catalog_v0.1.json](../../data/das_arl_indicator_catalog_v0.1.json).

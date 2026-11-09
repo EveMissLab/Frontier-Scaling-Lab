@@ -5,6 +5,14 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## DAS-ARL Research Indicators — Deep Attention Spectrum (2026-11-09)
+
+[**Six canonical research papers**](docs/das_arl/README.md) · [**72 candidate metric definitions (JSON)**](data/das_arl_indicator_catalog_v0.1.json)
+
+An independent, additive proposed research track for same-source representational reconstruction, intra-/cross-domain routing, DAS-L learning control, DAS-LL event provenance, and equal-budget evaluation. It defines 12 routing, 16 learning, 20 learning-ledger, and 24 evaluation/cost indicators. **All are unmeasured (`value: null` / `not_measured`).** Formal counterexamples and SYNTHETIC sanity checks must not be represented as actual AI capabilities, benchmark victories, or evidence of resolved hallucinations.
+
+---
+
 ## v0.20 — AI-Mediated Physical Manufacturing: Quality, Completion, Cost and Beyond-Human Frontiers / 物理實體製造品質
 
 [**Canonical UTF-8 v0.20 research source**](docs/AI_PHYSICAL_MANUFACTURING_QUALITY_FRONTIER_v0.20.md) ·

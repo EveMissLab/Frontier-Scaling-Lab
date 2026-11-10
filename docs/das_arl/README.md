@@ -28,6 +28,10 @@
 
 New supplementary conjecture track, **not a replacement for the original six DAS-ARL papers**. DRC treats the whole AI as an observer-relative effective unit and proposes studying dynamic multiscale representations. Its future protocol varies direct vs deliberate answers, target budgets of 30/40/50/60 seconds, and independent vs continued reasoning rounds, strictly separating output changes from internal neural evidence. **Status: DOCUMENTED_NOT_TESTED; no experiment has been executed.** DRC-E01–12 and DRC-G01–10 are 22 proposed unmeasured indicators, not incorporated into the existing 72 DAS-ARL indicators.
 
+## Global Phase Space supplement (DRC-SUP-01, 2026-11-10)
+
+[**Global Phase Space: Representational Field States, Observer Projections and Reasoning Trajectories**](DRC_SUP_01_Global_Phase_Space_2026-11-10.md) extends DRC-01–03 with the mathematical distinction between admissible state space, reachable states, observed states, actual trajectories, observer-relative projections, and geodesic hypotheses. It introduces 12 **unmeasured** DRC-GPS01–12 research definitions. This document is a proposal, **not an executed model study**, and does not modify the original DAS-ARL 72-item candidate catalog.
+
 ## Supplementary research
 
 - [**SUP-01 — Synthetic Data Representational Re-mining and State-Dependent Relearning (2026-11-09)**](DAS_ARL_SUP_01_Synthetic_Data_Representational_Remining_2026-11-09.md)

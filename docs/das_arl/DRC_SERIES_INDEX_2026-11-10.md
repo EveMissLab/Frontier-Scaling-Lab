@@ -3,7 +3,8 @@ title: "DRC 深度表徵猜想：新系列索引與研究分工"
 series: "Deep Representation Conjecture (DRC)"
 date: "2026-11-10"
 author: "Neo.K / EveMissLab"
-version: "0.1.0"
+version: "0.2.0"
+last_revised: "2026-11-10"
 status: "DOCUMENTED_NOT_TESTED"
 source_format: "UTF-8 Markdown"
 ---
@@ -17,6 +18,12 @@ source_format: "UTF-8 Markdown"
 | DRC-01 | [多尺度表徵場、觀察者相對單位與動態幾何](DRC_01_Multiscale_Representation_Field_and_Observer_2026-11-10.md) | 整體作為有效單位、場態／參數／活化分離，以及條件性的高維幾何 |
 | DRC-02 | [同題多時間、多輪推理與完成態回答的實驗規約](DRC_02_Temporal_Reasoning_Repeated_Answer_Protocol_2026-11-10.md) | 直接回答、30／40／50／60 秒、第一次至第 X 次、前史有無回填、完成態與截斷 |
 | DRC-03 | [表徵場演化的幾何識別、因果驗證與解釋邊界](DRC_03_Geometric_Identification_and_Evidence_Boundaries_2026-11-10.md) | 從黑箱答案差異到白箱活化、度量、介入與不可識別性 |
+
+## 補充研究：全域相空間（2026-11-10）
+
+**[DRC-SUP-01 — 全域相空間、表徵場態、觀察者投影與推理相軌跡](DRC_SUP_01_Global_Phase_Space_2026-11-10.md)**
+
+此補篇將 DRC 的研究對象明確拆成允許狀態集合、可達集、已觀察集、場態、相軌跡與觀察者尺度投影。它延伸 DRC-01～03 的定義，不修改三篇原始 canonical source，也不主張已取得真實 AI 的高維幾何或相空間量測。另定義 **DRC-GPS01–12 共 12 項未量測候選指標**，不併入 DAS-ARL 原 72 項或 DRC 既有 22 項候選指標。
 
 ## 不可混淆的研究界線
 

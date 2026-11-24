@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing fsl_substitution fsl_epistemic fsl_epoch scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing fsl_substitution fsl_epistemic fsl_epoch fsl_distribution scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -173,3 +173,9 @@ jobs:
           python -m fsl_epoch.cli audit --file tests/fixtures/hcao_synthetic_v0.23.json --as-of 2026-11-25T10:30:00Z --output /tmp/hcao_early.json
           python -m fsl_epoch.cli audit --file tests/fixtures/hcao_synthetic_v0.23.json --as-of 2026-11-25T11:30:00Z --mode retrospective_reconstruction --output /tmp/hcao_retro.json
           python -c "import json; a=json.load(open('/tmp/hcao_early.json')); b=json.load(open('/tmp/hcao_retro.json')); assert a['visible_event_count']==3 and b['visible_event_count']==4; assert a['recorded_observational_assertions'] is None and not b['systemic_singularity_certified']; x={r['frame']['frame_id']:r['conditional_result'] for r in a['synthetic_scenario']['frames']}; assert x['epoch']['shared_resource_model']['joint_status']=='infeasible'; assert x['feedback']['linear_feedback_model']['conditional_regime']=='supercritical'; assert x['transition']['queue']['cumulative_discrete_event_days']==360"
+      - name: v0.24 RSDO scarcity, income and institutional protection (SYNTHETIC)
+        run: |
+          python -m fsl_distribution.cli catalog
+          python -m fsl_distribution.cli audit --file tests/fixtures/rsdo_synthetic_v0.24.json --as-of 2026-11-25T10:30:00Z --output /tmp/rsdo_early.json
+          python -m fsl_distribution.cli audit --file tests/fixtures/rsdo_synthetic_v0.24.json --as-of 2026-11-25T11:30:00Z --mode retrospective_reconstruction --output /tmp/rsdo_retro.json
+          python -c "import json; a=json.load(open('/tmp/rsdo_early.json')); b=json.load(open('/tmp/rsdo_retro.json')); assert a['visible_event_count']==3 and b['visible_event_count']==4; assert a['recorded_observational_assertions'] is None and not b['policy_certified']; x={r['frame']['frame_id']:r['conditional_result'] for r in a['synthetic_scenario']['frames']}; assert x['scarcity']['competitive']['conditional_result']['incremental_rent_share_of_positive_surplus_gain']=={'numerator':1,'denominator':1}; assert x['income']['cash_rights']['conditional_result']['fixed_rights_any_finite_pool_infeasible']; assert x['institutions']['funding']['conditional_result']['robust_minimum_opening_cash_minor']==9"

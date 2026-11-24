@@ -5,6 +5,22 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.24 — Residual Scarcity and Distribution Observatory (RSDO) / 殘餘稀缺與文明分配
+
+[**Canonical protocol**](docs/RESIDUAL_SCARCITY_DISTRIBUTION_OBSERVATORY_v0.24.md) · [**36 unmeasured RSL-M / IPD-M / CTI-M groups**](data/rsdo_indicator_catalog_v0.24.json) · [**Observation schema**](data/rsdo_observation_schema_v0.24.json)
+
+Additive ASTT-10/11/12 implementation: complement value, directed capacity and min-cut sensitivity, competitive scarcity rent, outside options, final cash-beneficiary concentration and finite rent windows; fixed baskets, income-expenditure routing, market absorption, bounded lagged demand, cash rights and fixed physical supply; timely delivery bounds, reserve stress tests, joint benefit withdrawal, grouped service access, common-gate backup bounds and optional-support hysteresis. Recorded inputs and synthetic scenarios are kept separate; no economic forecast, legal entitlement, policy execution, causal effect, or independent empirical certification. Existing ASTT sources, ASSO, KIF, HCAO, GICCF and SAS-01 remain unchanged.
+
+```bash
+python -m fsl_distribution.cli catalog
+python -m fsl_distribution.cli audit --file tests/fixtures/rsdo_synthetic_v0.24.json --as-of 2026-11-25
+python -m unittest discover -s tests -v
+```
+
+All examples are SYNTHETIC. v0.25 RRAO remains planned.
+
+---
+
 ## v0.23 — Heterogeneous Coupling and Acceleration Observatory (HCAO) / 異質時代與跨域加速
 
 [**Canonical protocol**](docs/HETEROGENEOUS_COUPLING_ACCELERATION_OBSERVATORY_v0.23.md) · [**36 unmeasured SET-M / CFA-M / CAT-M groups**](data/hcao_indicator_catalog_v0.23.json) · [**Observation schema**](data/hcao_observation_schema_v0.23.json)
@@ -17,7 +33,7 @@ python -m fsl_epoch.cli audit --file tests/fixtures/hcao_synthetic_v0.23.json --
 python -m unittest discover -s tests -v
 ```
 
-All examples are SYNTHETIC. v0.24–0.25 remain planned.
+All examples are SYNTHETIC. See the separate v0.24 track and v0.25 plan.
 
 ---
 

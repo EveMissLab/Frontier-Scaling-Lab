@@ -1,0 +1,663 @@
+{
+  "schema_version": "fsl/rsdo/0.24",
+  "catalog_version": "0.24.0",
+  "study_id": "SYNTHETIC-rsdo",
+  "data_class": "synthetic",
+  "registered_at": "2026-11-01T00:00:00Z",
+  "registration_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "window_start": "2026-11-02T00:00:00Z",
+  "window_end": "2026-11-25T00:00:00Z",
+  "frames": [
+    {
+      "frame_id": "scarcity",
+      "kind": "scarcity",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07",
+        "D14"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "min_public_cell": 10
+    },
+    {
+      "frame_id": "income",
+      "kind": "income",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07",
+        "D14"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "min_public_cell": 10
+    },
+    {
+      "frame_id": "institutions",
+      "kind": "institutions",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07",
+        "D14"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "min_public_cell": 10
+    },
+    {
+      "frame_id": "unmeasured",
+      "kind": "income",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07",
+        "D14"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "min_public_cell": 10
+    }
+  ],
+  "events": [
+    {
+      "event_id": "scarcity-1",
+      "frame_id": "scarcity",
+      "kind": "scarcity",
+      "data": {
+        "complement": {
+          "assumed": true,
+          "target_capacity": 2,
+          "other_capacity": 1,
+          "other_expanded_capacity": 4,
+          "net_values_minor": [
+            50,
+            40,
+            30,
+            20
+          ]
+        },
+        "network": {
+          "assumed": true,
+          "nodes": [
+            "s",
+            "m",
+            "t"
+          ],
+          "source": "s",
+          "sink": "t",
+          "edges": [
+            {
+              "edge_id": "left",
+              "source": "s",
+              "target": "m",
+              "capacity": 3
+            },
+            {
+              "edge_id": "right",
+              "source": "m",
+              "target": "t",
+              "capacity": 3
+            }
+          ],
+          "joint_expansions": [
+            {
+              "edge_id": "left",
+              "increment": 1
+            },
+            {
+              "edge_id": "right",
+              "increment": 1
+            }
+          ]
+        },
+        "competitive": {
+          "assumed": true,
+          "alpha_minor": 100,
+          "beta_minor": 2,
+          "capacity": 10,
+          "opportunity_cost_minor": 10,
+          "ai_before_minor": 50,
+          "ai_after_minor": 20
+        },
+        "outside_option": {
+          "assumed": true,
+          "value_minor": 100,
+          "buyer_outside_before_minor": 10,
+          "buyer_outside_after_minor": 50,
+          "seller_outside_minor": 20,
+          "seller_share_bps": 7500
+        },
+        "beneficiary_ledger": {
+          "assumed": true,
+          "nonduplicated_realized_rent_attested": true,
+          "beneficiary_contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+          "beneficiary_ids": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "interfaces": [
+            {
+              "interface_id": "asset-0",
+              "realized_rent_minor": 25,
+              "final_shares_bps": {
+                "A": 10000,
+                "B": 0,
+                "C": 0,
+                "D": 0
+              }
+            },
+            {
+              "interface_id": "asset-1",
+              "realized_rent_minor": 25,
+              "final_shares_bps": {
+                "A": 0,
+                "B": 10000,
+                "C": 0,
+                "D": 0
+              }
+            },
+            {
+              "interface_id": "asset-2",
+              "realized_rent_minor": 25,
+              "final_shares_bps": {
+                "A": 0,
+                "B": 0,
+                "C": 10000,
+                "D": 0
+              }
+            },
+            {
+              "interface_id": "asset-3",
+              "realized_rent_minor": 25,
+              "final_shares_bps": {
+                "A": 0,
+                "B": 0,
+                "C": 0,
+                "D": 10000
+              }
+            }
+          ],
+          "merge_pair": [
+            "A",
+            "B"
+          ]
+        },
+        "window": {
+          "assumed": true,
+          "discount_bps": 9000,
+          "rent_before_minor": [
+            100,
+            100,
+            100,
+            100
+          ],
+          "rent_after_minor": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "opening_periods": [
+            1,
+            3,
+            4,
+            null
+          ]
+        }
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T09:00:00Z",
+      "fsl_recorded_at": "2026-11-25T10:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "income-1",
+      "frame_id": "income",
+      "kind": "income",
+      "data": {
+        "fixed_basket": {
+          "assumed": true,
+          "quality_basket_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+          "income_before_minor": 100,
+          "income_after_minor": 70,
+          "items": [
+            {
+              "item_id": "essential",
+              "quantity": 1,
+              "price_before_minor": 80,
+              "price_after_minor": 80
+            },
+            {
+              "item_id": "digital",
+              "quantity": 1,
+              "price_before_minor": 20,
+              "price_after_minor": 10
+            }
+          ]
+        },
+        "income_routing": {
+          "assumed": true,
+          "expenditure_scope_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+          "groups": [
+            {
+              "group_id": "high-propensity",
+              "income_delta_minor": -20,
+              "marginal_expenditure_bps": 8000
+            },
+            {
+              "group_id": "low-propensity",
+              "income_delta_minor": 40,
+              "marginal_expenditure_bps": 2000
+            }
+          ]
+        },
+        "market_absorption": {
+          "assumed": true,
+          "capacity": 10,
+          "use_limit": 10,
+          "budget_minor": 12,
+          "price_before_minor": 4,
+          "price_after_minor": 1
+        },
+        "demand_feedback": {
+          "assumed": true,
+          "capacity": 200,
+          "autonomous_demand": 30,
+          "feedback_bps": 5000,
+          "initial_output": 0,
+          "periods": 8
+        },
+        "cash_rights": {
+          "assumed": true,
+          "disjoint_cash_ledger_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+          "legally_distributable_attested": true,
+          "opening_available_minor": 20,
+          "realized_net_receipts_minor": 120,
+          "priority_due_minor": 10,
+          "committed_investment_minor": 20,
+          "reserve_minor": 10,
+          "groups": [
+            {
+              "group_id": "A",
+              "cash_gap_minor": 30,
+              "fixed_cash_share_bps": 0
+            },
+            {
+              "group_id": "B",
+              "cash_gap_minor": 20,
+              "fixed_cash_share_bps": 0
+            },
+            {
+              "group_id": "C",
+              "cash_gap_minor": 0,
+              "fixed_cash_share_bps": 10000
+            }
+          ]
+        },
+        "physical_clearing": {
+          "assumed": true,
+          "capacity": 10,
+          "uniform_budget_scale_bps": 20000,
+          "groups": [
+            {
+              "group_id": "A",
+              "budget_minor": 20,
+              "physical_target": 4
+            },
+            {
+              "group_id": "B",
+              "budget_minor": 80,
+              "physical_target": 4
+            }
+          ]
+        }
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T09:00:00Z",
+      "fsl_recorded_at": "2026-11-25T10:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "institutions-1",
+      "frame_id": "institutions",
+      "kind": "institutions",
+      "data": {
+        "delivery": {
+          "cohort_n": 100,
+          "deadline_contract_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+          "timely": 60,
+          "late": 20,
+          "unmet": 10,
+          "unknown": 10
+        },
+        "funding": {
+          "assumed": true,
+          "cash_ledger_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+          "opening_cash_minor": 7,
+          "reserve_minor": 2,
+          "fixed_obligations_minor": [
+            2,
+            2
+          ],
+          "scenarios": [
+            {
+              "scenario_id": "base",
+              "net_receipts_minor": [
+                0,
+                10
+              ],
+              "priority_due_minor": [
+                3,
+                3
+              ]
+            },
+            {
+              "scenario_id": "stress",
+              "net_receipts_minor": [
+                0,
+                3
+              ],
+              "priority_due_minor": [
+                3,
+                3
+              ]
+            }
+          ]
+        },
+        "tax_benefits": {
+          "assumed": true,
+          "tax_bps": 2500,
+          "programs": [
+            {
+              "program_id": "continuous",
+              "kind": "continuous",
+              "max_benefit_minor": 5,
+              "threshold_minor": 10,
+              "withdrawal_bps": 5000
+            },
+            {
+              "program_id": "cliff",
+              "kind": "cliff",
+              "max_benefit_minor": 5,
+              "threshold_minor": 10,
+              "withdrawal_bps": null
+            }
+          ],
+          "gross_income_grid_minor": [
+            0,
+            9,
+            10,
+            13,
+            20
+          ]
+        },
+        "service_access": {
+          "assumed": true,
+          "service_contract_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+          "grouped_compatibility": {
+            "groups": [
+              {
+                "group_id": "A",
+                "count": 2
+              },
+              {
+                "group_id": "B",
+                "count": 1
+              }
+            ],
+            "slots": [
+              {
+                "slot_id": "near",
+                "count": 1
+              },
+              {
+                "slot_id": "far",
+                "count": 2
+              }
+            ],
+            "compatibilities": [
+              {
+                "group_id": "A",
+                "slot_id": "near",
+                "compatibility": "allowed"
+              },
+              {
+                "group_id": "A",
+                "slot_id": "far",
+                "compatibility": "blocked"
+              },
+              {
+                "group_id": "B",
+                "slot_id": "near",
+                "compatibility": "blocked"
+              },
+              {
+                "group_id": "B",
+                "slot_id": "far",
+                "compatibility": "allowed"
+              }
+            ],
+            "homogeneous_group_contract_sha256": "8888888888888888888888888888888888888888888888888888888888888888"
+          }
+        },
+        "backup_routes": {
+          "assumed": true,
+          "cohort_n": 100,
+          "route_a": 90,
+          "route_b": 90,
+          "shared_gate": 90,
+          "joint_success": null
+        },
+        "hysteresis": {
+          "assumed": true,
+          "base_floor_protected": true,
+          "appeal_reference_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+          "low": 3,
+          "high": 7,
+          "error_bound": 1,
+          "initial_state": 0,
+          "measured": [
+            7,
+            6,
+            4,
+            3,
+            7
+          ],
+          "true_values": [
+            6,
+            6,
+            5,
+            4,
+            6
+          ]
+        }
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T09:00:00Z",
+      "fsl_recorded_at": "2026-11-25T10:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "scarcity-2",
+      "frame_id": "scarcity",
+      "kind": "scarcity",
+      "data": {
+        "complement": {
+          "assumed": true,
+          "target_capacity": 2,
+          "other_capacity": 1,
+          "other_expanded_capacity": 4,
+          "net_values_minor": [
+            50,
+            40,
+            30,
+            20
+          ]
+        },
+        "network": {
+          "assumed": true,
+          "nodes": [
+            "s",
+            "m",
+            "t"
+          ],
+          "source": "s",
+          "sink": "t",
+          "edges": [
+            {
+              "edge_id": "left",
+              "source": "s",
+              "target": "m",
+              "capacity": 3
+            },
+            {
+              "edge_id": "right",
+              "source": "m",
+              "target": "t",
+              "capacity": 3
+            }
+          ],
+          "joint_expansions": [
+            {
+              "edge_id": "left",
+              "increment": 1
+            },
+            {
+              "edge_id": "right",
+              "increment": 1
+            }
+          ]
+        },
+        "competitive": {
+          "assumed": true,
+          "alpha_minor": 100,
+          "beta_minor": 2,
+          "capacity": 10,
+          "opportunity_cost_minor": 10,
+          "ai_before_minor": 50,
+          "ai_after_minor": 30
+        },
+        "outside_option": {
+          "assumed": true,
+          "value_minor": 100,
+          "buyer_outside_before_minor": 10,
+          "buyer_outside_after_minor": 50,
+          "seller_outside_minor": 20,
+          "seller_share_bps": 7500
+        },
+        "beneficiary_ledger": {
+          "assumed": true,
+          "nonduplicated_realized_rent_attested": true,
+          "beneficiary_contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+          "beneficiary_ids": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "interfaces": [
+            {
+              "interface_id": "asset-0",
+              "realized_rent_minor": 25,
+              "final_shares_bps": {
+                "A": 10000,
+                "B": 0,
+                "C": 0,
+                "D": 0
+              }
+            },
+            {
+              "interface_id": "asset-1",
+              "realized_rent_minor": 25,
+              "final_shares_bps": {
+                "A": 0,
+                "B": 10000,
+                "C": 0,
+                "D": 0
+              }
+            },
+            {
+              "interface_id": "asset-2",
+              "realized_rent_minor": 25,
+              "final_shares_bps": {
+                "A": 0,
+                "B": 0,
+                "C": 10000,
+                "D": 0
+              }
+            },
+            {
+              "interface_id": "asset-3",
+              "realized_rent_minor": 25,
+              "final_shares_bps": {
+                "A": 0,
+                "B": 0,
+                "C": 0,
+                "D": 10000
+              }
+            }
+          ],
+          "merge_pair": [
+            "A",
+            "B"
+          ]
+        },
+        "window": {
+          "assumed": true,
+          "discount_bps": 9000,
+          "rent_before_minor": [
+            100,
+            100,
+            100,
+            100
+          ],
+          "rent_after_minor": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "opening_periods": [
+            1,
+            3,
+            4,
+            null
+          ]
+        }
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T11:00:00Z",
+      "fsl_recorded_at": "2026-11-25T12:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": "scarcity-1"
+    }
+  ]
+}

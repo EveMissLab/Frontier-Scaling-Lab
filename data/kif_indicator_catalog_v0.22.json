@@ -1,0 +1,205 @@
+{
+  "catalog_id": "KIF",
+  "version": "0.22.0",
+  "published_on": "2026-11-24",
+  "parent_commit": "14f4a00faf1160393e77e0256d964300eb387c38",
+  "status": "candidate definitions only; no measured rankings",
+  "author": "Neo.K / EveMissLab",
+  "compatibility": {
+    "asso": "0.21.0 unchanged",
+    "giccf": "0.13.0; domain IDs reused",
+    "das_arl": "72 original indicators unchanged; behavior is not internal mechanism evidence",
+    "functional": "G1–G4/E1 unchanged"
+  },
+  "source_papers": [
+    {
+      "id": "ASTT-02",
+      "path": "docs/astt/ASTT_02_Mathematical_Disenchantment_v1.0_2026-11-24.md",
+      "git_blob_sha": "8d859f1a25c45b60c0306082674115d12f945ee2"
+    },
+    {
+      "id": "ASTT-03",
+      "path": "docs/astt/ASTT_03_Oracle_Interpretation_Layer_v1.0_2026-11-24.md",
+      "git_blob_sha": "7135bd5bc90bf2b460a0772d8b090e9df0cc652e"
+    }
+  ],
+  "axes": [
+    {
+      "id": "O1",
+      "label_zh": "命題忠實度",
+      "definition": "Preserve proposition, quantifiers, hypotheses, conclusion",
+      "source": "ASTT-03 §13.1",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "O2",
+      "label_zh": "結構理解度",
+      "definition": "Reconstruction and transfer to a new representation or problem",
+      "source": "ASTT-03 §13.1",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "O3",
+      "label_zh": "邊界識別度",
+      "definition": "Identify scope, counterexamples and invalid applications",
+      "source": "ASTT-03 §13.1",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "O4",
+      "label_zh": "橋接有效度",
+      "definition": "Condition-preserving cross-domain mapping",
+      "source": "ASTT-03 §13.1",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "O5",
+      "label_zh": "情境使用度",
+      "definition": "Independently accepted suitability for target use",
+      "source": "ASTT-03 §13.1",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "O6",
+      "label_zh": "校正可追溯度",
+      "definition": "Sources, uncertainty, correction and escalation provenance",
+      "source": "ASTT-03 §13.1",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "KIF-01",
+      "label_zh": "問題生成",
+      "definition": "Problem formulation and research relevance",
+      "source": "ASTT-02/03",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "KIF-02",
+      "label_zh": "實質有效性",
+      "definition": "Substantive correctness under the case contract",
+      "source": "ASTT-03",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "KIF-03",
+      "label_zh": "限定原創性",
+      "definition": "Novelty relative to frozen corpus, not global priority",
+      "source": "ASTT-02/03",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "KIF-04",
+      "label_zh": "形式有效性",
+      "definition": "Formal checking assertion with separate receipt",
+      "source": "ASTT-03 T1",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "KIF-05",
+      "label_zh": "資源與成本",
+      "definition": "Budget adherence and complete matched-frame cost per qualified answer",
+      "source": "ASTT-03 §13.2; FSL v0.8.2",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "KIF-06",
+      "label_zh": "拒答、升級與盲測",
+      "definition": "Appropriate disposition, holdout integrity and adjudication",
+      "source": "ASTT-03 §13.2",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "KIF-07",
+      "label_zh": "知識流與解讀積壓",
+      "definition": "Valid, deduplicated, demanded counts; queue and conditional capacity",
+      "source": "ASTT-03 T2/T3",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "KIF-08",
+      "label_zh": "研究人口再分化",
+      "definition": "Aggregate voluntary survey selection, entry/exit, roles and employment",
+      "source": "ASTT-02 T2–T4",
+      "value": null,
+      "status": "not_measured"
+    }
+  ],
+  "task_minimum_checks": {
+    "problem_generation": [
+      "problem_value",
+      "O3",
+      "O6"
+    ],
+    "theory_creation": [
+      "substantive_validity",
+      "scoped_originality",
+      "O3",
+      "O6"
+    ],
+    "proof_production": [
+      "substantive_validity",
+      "O1",
+      "O3",
+      "O6"
+    ],
+    "interpretation": [
+      "O1",
+      "O2",
+      "O3",
+      "O6"
+    ],
+    "transfer": [
+      "O1",
+      "O2",
+      "O3",
+      "O6"
+    ],
+    "cross_domain_bridge": [
+      "O1",
+      "O3",
+      "O4",
+      "O6"
+    ],
+    "contextual_application": [
+      "O1",
+      "O3",
+      "O5",
+      "O6"
+    ]
+  },
+  "quality_checks": [
+    "O1",
+    "O2",
+    "O3",
+    "O4",
+    "O5",
+    "O6",
+    "problem_value",
+    "substantive_validity",
+    "scoped_originality",
+    "formal_validity",
+    "safety",
+    "authorization"
+  ],
+  "knowledge_flow_stages": [
+    "G",
+    "V",
+    "A",
+    "I",
+    "B",
+    "U"
+  ]
+}

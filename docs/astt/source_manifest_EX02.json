@@ -1,0 +1,31 @@
+{
+  "schema": "fsl/astt-supplement-manifest/1",
+  "supplement": "ASTT-EX02",
+  "date": "2026-11-25",
+  "base_commit": "89ef35f11727813df0e17da75df2789c958e3a8b",
+  "original_source_manifest_unchanged": "source_manifest.json",
+  "status": "open question manuscript; conditional models only; no terminal verdict or empirical certification",
+  "file": {
+    "path": "ASTT_EX02_AI_Supplier_Paradox_Rights_and_Institutional_Games_v0.1_2026-11-25.md",
+    "sha256": "a4562dbf22007a40ee3c2b1506bad22fdbe8f7dd91ac2d8fc4b673fff6449f6f",
+    "git_blob_sha": "447116f8ff329a5d3bd2223b1a480ce80f329217",
+    "bytes": 40801,
+    "encoding": "UTF-8/LF/no BOM"
+  },
+  "replay": {
+    "embedded_python": true,
+    "expected_group_counts": {
+      "T1": 10000,
+      "T2": 3888,
+      "T3": 3240,
+      "T4_graph": 729,
+      "T4_unknown": 4096,
+      "T5": 2025,
+      "T6": 3000,
+      "N1_counterexample": 1
+    },
+    "expected_configurations": 26979,
+    "expected_scope": "SYNTHETIC_CONDITIONAL_MODELS_ONLY",
+    "execution_evidence": "GitHub Actions; expectations are not a completed-run claim"
+  }
+}

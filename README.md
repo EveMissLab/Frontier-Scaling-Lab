@@ -5,6 +5,14 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## ASTT supplement EX02 — AI supplier paradox, authorship and political rights
+
+[**Open-question canonical manuscript (zh-Hant)**](docs/astt/ASTT_EX02_AI_Supplier_Paradox_Rights_and_Institutional_Games_v0.1_2026-11-25.md) · [**Immutable supplemental manifest**](docs/astt/source_manifest_EX02.json)
+
+Company-neutral conditional research on rights allocation, supplier payoff, user substitution, competing providers, civilizational dependence, political qualification and responsibility. Six bounded propositions, opposite-sign counterexamples, and twelve proposed ASP-M observation groups (not measured or implemented as an FSL release). No terminal verdict, legal determination or empirical calibration. Original ASTT source manifest and all v0.21–v0.25 modules remain intact.
+
+---
+
 ## v0.25 — Reflexive Research Autonomy Observatory (RRAO) / 反身性研究自主與替代
 
 [**Canonical protocol**](docs/REFLEXIVE_RESEARCH_AUTONOMY_OBSERVATORY_v0.25.md) · [**12 unmeasured RTA-M groups**](data/rrao_indicator_catalog_v0.25.json) · [**Observation schema**](data/rrao_observation_schema_v0.25.json)

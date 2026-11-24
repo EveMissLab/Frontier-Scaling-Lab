@@ -5,6 +5,22 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.21 — AI Substitution Spectrum Observatory (ASSO) / AI 替代光譜觀測
+
+[**Canonical protocol**](docs/AI_SUBSTITUTION_SPECTRUM_OBSERVATORY_v0.21.md) · [**12 unmeasured axes**](data/asso_indicator_catalog_v0.21.json) · [**Observation schema**](data/asso_observation_schema_v0.21.json) · [**ASTT 12 papers + EX01 + master plan, exact original sources**](docs/astt/README.md)
+
+An additive ASTT-01/04/05/06 implementation separates valid task acceptance, high-quality reach, raw and escaped errors, substantive human intervention, full cost and investment-priority inversion, deployment, task transfer, human augmentation, paid hours/FTE/flows, new demand and physical/institutional gates. Missingness remains null; per-domain sampling-frame bounds are not economy-wide replacement rates. Provider claims/demos do not count as measured trials. Separate evidence events, correction chains, strict/retrospective cutoff, synthetic isolation, matched windows, actual versus estimated costs, and no automatic certification. Existing GICCF, G1–G4/E1, SAS-01 and manufacturing catalogs are unchanged.
+
+```bash
+python -m fsl_substitution.cli catalog
+python -m fsl_substitution.cli audit --file tests/fixtures/asso_synthetic_v0.21.json --as-of 2026-11-24
+python -m unittest discover -s tests -v
+```
+
+All example data are SYNTHETIC. No observed occupational ranking or independent empirical certification. ASTT knowledge, topology, distribution and reflexive research modules v0.22–0.25 remain separate planned tracks.
+
+---
+
 ## DAS-ARL Research Indicators — Deep Attention Spectrum (2026-11-09)
 
 [**Six canonical research papers**](docs/das_arl/README.md) · [**72 candidate metric definitions (JSON)**](data/das_arl_indicator_catalog_v0.1.json)

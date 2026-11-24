@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing fsl_substitution scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -155,3 +155,9 @@ jobs:
           python -c "import json; a=json.load(open('/tmp/pmq_prior.json')); b=json.load(open('/tmp/pmq_current.json')); assert a['visible_observations']==4 and b['archived_observations']==5 and b['active_after_revisions']==4; assert b['indicators']==80 and not b['AI_manufacturing_quality_superiority_certified'] and not b['new_physical_quality_frontier_certified'] and b['future_no_AI_human_year'] is None"
       - name: Legacy evidence date snapshot
         run: python frontier_scaling.py evidence --as-of 2026-11-06
+      - name: v0.21 ASSO substitution spectrum (SYNTHETIC; no empirical certification)
+        run: |
+          python -m fsl_substitution.cli catalog
+          python -m fsl_substitution.cli audit --file tests/fixtures/asso_synthetic_v0.21.json --as-of 2026-11-24T10:30:00Z --output /tmp/asso_early.json
+          python -m fsl_substitution.cli audit --file tests/fixtures/asso_synthetic_v0.21.json --as-of 2026-11-24T11:30:00Z --mode retrospective_reconstruction --output /tmp/asso_retro.json
+          python -c "import json; a=json.load(open('/tmp/asso_early.json')); b=json.load(open('/tmp/asso_retro.json')); assert a['visible_event_count']==6 and b['visible_event_count']==7; assert a['recorded_observational_assertions'] is None and not b['independent_empirical_certification']; assert a['synthetic_scenario']['priority_inversion_pairs'][0]['inverted_pairs']==1"

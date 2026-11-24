@@ -1,0 +1,93 @@
+{
+  "schema": "fsl/astt-source-manifest/1",
+  "date": "2026-11-24",
+  "author": "Neo.K",
+  "source_status": "original UTF-8 Markdown; unchanged bytes; theoretical manuscripts, not independently certified empirical observations",
+  "fsl_base_commit": "34a0d8bccb1b5e39067268d7740503259b3e7fde",
+  "files": [
+    {
+      "path": "ASTT_Series_Master_Plan_v0.1_2026-11-24.md",
+      "sha256": "561fe69bef0646fa2655517883f3905f8700f4c2d76e7cf63b8286846ad46143",
+      "git_blob_sha": "5df10d685de70f79efaf2e74f8c42fe84e0dd754",
+      "bytes": 9923
+    },
+    {
+      "path": "ASTT_01_Reliability_Transition_v1.0_2026-11-24.md",
+      "sha256": "ffae208a19938f47a96ecadeaa2ea8ecdbe68d69ca9720d69c477baf56e071ad",
+      "git_blob_sha": "deb4f8b369dfedbdba6e3d171a811381b4d20675",
+      "bytes": 39588
+    },
+    {
+      "path": "ASTT_02_Mathematical_Disenchantment_v1.0_2026-11-24.md",
+      "sha256": "6f8c8c6662b749eea3cadb219b741b9fbf347c711d09bcf9d7f9c7511174956a",
+      "git_blob_sha": "8d859f1a25c45b60c0306082674115d12f945ee2",
+      "bytes": 42570
+    },
+    {
+      "path": "ASTT_03_Oracle_Interpretation_Layer_v1.0_2026-11-24.md",
+      "sha256": "0d37609289b863060721d813fdd9dcfac7f96b613fdc0986affff706b810883d",
+      "git_blob_sha": "7135bd5bc90bf2b460a0772d8b090e9df0cc652e",
+      "bytes": 44880
+    },
+    {
+      "path": "ASTT_04_Substitution_Priority_Inversion_v1.0_2026-11-24.md",
+      "sha256": "98bf7928bbbccbcab5b7cdf26d5c5a44ffe66edeca6c319d517e106cb23d72aa",
+      "git_blob_sha": "f4577269b108c72b0fe61110b2c1a1d5c9494efd",
+      "bytes": 60759
+    },
+    {
+      "path": "ASTT_05_Substitution_Is_Not_Layoff_v1.0_2026-11-24.md",
+      "sha256": "290a9805ed4ad0f501ca64229974a99d009bb53ccca08118f2b3227b6125b23c",
+      "git_blob_sha": "8f976bac6c608df9c1021f21024f5697c7d60f05",
+      "bytes": 49727
+    },
+    {
+      "path": "ASTT_06_Digital_to_Physical_Substitution_v1.0_2026-11-24.md",
+      "sha256": "8d6f5b5078edf0b18235f2d236865849df60966e703d4ab966b4ac39acea83f6",
+      "git_blob_sha": "17c41f654c5d2cd5090bf559a43b51144220f480",
+      "bytes": 56314
+    },
+    {
+      "path": "ASTT_07_Substitution_Epoch_Topology_v1.0_2026-11-24.md",
+      "sha256": "1ede4be7ddd2c3c85dfdadf2965d0805917683f9bf3535cc7aa69abae78a0f94",
+      "git_blob_sha": "46b0a19a2a196d37b35e774a0f2ee5f60e519f30",
+      "bytes": 57311
+    },
+    {
+      "path": "ASTT_08_Cross_Domain_Acceleration_v1.0_2026-11-24.md",
+      "sha256": "75fbd4b17fa132b13d715e2e170231d6e4de7f68694601cd2339cb43c3e45324",
+      "git_blob_sha": "10539f0f45a03ea746266780d3c072733867b3d0",
+      "bytes": 57154
+    },
+    {
+      "path": "ASTT_09_Civilizational_Absorption_and_Transition_Gaps_v1.0_2026-11-24.md",
+      "sha256": "3478c7bb3b7287c2b8cb73d11914bee6abdf276c59cfa748aab02ea27cb64699",
+      "git_blob_sha": "12f045e26c1dc3edd772dfc7d515b090ba17e1e6",
+      "bytes": 57794
+    },
+    {
+      "path": "ASTT_10_Residual_Scarcity_Leverage_v1.0_2026-11-24.md",
+      "sha256": "a882fc680d65fe4a6d3841e0492cdb340a4bff2dd956dcdf8ef6582170ce4b3a",
+      "git_blob_sha": "7c7ea2082c00a6f1189aa205bc594d3d5cbbf263",
+      "bytes": 64302
+    },
+    {
+      "path": "ASTT_11_Intelligence_Abundance_and_Income_Fracture_v1.0_2026-11-24.md",
+      "sha256": "12893a5da0d0772ff82d3d8d7a7cd4ff726a61a68e5ec86bc29eb1fe071d98c8",
+      "git_blob_sha": "65e95bef353cd84bf3d708b2a6898bbd9f6d6d79",
+      "bytes": 60444
+    },
+    {
+      "path": "ASTT_12_Transitional_Civilization_Institutions_v1.0_2026-11-24.md",
+      "sha256": "3e4ad42d36f7d25993591b2d498b5305cd16b8563a5123f9c06c505e0c11f891",
+      "git_blob_sha": "3b7d2fbfb3c67ab076f5aa3b463217a22cd80352",
+      "bytes": 62170
+    },
+    {
+      "path": "ASTT_EX01_The_Replaceable_Theorist_v1.0_2026-11-24.md",
+      "sha256": "ba365971e30e85d91a3b0d9f401d19b5cc30af866431a572519f73a4be0602e7",
+      "git_blob_sha": "49079c295c88aea1ee45f7b40164594932bb53e5",
+      "bytes": 53666
+    }
+  ]
+}

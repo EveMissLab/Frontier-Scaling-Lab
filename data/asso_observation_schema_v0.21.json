@@ -1,0 +1,835 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FSL ASSO v0.21 observation assertions",
+  "description": "Structural schema only. Python auditor additionally enforces chronology, source/receipt requirements, comparability, correction chains, denominator and gate constraints.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "study_id",
+    "data_class",
+    "system_stack_sha256",
+    "registration_sha256",
+    "registered_at",
+    "baseline_window_start",
+    "baseline_window_end",
+    "window_start",
+    "window_end",
+    "currency",
+    "contracts",
+    "events"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "fsl/asso/0.21"
+    },
+    "catalog_version": {
+      "const": "0.21.0"
+    },
+    "study_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_class": {
+      "enum": [
+        "synthetic",
+        "observational"
+      ]
+    },
+    "system_stack_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "registration_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "registered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "baseline_window_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "baseline_window_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "window_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "window_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract_id",
+          "domain_id",
+          "context_id",
+          "comparison_group",
+          "weight",
+          "environment",
+          "task_set_sha256",
+          "acceptance_sha256",
+          "baseline_sha256",
+          "min_acceptance_bps",
+          "max_delivered_error_bps",
+          "max_core_minutes_per_attempt",
+          "output_unit",
+          "organization_unit"
+        ],
+        "properties": {
+          "contract_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "domain_id": {
+            "type": "string",
+            "pattern": "^D[0-9]{2}$"
+          },
+          "context_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "comparison_group": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "weight": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "environment": {
+            "enum": [
+              "controlled_simulation",
+              "sandbox_tools",
+              "live_digital",
+              "live_physical"
+            ]
+          },
+          "task_set_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "acceptance_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "baseline_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "min_acceptance_bps": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000
+          },
+          "max_delivered_error_bps": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "max_core_minutes_per_attempt": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "output_unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "organization_unit": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "event_id",
+              "contract_id",
+              "event_occurred_at",
+              "source_published_at",
+              "fsl_recorded_at",
+              "evidence_tier",
+              "source_url",
+              "artifact_sha256",
+              "assessor_ref",
+              "supersedes_event_id",
+              "kind",
+              "data"
+            ],
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contract_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "event_occurred_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source_published_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "fsl_recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "evidence_tier": {
+                "enum": [
+                  "unobserved",
+                  "provider_claim",
+                  "provider_demo",
+                  "repeatable_test",
+                  "independent_repeated",
+                  "longitudinal_independent",
+                  "synthetic_fixture"
+                ]
+              },
+              "source_url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "artifact_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assessor_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "supersedes_event_id": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "kind": {
+                "const": "trial"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attempts",
+                  "delivered",
+                  "accepted",
+                  "top_quality",
+                  "raw_error_trials",
+                  "accepted_error_trials",
+                  "human_core_minutes",
+                  "safety",
+                  "authorization",
+                  "physical_receipt_sha256"
+                ],
+                "properties": {
+                  "attempts": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "delivered": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "accepted": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "top_quality": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "raw_error_trials": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "accepted_error_trials": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "human_core_minutes": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "safety": {
+                    "enum": [
+                      "passed",
+                      "failed",
+                      "unknown",
+                      "not_applicable"
+                    ]
+                  },
+                  "authorization": {
+                    "enum": [
+                      "passed",
+                      "failed",
+                      "unknown",
+                      "not_applicable"
+                    ]
+                  },
+                  "physical_receipt_sha256": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "event_id",
+              "contract_id",
+              "event_occurred_at",
+              "source_published_at",
+              "fsl_recorded_at",
+              "evidence_tier",
+              "source_url",
+              "artifact_sha256",
+              "assessor_ref",
+              "supersedes_event_id",
+              "kind",
+              "data"
+            ],
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contract_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "event_occurred_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source_published_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "fsl_recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "evidence_tier": {
+                "enum": [
+                  "unobserved",
+                  "provider_claim",
+                  "provider_demo",
+                  "repeatable_test",
+                  "independent_repeated",
+                  "longitudinal_independent",
+                  "synthetic_fixture"
+                ]
+              },
+              "source_url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "artifact_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assessor_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "supersedes_event_id": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "kind": {
+                "const": "economics"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "baseline_cost_minor",
+                  "alternative_cost_minor",
+                  "incremental_value_minor",
+                  "cost_basis",
+                  "full_cost_attested"
+                ],
+                "properties": {
+                  "baseline_cost_minor": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "alternative_cost_minor": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "incremental_value_minor": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "cost_basis": {
+                    "enum": [
+                      "actual",
+                      "estimate",
+                      "unknown"
+                    ]
+                  },
+                  "full_cost_attested": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "event_id",
+              "contract_id",
+              "event_occurred_at",
+              "source_published_at",
+              "fsl_recorded_at",
+              "evidence_tier",
+              "source_url",
+              "artifact_sha256",
+              "assessor_ref",
+              "supersedes_event_id",
+              "kind",
+              "data"
+            ],
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contract_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "event_occurred_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source_published_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "fsl_recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "evidence_tier": {
+                "enum": [
+                  "unobserved",
+                  "provider_claim",
+                  "provider_demo",
+                  "repeatable_test",
+                  "independent_repeated",
+                  "longitudinal_independent",
+                  "synthetic_fixture"
+                ]
+              },
+              "source_url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "artifact_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assessor_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "supersedes_event_id": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "kind": {
+                "const": "deployment"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "eligible_units",
+                  "active_units",
+                  "prior_human_task_units",
+                  "transferred_prior_task_units",
+                  "prior_paid_minutes",
+                  "post_paid_minutes",
+                  "prior_fte_milli",
+                  "post_fte_milli",
+                  "prior_accepted_output",
+                  "post_accepted_output",
+                  "hires",
+                  "exits",
+                  "involuntary_exits",
+                  "new_task_families",
+                  "new_paid_orders",
+                  "constraints"
+                ],
+                "properties": {
+                  "eligible_units": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "active_units": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "prior_human_task_units": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "transferred_prior_task_units": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "prior_paid_minutes": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "post_paid_minutes": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "prior_fte_milli": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "post_fte_milli": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "prior_accepted_output": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "post_accepted_output": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "hires": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "exits": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "involuntary_exits": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "new_task_families": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "new_paid_orders": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "constraints": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "uniqueItems": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "event_id",
+              "contract_id",
+              "event_occurred_at",
+              "source_published_at",
+              "fsl_recorded_at",
+              "evidence_tier",
+              "source_url",
+              "artifact_sha256",
+              "assessor_ref",
+              "supersedes_event_id",
+              "kind",
+              "data"
+            ],
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contract_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "event_occurred_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source_published_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "fsl_recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "evidence_tier": {
+                "enum": [
+                  "unobserved",
+                  "provider_claim",
+                  "provider_demo",
+                  "repeatable_test",
+                  "independent_repeated",
+                  "longitudinal_independent",
+                  "synthetic_fixture"
+                ]
+              },
+              "source_url": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "artifact_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assessor_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "supersedes_event_id": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "kind": {
+                "const": "augmentation"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "baseline_accepted",
+                  "baseline_human_minutes",
+                  "assisted_accepted",
+                  "assisted_human_minutes"
+                ],
+                "properties": {
+                  "baseline_accepted": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "baseline_human_minutes": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "assisted_accepted": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "assisted_human_minutes": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

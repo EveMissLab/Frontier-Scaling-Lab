@@ -1,0 +1,149 @@
+{
+  "catalog_id": "ASSO",
+  "version": "0.21.0",
+  "published_on": "2026-11-24",
+  "parent_commit": "34a0d8bccb1b5e39067268d7740503259b3e7fde",
+  "language": "zh-Hant/en",
+  "status": "candidate operational definitions; all values unmeasured; no occupation ranking",
+  "source_papers": [
+    "ASTT-01",
+    "ASTT-04",
+    "ASTT-05",
+    "ASTT-06"
+  ],
+  "compatibility": {
+    "giccf": "0.13.0; reference domain IDs; no mutation of 224 indicators",
+    "functional": [
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "E1"
+    ],
+    "economic": "v0.8.2",
+    "manufacturing": "v0.20",
+    "singularity": "v0.17 unchanged"
+  },
+  "axes": [
+    {
+      "id": "SUB-01",
+      "label_zh": "技術功能可替代性",
+      "label_en": "technical substitution",
+      "event_kind": "trial",
+      "measurement": "accepted/attempts; weighted qualified contract share with unknown bounds",
+      "source": "ASTT-01/04",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-02",
+      "label_zh": "極高品質可達性",
+      "label_en": "high-quality reach",
+      "event_kind": "trial",
+      "measurement": "top_quality/attempts; not an occupation percentile",
+      "source": "ASTT-01/04",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-03",
+      "label_zh": "可靠性與錯誤",
+      "label_en": "reliability and errors",
+      "event_kind": "trial",
+      "measurement": "raw_error_trials/attempts; accepted_error_trials/delivered; delivery coverage",
+      "source": "ASTT-01",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-04",
+      "label_zh": "人類介入",
+      "label_en": "human substantive intervention",
+      "event_kind": "trial",
+      "measurement": "human_core_minutes/attempts; declared cap",
+      "source": "ASTT-01/04",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-05",
+      "label_zh": "經濟可行性",
+      "label_en": "economic feasibility",
+      "event_kind": "economics",
+      "measurement": "baseline cost - full alternative cost + incremental value; operational gates",
+      "source": "ASTT-04",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-06",
+      "label_zh": "投資優先級",
+      "label_en": "investment priority inversion",
+      "event_kind": "economics",
+      "measurement": "strict pair inversion within preregistered comparison group and cost basis",
+      "source": "ASTT-04",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-07",
+      "label_zh": "真實部署",
+      "label_en": "deployment",
+      "event_kind": "deployment",
+      "measurement": "active_units/eligible_units within declared cohort",
+      "source": "ASTT-04/06",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-08",
+      "label_zh": "原有任務轉移",
+      "label_en": "prior human task transfer",
+      "event_kind": "deployment",
+      "measurement": "transferred_prior_task_units/prior_human_task_units",
+      "source": "ASTT-05",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-09",
+      "label_zh": "人機增強",
+      "label_en": "augmentation",
+      "event_kind": "augmentation",
+      "measurement": "matched assisted per-human-hour output relative to baseline",
+      "source": "ASTT-05",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-10",
+      "label_zh": "人力需求變化",
+      "label_en": "labor demand and hours",
+      "event_kind": "deployment",
+      "measurement": "signed paid-hour and FTE compression; hires and exits separate",
+      "source": "ASTT-05",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-11",
+      "label_zh": "新任務與需求",
+      "label_en": "new tasks and demand",
+      "event_kind": "deployment",
+      "measurement": "new_task_families, new_paid_orders, accepted output change",
+      "source": "ASTT-05",
+      "value": null,
+      "status": "not_measured"
+    },
+    {
+      "id": "SUB-12",
+      "label_zh": "實體環境與制度",
+      "label_en": "physical and institutional constraints",
+      "event_kind": "trial/deployment",
+      "measurement": "safety, authorization, environment, blockers and physical receipt",
+      "source": "ASTT-06",
+      "value": null,
+      "status": "not_measured"
+    }
+  ]
+}

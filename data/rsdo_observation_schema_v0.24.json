@@ -1,0 +1,1870 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FSL RSDO v0.24 typed evidence and scenarios",
+  "description": "Structural shape only. Python additionally checks chronology, contracts, missing values, accounting conservation, conditional model boundaries and publication guards.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "study_id",
+    "data_class",
+    "registered_at",
+    "registration_sha256",
+    "window_start",
+    "window_end",
+    "frames",
+    "events"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "fsl/rsdo/0.24"
+    },
+    "catalog_version": {
+      "const": "0.24.0"
+    },
+    "study_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "data_class": {
+      "enum": [
+        "synthetic",
+        "observational"
+      ]
+    },
+    "registered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "registration_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "window_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "window_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "frames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "frame_id",
+          "kind",
+          "context_id",
+          "domain_ids",
+          "contract_sha256",
+          "unit_contract_sha256",
+          "model_assumptions_sha256",
+          "analysis_basis",
+          "currency",
+          "min_public_cell"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "frame_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "kind": {
+            "enum": [
+              "scarcity",
+              "income",
+              "institutions"
+            ]
+          },
+          "context_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "domain_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^D[0-9]{2}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "contract_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "unit_contract_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "model_assumptions_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "analysis_basis": {
+            "enum": [
+              "conditional_scenario",
+              "recorded_accounting"
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "min_public_cell": {
+            "type": "integer",
+            "minimum": 10
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 128
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "event_id",
+              "frame_id",
+              "event_occurred_at",
+              "source_published_at",
+              "fsl_recorded_at",
+              "evidence_tier",
+              "source_url",
+              "artifact_sha256",
+              "assessor_ref",
+              "supersedes_event_id",
+              "kind",
+              "data"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+              },
+              "frame_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+              },
+              "event_occurred_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source_published_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "fsl_recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "evidence_tier": {
+                "enum": [
+                  "unobserved",
+                  "provider_claim",
+                  "provider_demo",
+                  "repeatable_test",
+                  "independent_repeated",
+                  "longitudinal_independent",
+                  "synthetic_fixture"
+                ]
+              },
+              "source_url": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "artifact_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assessor_ref": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "supersedes_event_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "scarcity"
+              },
+              "data": {
+                "type": "object",
+                "required": [
+                  "complement",
+                  "network",
+                  "competitive",
+                  "outside_option",
+                  "beneficiary_ledger",
+                  "window"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "complement": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "target_capacity",
+                          "other_capacity",
+                          "other_expanded_capacity",
+                          "net_values_minor"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "target_capacity": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "other_capacity": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "other_expanded_capacity": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "net_values_minor": {
+                            "anyOf": [
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                },
+                                "maxItems": 4096
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "network": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "nodes",
+                          "source",
+                          "sink",
+                          "edges",
+                          "joint_expansions"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "nodes": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                            },
+                            "minItems": 2,
+                            "maxItems": 64,
+                            "uniqueItems": true
+                          },
+                          "source": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                          },
+                          "sink": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                          },
+                          "edges": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "edge_id",
+                                "source",
+                                "target",
+                                "capacity"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "edge_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "source": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "target": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "capacity": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                }
+                              }
+                            },
+                            "maxItems": 128
+                          },
+                          "joint_expansions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "edge_id",
+                                "increment"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "edge_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "increment": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                }
+                              }
+                            },
+                            "maxItems": 128
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "competitive": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "alpha_minor",
+                          "beta_minor",
+                          "capacity",
+                          "opportunity_cost_minor",
+                          "ai_before_minor",
+                          "ai_after_minor"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "alpha_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "beta_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "capacity": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "opportunity_cost_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "ai_before_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "ai_after_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "outside_option": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "value_minor",
+                          "buyer_outside_before_minor",
+                          "buyer_outside_after_minor",
+                          "seller_outside_minor",
+                          "seller_share_bps"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "value_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "buyer_outside_before_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "buyer_outside_after_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "seller_outside_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "seller_share_bps": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0,
+                            "maximum": 10000
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "beneficiary_ledger": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "nonduplicated_realized_rent_attested",
+                          "beneficiary_contract_sha256",
+                          "beneficiary_ids",
+                          "interfaces",
+                          "merge_pair"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "nonduplicated_realized_rent_attested": {
+                            "type": "boolean"
+                          },
+                          "beneficiary_contract_sha256": {
+                            "type": "string",
+                            "pattern": "^[a-f0-9]{64}$"
+                          },
+                          "beneficiary_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                            },
+                            "minItems": 1,
+                            "maxItems": 128,
+                            "uniqueItems": true
+                          },
+                          "interfaces": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "interface_id",
+                                "realized_rent_minor",
+                                "final_shares_bps"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "interface_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "realized_rent_minor": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                },
+                                "final_shares_bps": {
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ],
+                                    "minimum": 0,
+                                    "maximum": 10000
+                                  }
+                                }
+                              }
+                            },
+                            "minItems": 1,
+                            "maxItems": 128
+                          },
+                          "merge_pair": {
+                            "anyOf": [
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2,
+                                "uniqueItems": true
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "window": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "discount_bps",
+                          "rent_before_minor",
+                          "rent_after_minor",
+                          "opening_periods"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "discount_bps": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "rent_before_minor": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "minItems": 1,
+                            "maxItems": 60
+                          },
+                          "rent_after_minor": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "minItems": 1,
+                            "maxItems": 60
+                          },
+                          "opening_periods": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "minItems": 1,
+                            "maxItems": 61
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "event_id",
+              "frame_id",
+              "event_occurred_at",
+              "source_published_at",
+              "fsl_recorded_at",
+              "evidence_tier",
+              "source_url",
+              "artifact_sha256",
+              "assessor_ref",
+              "supersedes_event_id",
+              "kind",
+              "data"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+              },
+              "frame_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+              },
+              "event_occurred_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source_published_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "fsl_recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "evidence_tier": {
+                "enum": [
+                  "unobserved",
+                  "provider_claim",
+                  "provider_demo",
+                  "repeatable_test",
+                  "independent_repeated",
+                  "longitudinal_independent",
+                  "synthetic_fixture"
+                ]
+              },
+              "source_url": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "artifact_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assessor_ref": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "supersedes_event_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "income"
+              },
+              "data": {
+                "type": "object",
+                "required": [
+                  "fixed_basket",
+                  "income_routing",
+                  "market_absorption",
+                  "demand_feedback",
+                  "cash_rights",
+                  "physical_clearing"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "fixed_basket": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "quality_basket_sha256",
+                          "income_before_minor",
+                          "income_after_minor",
+                          "items"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "quality_basket_sha256": {
+                            "type": "string",
+                            "pattern": "^[a-f0-9]{64}$"
+                          },
+                          "income_before_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "income_after_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "item_id",
+                                "quantity",
+                                "price_before_minor",
+                                "price_after_minor"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "item_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "quantity": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                },
+                                "price_before_minor": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                },
+                                "price_after_minor": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                }
+                              }
+                            },
+                            "minItems": 1,
+                            "maxItems": 128
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "income_routing": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "expenditure_scope_sha256",
+                          "groups"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "expenditure_scope_sha256": {
+                            "type": "string",
+                            "pattern": "^[a-f0-9]{64}$"
+                          },
+                          "groups": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "group_id",
+                                "income_delta_minor",
+                                "marginal_expenditure_bps"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "group_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "income_delta_minor": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
+                                },
+                                "marginal_expenditure_bps": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0,
+                                  "maximum": 10000
+                                }
+                              }
+                            },
+                            "minItems": 1,
+                            "maxItems": 128
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "market_absorption": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "capacity",
+                          "use_limit",
+                          "budget_minor",
+                          "price_before_minor",
+                          "price_after_minor"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "capacity": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "use_limit": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "budget_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "price_before_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "price_after_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "demand_feedback": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "capacity",
+                          "autonomous_demand",
+                          "feedback_bps",
+                          "initial_output",
+                          "periods"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "capacity": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "autonomous_demand": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "feedback_bps": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "initial_output": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "periods": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 60
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "cash_rights": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "disjoint_cash_ledger_sha256",
+                          "legally_distributable_attested",
+                          "opening_available_minor",
+                          "priority_due_minor",
+                          "committed_investment_minor",
+                          "reserve_minor",
+                          "realized_net_receipts_minor",
+                          "groups"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "disjoint_cash_ledger_sha256": {
+                            "type": "string",
+                            "pattern": "^[a-f0-9]{64}$"
+                          },
+                          "legally_distributable_attested": {
+                            "type": "boolean"
+                          },
+                          "opening_available_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "priority_due_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "committed_investment_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "reserve_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "realized_net_receipts_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "groups": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "group_id",
+                                "cash_gap_minor",
+                                "fixed_cash_share_bps"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "group_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "cash_gap_minor": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                },
+                                "fixed_cash_share_bps": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0,
+                                  "maximum": 10000
+                                }
+                              }
+                            },
+                            "minItems": 1,
+                            "maxItems": 128
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "physical_clearing": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "capacity",
+                          "uniform_budget_scale_bps",
+                          "groups"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "capacity": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "uniform_budget_scale_bps": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "groups": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "group_id",
+                                "budget_minor",
+                                "physical_target"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "group_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "budget_minor": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                },
+                                "physical_target": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                }
+                              }
+                            },
+                            "minItems": 1,
+                            "maxItems": 128
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "event_id",
+              "frame_id",
+              "event_occurred_at",
+              "source_published_at",
+              "fsl_recorded_at",
+              "evidence_tier",
+              "source_url",
+              "artifact_sha256",
+              "assessor_ref",
+              "supersedes_event_id",
+              "kind",
+              "data"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+              },
+              "frame_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+              },
+              "event_occurred_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source_published_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "fsl_recorded_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "evidence_tier": {
+                "enum": [
+                  "unobserved",
+                  "provider_claim",
+                  "provider_demo",
+                  "repeatable_test",
+                  "independent_repeated",
+                  "longitudinal_independent",
+                  "synthetic_fixture"
+                ]
+              },
+              "source_url": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "artifact_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assessor_ref": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "supersedes_event_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "institutions"
+              },
+              "data": {
+                "type": "object",
+                "required": [
+                  "delivery",
+                  "funding",
+                  "tax_benefits",
+                  "service_access",
+                  "backup_routes",
+                  "hysteresis"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "delivery": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "cohort_n",
+                          "deadline_contract_sha256",
+                          "timely",
+                          "late",
+                          "unmet",
+                          "unknown"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "cohort_n": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "deadline_contract_sha256": {
+                            "type": "string",
+                            "pattern": "^[a-f0-9]{64}$"
+                          },
+                          "timely": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "late": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "unmet": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "unknown": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "funding": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "cash_ledger_sha256",
+                          "opening_cash_minor",
+                          "reserve_minor",
+                          "fixed_obligations_minor",
+                          "scenarios"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "cash_ledger_sha256": {
+                            "type": "string",
+                            "pattern": "^[a-f0-9]{64}$"
+                          },
+                          "opening_cash_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "reserve_minor": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "fixed_obligations_minor": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "minItems": 1,
+                            "maxItems": 120
+                          },
+                          "scenarios": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "scenario_id",
+                                "net_receipts_minor",
+                                "priority_due_minor"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "scenario_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "net_receipts_minor": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "priority_due_minor": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ],
+                                    "minimum": 0
+                                  }
+                                }
+                              }
+                            },
+                            "minItems": 1,
+                            "maxItems": 64
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "tax_benefits": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "tax_bps",
+                          "programs",
+                          "gross_income_grid_minor"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "tax_bps": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "programs": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "program_id",
+                                "kind",
+                                "max_benefit_minor",
+                                "threshold_minor",
+                                "withdrawal_bps"
+                              ],
+                              "additionalProperties": false,
+                              "properties": {
+                                "program_id": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                },
+                                "kind": {
+                                  "enum": [
+                                    "continuous",
+                                    "cliff"
+                                  ]
+                                },
+                                "max_benefit_minor": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                },
+                                "threshold_minor": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                },
+                                "withdrawal_bps": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ],
+                                  "minimum": 0
+                                }
+                              }
+                            },
+                            "maxItems": 64
+                          },
+                          "gross_income_grid_minor": {
+                            "type": "array",
+                            "items": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "minItems": 1,
+                            "maxItems": 512
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "service_access": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "service_contract_sha256",
+                          "grouped_compatibility"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "service_contract_sha256": {
+                            "type": "string",
+                            "pattern": "^[a-f0-9]{64}$"
+                          },
+                          "grouped_compatibility": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "required": [
+                                  "groups",
+                                  "slots",
+                                  "compatibilities",
+                                  "homogeneous_group_contract_sha256"
+                                ],
+                                "additionalProperties": false,
+                                "properties": {
+                                  "groups": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "group_id",
+                                        "count"
+                                      ],
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "group_id": {
+                                          "type": "string",
+                                          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                        },
+                                        "count": {
+                                          "type": [
+                                            "integer",
+                                            "null"
+                                          ],
+                                          "minimum": 0
+                                        }
+                                      }
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 64
+                                  },
+                                  "slots": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "slot_id",
+                                        "count"
+                                      ],
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "slot_id": {
+                                          "type": "string",
+                                          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                        },
+                                        "count": {
+                                          "type": [
+                                            "integer",
+                                            "null"
+                                          ],
+                                          "minimum": 0
+                                        }
+                                      }
+                                    },
+                                    "maxItems": 64
+                                  },
+                                  "compatibilities": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "group_id",
+                                        "slot_id",
+                                        "compatibility"
+                                      ],
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "group_id": {
+                                          "type": "string",
+                                          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                        },
+                                        "slot_id": {
+                                          "type": "string",
+                                          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+                                        },
+                                        "compatibility": {
+                                          "enum": [
+                                            "allowed",
+                                            "unknown",
+                                            "blocked"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "homogeneous_group_contract_sha256": {
+                                    "type": "string",
+                                    "pattern": "^[a-f0-9]{64}$"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "backup_routes": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "cohort_n",
+                          "route_a",
+                          "route_b",
+                          "shared_gate",
+                          "joint_success"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "cohort_n": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "route_a": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "route_b": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "shared_gate": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "joint_success": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "hysteresis": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "assumed",
+                          "base_floor_protected",
+                          "appeal_reference_sha256",
+                          "low",
+                          "high",
+                          "error_bound",
+                          "initial_state",
+                          "measured",
+                          "true_values"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "assumed": {
+                            "type": "boolean"
+                          },
+                          "base_floor_protected": {
+                            "type": "boolean"
+                          },
+                          "appeal_reference_sha256": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^[a-f0-9]{64}$"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "low": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "high": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "error_bound": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
+                            "minimum": 0
+                          },
+                          "initial_state": {
+                            "enum": [
+                              0,
+                              1
+                            ]
+                          },
+                          "measured": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "minItems": 1,
+                            "maxItems": 512
+                          },
+                          "true_values": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
+                              "minimum": 0
+                            },
+                            "minItems": 1,
+                            "maxItems": 512
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "maxItems": 1024
+    }
+  }
+}

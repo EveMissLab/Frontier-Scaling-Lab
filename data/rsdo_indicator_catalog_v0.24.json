@@ -1,0 +1,323 @@
+{
+  "catalog_id": "RSDO",
+  "version": "0.24.0",
+  "published_on": "2026-11-25",
+  "parent_commit": "2f56790a472f0fa402e1cf3fb69ff75768770861",
+  "author": "Neo.K / EveMissLab",
+  "status": "candidate definitions only, all unmeasured",
+  "source_papers": [
+    {
+      "id": "ASTT-10",
+      "path": "docs/astt/ASTT_10_Residual_Scarcity_Leverage_v1.0_2026-11-24.md",
+      "git_blob_sha": "7c7ea2082c00a6f1189aa205bc594d3d5cbbf263"
+    },
+    {
+      "id": "ASTT-11",
+      "path": "docs/astt/ASTT_11_Intelligence_Abundance_and_Income_Fracture_v1.0_2026-11-24.md",
+      "git_blob_sha": "65e95bef353cd84bf3d708b2a6898bbd9f6d6d79"
+    },
+    {
+      "id": "ASTT-12",
+      "path": "docs/astt/ASTT_12_Transitional_Civilization_Institutions_v1.0_2026-11-24.md",
+      "git_blob_sha": "3b7d2fbfb3c67ab076f5aa3b463217a22cd80352"
+    }
+  ],
+  "axes": [
+    {
+      "id": "RSL-01",
+      "label_zh": "觀測契約",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "registered frame and contract receipts"
+    },
+    {
+      "id": "RSL-02",
+      "label_zh": "有效供給",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "serial complement and directed capacity network"
+    },
+    {
+      "id": "RSL-03",
+      "label_zh": "終端需求",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "conditional net demand schedule and linear inverse demand"
+    },
+    {
+      "id": "RSL-04",
+      "label_zh": "替代與互補",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "directed network and alternative opening scenario"
+    },
+    {
+      "id": "RSL-05",
+      "label_zh": "容量增量價值",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "exact finite increment and max-flow sensitivity"
+    },
+    {
+      "id": "RSL-06",
+      "label_zh": "價格與成本",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "competitive fixed-capacity benchmark; opportunity cost assumption"
+    },
+    {
+      "id": "RSL-07",
+      "label_zh": "權利結構",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "final cash-beneficiary matrix only, not voting rights"
+    },
+    {
+      "id": "RSL-08",
+      "label_zh": "收益歸屬",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "nonduplicated realized rent allocation and concentration"
+    },
+    {
+      "id": "RSL-09",
+      "label_zh": "紅利傳遞",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "conditional surplus/rent change"
+    },
+    {
+      "id": "RSL-10",
+      "label_zh": "外部選項",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "outside-option benchmark"
+    },
+    {
+      "id": "RSL-11",
+      "label_zh": "稀缺窗口",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "finite discounted opening window"
+    },
+    {
+      "id": "RSL-12",
+      "label_zh": "分配及外部性",
+      "source": "ASTT-10",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "rent concentration; nonmarket externalities reserved"
+    },
+    {
+      "id": "IPD-01",
+      "label_zh": "合格技術容量",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "conditional capacity in market and demand models"
+    },
+    {
+      "id": "IPD-02",
+      "label_zh": "交易與實際吸收",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "quantity and revenue benchmark"
+    },
+    {
+      "id": "IPD-03",
+      "label_zh": "家庭所得流",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "registered standardized disposable-income paths and aggregate income deltas"
+    },
+    {
+      "id": "IPD-04",
+      "label_zh": "流動性與資產負債",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "cash pool accounting only; household debt/asset panel reserved"
+    },
+    {
+      "id": "IPD-05",
+      "label_zh": "品質調整價格籃",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "fixed quality basket"
+    },
+    {
+      "id": "IPD-06",
+      "label_zh": "可達缺口",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "cash gap and physical target feasibility"
+    },
+    {
+      "id": "IPD-07",
+      "label_zh": "所得支出路由",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "conditional marginal expenditure routing"
+    },
+    {
+      "id": "IPD-08",
+      "label_zh": "需求吸收邊界",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "budget/use/capacity demand limits"
+    },
+    {
+      "id": "IPD-09",
+      "label_zh": "自主支出與回饋",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "fixed-coefficient lagged demand model"
+    },
+    {
+      "id": "IPD-10",
+      "label_zh": "收益池及最終受益權",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "realized cash and fixed payout shares"
+    },
+    {
+      "id": "IPD-11",
+      "label_zh": "必要實體資源及接入",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "fixed physical capacity and proportional budget clearing"
+    },
+    {
+      "id": "IPD-12",
+      "label_zh": "過渡與福利結果",
+      "source": "ASTT-11",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "cash/physical gap summaries; longitudinal welfare reserved"
+    },
+    {
+      "id": "CTI-01",
+      "label_zh": "保障母體與資格",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "fixed aggregate eligibility frame"
+    },
+    {
+      "id": "CTI-02",
+      "label_zh": "到達時間",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "timely/late/unmet/unknown counts"
+    },
+    {
+      "id": "CTI-03",
+      "label_zh": "現金及生活缺口",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "prefix payment and cash gap"
+    },
+    {
+      "id": "CTI-04",
+      "label_zh": "淨所得與退場",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "joint continuous taper and cliff grid"
+    },
+    {
+      "id": "CTI-05",
+      "label_zh": "基本服務實物",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "conditional capacity matching"
+    },
+    {
+      "id": "CTI-06",
+      "label_zh": "地域與可達網路",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "anonymous grouped legal/acceptable service edges"
+    },
+    {
+      "id": "CTI-07",
+      "label_zh": "財源與義務",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "cash commitments and reserve floor"
+    },
+    {
+      "id": "CTI-08",
+      "label_zh": "壓力情境與韌性",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "finite scenario stress reserve"
+    },
+    {
+      "id": "CTI-09",
+      "label_zh": "權利及最終受益",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "cash rights references; no legal certification"
+    },
+    {
+      "id": "CTI-10",
+      "label_zh": "選擇與備援",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "two-route union bounds with common gate"
+    },
+    {
+      "id": "CTI-11",
+      "label_zh": "可調適性與救濟",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "optional supplement hysteresis; appeal reference only"
+    },
+    {
+      "id": "CTI-12",
+      "label_zh": "長期分布結果",
+      "source": "ASTT-12",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "fixed-frame outcome bounds; long-run longitudinal data reserved"
+    }
+  ],
+  "compatibility": {
+    "GICCF": "domain IDs only",
+    "ASSO": "unchanged",
+    "KIF": "unchanged",
+    "HCAO": "unchanged; service matching shares mathematical algorithm only",
+    "SAS": "v0.17 dual gates unchanged",
+    "GBI_BRAS_dynamic_equity": "competing institutional proposals; no adoption or legal certification"
+  }
+}

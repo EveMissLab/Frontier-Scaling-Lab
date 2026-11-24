@@ -1,0 +1,122 @@
+{
+  "catalog_id": "RRAO",
+  "version": "0.25.0",
+  "published_on": "2026-11-25",
+  "parent_commit": "1b9fef8ff2205beae6bc96c775d716972ea135c3",
+  "author": "Neo.K / EveMissLab",
+  "status": "candidate definitions only; no actual author replacement or institutional autonomy measured",
+  "source_papers": [
+    {
+      "id": "ASTT-EX01",
+      "path": "docs/astt/ASTT_EX01_The_Replaceable_Theorist_v1.0_2026-11-24.md",
+      "git_blob_sha": "49079c295c88aea1ee45f7b40164594932bb53e5"
+    }
+  ],
+  "axes": [
+    {
+      "id": "RTA-01",
+      "label_zh": "來源忠實度",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "source fidelity and attribution gates"
+    },
+    {
+      "id": "RTA-02",
+      "label_zh": "重播完成度",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "known replay separate from held-out"
+    },
+    {
+      "id": "RTA-03",
+      "label_zh": "獨立重構",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "original solver isolation"
+    },
+    {
+      "id": "RTA-04",
+      "label_zh": "新問題應用",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "frozen holdout commitment"
+    },
+    {
+      "id": "RTA-05",
+      "label_zh": "問題生成",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "research-value and scoped novelty"
+    },
+    {
+      "id": "RTA-06",
+      "label_zh": "反證與修訂",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "accepted correction or sound negative result with regression receipt"
+    },
+    {
+      "id": "RTA-07",
+      "label_zh": "持續自主性",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "ordered multi-cycle trace, independent and author-free gates"
+    },
+    {
+      "id": "RTA-08",
+      "label_zh": "依賴缺口",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "finite AND/OR ablation and fixed weighted targets"
+    },
+    {
+      "id": "RTA-09",
+      "label_zh": "經濟與資源",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "matched trial cost and strict break-even"
+    },
+    {
+      "id": "RTA-10",
+      "label_zh": "歷史與歸屬",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "append-only contribution chain, checkpoint and correction"
+    },
+    {
+      "id": "RTA-11",
+      "label_zh": "研究與組織韌性",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "tool ablation plus registered recovery probes"
+    },
+    {
+      "id": "RTA-12",
+      "label_zh": "權利與治理",
+      "source": "ASTT-EX01 §13",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "rights, rejection, revocation, appeal and fork tests; no live action"
+    }
+  ],
+  "compatibility": {
+    "ASSO": "0.21 unchanged",
+    "KIF": "0.22 unchanged; distinct research handoff trials",
+    "HCAO": "0.23 unchanged",
+    "RSDO": "0.24 unchanged",
+    "GICCF": "domain IDs only",
+    "functional": "G1–G4/E1 unchanged; no automatic autonomy certification",
+    "SAS": "Sigma_sys and Sigma_civ unchanged"
+  }
+}

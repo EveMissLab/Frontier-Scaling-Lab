@@ -5,6 +5,22 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.22 — Knowledge Interpretation Frontier (KIF) / 知識生產與解讀能力前沿
+
+[**Canonical protocol**](docs/KNOWLEDGE_INTERPRETATION_FRONTIER_v0.22.md) · [**14 unmeasured observation groups**](data/kif_indicator_catalog_v0.22.json) · [**Observation schema**](data/kif_observation_schema_v0.22.json)
+
+Additive ASTT-02/03 implementation: retains OIL-M O1–O6, separates proof validity from semantic interpretation and contextual applicability, problem generation, corpus-scoped originality, output/review receipts, blinded held-out trials, appropriate non-answer, matched human/non-AI, AI and hybrid task frames, budgets and full costs, knowledge flow/backlog, conditional serial capacity, and aggregate voluntary research-population entry/exit/selection. Missingness and synthetic/observational data remain separate; no actual ranking, global novelty, neural mechanism, replacement or causal certification. Existing ASTT originals, ASSO, GICCF and DAS-ARL remain unchanged.
+
+```bash
+python -m fsl_epistemic.cli catalog
+python -m fsl_epistemic.cli audit --file tests/fixtures/kif_synthetic_v0.22.json --as-of 2026-11-24
+python -m unittest discover -s tests -v
+```
+
+All examples are SYNTHETIC. v0.23–0.25 remain planned.
+
+---
+
 ## v0.21 — AI Substitution Spectrum Observatory (ASSO) / AI 替代光譜觀測
 
 [**Canonical protocol**](docs/AI_SUBSTITUTION_SPECTRUM_OBSERVATORY_v0.21.md) · [**12 unmeasured axes**](data/asso_indicator_catalog_v0.21.json) · [**Observation schema**](data/asso_observation_schema_v0.21.json) · [**ASTT 12 papers + EX01 + master plan, exact original sources**](docs/astt/README.md)
@@ -17,7 +33,7 @@ python -m fsl_substitution.cli audit --file tests/fixtures/asso_synthetic_v0.21.
 python -m unittest discover -s tests -v
 ```
 
-All example data are SYNTHETIC. No observed occupational ranking or independent empirical certification. ASTT knowledge, topology, distribution and reflexive research modules v0.22–0.25 remain separate planned tracks.
+All example data are SYNTHETIC. No observed occupational ranking or independent empirical certification. ASTT knowledge, topology, distribution and reflexive research modules are separate tracks (see v0.22 and the v0.23–0.25 plan).
 
 ---
 

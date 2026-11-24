@@ -1,0 +1,332 @@
+{
+  "catalog_id": "HCAO",
+  "version": "0.23.0",
+  "published_on": "2026-11-25",
+  "parent_commit": "bfba208e871fa59c76cbfe10d42d8dff0e28e498",
+  "author": "Neo.K / EveMissLab",
+  "status": "candidate definitions only, all unmeasured",
+  "layers": [
+    "K",
+    "R",
+    "T",
+    "P",
+    "I",
+    "A",
+    "S",
+    "G"
+  ],
+  "source_papers": [
+    {
+      "id": "ASTT-07",
+      "path": "docs/astt/ASTT_07_Substitution_Epoch_Topology_v1.0_2026-11-24.md",
+      "git_blob_sha": "46b0a19a2a196d37b35e774a0f2ee5f60e519f30"
+    },
+    {
+      "id": "ASTT-08",
+      "path": "docs/astt/ASTT_08_Cross_Domain_Acceleration_v1.0_2026-11-24.md",
+      "git_blob_sha": "10539f0f45a03ea746266780d3c072733867b3d0"
+    },
+    {
+      "id": "ASTT-09",
+      "path": "docs/astt/ASTT_09_Civilizational_Absorption_and_Transition_Gaps_v1.0_2026-11-24.md",
+      "git_blob_sha": "12f045e26c1dc3edd772dfc7d515b090ba17e1e6"
+    }
+  ],
+  "axes": [
+    {
+      "id": "SET01",
+      "label_zh": "基底與契約",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "frame registry"
+    },
+    {
+      "id": "SET02",
+      "label_zh": "八層狀態映射",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "typed state nodes"
+    },
+    {
+      "id": "SET03",
+      "label_zh": "功能及可靠性",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "SET04",
+      "label_zh": "轉換事件",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "candidate transition edges; not observed deployment"
+    },
+    {
+      "id": "SET05",
+      "label_zh": "聯合門檻",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "monotone conjunctive closure"
+    },
+    {
+      "id": "SET06",
+      "label_zh": "路徑與代價",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "directed distance and lower/upper reachability"
+    },
+    {
+      "id": "SET07",
+      "label_zh": "非同步工期",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "conditional unlimited-parallel critical path"
+    },
+    {
+      "id": "SET08",
+      "label_zh": "共同資源",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "exclusive shared resource feasibility"
+    },
+    {
+      "id": "SET09",
+      "label_zh": "真實部署強度",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "SET10",
+      "label_zh": "工作與社會結果",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "SET11",
+      "label_zh": "聯合分布",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "same-frame Frechet bounds"
+    },
+    {
+      "id": "SET12",
+      "label_zh": "歷史與可重播性",
+      "source": "ASTT-07",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "dated revisions"
+    },
+    {
+      "id": "CFA-01",
+      "label_zh": "來源與目標域",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "two domain references"
+    },
+    {
+      "id": "CFA-02",
+      "label_zh": "接口與聯合條件",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "fixed serial and two-domain model"
+    },
+    {
+      "id": "CFA-03",
+      "label_zh": "產物來源及版本",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "CFA-04",
+      "label_zh": "輸出驗收",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "nested acceptance counts"
+    },
+    {
+      "id": "CFA-05",
+      "label_zh": "吞吐與積壓",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "serial throughput ceiling"
+    },
+    {
+      "id": "CFA-06",
+      "label_zh": "單件週期",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "fixed serial cycle speedup"
+    },
+    {
+      "id": "CFA-07",
+      "label_zh": "轉移有效性",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "CFA-08",
+      "label_zh": "全成本及占用",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "CFA-09",
+      "label_zh": "人工與外部依賴",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "recorded external dependence evidence references only"
+    },
+    {
+      "id": "CFA-10",
+      "label_zh": "跨週期回饋",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "two-domain linear threshold, bounded stock model and consecutive-cycle receipts"
+    },
+    {
+      "id": "CFA-11",
+      "label_zh": "因果對照",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "registered control evidence references only"
+    },
+    {
+      "id": "CFA-12",
+      "label_zh": "外部性與制度",
+      "source": "ASTT-08",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "safety/authorization flags and evidence reference only"
+    },
+    {
+      "id": "C01",
+      "label_zh": "分母及事件",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "fixed aggregate cohort frame"
+    },
+    {
+      "id": "C02",
+      "label_zh": "AI 與反事實",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "C03",
+      "label_zh": "工作結果",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "C04",
+      "label_zh": "承接判準",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "preregistered acceptance contract"
+    },
+    {
+      "id": "C05",
+      "label_zh": "存量流量",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "period conservation and queue paths"
+    },
+    {
+      "id": "C06",
+      "label_zh": "容量與閒置",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "conditional pooling and idle capacity"
+    },
+    {
+      "id": "C07",
+      "label_zh": "轉換圖",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "grouped matching bounds"
+    },
+    {
+      "id": "C08",
+      "label_zh": "訓練與時間",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "reserved; link existing evidence or collect in future"
+    },
+    {
+      "id": "C09",
+      "label_zh": "生活資源",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "standardized budget prefix gap"
+    },
+    {
+      "id": "C10",
+      "label_zh": "所得與福利",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "signed and positive comparison income shortfall"
+    },
+    {
+      "id": "C11",
+      "label_zh": "持續性",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "first and sustained absorption missingness bounds"
+    },
+    {
+      "id": "C12",
+      "label_zh": "制度及分布",
+      "source": "ASTT-09",
+      "value": null,
+      "status": "not_measured",
+      "implementation": "aggregate groups and publication suppression"
+    }
+  ],
+  "compatibility": {
+    "GICCF": "domain IDs only",
+    "ASSO": "unchanged; employment/technical evidence references",
+    "KIF": "unchanged; knowledge production evidence references",
+    "SAS": "v0.17 dual gates unchanged; local model is not RSI",
+    "manufacturing": "v0.20 unchanged"
+  }
+}

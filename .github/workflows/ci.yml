@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing fsl_substitution fsl_epistemic scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing fsl_substitution fsl_epistemic fsl_epoch scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -167,3 +167,9 @@ jobs:
           python -m fsl_epistemic.cli audit --file tests/fixtures/kif_synthetic_v0.22.json --as-of 2026-11-24T10:30:00Z --output /tmp/kif_early.json
           python -m fsl_epistemic.cli audit --file tests/fixtures/kif_synthetic_v0.22.json --as-of 2026-11-24T11:30:00Z --mode retrospective_reconstruction --output /tmp/kif_retro.json
           python -c "import json; a=json.load(open('/tmp/kif_early.json')); b=json.load(open('/tmp/kif_retro.json')); assert a['visible_event_count']==28 and b['visible_event_count']==29; assert a['recorded_observational_assertions'] is None and not b['independent_empirical_certification']; s=a['synthetic_scenario']; assert s['knowledge_flow_frames'][0]['conditional_bottleneck_stages']==['I']; assert s['population_frames'][0]['complete_case_population_decomposition']['mean_change']=={'numerator':10,'denominator':3}"
+      - name: v0.23 HCAO topology, conditional feedback and absorption (SYNTHETIC)
+        run: |
+          python -m fsl_epoch.cli catalog
+          python -m fsl_epoch.cli audit --file tests/fixtures/hcao_synthetic_v0.23.json --as-of 2026-11-25T10:30:00Z --output /tmp/hcao_early.json
+          python -m fsl_epoch.cli audit --file tests/fixtures/hcao_synthetic_v0.23.json --as-of 2026-11-25T11:30:00Z --mode retrospective_reconstruction --output /tmp/hcao_retro.json
+          python -c "import json; a=json.load(open('/tmp/hcao_early.json')); b=json.load(open('/tmp/hcao_retro.json')); assert a['visible_event_count']==3 and b['visible_event_count']==4; assert a['recorded_observational_assertions'] is None and not b['systemic_singularity_certified']; x={r['frame']['frame_id']:r['conditional_result'] for r in a['synthetic_scenario']['frames']}; assert x['epoch']['shared_resource_model']['joint_status']=='infeasible'; assert x['feedback']['linear_feedback_model']['conditional_regime']=='supercritical'; assert x['transition']['queue']['cumulative_discrete_event_days']==360"

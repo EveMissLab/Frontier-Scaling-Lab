@@ -5,6 +5,22 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.23 — Heterogeneous Coupling and Acceleration Observatory (HCAO) / 異質時代與跨域加速
+
+[**Canonical protocol**](docs/HETEROGENEOUS_COUPLING_ACCELERATION_OBSERVATORY_v0.23.md) · [**36 unmeasured SET-M / CFA-M / CAT-M groups**](data/hcao_indicator_catalog_v0.23.json) · [**Observation schema**](data/hcao_observation_schema_v0.23.json)
+
+Additive ASTT-07/08/09 implementation: eight-layer local epoch states, fixed directed candidate graph with certain/possible reachability and distance bounds, conjunctive closure, shared resources, DAG critical path and same-frame coverage bounds; serial throughput/latency and nested acceptance, exact two-domain feedback regime, bounded stock and cycle receipts; partitioned absorption queues, grouped matching bounds, standardized liquidity and income paths, sustained outcome bounds. All model results are conditional; no actual replacement score, causal acceleration, systemic singularity or civilizational gain certification. The catalog distinguishes implemented models from reserved observation fields. GICCF, ASSO, KIF, SAS-01 and original ASTT sources remain unchanged.
+
+```bash
+python -m fsl_epoch.cli catalog
+python -m fsl_epoch.cli audit --file tests/fixtures/hcao_synthetic_v0.23.json --as-of 2026-11-25
+python -m unittest discover -s tests -v
+```
+
+All examples are SYNTHETIC. v0.24–0.25 remain planned.
+
+---
+
 ## v0.22 — Knowledge Interpretation Frontier (KIF) / 知識生產與解讀能力前沿
 
 [**Canonical protocol**](docs/KNOWLEDGE_INTERPRETATION_FRONTIER_v0.22.md) · [**14 unmeasured observation groups**](data/kif_indicator_catalog_v0.22.json) · [**Observation schema**](data/kif_observation_schema_v0.22.json)
@@ -17,7 +33,7 @@ python -m fsl_epistemic.cli audit --file tests/fixtures/kif_synthetic_v0.22.json
 python -m unittest discover -s tests -v
 ```
 
-All examples are SYNTHETIC. v0.23–0.25 remain planned.
+All examples are SYNTHETIC. See the separate v0.23 track and the v0.24–0.25 plan.
 
 ---
 

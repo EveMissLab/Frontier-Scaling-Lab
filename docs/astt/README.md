@@ -19,4 +19,11 @@ Neo.K／EveMissLab，研究協作 ChatGPT。2026-11-24 原始 UTF-8 Markdown 正
 - [ASTT_12_Transitional_Civilization_Institutions_v1.0_2026-11-24.md](ASTT_12_Transitional_Civilization_Institutions_v1.0_2026-11-24.md)
 - [ASTT_EX01_The_Replaceable_Theorist_v1.0_2026-11-24.md](ASTT_EX01_The_Replaceable_Theorist_v1.0_2026-11-24.md)
 
-v0.21 實作 01、04、05、06 的核心接口；其餘原稿先保存，v0.22–0.25 尚為規劃。
+v0.21–v0.25 已完成五軌首版可重播工程實作；原始十四份來源清冊保持不可變，所有指標仍待真實獨立觀測。
+
+## 補充研究 EX02（2026-11-25）
+
+- [ASTT_EX02_AI_Supplier_Paradox_Rights_and_Institutional_Games_v0.1_2026-11-25.md](ASTT_EX02_AI_Supplier_Paradox_Rights_and_Institutional_Games_v0.1_2026-11-25.md)
+- [獨立補充來源清冊與有限模型重播預期](source_manifest_EX02.json)
+
+公司及動機抽象化的開放問題研究；AI 作者權、政治權利、收益與責任的多方制度博弈。未預設原始供應商得利或失利，無現行法律或實證裁決。EX02 不覆寫原十四份正典清冊，亦不新增 FSL 版本或已量測指標。

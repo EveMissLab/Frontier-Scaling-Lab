@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Validate Python source syntax
-        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing fsl_substitution fsl_epistemic fsl_epoch fsl_distribution scripts tests
+        run: python -m compileall -q frontier_scaling.py fsl_adaptive fsl_sources fsl_timecourse fsl_functional fsl_observatory fsl_interventions fsl_affordability fsl_economics fsl_history fsl_discourse fsl_civilization fsl_connectivity fsl_singularity fsl_legal fsl_strategy fsl_manufacturing fsl_substitution fsl_epistemic fsl_epoch fsl_distribution fsl_reflexive scripts tests
       - name: Legacy and adaptive regression tests
         run: python -m unittest discover -s tests -v
       - name: Legacy v0.1 reference estimate
@@ -179,3 +179,9 @@ jobs:
           python -m fsl_distribution.cli audit --file tests/fixtures/rsdo_synthetic_v0.24.json --as-of 2026-11-25T10:30:00Z --output /tmp/rsdo_early.json
           python -m fsl_distribution.cli audit --file tests/fixtures/rsdo_synthetic_v0.24.json --as-of 2026-11-25T11:30:00Z --mode retrospective_reconstruction --output /tmp/rsdo_retro.json
           python -c "import json; a=json.load(open('/tmp/rsdo_early.json')); b=json.load(open('/tmp/rsdo_retro.json')); assert a['visible_event_count']==3 and b['visible_event_count']==4; assert a['recorded_observational_assertions'] is None and not b['policy_certified']; x={r['frame']['frame_id']:r['conditional_result'] for r in a['synthetic_scenario']['frames']}; assert x['scarcity']['competitive']['conditional_result']['incremental_rent_share_of_positive_surplus_gain']=={'numerator':1,'denominator':1}; assert x['income']['cash_rights']['conditional_result']['fixed_rights_any_finite_pool_infeasible']; assert x['institutions']['funding']['conditional_result']['robust_minimum_opening_cash_minor']==9"
+      - name: v0.25 RRAO reflexive research handoff and continuity (SYNTHETIC)
+        run: |
+          python -m fsl_reflexive.cli catalog
+          python -m fsl_reflexive.cli audit --file tests/fixtures/rrao_synthetic_v0.25.json --as-of 2026-11-25T10:30:00Z --output /tmp/rrao_early.json
+          python -m fsl_reflexive.cli audit --file tests/fixtures/rrao_synthetic_v0.25.json --as-of 2026-11-25T11:30:00Z --mode retrospective_reconstruction --output /tmp/rrao_retro.json
+          python -c "import json; a=json.load(open('/tmp/rrao_early.json')); b=json.load(open('/tmp/rrao_retro.json')); assert a['visible_event_count']==5 and b['visible_event_count']==7; assert a['recorded_observational_assertions'] is None and not b['actual_author_replacement_certified']; x={r['frame']['frame_id']:r['conditional_result'] for r in a['synthetic_scenario']['frames']}; assert len(x['trials']['trial_rows'])==35; assert x['models']['dependency']['conditional_result']['author_cut_with_handoff']['dependency_gap_weight_upper']==3; assert x['trajectory']['conditional_human_core_free_research_series']=='passed' and not x['trajectory']['actual_recorded_series_candidate']; assert x['history']['checkpoint_prefix_intact'] and x['governance']['required_probe_state']=='unknown'"

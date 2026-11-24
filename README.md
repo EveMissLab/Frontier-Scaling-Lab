@@ -5,6 +5,20 @@
 
 [License: Apache-2.0](LICENSE) · [Adaptive research / 自適應研究](docs/ADAPTIVE_RESEARCH_v0.2.md) · [Database protocol / 資料庫設計](docs/DATABASE.md)
 
+## v0.25 — Reflexive Research Autonomy Observatory (RRAO) / 反身性研究自主與替代
+
+[**Canonical protocol**](docs/REFLEXIVE_RESEARCH_AUTONOMY_OBSERVATORY_v0.25.md) · [**12 unmeasured RTA-M groups**](data/rrao_indicator_catalog_v0.25.json) · [**Observation schema**](data/rrao_observation_schema_v0.25.json)
+
+Additive ASTT-EX01 implementation: registered original-supported/public-only/full-handoff/independent-team/autonomous-agenda comparisons; faithful replay, independent reconstruction, held-out application, revision/refutation and autonomous generation; separate artifact, author-free and AI human-core-free gates; fixed AND/OR dependency ablation, joint tool outages, ambiguity and strict handoff break-even; dated multi-cycle traces, append-only attribution checkpoints, correction history and non-destructive governance probes. No empirical author replacement, institutional takeover, autonomous research, legal authorship, or singularity certification. All examples are SYNTHETIC. This closes the initial ASTT v0.21–v0.25 engineering sequence, not the empirical research program.
+
+```bash
+python -m fsl_reflexive.cli catalog
+python -m fsl_reflexive.cli audit --file tests/fixtures/rrao_synthetic_v0.25.json --as-of 2026-11-25
+python -m unittest discover -s tests -v
+```
+
+---
+
 ## v0.24 — Residual Scarcity and Distribution Observatory (RSDO) / 殘餘稀缺與文明分配
 
 [**Canonical protocol**](docs/RESIDUAL_SCARCITY_DISTRIBUTION_OBSERVATORY_v0.24.md) · [**36 unmeasured RSL-M / IPD-M / CTI-M groups**](data/rsdo_indicator_catalog_v0.24.json) · [**Observation schema**](data/rsdo_observation_schema_v0.24.json)
@@ -17,7 +31,7 @@ python -m fsl_distribution.cli audit --file tests/fixtures/rsdo_synthetic_v0.24.
 python -m unittest discover -s tests -v
 ```
 
-All examples are SYNTHETIC. v0.25 RRAO remains planned.
+All examples are SYNTHETIC. See the separate v0.25 RRAO track.
 
 ---
 

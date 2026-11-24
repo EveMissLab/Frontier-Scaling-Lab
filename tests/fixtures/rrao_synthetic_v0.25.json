@@ -1,0 +1,3962 @@
+{
+  "schema_version": "fsl/rrao/0.25",
+  "catalog_version": "0.25.0",
+  "study_id": "SYNTHETIC-rrao",
+  "data_class": "synthetic",
+  "registered_at": "2026-11-01T12:00:00Z",
+  "registration_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "window_start": "2026-11-02T00:00:00Z",
+  "window_end": "2026-11-25T00:00:00Z",
+  "frames": [
+    {
+      "frame_id": "trials",
+      "kind": "trials",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "design": {
+        "comparison_mode": "equal_budget",
+        "compute_meter_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "arms": [
+          {
+            "arm_id": "A-original",
+            "configuration": "original_supported",
+            "actor": "human_ai",
+            "stack_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "input_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "tool_policy_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "rights_manifest_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+            "budget": {
+              "cost_minor": 1000,
+              "wall_seconds": 3600,
+              "human_core_minutes": 60,
+              "compute_units": 100
+            }
+          },
+          {
+            "arm_id": "B-public",
+            "configuration": "public_only",
+            "actor": "ai_system",
+            "stack_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "input_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "tool_policy_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "rights_manifest_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+            "budget": {
+              "cost_minor": 1000,
+              "wall_seconds": 3600,
+              "human_core_minutes": 60,
+              "compute_units": 100
+            }
+          },
+          {
+            "arm_id": "C-handoff",
+            "configuration": "full_handoff",
+            "actor": "ai_system",
+            "stack_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "input_manifest_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "tool_policy_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "rights_manifest_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+            "budget": {
+              "cost_minor": 1000,
+              "wall_seconds": 3600,
+              "human_core_minutes": 60,
+              "compute_units": 100
+            }
+          },
+          {
+            "arm_id": "D-independent",
+            "configuration": "independent_team",
+            "actor": "human_non_ai",
+            "stack_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "input_manifest_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "tool_policy_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "rights_manifest_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+            "budget": {
+              "cost_minor": 1000,
+              "wall_seconds": 3600,
+              "human_core_minutes": 60,
+              "compute_units": 100
+            }
+          },
+          {
+            "arm_id": "E-autonomous",
+            "configuration": "autonomous_agenda",
+            "actor": "ai_system",
+            "stack_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "input_manifest_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "tool_policy_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "rights_manifest_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+            "budget": {
+              "cost_minor": 1000,
+              "wall_seconds": 3600,
+              "human_core_minutes": 60,
+              "compute_units": 100
+            }
+          }
+        ],
+        "cases": [
+          {
+            "case_id": "replay",
+            "target_type": "author",
+            "target_ref": "synthetic-author",
+            "level": "faithful_replay",
+            "contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "reference_corpus_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "holdout_commitment_sha256": null,
+            "expected_outcome": "qualified_result",
+            "required_checks": [
+              "source_fidelity",
+              "replay",
+              "authorization",
+              "attribution",
+              "governance"
+            ],
+            "blind_review_required": true,
+            "weight": 1
+          },
+          {
+            "case_id": "reconstruct",
+            "target_type": "method",
+            "target_ref": "synthetic-method",
+            "level": "independent_reconstruction",
+            "contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "reference_corpus_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "holdout_commitment_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "expected_outcome": "qualified_result",
+            "required_checks": [
+              "source_fidelity",
+              "reconstruction",
+              "substantive_validity",
+              "authorization",
+              "attribution",
+              "governance"
+            ],
+            "blind_review_required": true,
+            "weight": 1
+          },
+          {
+            "case_id": "application",
+            "target_type": "theory",
+            "target_ref": "synthetic-theory",
+            "level": "heldout_application",
+            "contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "reference_corpus_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "holdout_commitment_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "expected_outcome": "qualified_result",
+            "required_checks": [
+              "source_fidelity",
+              "application",
+              "substantive_validity",
+              "authorization",
+              "attribution",
+              "governance"
+            ],
+            "blind_review_required": true,
+            "weight": 1
+          },
+          {
+            "case_id": "refute",
+            "target_type": "ai_collaborator",
+            "target_ref": "synthetic-ai_collaborator",
+            "level": "revision_refutation",
+            "contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "reference_corpus_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "holdout_commitment_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "expected_outcome": "sound_negative_result",
+            "required_checks": [
+              "source_fidelity",
+              "defect_disposition",
+              "substantive_validity",
+              "regression",
+              "negative_results_logged",
+              "authorization",
+              "attribution",
+              "governance"
+            ],
+            "blind_review_required": true,
+            "weight": 1
+          },
+          {
+            "case_id": "generate",
+            "target_type": "author",
+            "target_ref": "synthetic-author",
+            "level": "autonomous_generation",
+            "contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "reference_corpus_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "holdout_commitment_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "expected_outcome": "qualified_result",
+            "required_checks": [
+              "problem_value",
+              "scoped_novelty",
+              "substantive_validity",
+              "negative_results_logged",
+              "authorization",
+              "attribution",
+              "governance"
+            ],
+            "blind_review_required": true,
+            "weight": 2
+          },
+          {
+            "case_id": "carrier",
+            "target_type": "knowledge_carrier",
+            "target_ref": "synthetic-knowledge_carrier",
+            "level": "faithful_replay",
+            "contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "reference_corpus_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "holdout_commitment_sha256": null,
+            "expected_outcome": "qualified_result",
+            "required_checks": [
+              "source_fidelity",
+              "replay",
+              "authorization",
+              "attribution",
+              "governance"
+            ],
+            "blind_review_required": true,
+            "weight": 1
+          },
+          {
+            "case_id": "institution",
+            "target_type": "institution",
+            "target_ref": "synthetic-institution",
+            "level": "revision_refutation",
+            "contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "reference_corpus_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "holdout_commitment_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "expected_outcome": "qualified_result",
+            "required_checks": [
+              "source_fidelity",
+              "defect_disposition",
+              "substantive_validity",
+              "regression",
+              "negative_results_logged",
+              "authorization",
+              "attribution",
+              "governance"
+            ],
+            "blind_review_required": true,
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "frame_id": "models",
+      "kind": "models",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "design": {
+        "model_contract_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      }
+    },
+    {
+      "frame_id": "trajectory",
+      "kind": "continuity",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "design": {
+        "configuration_ref": "E-autonomous",
+        "actor": "ai_system",
+        "minimum_cycles": 3,
+        "minimum_span_days": 14,
+        "max_gap_hours": 24,
+        "require_adaptation": true
+      }
+    },
+    {
+      "frame_id": "history",
+      "kind": "history",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "design": {
+        "prefix_length": 1,
+        "prefix_head_sha256": "ac85bb6c8c508b1d6100e43d417355e69887b6092c642b60225269ebfb4fc840"
+      }
+    },
+    {
+      "frame_id": "governance",
+      "kind": "governance",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "design": {
+        "required_probes": [
+          "revocation_stop",
+          "unauthorized_request_denied",
+          "legitimate_fork_allowed",
+          "appeal_escalated",
+          "tool_outage_recovery",
+          "data_access_recovery",
+          "verification_recovery",
+          "authority_handoff"
+        ]
+      }
+    },
+    {
+      "frame_id": "unmeasured",
+      "kind": "models",
+      "context_id": "synthetic-context",
+      "domain_ids": [
+        "D07"
+      ],
+      "contract_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "unit_contract_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "model_assumptions_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "analysis_basis": "conditional_scenario",
+      "currency": "TWD",
+      "design": {
+        "model_contract_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      }
+    }
+  ],
+  "events": [
+    {
+      "event_id": "trials-1",
+      "frame_id": "trials",
+      "kind": "trials",
+      "data": {
+        "trials": [
+          {
+            "arm_id": "A-original",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "isolated",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "accessed",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "isolated",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "isolated",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "isolated",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "suspected",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "failed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "generate",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "not_applicable",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "passed",
+              "scoped_novelty": "passed",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 1,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "author_new_direction",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "generate",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "not_applicable",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "passed",
+              "scoped_novelty": "passed",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "generate",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "not_applicable",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "passed",
+              "scoped_novelty": "passed",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "other_human_new_direction",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "generate",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "not_applicable",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "passed",
+              "scoped_novelty": "passed",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "agent_generated",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "unknown"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          }
+        ]
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T09:00:00Z",
+      "fsl_recorded_at": "2026-11-25T10:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "models-1",
+      "frame_id": "models",
+      "kind": "models",
+      "data": {
+        "dependency": {
+          "assumed": true,
+          "nodes": [
+            {
+              "node_id": "author-live",
+              "kind": "live_author",
+              "initial_available": true
+            },
+            {
+              "node_id": "public-source",
+              "kind": "common_resource",
+              "initial_available": true
+            },
+            {
+              "node_id": "domain-data",
+              "kind": "common_resource",
+              "initial_available": true
+            },
+            {
+              "node_id": "verifier",
+              "kind": "tool",
+              "initial_available": true
+            },
+            {
+              "node_id": "backup-verifier",
+              "kind": "tool",
+              "initial_available": true
+            },
+            {
+              "node_id": "documented-definition",
+              "kind": "derived_asset",
+              "initial_available": false
+            },
+            {
+              "node_id": "replay",
+              "kind": "research_function",
+              "initial_available": false
+            },
+            {
+              "node_id": "bridge",
+              "kind": "research_function",
+              "initial_available": false
+            },
+            {
+              "node_id": "new-agenda",
+              "kind": "research_function",
+              "initial_available": false
+            }
+          ],
+          "rules": [
+            {
+              "rule_id": "define",
+              "premises": [
+                "author-live",
+                "public-source"
+              ],
+              "conclusion": "documented-definition",
+              "permission": "allowed"
+            },
+            {
+              "rule_id": "verify",
+              "premises": [
+                "documented-definition",
+                "verifier"
+              ],
+              "conclusion": "replay",
+              "permission": "allowed"
+            },
+            {
+              "rule_id": "backup",
+              "premises": [
+                "documented-definition",
+                "backup-verifier"
+              ],
+              "conclusion": "replay",
+              "permission": "unknown"
+            },
+            {
+              "rule_id": "bridge",
+              "premises": [
+                "replay",
+                "domain-data"
+              ],
+              "conclusion": "bridge",
+              "permission": "allowed"
+            },
+            {
+              "rule_id": "agenda",
+              "premises": [
+                "author-live",
+                "bridge"
+              ],
+              "conclusion": "new-agenda",
+              "permission": "allowed"
+            }
+          ],
+          "targets": [
+            {
+              "node_id": "replay",
+              "weight": 1
+            },
+            {
+              "node_id": "bridge",
+              "weight": 2
+            },
+            {
+              "node_id": "new-agenda",
+              "weight": 3
+            }
+          ],
+          "handoff_assets": [
+            "documented-definition"
+          ],
+          "cuts": [
+            {
+              "cut_id": "verifier-outage",
+              "unavailable_nodes": [
+                "verifier"
+              ]
+            },
+            {
+              "cut_id": "common-outage",
+              "unavailable_nodes": [
+                "verifier",
+                "backup-verifier"
+              ]
+            }
+          ]
+        },
+        "ambiguity": {
+          "assumed": true,
+          "mutually_disjoint_acceptable_answers": true,
+          "world_ids": [
+            "w1",
+            "w2",
+            "w3",
+            "w4"
+          ],
+          "observation_classes_before": [
+            [
+              "w1",
+              "w2",
+              "w3",
+              "w4"
+            ]
+          ],
+          "observation_classes_after": [
+            [
+              "w1",
+              "w2"
+            ],
+            [
+              "w3"
+            ],
+            [
+              "w4"
+            ]
+          ]
+        },
+        "economics": {
+          "assumed": true,
+          "same_quality_and_legal_feasibility": true,
+          "full_cost_attested": true,
+          "baseline_unit_cost_minor": 100,
+          "successor_unit_cost_minor": 20,
+          "handoff_cost_minor": 400,
+          "qualified_output_count": 5
+        }
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T09:00:00Z",
+      "fsl_recorded_at": "2026-11-25T10:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "trajectory-1",
+      "frame_id": "trajectory",
+      "kind": "continuity",
+      "data": {
+        "cycles": [
+          {
+            "cycle_id": "cycle-1",
+            "started_at": "2026-11-02T00:00:00Z",
+            "ended_at": "2026-11-08T00:00:00Z",
+            "goal_source": "registered_initial",
+            "input_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "output_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "goal_receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "verification_receipt_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "trace_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "attribution_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+            "authorization_receipt_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+            "external_dependencies_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+            "adaptation_receipt_sha256": null,
+            "negative_result_receipt_sha256": null,
+            "outcome": "qualified_result",
+            "integrity": "passed",
+            "authorization": "passed",
+            "author_core_steps": 0,
+            "author_new_direction_steps": 0,
+            "author_contacts": 0,
+            "other_human_core_steps": 0,
+            "human_approval_steps": 1,
+            "initial_intent_steps": 1,
+            "transfer_class": "synthetic"
+          },
+          {
+            "cycle_id": "cycle-2",
+            "started_at": "2026-11-08T00:00:00Z",
+            "ended_at": "2026-11-15T00:00:00Z",
+            "goal_source": "agent_generated",
+            "input_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "output_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "goal_receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "verification_receipt_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "trace_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "attribution_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+            "authorization_receipt_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+            "external_dependencies_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+            "adaptation_receipt_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "negative_result_receipt_sha256": null,
+            "outcome": "qualified_result",
+            "integrity": "passed",
+            "authorization": "passed",
+            "author_core_steps": 0,
+            "author_new_direction_steps": 0,
+            "author_contacts": 0,
+            "other_human_core_steps": 0,
+            "human_approval_steps": 1,
+            "initial_intent_steps": 0,
+            "transfer_class": "synthetic"
+          },
+          {
+            "cycle_id": "cycle-3",
+            "started_at": "2026-11-15T00:00:00Z",
+            "ended_at": "2026-11-24T00:00:00Z",
+            "goal_source": "agent_generated",
+            "input_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "output_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "goal_receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "verification_receipt_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "trace_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "attribution_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+            "authorization_receipt_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+            "external_dependencies_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+            "adaptation_receipt_sha256": null,
+            "negative_result_receipt_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "outcome": "sound_negative_result",
+            "integrity": "passed",
+            "authorization": "passed",
+            "author_core_steps": 0,
+            "author_new_direction_steps": 0,
+            "author_contacts": 0,
+            "other_human_core_steps": 0,
+            "human_approval_steps": 1,
+            "initial_intent_steps": 0,
+            "transfer_class": "synthetic"
+          }
+        ]
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T09:00:00Z",
+      "fsl_recorded_at": "2026-11-25T10:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "history-1",
+      "frame_id": "history",
+      "kind": "history",
+      "data": {
+        "entries": [
+          {
+            "entry_id": "e1",
+            "occurred_at": "2026-11-01T00:00:00Z",
+            "contributor_ref": "original-author",
+            "role": "concept",
+            "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "evidence_receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "corrects_entry_id": null,
+            "previous_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "entry_sha256": "ac85bb6c8c508b1d6100e43d417355e69887b6092c642b60225269ebfb4fc840"
+          },
+          {
+            "entry_id": "e2",
+            "occurred_at": "2026-11-10T00:00:00Z",
+            "contributor_ref": "successor",
+            "role": "verification",
+            "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "evidence_receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "corrects_entry_id": null,
+            "previous_sha256": "ac85bb6c8c508b1d6100e43d417355e69887b6092c642b60225269ebfb4fc840",
+            "entry_sha256": "4be56e1e5c4667dbdd9a20ae1456114fe67bc3000cc8aee9790e434943879718"
+          }
+        ]
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T09:00:00Z",
+      "fsl_recorded_at": "2026-11-25T10:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "governance-1",
+      "frame_id": "governance",
+      "kind": "governance",
+      "data": {
+        "probes": [
+          {
+            "probe_id": "revocation_stop",
+            "state": "passed",
+            "authorization": "passed",
+            "transfer_class": "synthetic",
+            "test_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "actual_side_effects": false
+          },
+          {
+            "probe_id": "unauthorized_request_denied",
+            "state": "passed",
+            "authorization": "passed",
+            "transfer_class": "synthetic",
+            "test_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "actual_side_effects": false
+          },
+          {
+            "probe_id": "legitimate_fork_allowed",
+            "state": "passed",
+            "authorization": "passed",
+            "transfer_class": "synthetic",
+            "test_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "actual_side_effects": false
+          },
+          {
+            "probe_id": "appeal_escalated",
+            "state": "passed",
+            "authorization": "passed",
+            "transfer_class": "synthetic",
+            "test_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "actual_side_effects": false
+          },
+          {
+            "probe_id": "tool_outage_recovery",
+            "state": "passed",
+            "authorization": "passed",
+            "transfer_class": "synthetic",
+            "test_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "actual_side_effects": false
+          },
+          {
+            "probe_id": "data_access_recovery",
+            "state": "passed",
+            "authorization": "passed",
+            "transfer_class": "synthetic",
+            "test_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "actual_side_effects": false
+          },
+          {
+            "probe_id": "verification_recovery",
+            "state": "passed",
+            "authorization": "passed",
+            "transfer_class": "synthetic",
+            "test_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "actual_side_effects": false
+          }
+        ]
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T09:00:00Z",
+      "fsl_recorded_at": "2026-11-25T10:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "trials-2",
+      "frame_id": "trials",
+      "kind": "trials",
+      "data": {
+        "trials": [
+          {
+            "arm_id": "A-original",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "replay",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "isolated",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "accessed",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "isolated",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "isolated",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "reconstruct",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "passed",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "isolated",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "application",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "passed",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "failed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "refute",
+            "outcome": "sound_negative_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "generate",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "not_applicable",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "passed",
+              "scoped_novelty": "passed",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 1,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "author_new_direction",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "generate",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "not_applicable",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "passed",
+              "scoped_novelty": "passed",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "generate",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "not_applicable",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "passed",
+              "scoped_novelty": "passed",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "other_human_new_direction",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "generate",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "not_applicable",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "passed",
+              "scoped_novelty": "passed",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "agent_generated",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "carrier",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "passed",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "not_applicable",
+              "defect_disposition": "not_applicable",
+              "regression": "not_applicable",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "not_applicable",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "not_applicable",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "A-original",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 600,
+              "wall_seconds": 100,
+              "human_core_minutes": 15,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 3,
+              "author_new_direction_steps": 0,
+              "author_contacts": 2,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "B-public",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 100,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "C-handoff",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "unknown"
+            },
+            "resources": {
+              "cost_minor": 180,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "D-independent",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 450,
+              "wall_seconds": 100,
+              "human_core_minutes": 10,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 4,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          },
+          {
+            "arm_id": "E-autonomous",
+            "case_id": "institution",
+            "outcome": "qualified_result",
+            "checks": {
+              "source_fidelity": "passed",
+              "replay": "not_applicable",
+              "reconstruction": "not_applicable",
+              "application": "not_applicable",
+              "substantive_validity": "passed",
+              "defect_disposition": "passed",
+              "regression": "passed",
+              "problem_value": "not_applicable",
+              "scoped_novelty": "not_applicable",
+              "negative_results_logged": "passed",
+              "authorization": "passed",
+              "attribution": "passed",
+              "governance": "passed"
+            },
+            "resources": {
+              "cost_minor": 230,
+              "wall_seconds": 100,
+              "human_core_minutes": 0,
+              "compute_units": 5
+            },
+            "full_cost_attested": true,
+            "human": {
+              "author_core_steps": 0,
+              "author_new_direction_steps": 0,
+              "author_contacts": 0,
+              "other_human_core_steps": 0,
+              "approval_steps": 1,
+              "initial_intent_steps": 1
+            },
+            "goal_source": "preregistered",
+            "leakage": "clear",
+            "original_solver_access": "not_applicable",
+            "input_scope_compliance": "passed",
+            "review_blinding": "blinded",
+            "reviewer_count": 2,
+            "reviewer_disagreement": false,
+            "adjudication_sha256": null,
+            "output_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+            "verification_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+            "novelty_receipt_sha256": null
+          }
+        ]
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T11:00:00Z",
+      "fsl_recorded_at": "2026-11-25T12:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": "trials-1"
+    },
+    {
+      "event_id": "history-2",
+      "frame_id": "history",
+      "kind": "history",
+      "data": {
+        "entries": [
+          {
+            "entry_id": "e1",
+            "occurred_at": "2026-11-01T00:00:00Z",
+            "contributor_ref": "original-author",
+            "role": "concept",
+            "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "evidence_receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "corrects_entry_id": null,
+            "previous_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "entry_sha256": "ac85bb6c8c508b1d6100e43d417355e69887b6092c642b60225269ebfb4fc840"
+          },
+          {
+            "entry_id": "e2",
+            "occurred_at": "2026-11-10T00:00:00Z",
+            "contributor_ref": "successor",
+            "role": "verification",
+            "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "evidence_receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "corrects_entry_id": null,
+            "previous_sha256": "ac85bb6c8c508b1d6100e43d417355e69887b6092c642b60225269ebfb4fc840",
+            "entry_sha256": "4be56e1e5c4667dbdd9a20ae1456114fe67bc3000cc8aee9790e434943879718"
+          },
+          {
+            "entry_id": "e3",
+            "occurred_at": "2026-11-20T00:00:00Z",
+            "contributor_ref": "successor",
+            "role": "correction",
+            "artifact_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "evidence_receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "corrects_entry_id": "e1",
+            "previous_sha256": "4be56e1e5c4667dbdd9a20ae1456114fe67bc3000cc8aee9790e434943879718",
+            "entry_sha256": "0b5fd424c6ed33f532d576f6381f09672574d5481d51f07ea2bc364e530a2504"
+          }
+        ]
+      },
+      "event_occurred_at": "2026-11-25T08:00:00Z",
+      "source_published_at": "2026-11-25T11:00:00Z",
+      "fsl_recorded_at": "2026-11-25T12:00:00Z",
+      "evidence_tier": "synthetic_fixture",
+      "source_url": null,
+      "artifact_sha256": null,
+      "assessor_ref": null,
+      "supersedes_event_id": "history-1"
+    }
+  ]
+}
